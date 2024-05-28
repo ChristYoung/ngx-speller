@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-speller:build:production"
+              "buildTarget": "ngx-speller:build:production"
             },
             "development": {
-              "browserTarget": "ngx-speller:build:development"
+              "buildTarget": "ngx-speller:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-speller:build"
+            "buildTarget": "ngx-speller:build"
           }
         },
         "test": {
