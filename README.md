@@ -18,3 +18,9 @@
 - https://www.youtube.com/watch?v=QZlV3029dFk
 - https://github.com/angular/angularfire/blob/master/docs/database.md (Real Time database)
 - https://www.youtube.com/watch?v=586O934xrhQ (Fire base auth)
+
+# github action 如何配置secret.ACCESS_TOKEN
+- https://blog.csdn.net/ht370671963/article/details/111995883
+
+# accessToken for this repo:
+- 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

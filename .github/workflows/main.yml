@@ -15,7 +15,11 @@ jobs:
         run: npm run build
 
       - name: 🚀 deploy this project
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: ptienchuan/deploy-github-pages-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          branch: gh-pages
-          folder: dist
+          source-directory: "dist"
+          target-branch: "gh-pages"
+          user-name: "ChristYoung"
+          user-email: "858851768@qq.com"
