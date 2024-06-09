@@ -32,7 +32,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng-speller",
+            "outputPath": "dist/ngx-speller",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -88,10 +88,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng-speller:build:production"
+              "buildTarget": "ngx-speller:build:production"
             },
             "development": {
-              "buildTarget": "ng-speller:build:development"
+              "buildTarget": "ngx-speller:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -99,7 +99,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ng-speller:build"
+            "buildTarget": "ngx-speller:build"
           }
         },
         "test": {
@@ -128,12 +128,12 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "ng-speller:build:production",
-              "serveTarget": "ng-speller:serve:production"
+              "buildTarget": "ngx-speller:build:production",
+              "serveTarget": "ngx-speller:serve:production"
             },
             "development": {
-              "buildTarget": "ng-speller:build:development",
-              "serveTarget": "ng-speller:serve:development"
+              "buildTarget": "ngx-speller:build:development",
+              "serveTarget": "ngx-speller:serve:development"
             }
           },
           "defaultConfiguration": "production"

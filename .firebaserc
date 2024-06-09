@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "speller-d44b7": {
+      "hosting": {
+        "ng-speller": [
+          "speller-d44b7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "speller-d44b7"
+  }
+}
