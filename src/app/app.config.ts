@@ -66,14 +66,14 @@ export const appConfig: ApplicationConfig = {
       multi: true,
       deps: [DbService],
     },
-    importProvidersFrom(
-      provideFirebaseApp(() => initializeApp(environment.fireBaseConfig))
-    ),
-    importProvidersFrom(provideAuth(() => getAuth())),
-    importProvidersFrom(provideFirestore(() => getFirestore())),
-    importProvidersFrom(provideDatabase(() => getDatabase())),
-    importProvidersFrom(provideStorage(() => getStorage())),
-    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
+    // importProvidersFrom(
+    //   provideFirebaseApp(() => initializeApp(environment.fireBaseConfig))
+    // ),
+    // importProvidersFrom(provideAuth(() => getAuth())),
+    // importProvidersFrom(provideFirestore(() => getFirestore())),
+    // importProvidersFrom(provideDatabase(() => getDatabase())),
+    // importProvidersFrom(provideStorage(() => getStorage())),
+    // importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
     provideNzI18n(zh_CN),
     importProvidersFrom(FormsModule),
     provideAnimationsAsync(),
