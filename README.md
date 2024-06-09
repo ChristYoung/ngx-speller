@@ -1,27 +1,20 @@
-# NgxSpeller
+# Angular Material Icon地址
+ - https://jossef.github.io/material-design-icons-iconfont/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
-## Development server
+# TODO list
+- ~~添加和删除例句功能~~
+- 调研IndexDB搜索功能
+- filter中新增按日期搜索的功能
+- 研究使用cypress做自动化测试
+- 将项目发布到github pages上, 并做ci/cd
+- ~~从indexDB导出数据到csv (可以使用Chrome IndexDB Exporter插件)~~ 
+- ~~根据导出的json文件重新导入到本地数据库中~~
+- 研究web的speech api: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# 同步数据到FireBase
+- https://developers.google.cn/codelabs/building-a-web-app-with-angular-and-firebase?hl=zh-cn#10
+- https://console.firebase.google.com/project/speller-d44b7/authentication/users?hl=zh-cn (我的firebase配置)
+- https://www.youtube.com/watch?v=QZlV3029dFk
+- https://github.com/angular/angularfire/blob/master/docs/database.md (Real Time database)
+- https://www.youtube.com/watch?v=586O934xrhQ (Fire base auth)

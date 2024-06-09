@@ -1,0 +1,229 @@
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Subject, take, takeUntil } from 'rxjs';
+import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
+import { DbService } from '../../services/DataBase/db.service';
+import {
+  setCommonSettingsConfig,
+  setFiltersConfig,
+} from '../../store/settings/settings.actions';
+import { updateCurrentIndex } from '../../store/words/words.actions';
+import { CommonSettingsConfig, FiltersConfig, Settings } from '../../types';
+import { ZorroModule } from '../../zorro/zorro.module';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
+
+@Component({
+  selector: 'app-side-panel-settings',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ToFixedPipe,
+    ZorroModule,
+  ],
+  template: `
+    <div class="side_panel_settings_container">
+      <div class="content">
+        <div class="common_setting">
+          <form [formGroup]="commonSettingsForm">
+            <div class="form_control_container">
+              <p>Select the practice mode:</p>
+              <nz-radio-group formControlName="mode">
+                <label nz-radio nzValue="VIEW">View</label>
+                <label nz-radio nzValue="SPELLING">Spelling</label>
+                <label nz-radio nzValue="QUIZ">Quiz</label>
+              </nz-radio-group>
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">show phonetic</span>
+              <nz-switch nzSize="small" formControlName="showPhonetic"
+                >show phonetic</nz-switch
+              >
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">show example</span>
+              <nz-switch nzSize="small" formControlName="showExamples"
+                >show example</nz-switch
+              >
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">show horn</span>
+              <nz-switch nzSize="small" formControlName="showHorn"
+                >show horn</nz-switch
+              >
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">show explanation</span>
+              <nz-switch nzSize="small" formControlName="showExplanation"
+                >show explanation</nz-switch
+              >
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span"
+                >auto play media for every single word</span
+              >
+              <nz-switch nzSize="small" formControlName="autoPlay"
+                >show explanation</nz-switch
+              >
+            </div>
+          </form>
+        </div>
+        <nz-divider></nz-divider>
+        <div class="filters_setting">
+          <form [formGroup]="filtersForm">
+            <div class="form_control_container">
+              <p>Filter the words:</p>
+              <div class="form_control_container pd_l">
+                <span class="label_span">random order</span>
+                <nz-switch
+                  nzSize="small"
+                  formControlName="randomOrder"
+                ></nz-switch>
+              </div>
+              <nz-radio-group formControlName="familiarType">
+                <label nz-radio nzValue="ALL">All</label>
+                <label nz-radio nzValue="FAMILIAR">Familiar</label>
+                <label nz-radio nzValue="UNFAMILIAR">Unfamiliar</label>
+              </nz-radio-group>
+            </div>
+            <div class="form_control_container pd_l slider_padding_0">
+              <p>
+                pick the words whose right rate was less than:
+                {{ filtersForm.value.lessThanRate * 100 | toFixed : 2 }}%
+              </p>
+              <nz-slider
+                formControlName="lessThanRate"
+                [nzMax]="1"
+                [nzMin]="0"
+                [nzStep]="0.01"
+              ></nz-slider>
+            </div>
+            <!-- TODO: nz-slider init value has no effect in reactive form -->
+            <!-- <div
+              class="form_control_container pd_l slider_padding_0 slider_padding_t20"
+            >
+              <p>
+                pick the words from {{ filtersForm.value.pickRange[0] }} to
+                {{ filtersForm.value.pickRange[1] }}
+              </p>
+              <nz-slider
+                nzRange
+                formControlName="pickRange"
+                [nzMin]="0"
+                [nzMax]="allWordsCount$ | async"
+                [nzStep]="1"
+              ></nz-slider>
+            </div> -->
+          </form>
+        </div>
+      </div>
+      <div class="operator_area">
+        <!-- {{ this.filtersForm.value | json }} -->
+        <nz-space>
+          <button
+            *nzSpaceItem
+            nz-button
+            nzType="primary"
+            (click)="onApplyClicked()"
+          >
+            Apply
+          </button>
+          <button *nzSpaceItem nz-button (click)="onResetClicked()">
+            Reset
+          </button>
+          <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
+            Save in DataBase
+          </button>
+        </nz-space>
+      </div>
+    </div>
+  `,
+  styleUrl: './side-panel-settings.component.less',
+})
+export class SidePanelSettingsComponent implements OnInit, OnDestroy {
+  fb = inject(FormBuilder);
+  db = inject(DbService);
+  store = inject(Store);
+  settings$ = this.store.select('settings');
+  allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
+  destroy$: Subject<void> = new Subject<void>();
+  private nzDrawerRef = inject(NzDrawerRef<void>);
+
+  constructor() {}
+
+  filtersForm = this.fb.group({
+    familiarType: 'ALL',
+    pickRange: [[0, 999]],
+    lessThanRate: 1,
+    randomOrder: false,
+  });
+  commonSettingsForm = this.fb.group<CommonSettingsConfig>({
+    mode: 'VIEW',
+    showExamples: true,
+    showPhonetic: true,
+    showExplanation: true,
+    showHorn: true,
+    autoPlay: false,
+  });
+
+  ngOnInit(): void {
+    this.settings$.pipe(take(1)).subscribe((settings: Settings) => {
+      this.commonSettingsForm.patchValue(settings.commonSettings, {
+        emitEvent: false,
+      });
+      this.filtersForm.patchValue(settings.filters, { emitEvent: false });
+    });
+    this.commonSettingsForm
+      .get('mode')
+      .valueChanges.pipe(takeUntil(this.destroy$))
+      .subscribe((value) => this.autoSettingWhenQuiz(value !== 'QUIZ'));
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onApplyClicked(): void {
+    const commonSettingValue = this.commonSettingsForm.value;
+    const filterSettingValue = this.filtersForm
+      .value as unknown as FiltersConfig;
+    this.store.dispatch(
+      setCommonSettingsConfig({
+        commonSettings: commonSettingValue as CommonSettingsConfig,
+      })
+    );
+    this.store.dispatch(
+      setFiltersConfig({ filters: filterSettingValue as FiltersConfig })
+    );
+    this.store.dispatch(updateCurrentIndex({ index: 0 }));
+    this.nzDrawerRef.close();
+  }
+
+  // TODO: Rest the setting configurations to the initial state from the index DataBase.
+  onResetClicked(): void {}
+
+  onSaveDataBaseClicked(): void {
+    const settings: Settings = {
+      commonSettings: this.commonSettingsForm.value as CommonSettingsConfig,
+      filters: this.filtersForm.value as unknown as FiltersConfig,
+    };
+    this.onApplyClicked();
+    this.db.updateSettingConfigsToIndexDB(settings).subscribe(() => {});
+  }
+
+  private autoSettingWhenQuiz(enable: boolean): void {
+    this.commonSettingsForm
+      .get('showExamples')
+      .setValue(enable, { emitEvent: false });
+    this.commonSettingsForm
+      .get('showHorn')
+      .setValue(enable, { emitEvent: false });
+    this.commonSettingsForm
+      .get('showPhonetic')
+      .setValue(enable, { emitEvent: false });
+  }
+}
