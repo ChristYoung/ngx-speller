@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "ngx-speller",
   "version": "0.0.0",
   "scripts": {

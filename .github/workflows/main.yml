@@ -1,0 +1,21 @@
+name: 🥷 build and deploy Ngx-speller
+
+on: push
+
+jobs:
+  npm-build:
+    name: 💅 npm build process
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧞‍♂️ Load the content of the repository
+        uses: actions/checkout@v4
+      - name: 🪜 install the dependencies
+        run: npm install
+      - name: 🛠 build the project
+        run: npm run build
+
+      - name: 🚀 deploy this project
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
