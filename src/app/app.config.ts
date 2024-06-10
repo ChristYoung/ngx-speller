@@ -3,7 +3,7 @@ import {
   ApplicationConfig,
   importProvidersFrom,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
 import { provideHttpClient } from '@angular/common/http';
@@ -50,7 +50,7 @@ export function initializeUserData(db: DbService): () => Promise<void> {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withHashLocation()),
     importProvidersFrom(NgxIndexedDBModule.forRoot(dbConfig)),
     importProvidersFrom(NzIconModule.forRoot(Icons)),
     provideAnimationsAsync(),
