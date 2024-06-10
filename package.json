@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --prod --base-href /ngx-speller/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
