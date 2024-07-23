@@ -64,7 +64,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 nzLabel="Select all"
                 (nzCheckedChange)="onAllChecked($event)"
               ></th>
-              <th [nzWidth]="'60px'">ID</th>
+              <th [nzWidth]="'60px'">Order</th>
               <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
               <th>Phonetic</th>
               <th
@@ -78,12 +78,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of headerTable.data">
+            <tr *ngFor="let data of headerTable.data; let i = index">
               <td
                 [nzChecked]="setOfCheckId.has(data.id)"
                 (nzCheckedChange)="onItemChecked(data.id, $event)"
               ></td>
-              <td>{{ data.id }}</td>
+              <td>{{ index + 1 }}</td>
               <td>{{ data.word }}</td>
               <td>
                 <div class="Phonetic_box">
