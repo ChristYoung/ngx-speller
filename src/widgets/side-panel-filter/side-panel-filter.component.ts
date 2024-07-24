@@ -7,7 +7,11 @@ import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { FamiliarType, Settings } from '../../types';
 import { Store } from '@ngrx/store';
 import { DbService } from '../../services/DataBase/db.service';
-import { take } from 'rxjs/operators';
+import { map, switchMap, take, withLatestFrom } from 'rxjs/operators';
+import { of } from 'rxjs/internal/observable/of';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
+import { updateCurrentIndex } from '../../store/words/words.actions';
+import { setFiltersConfig } from '../../store/settings/settings.actions';
 
 @Component({
   selector: 'app-side-panel-filter',
@@ -56,9 +60,28 @@ import { take } from 'rxjs/operators';
               [nzMin]="0"
               [nzMax]="allWordsCount$ | async"
               [nzStep]="1"
+              [(ngModel)]="pickRange"
             ></nz-slider>
           </div>
         </div>
+      </div>
+      <div class="operator_area">
+        <nz-space>
+          <button
+            *nzSpaceItem
+            nz-button
+            nzType="primary"
+            (click)="onApplyClicked()"
+          >
+            Apply
+          </button>
+          <button *nzSpaceItem nz-button (click)="onResetClicked()">
+            Reset
+          </button>
+          <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
+            Save in DataBase
+          </button>
+        </nz-space>
       </div>
     </div>
   `,
@@ -66,7 +89,7 @@ import { take } from 'rxjs/operators';
 })
 export class SidePanelFilterComponent implements OnInit {
   randomOrder: boolean = false;
-  pickRange: number[] = [0, 0]; // pick out these words whose right count is in the `pickRange`.
+  pickRange: number[] = [0, 9999]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
   familiarType?: FamiliarType = 'ALL';
 
@@ -74,14 +97,54 @@ export class SidePanelFilterComponent implements OnInit {
   store = inject(Store);
   settings$ = this.store.select('settings');
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
+  private nzDrawerRef = inject(NzDrawerRef<void>);
 
   ngOnInit(): void {
-    this.settings$.pipe(take(1)).subscribe((settings: Settings) => {
-      const { filters } = settings;
-      this.randomOrder = filters?.randomOrder;
-      this.pickRange = filters?.pickRange;
-      this.lessThanRate = filters?.lessThanRate;
-      this.familiarType = filters?.familiarType;
-    });
+    this.settings$
+      .pipe(
+        withLatestFrom(this.allWordsCount$),
+        map(([settings, allWordsCount]) => ({ settings, allWordsCount })),
+        take(1)
+      )
+      .subscribe(({ settings, allWordsCount }) => {
+        const { filters } = settings;
+        if (filters) {
+          this.randomOrder = filters.randomOrder;
+          this.pickRange = filters.pickRange;
+          this.lessThanRate = filters.lessThanRate;
+          this.familiarType = filters.familiarType;
+        } else {
+          this.pickRange = [1, allWordsCount];
+        }
+      });
+  }
+
+  onApplyClicked(): FiltersConfig {
+    const { randomOrder, pickRange, lessThanRate, familiarType } = this;
+    this.store.dispatch(
+      setFiltersConfig({
+        filters: {
+          randomOrder,
+          pickRange,
+          lessThanRate,
+          familiarType,
+        } as FiltersConfig,
+      })
+    );
+    this.store.dispatch(updateCurrentIndex({ index: 0 }));
+    this.nzDrawerRef.close();
+    return {
+      randomOrder,
+      pickRange,
+      lessThanRate,
+      familiarType,
+    } as FiltersConfig;
+  }
+
+  onResetClicked(): void {}
+
+  onSaveDataBaseClicked(): void {
+    const filterConfigs = this.onApplyClicked();
+    this.db.updateFiltersConfigsToIndexDB(filterConfigs).subscribe(() => {});
   }
 }

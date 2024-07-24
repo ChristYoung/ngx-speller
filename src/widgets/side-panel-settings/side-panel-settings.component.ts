@@ -70,7 +70,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
         </div>
       </div>
       <div class="operator_area">
-        <!-- {{ this.filtersForm.value | json }} -->
         <nz-space>
           <button
             *nzSpaceItem
@@ -136,7 +135,6 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
         commonSettings: commonSettingValue as CommonSettingsConfig,
       })
     );
-    this.store.dispatch(updateCurrentIndex({ index: 0 }));
     this.nzDrawerRef.close();
   }
 
