@@ -54,7 +54,7 @@ export class HomeComponent {
   title = 'Speller';
 
   openSettingDrawer(): void {
-    const drawerRef = this.drawerService.create({
+    const _drawerRef = this.drawerService.create({
       nzTitle: 'Setting Config',
       nzContent: SidePanelSettingsComponent,
       nzWidth: '520px',
@@ -62,7 +62,7 @@ export class HomeComponent {
   }
 
   openFilterDrawer(): void {
-    const drawerRef = this.drawerService.create({
+    const _drawerRef = this.drawerService.create({
       nzTitle: 'Filter Words',
       nzContent: SidePanelFilterComponent,
       nzWidth: '520px',
