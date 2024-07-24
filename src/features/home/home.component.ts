@@ -5,6 +5,7 @@ import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { SidePanelSettingsComponent } from '../../widgets/side-panel-settings/side-panel-settings.component';
 import { VerticalMenuComponent } from '../../widgets/vertical-menu/vertical-menu.component';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-panel-filter.component';
 
 @Component({
   selector: 'app-home',
@@ -60,5 +61,11 @@ export class HomeComponent {
     });
   }
 
-  openFilterDrawer(): void {}
+  openFilterDrawer(): void {
+    const drawerRef = this.drawerService.create({
+      nzTitle: 'Filter Words',
+      nzContent: SidePanelFilterComponent,
+      nzWidth: '520px',
+    });
+  }
 }
