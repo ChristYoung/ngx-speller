@@ -25,6 +25,15 @@ import { ZorroModule } from '../../zorro/zorro.module';
         >
           <span nz-icon nzType="setting"></span>
         </button>
+        <button
+          nz-button
+          nzShape="circle"
+          nzSize="large"
+          class="layout_fab2"
+          (click)="openFilterDrawer()"
+        >
+          <span nz-icon nzType="filter" nzTheme="outline"></span>
+        </button>
       </div>
     </main>
   `,
@@ -50,4 +59,6 @@ export class HomeComponent {
       nzWidth: '520px',
     });
   }
+
+  openFilterDrawer(): void {}
 }

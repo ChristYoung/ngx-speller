@@ -78,7 +78,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of headerTable.data; let i = index">
+            <tr *ngFor="let data of headerTable.data; let index = index">
               <td
                 [nzChecked]="setOfCheckId.has(data.id)"
                 (nzCheckedChange)="onItemChecked(data.id, $event)"
