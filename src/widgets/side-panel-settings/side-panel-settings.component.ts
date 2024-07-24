@@ -2,17 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Subject, take, takeUntil } from 'rxjs';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
-import {
-  setCommonSettingsConfig,
-  setFiltersConfig,
-} from '../../store/settings/settings.actions';
+import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
-import { CommonSettingsConfig, FiltersConfig, Settings } from '../../types';
+import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 
 @Component({
   selector: 'app-side-panel-settings',
