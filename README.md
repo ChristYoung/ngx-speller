@@ -10,6 +10,8 @@
 - 调研IndexDB搜索功能
 - filter中新增按日期搜索的功能
 - 研究使用cypress做自动化测试
+- 尝试使用Nx将nest项目和Angular项目合并, 并发布到github pages上
+- ~~将项目发布到github pages上, 并做ci/cd~~
 - ~~将项目发布到github pages上, 并做ci/cd~~
 - ~~从indexDB导出数据到csv (可以使用Chrome IndexDB Exporter插件)~~ 
 - ~~根据导出的json文件重新导入到本地数据库中~~
