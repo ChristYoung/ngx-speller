@@ -7,7 +7,14 @@ import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { FamiliarType, Settings } from '../../types';
 import { Store } from '@ngrx/store';
 import { DbService } from '../../services/DataBase/db.service';
-import { map, switchMap, take, withLatestFrom } from 'rxjs/operators';
+import {
+  combineLatest,
+  combineLatestWith,
+  map,
+  switchMap,
+  take,
+  withLatestFrom,
+} from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { updateCurrentIndex } from '../../store/words/words.actions';
@@ -102,7 +109,7 @@ export class SidePanelFilterComponent implements OnInit {
   ngOnInit(): void {
     this.settings$
       .pipe(
-        withLatestFrom(this.allWordsCount$),
+        combineLatestWith(this.allWordsCount$),
         map(([settings, allWordsCount]) => ({ settings, allWordsCount })),
         take(1)
       )
@@ -117,6 +124,7 @@ export class SidePanelFilterComponent implements OnInit {
           this.pickRange = [1, allWordsCount];
         }
       });
+    // combineLatest
   }
 
   onApplyClicked(): FiltersConfig {
