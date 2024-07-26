@@ -1,24 +1,16 @@
-import { FiltersConfig } from './../../types/settings.type';
-import { Component, inject, OnInit } from '@angular/core';
-import { ZorroModule } from '../../zorro/zorro.module';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
-import { FamiliarType, Settings } from '../../types';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { DbService } from '../../services/DataBase/db.service';
-import {
-  combineLatest,
-  combineLatestWith,
-  map,
-  switchMap,
-  take,
-  withLatestFrom,
-} from 'rxjs/operators';
-import { of } from 'rxjs/internal/observable/of';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
-import { updateCurrentIndex } from '../../store/words/words.actions';
+import { combineLatestWith, map, take } from 'rxjs/operators';
+import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
+import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
+import { updateCurrentIndex } from '../../store/words/words.actions';
+import { FamiliarType } from '../../types';
+import { ZorroModule } from '../../zorro/zorro.module';
+import { FiltersConfig } from './../../types/settings.type';
 
 @Component({
   selector: 'app-side-panel-filter',
