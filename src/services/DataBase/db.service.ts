@@ -8,6 +8,7 @@ import {
   concatMap,
   forkJoin,
   map,
+  mergeMap,
   of,
   tap,
 } from 'rxjs';
@@ -20,7 +21,13 @@ import {
   setWordsList,
   updateCurrentWordItem,
 } from '../../store/words/words.actions';
-import { Settings, WholeIndexDBConfig, WordsItem } from '../../types';
+import {
+  CommonSettingsConfig,
+  FiltersConfig,
+  Settings,
+  WholeIndexDBConfig,
+  WordsItem,
+} from '../../types';
 
 @Injectable({
   providedIn: 'root',
@@ -183,8 +190,30 @@ export class DbService {
     );
   }
 
-  updateSettingConfigsToIndexDB(settings: Settings): Observable<Settings> {
-    return this.dbService.update<Settings>('settings', { ...settings, id: 1 });
+  updateCommonSettingConfigsToIndexDB(
+    commonSettings: CommonSettingsConfig
+  ): Observable<Settings> {
+    return this.dbService.getAll<Settings>('settings').pipe(
+      mergeMap((settings: Settings[]) =>
+        this.dbService.update<Settings>('settings', {
+          ...settings[0],
+          id: 1,
+          commonSettings,
+        })
+      )
+    );
+  }
+
+  updateFiltersConfigsToIndexDB(filters: FiltersConfig): Observable<Settings> {
+    return this.dbService.getAll<Settings>('settings').pipe(
+      mergeMap((settings: Settings[]) =>
+        this.dbService.update<Settings>('settings', {
+          ...settings[0],
+          id: 1,
+          filters,
+        })
+      )
+    );
   }
 
   private insertWordsToIndexDB$(ws: WordsItem[]): Observable<WordsItem[]> {

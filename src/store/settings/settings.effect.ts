@@ -11,13 +11,17 @@ export class SettingsEffects {
   private actions$ = inject(Actions);
   private db = inject(DbService);
 
+  // When the setFiltersConfig action is triggered, get all words from the database and set them to the state by Filters.
   setFiltersConfigEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(setFiltersConfig),
       withLatestFrom(this.db.getAllWordsFromIndexDB()),
       switchMap(([action, wordList]) => {
         const { filters } = action;
-        return of(setWordsList({ words: BiggestFilter(wordList, filters) }));
+        const returnWordsList = filters
+          ? BiggestFilter(wordList, filters)
+          : wordList;
+        return of(setWordsList({ words: returnWordsList }));
       })
     );
   });

@@ -2,17 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Subject, take, takeUntil } from 'rxjs';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
-import {
-  setCommonSettingsConfig,
-  setFiltersConfig,
-} from '../../store/settings/settings.actions';
+import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
-import { CommonSettingsConfig, FiltersConfig, Settings } from '../../types';
+import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 
 @Component({
   selector: 'app-side-panel-settings',
@@ -71,57 +68,8 @@ import { NzDrawerRef } from 'ng-zorro-antd/drawer';
             </div>
           </form>
         </div>
-        <nz-divider></nz-divider>
-        <div class="filters_setting">
-          <form [formGroup]="filtersForm">
-            <div class="form_control_container">
-              <p>Filter the words:</p>
-              <div class="form_control_container pd_l">
-                <span class="label_span">random order</span>
-                <nz-switch
-                  nzSize="small"
-                  formControlName="randomOrder"
-                ></nz-switch>
-              </div>
-              <nz-radio-group formControlName="familiarType">
-                <label nz-radio nzValue="ALL">All</label>
-                <label nz-radio nzValue="FAMILIAR">Familiar</label>
-                <label nz-radio nzValue="UNFAMILIAR">Unfamiliar</label>
-              </nz-radio-group>
-            </div>
-            <div class="form_control_container pd_l slider_padding_0">
-              <p>
-                pick the words whose right rate was less than:
-                {{ filtersForm.value.lessThanRate * 100 | toFixed : 2 }}%
-              </p>
-              <nz-slider
-                formControlName="lessThanRate"
-                [nzMax]="1"
-                [nzMin]="0"
-                [nzStep]="0.01"
-              ></nz-slider>
-            </div>
-            <!-- TODO: nz-slider init value has no effect in reactive form -->
-            <!-- <div
-              class="form_control_container pd_l slider_padding_0 slider_padding_t20"
-            >
-              <p>
-                pick the words from {{ filtersForm.value.pickRange[0] }} to
-                {{ filtersForm.value.pickRange[1] }}
-              </p>
-              <nz-slider
-                nzRange
-                formControlName="pickRange"
-                [nzMin]="0"
-                [nzMax]="allWordsCount$ | async"
-                [nzStep]="1"
-              ></nz-slider>
-            </div> -->
-          </form>
-        </div>
       </div>
       <div class="operator_area">
-        <!-- {{ this.filtersForm.value | json }} -->
         <nz-space>
           <button
             *nzSpaceItem
@@ -154,12 +102,6 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
 
   constructor() {}
 
-  filtersForm = this.fb.group({
-    familiarType: 'ALL',
-    pickRange: [[0, 999]],
-    lessThanRate: 1,
-    randomOrder: false,
-  });
   commonSettingsForm = this.fb.group<CommonSettingsConfig>({
     mode: 'VIEW',
     showExamples: true,
@@ -174,7 +116,6 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
       this.commonSettingsForm.patchValue(settings.commonSettings, {
         emitEvent: false,
       });
-      this.filtersForm.patchValue(settings.filters, { emitEvent: false });
     });
     this.commonSettingsForm
       .get('mode')
@@ -189,17 +130,11 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
 
   onApplyClicked(): void {
     const commonSettingValue = this.commonSettingsForm.value;
-    const filterSettingValue = this.filtersForm
-      .value as unknown as FiltersConfig;
     this.store.dispatch(
       setCommonSettingsConfig({
         commonSettings: commonSettingValue as CommonSettingsConfig,
       })
     );
-    this.store.dispatch(
-      setFiltersConfig({ filters: filterSettingValue as FiltersConfig })
-    );
-    this.store.dispatch(updateCurrentIndex({ index: 0 }));
     this.nzDrawerRef.close();
   }
 
@@ -207,12 +142,12 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
   onResetClicked(): void {}
 
   onSaveDataBaseClicked(): void {
-    const settings: Settings = {
-      commonSettings: this.commonSettingsForm.value as CommonSettingsConfig,
-      filters: this.filtersForm.value as unknown as FiltersConfig,
-    };
+    const commonSettings = this.commonSettingsForm
+      .value as CommonSettingsConfig;
     this.onApplyClicked();
-    this.db.updateSettingConfigsToIndexDB(settings).subscribe(() => {});
+    this.db
+      .updateCommonSettingConfigsToIndexDB(commonSettings)
+      .subscribe(() => {});
   }
 
   private autoSettingWhenQuiz(enable: boolean): void {
