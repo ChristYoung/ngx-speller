@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { WordsItem } from '../../types';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { WordsItem } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { FileService } from '../../services/file.service';
 
 @Component({
   selector: 'app-side-panel-json-viewer',
@@ -16,10 +17,13 @@ import { ZorroModule } from '../../zorro/zorro.module';
   `,
   styleUrl: './side-panel-json-viewer.component.less',
 })
-export class SidePanelJsonViewerComponent {
+export class SidePanelJsonViewerComponent implements OnInit {
   @Input() dataSource: WordsItem[] = [];
+  fileService = inject(FileService);
+
+  ngOnInit(): void {}
 
   onDownloadBtnClick() {
-    console.log('Download button clicked');
+    this.fileService.exportJSONFile(this.dataSource, 'speller_data');
   }
 }
