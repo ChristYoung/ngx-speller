@@ -10,8 +10,10 @@ import { FileService } from '../../services/file.service';
   standalone: true,
   imports: [CommonModule, NgxJsonViewerModule, ZorroModule],
   template: `
-    <div>
+    <div style="margin-bottom: 20px;">
       <button nz-button (click)="onDownloadBtnClick()">Download</button>
+    </div>
+    <div>
       <ngx-json-viewer [json]="dataSource"></ngx-json-viewer>
     </div>
   `,

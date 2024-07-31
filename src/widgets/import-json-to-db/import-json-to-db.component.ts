@@ -27,7 +27,6 @@ export class ImportJsonToDbComponent {
       if (files && files.length > 0) {
         this.fileReader.readJSONFile(files[0]).subscribe({
           next: (data: WholeIndexDBConfig) => {
-            console.log('jsonFile', data);
             this.db.addWordsToIndexDBByJSONFile(data);
           },
           error: (error) => {

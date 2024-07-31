@@ -14,6 +14,7 @@ import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
+import { FileService } from '../../services/file.service';
 
 @Component({
   selector: 'app-governance',
@@ -165,6 +166,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
 
   constructor(
     private db: DbService,
+    private fileService: FileService,
     private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
     private drawer: NzDrawerService
   ) {}
@@ -253,11 +255,19 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   clickViewJsonSchema(): void {
-    this.drawer.create<SidePanelJsonViewerComponent>({
-      nzContent: SidePanelJsonViewerComponent,
-      nzWidth: '800px',
-      nzContentParams: { dataSource: this.dataSource },
-    });
+    // this.drawer.create<SidePanelJsonViewerComponent>({
+    //   nzContent: SidePanelJsonViewerComponent,
+    //   nzWidth: '800px',
+    //   nzContentParams: { dataSource: this.dataSource },
+    // });
+    console.log(this.dataSource.map((d) => d.word).join('\n'));
+    this.fileService.exportJSONFile(
+      {
+        settings: null,
+        words: this.dataSource,
+      },
+      'speller_data'
+    );
   }
 
   private refreshAllCheckedStatus(): void {

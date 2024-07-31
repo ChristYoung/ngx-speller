@@ -87,7 +87,9 @@ export class DbService {
       .pipe(
         concatMap(() => this.dbService.bulkAdd('words', words)),
         concatMap(() => this.dbService.clear('settings')),
-        concatMap(() => this.dbService.add('settings', settings))
+        concatMap(() =>
+          settings ? this.dbService.add('settings', settings) : of(null)
+        )
       )
       .subscribe(() => {
         if (setToStore) {
