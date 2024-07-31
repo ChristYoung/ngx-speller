@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DbService } from '../../services/DataBase/db.service';
 import { ExampleItem, WordsItem } from '../../types';
@@ -22,7 +29,7 @@ import { HornComponent } from '../horn/horn.component';
         {{ wordItem.explanations.join(';') }}
       </div>
       <div class="examples_container">
-        @for (item of wordItem.examples; track $index) {
+        @for (item of examples; track $index) {
         <div class="examples_item">
           <p class="en">
             <app-highlight
@@ -83,25 +90,28 @@ import { HornComponent } from '../horn/horn.component';
     ZorroModule,
   ],
 })
-export class SidePanelDetailsComponent {
+export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
+  examples: ExampleItem[] = [];
+
+  ngOnInit(): void {
+    this.examples = this.wordItem.examples || [];
+  }
 
   clickAddExample(): void {
     const currentExamples: ExampleItem[] = [
-      ...this.wordItem.examples,
+      ...this.examples,
       { zh: this.inputChineseExample, en: this.inputEnglishExample },
     ];
     this.updateCurrentExamples(currentExamples);
   }
 
   removeExample(index: number): void {
-    this.wordItem.examples = this.wordItem.examples.filter(
-      (_, _index) => _index !== index
-    );
-    this.updateCurrentExamples(this.wordItem.examples, 'remove');
+    this.examples = this.examples.filter((_, _index) => _index !== index);
+    this.updateCurrentExamples(this.examples, 'remove');
   }
 
   private updateCurrentExamples(
@@ -121,7 +131,8 @@ export class SidePanelDetailsComponent {
           this.inputChineseExample = '';
           this.inputEnglishExample = '';
         }
-        this.wordItem.examples = [...currentExamples];
+        console.log('currentExamples', currentExamples);
+        this.examples = [...currentExamples];
       });
   }
 }

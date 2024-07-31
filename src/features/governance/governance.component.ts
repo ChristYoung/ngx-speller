@@ -4,7 +4,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { Subject, debounceTime, finalize, takeUntil } from 'rxjs';
+import { Subject, debounceTime, finalize, takeUntil, switchMap } from 'rxjs';
 import { DbService } from '../../services/DataBase/db.service';
 import { setWordsList } from '../../store/words/words.actions';
 import { WordsItem } from '../../types';
@@ -13,6 +13,8 @@ import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
+import { FileService } from '../../services/file.service';
 
 @Component({
   selector: 'app-governance',
@@ -45,6 +47,9 @@ import { ZorroModule } from '../../zorro/zorro.module';
             [disabled]="setOfCheckId.size === 0"
           >
             Bulk Remove
+          </button>
+          <button nz-button nzType="default" (click)="clickViewJsonSchema()">
+            View the JSON schema
           </button>
         </div>
       </div>
@@ -161,6 +166,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
 
   constructor(
     private db: DbService,
+    private fileService: FileService,
     private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
     private drawer: NzDrawerService
   ) {}
@@ -246,6 +252,22 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     const familiar = element.familiar;
     element.familiar = !familiar;
     this.db.updateWordItemFromIndexDB(element, true).subscribe(() => {});
+  }
+
+  clickViewJsonSchema(): void {
+    // this.drawer.create<SidePanelJsonViewerComponent>({
+    //   nzContent: SidePanelJsonViewerComponent,
+    //   nzWidth: '800px',
+    //   nzContentParams: { dataSource: this.dataSource },
+    // });
+    console.log(this.dataSource.map((d) => d.word).join('\n'));
+    this.fileService.exportJSONFile(
+      {
+        settings: null,
+        words: this.dataSource,
+      },
+      'speller_data'
+    );
   }
 
   private refreshAllCheckedStatus(): void {

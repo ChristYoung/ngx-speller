@@ -27,6 +27,7 @@
     "@ngrx/store-devtools": "^17.1.1",
     "ng-zorro-antd": "^17.4.0",
     "ngx-indexed-db": "^16.0.0",
+    "ngx-json-viewer": "^3.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
