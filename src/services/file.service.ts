@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 
@@ -5,7 +6,7 @@ import { Observable, Observer } from 'rxjs';
   providedIn: 'root',
 })
 export class FileService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   readJSONFile<T>(file: File): Observable<T> {
     return new Observable((observer: Observer<T>) => {
