@@ -58,6 +58,13 @@ import { FormsModule } from '@angular/forms';
         background: rgb(255, 255, 255);
         border-style: dashed;
       }
+
+      :host {
+        display: flex;
+        margin: 10px 0;
+        align-items: center;
+        justify-content: center;
+      }
     `,
   ],
 })
