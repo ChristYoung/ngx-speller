@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, ZorroModule, FormsModule],
   template: `
     <nz-tag
+      class="tag_item"
       *ngFor="let tag of tags; let i = index"
       [nzMode]="freezed ? 'default' : 'closeable'"
       [nzColor]="colorMaps[i % colorMaps.length]"
@@ -64,6 +65,12 @@ import { FormsModule } from '@angular/forms';
         margin: 10px 0;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .tag_item {
+        margin-top: 3px;
+        margin-bottom: 3px;
       }
     `,
   ],
