@@ -1,19 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  inject,
-} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 import { DbService } from '../../services/DataBase/db.service';
 import { ExampleItem, WordsItem } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
-import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
+import { YOU_DAO_API } from '../../core/constant';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -21,7 +15,9 @@ import { SimilarWordsComponent } from '../../features/spelling/similar-words/sim
   template: `
     @if (wordItem) {
     <div class="details_container">
-      <h3 class="word_title">{{ wordItem.word }}</h3>
+      <h3 class="word_title" (click)="redirectToDetails(wordItem.word)">
+        {{ wordItem.word }}
+      </h3>
       <div class="word_details">
         <span>/{{ wordItem.phonetic }}/</span>
         <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
@@ -109,6 +105,10 @@ export class SidePanelDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.examples = this.wordItem.examples || [];
     this.similarWords = this.wordItem.similar_words || [];
+  }
+
+  redirectToDetails(word: string): void {
+    window.open(`${YOU_DAO_API}${word}`, '_blank');
   }
 
   clickAddExample(): void {

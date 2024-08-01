@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { FormsModule } from '@angular/forms';
+import { YOU_DAO_API } from '../../../core/constant';
 
 @Component({
   selector: 'app-similar-words',
@@ -22,13 +23,7 @@ import { FormsModule } from '@angular/forms';
       [nzColor]="colorMaps[i % colorMaps.length]"
       (nzOnClose)="handleClose(tag)"
     >
-      <a
-        href="https://dict.youdao.com/jsonapi?jsonversion=2&client=mobile&q={{
-          tag
-        }}"
-        target="_blank"
-        >{{ tag }}</a
-      >
+      <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
     </nz-tag>
     @if (!freezed) {
     <nz-tag
@@ -82,6 +77,7 @@ export class SimilarWordsComponent {
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
   inputVisible = false;
   inputValue = '';
+  _youDaoApi = YOU_DAO_API;
   colorMaps = [
     'magenta',
     'red',
