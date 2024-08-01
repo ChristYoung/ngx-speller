@@ -255,11 +255,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   clickViewJsonSchema(): void {
-    // this.drawer.create<SidePanelJsonViewerComponent>({
-    //   nzContent: SidePanelJsonViewerComponent,
-    //   nzWidth: '800px',
-    //   nzContentParams: { dataSource: this.dataSource },
-    // });
     console.log(this.dataSource.map((d) => d.word).join('\n'));
     this.fileService.exportJSONFile(
       {
