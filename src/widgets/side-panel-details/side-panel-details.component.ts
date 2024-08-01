@@ -13,6 +13,7 @@ import { ExampleItem, WordsItem } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
+import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -24,6 +25,12 @@ import { HornComponent } from '../horn/horn.component';
       <div class="word_details">
         <span>/{{ wordItem.phonetic }}/</span>
         <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
+      </div>
+      <div class="similar_words">
+        <app-similar-words
+          [tags]="similarWords"
+          (onTagsChange)="similarWordsChange($event)"
+        ></app-similar-words>
       </div>
       <div class="explains_container">
         {{ wordItem.explanations.join(';') }}
@@ -88,6 +95,7 @@ import { HornComponent } from '../horn/horn.component';
     HighlightComponent,
     FormsModule,
     ZorroModule,
+    SimilarWordsComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {
@@ -96,9 +104,11 @@ export class SidePanelDetailsComponent implements OnInit {
   inputEnglishExample: string;
   inputChineseExample: string;
   examples: ExampleItem[] = [];
+  similarWords: string[] = [];
 
   ngOnInit(): void {
     this.examples = this.wordItem.examples || [];
+    this.similarWords = this.wordItem.similar_words || [];
   }
 
   clickAddExample(): void {
@@ -112,6 +122,25 @@ export class SidePanelDetailsComponent implements OnInit {
   removeExample(index: number): void {
     this.examples = this.examples.filter((_, _index) => _index !== index);
     this.updateCurrentExamples(this.examples, 'remove');
+  }
+
+  similarWordsChange(tags: string[]): void {
+    this.similarWords = [...tags];
+    this.updateCurrentSimilarWords(this.similarWords);
+  }
+
+  private updateCurrentSimilarWords(currentTags: string[]): void {
+    this.db
+      .updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          similar_words: [...currentTags],
+        },
+        true
+      )
+      .subscribe(() => {
+        this.similarWords = [...currentTags];
+      });
   }
 
   private updateCurrentExamples(
