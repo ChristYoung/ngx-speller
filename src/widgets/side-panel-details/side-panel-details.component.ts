@@ -1,11 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DbService } from '../../services/DataBase/db.service';
 import { ExampleItem, WordsItem } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
+import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -18,11 +26,17 @@ import { HornComponent } from '../horn/horn.component';
         <span>/{{ wordItem.phonetic }}/</span>
         <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
       </div>
+      <div class="similar_words">
+        <app-similar-words
+          [tags]="similarWords"
+          (onTagsChange)="similarWordsChange($event)"
+        ></app-similar-words>
+      </div>
       <div class="explains_container">
         {{ wordItem.explanations.join(';') }}
       </div>
       <div class="examples_container">
-        @for (item of wordItem.examples; track $index) {
+        @for (item of examples; track $index) {
         <div class="examples_item">
           <p class="en">
             <app-highlight
@@ -81,27 +95,52 @@ import { HornComponent } from '../horn/horn.component';
     HighlightComponent,
     FormsModule,
     ZorroModule,
+    SimilarWordsComponent,
   ],
 })
-export class SidePanelDetailsComponent {
+export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
+  examples: ExampleItem[] = [];
+  similarWords: string[] = [];
+
+  ngOnInit(): void {
+    this.examples = this.wordItem.examples || [];
+    this.similarWords = this.wordItem.similar_words || [];
+  }
 
   clickAddExample(): void {
     const currentExamples: ExampleItem[] = [
-      ...this.wordItem.examples,
+      ...this.examples,
       { zh: this.inputChineseExample, en: this.inputEnglishExample },
     ];
     this.updateCurrentExamples(currentExamples);
   }
 
   removeExample(index: number): void {
-    this.wordItem.examples = this.wordItem.examples.filter(
-      (_, _index) => _index !== index
-    );
-    this.updateCurrentExamples(this.wordItem.examples, 'remove');
+    this.examples = this.examples.filter((_, _index) => _index !== index);
+    this.updateCurrentExamples(this.examples, 'remove');
+  }
+
+  similarWordsChange(tags: string[]): void {
+    this.similarWords = [...tags];
+    this.updateCurrentSimilarWords(this.similarWords);
+  }
+
+  private updateCurrentSimilarWords(currentTags: string[]): void {
+    this.db
+      .updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          similar_words: [...currentTags],
+        },
+        true
+      )
+      .subscribe(() => {
+        this.similarWords = [...currentTags];
+      });
   }
 
   private updateCurrentExamples(
@@ -121,7 +160,8 @@ export class SidePanelDetailsComponent {
           this.inputChineseExample = '';
           this.inputEnglishExample = '';
         }
-        this.wordItem.examples = [...currentExamples];
+        console.log('currentExamples', currentExamples);
+        this.examples = [...currentExamples];
       });
   }
 }

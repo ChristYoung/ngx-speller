@@ -3,6 +3,8 @@ export interface WordsItem {
   familiar: boolean;
   created_timestamp?: number;
   explanations?: string[];
+  eng_explanation?: string;
+  similar_words?: string[];
   examples?: ExampleItem[];
   id?: number;
   phonetic?: string;

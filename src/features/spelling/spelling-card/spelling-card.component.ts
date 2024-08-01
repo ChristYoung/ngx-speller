@@ -13,6 +13,8 @@ import { HornComponent } from '../../../widgets/horn/horn.component';
 import { BANNED_KEYS, isChineseSymbol, playSound } from '../../../utils';
 import { HighlightComponent } from '../../../widgets/highlight/highlight.component';
 import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
+import { ZorroModule } from '../../../zorro/zorro.module';
+import { SimilarWordsComponent } from '../similar-words/similar-words.component';
 
 @Component({
   selector: 'app-spelling-card',
@@ -27,6 +29,12 @@ import { HoldKeypressDirective } from '../../../directives/hold-keypress.directi
       @if (showPhonetic) {
       <div class="phonetic">/{{ wordItem.phonetic }}/</div>
       }
+      <div class="similar_words">
+        <app-similar-words
+          [freezed]="true"
+          [tags]="wordItem.similar_words"
+        ></app-similar-words>
+      </div>
       <div class="word_bar">
         @if (mode === 'VIEW') { @for (item of displayLetters; track $index) {
         <span
@@ -71,6 +79,8 @@ import { HoldKeypressDirective } from '../../../directives/hold-keypress.directi
     HornComponent,
     HighlightComponent,
     HoldKeypressDirective,
+    ZorroModule,
+    SimilarWordsComponent,
   ],
 })
 export class SpellingCardComponent implements OnChanges {
