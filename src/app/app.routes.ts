@@ -3,6 +3,7 @@ import { GovernanceComponent } from '../features/governance/governance.component
 import { HomeComponent } from '../features/home/home.component';
 import { InputComponent } from '../features/input/input.component';
 import { SpellingComponent } from '../features/spelling/spelling.component';
+import { EasterEggsComponent } from '../features/esEggs/easter-eggs/easter-eggs.component';
 
 export const RoutePathEnum = {
   Input: 'input',
@@ -12,6 +13,7 @@ export const RoutePathEnum = {
   Spelling: 'spelling',
   Home: 'home',
   Layout: 'layout',
+  Egg: 'egg',
 };
 
 export const routes: Routes = [
@@ -32,6 +34,10 @@ export const routes: Routes = [
       {
         path: RoutePathEnum.Spelling,
         component: SpellingComponent,
+      },
+      {
+        path: RoutePathEnum.Egg,
+        component: EasterEggsComponent,
       },
     ],
   },

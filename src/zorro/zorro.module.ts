@@ -27,6 +27,7 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
@@ -66,6 +67,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzTagModule,
     NzNotificationModule,
     NzPopconfirmModule,
+    NzInputNumberModule,
   ],
 })
 export class ZorroModule {}

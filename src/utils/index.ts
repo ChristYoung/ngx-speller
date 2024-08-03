@@ -1,4 +1,5 @@
 import { FiltersConfig, WordsCollections, WordsItem } from '../types';
+export * from './24-tool.util';
 
 export const SoundSourceMapping = {
   Typing: './assets/sounds/typing.mp3',

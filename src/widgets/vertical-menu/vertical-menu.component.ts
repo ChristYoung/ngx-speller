@@ -90,6 +90,12 @@ export class VerticalMenuComponent implements OnInit {
       active: false,
       icon: 'appstore-add',
     },
+    {
+      tooltip: 'Eggs',
+      link: `/home/${RoutePathEnum.Egg}`,
+      active: false,
+      icon: 'apple',
+    },
   ];
 
   clickToRoute(link: string): void {
