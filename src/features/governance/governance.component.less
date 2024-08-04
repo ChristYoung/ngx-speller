@@ -1,13 +1,6 @@
 :host {
     display: flex;
     flex-direction: column;
-
-    // ::ng-deep {
-    //     .ant-table.ant-table-small {
-    //         font-size: 16px;
-    //         font-style: italic;
-    //     }
-    // }
 }
 
 .page_container {
@@ -23,9 +16,19 @@
             margin: 0 12px;
         }
 
+        position: fixed;
+        width: 100%;
         padding: 10px 0;
         background-color: #fff;
+        top: 0;
         z-index: 999;
+        box-shadow: 0 6px 16px -8px #00000014,
+        0 9px 28px #0000000d,
+        0 12px 48px 16px #00000008;
+    }
+
+    .table_container {
+        margin-top: 60px;
     }
 
     .Phonetic_box {
