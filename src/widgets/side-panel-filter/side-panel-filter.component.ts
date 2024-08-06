@@ -33,7 +33,7 @@ import { FiltersConfig } from './../../types/settings.type';
           </div>
           <div class="form_control_container pd_l slider_padding_0">
             <p>
-              pick the words whose right rate was less than:
+              pick the words whose right rate were less than:
               {{ lessThanRate * 100 | toFixed : 2 }}%
             </p>
             <nz-slider
@@ -41,6 +41,18 @@ import { FiltersConfig } from './../../types/settings.type';
               [nzMin]="0"
               [nzStep]="0.01"
               [(ngModel)]="lessThanRate"
+            ></nz-slider>
+          </div>
+          <div class="form_control_container pd_l slider_padding_0">
+            <p>
+              pick the words whose spell count were less than:
+              {{ lessThanCount }}
+            </p>
+            <nz-slider
+              [nzMax]="100"
+              [nzMin]="0"
+              [nzStep]="1"
+              [(ngModel)]="lessThanCount"
             ></nz-slider>
           </div>
           <div
@@ -90,6 +102,7 @@ export class SidePanelFilterComponent implements OnInit {
   randomOrder: boolean = false;
   pickRange: number[] = [0, 9999]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
+  lessThanCount: number = 0; // pick out these words whose right count is less than the `lessThanCount`.
   familiarType?: FamiliarType = 'ALL';
 
   db = inject(DbService);
@@ -111,12 +124,12 @@ export class SidePanelFilterComponent implements OnInit {
           this.randomOrder = filters.randomOrder;
           this.pickRange = filters.pickRange;
           this.lessThanRate = filters.lessThanRate;
+          this.lessThanCount = filters.lessThanCount;
           this.familiarType = filters.familiarType;
         } else {
           this.pickRange = [1, allWordsCount];
         }
       });
-    // combineLatest
   }
 
   onApplyClicked(): FiltersConfig {
