@@ -10,7 +10,7 @@ import { canReach24, ResultOf24 } from '../../../utils';
   imports: [CommonModule, FormsModule, ZorroModule],
   template: `
     <div class="24_container" style="padding: 20px; margin: 30px auto;">
-      <h3>输入任意4个数，计算24点</h3>
+      <h3>Input any 4 numbers to calculate 24</h3>
       <div class="number_container" style="margin-bottom: 20px;">
         <nz-input-number
           [(ngModel)]="value1"
