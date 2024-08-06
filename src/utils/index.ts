@@ -95,6 +95,10 @@ export const BiggestFilter = (
     return right_rate <= filterConfig.lessThanRate;
   });
 
+  filterList = filterList.filter((item) => {
+    return item.total_count <= filterConfig.lessThanCount;
+  });
+
   if (pickStart >= 0 && pickEnd <= filterList.length) {
     filterList = filterList.slice(pickStart, pickEnd);
   }
