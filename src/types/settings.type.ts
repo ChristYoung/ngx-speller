@@ -19,6 +19,7 @@ export type FiltersConfig = {
   randomOrder?: boolean;
   pickRange?: number[]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate?: number; // pick out these words whose right count is less than the `lessThanRate`.
+  lessThanCount?: number; // pick out these words whose right count is less than the `lessThanCount`.
 };
 
 export type Settings = {

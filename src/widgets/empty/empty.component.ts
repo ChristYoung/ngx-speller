@@ -22,10 +22,12 @@ import { ImportJsonToDbComponent } from '../import-json-to-db/import-json-to-db.
         <span> {{ emptyTips }} </span>
       </ng-template>
       <ng-template #footerTpl>
-        <button nz-button nzType="primary" (click)="navigate()">
-          Go to input new words.
-        </button>
-        <app-import-json-to-db></app-import-json-to-db>
+        <nz-space>
+          <button nz-button nzType="primary" *nzSpaceItem (click)="navigate()">
+            Go to input new words.
+          </button>
+          <app-import-json-to-db *nzSpaceItem></app-import-json-to-db>
+        </nz-space>
       </ng-template>
     </nz-empty>
   `,

@@ -36,6 +36,13 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
         ></app-similar-words>
       </div>
       <div class="word_bar">
+        <span
+          nz-icon
+          nzType="info-circle"
+          nzTheme="outline"
+          nz-tooltip
+          [nzTooltipTitle]="wordItem.right_count + '/' + wordItem.total_count"
+        ></span>
         @if (mode === 'VIEW') { @for (item of displayLetters; track $index) {
         <span
           class="single_letter"

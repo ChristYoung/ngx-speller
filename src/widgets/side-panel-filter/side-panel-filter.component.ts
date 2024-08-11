@@ -11,6 +11,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
 import { FamiliarType } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { FiltersConfig } from './../../types/settings.type';
+import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
 
 @Component({
   selector: 'app-side-panel-filter',
@@ -33,7 +34,7 @@ import { FiltersConfig } from './../../types/settings.type';
           </div>
           <div class="form_control_container pd_l slider_padding_0">
             <p>
-              pick the words whose right rate was less than:
+              pick the words whose right rate were less than:
               {{ lessThanRate * 100 | toFixed : 2 }}%
             </p>
             <nz-slider
@@ -41,6 +42,18 @@ import { FiltersConfig } from './../../types/settings.type';
               [nzMin]="0"
               [nzStep]="0.01"
               [(ngModel)]="lessThanRate"
+            ></nz-slider>
+          </div>
+          <div class="form_control_container pd_l slider_padding_0">
+            <p>
+              pick the words whose spell count were less than:
+              {{ lessThanCount }}
+            </p>
+            <nz-slider
+              [nzMax]="maxLessThanCount"
+              [nzMin]="0"
+              [nzStep]="1"
+              [(ngModel)]="lessThanCount"
             ></nz-slider>
           </div>
           <div
@@ -90,6 +103,8 @@ export class SidePanelFilterComponent implements OnInit {
   randomOrder: boolean = false;
   pickRange: number[] = [0, 9999]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
+  lessThanCount: number = DEFAULT_FILTER_LESS_THAN; // pick out these words whose right count is less than the `lessThanCount`.
+  maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
   familiarType?: FamiliarType = 'ALL';
 
   db = inject(DbService);
@@ -111,16 +126,23 @@ export class SidePanelFilterComponent implements OnInit {
           this.randomOrder = filters.randomOrder;
           this.pickRange = filters.pickRange;
           this.lessThanRate = filters.lessThanRate;
+          this.lessThanCount =
+            filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
           this.familiarType = filters.familiarType;
         } else {
           this.pickRange = [1, allWordsCount];
         }
       });
-    // combineLatest
   }
 
   onApplyClicked(): FiltersConfig {
-    const { randomOrder, pickRange, lessThanRate, familiarType } = this;
+    const {
+      randomOrder,
+      pickRange,
+      lessThanRate,
+      familiarType,
+      lessThanCount,
+    } = this;
     this.store.dispatch(
       setFiltersConfig({
         filters: {
@@ -128,6 +150,7 @@ export class SidePanelFilterComponent implements OnInit {
           pickRange,
           lessThanRate,
           familiarType,
+          lessThanCount,
         } as FiltersConfig,
       })
     );
@@ -138,6 +161,7 @@ export class SidePanelFilterComponent implements OnInit {
       pickRange,
       lessThanRate,
       familiarType,
+      lessThanCount,
     } as FiltersConfig;
   }
 
