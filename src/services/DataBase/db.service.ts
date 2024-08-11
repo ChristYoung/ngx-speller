@@ -12,7 +12,10 @@ import {
   of,
   tap,
 } from 'rxjs';
-import { WORDS_COMPLEX_EXPLANATION } from '../../core/constant';
+import {
+  DEFAULT_FILTER_LESS_THAN,
+  WORDS_COMPLEX_EXPLANATION,
+} from '../../core/constant';
 import {
   setCommonSettingsConfig,
   setFiltersConfig,
@@ -177,6 +180,7 @@ export class DbService {
         pickRange: [0, allWordsLen],
         randomOrder: false,
         lessThanRate: 1,
+        lessThanCount: DEFAULT_FILTER_LESS_THAN,
       },
     };
     return this.dbService.getAll<Settings>('settings').pipe(
