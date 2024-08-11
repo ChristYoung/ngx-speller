@@ -50,7 +50,7 @@ import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
               {{ lessThanCount }}
             </p>
             <nz-slider
-              [nzMax]="999"
+              [nzMax]="maxLessThanCount"
               [nzMin]="0"
               [nzStep]="1"
               [(ngModel)]="lessThanCount"
@@ -104,6 +104,7 @@ export class SidePanelFilterComponent implements OnInit {
   pickRange: number[] = [0, 9999]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
   lessThanCount: number = DEFAULT_FILTER_LESS_THAN; // pick out these words whose right count is less than the `lessThanCount`.
+  maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
   familiarType?: FamiliarType = 'ALL';
 
   db = inject(DbService);
