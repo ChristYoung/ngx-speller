@@ -3,21 +3,23 @@ import {
   Component,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { CapitalizeFirstLetterPipe } from '../../pipes/capitalize-first-letter.pipe';
 
 @Component({
   selector: 'app-highlight',
   standalone: true,
-  imports: [],
+  imports: [CapitalizeFirstLetterPipe],
   template: `
-    @if (includeHighLight > 0) {
+    @if (includeHighLight >= 0) {
     {{ before }}
     <span
       class="highlight"
       [style]="{ fontWeight: 'bold', color: '#f44336', fontStyle: 'italic' }"
-      >{{ highlightWord }}</span
+      >{{
+        highlightWord | capitalizeFirstLetter : includeHighLight === 0
+      }}</span
     >
     {{ after }}
     } @else {
@@ -39,7 +41,7 @@ export class HighlightComponent implements OnChanges {
       this.includeHighLight = this.example
         ? this.example.toLowerCase().indexOf(this.highlightWord.toLowerCase())
         : -1;
-      if (this.includeHighLight > 0) {
+      if (this.includeHighLight >= 0) {
         this.before = this.example.slice(0, this.includeHighLight);
         this.after = this.example.slice(
           this.includeHighLight + this.highlightWord.length
