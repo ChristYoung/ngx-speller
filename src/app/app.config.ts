@@ -21,7 +21,6 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { firstValueFrom, mergeMap } from 'rxjs';
-import { environment } from '../environments/environment.development';
 import { DbService } from '../services/DataBase/db.service';
 import { dbConfig } from '../services/DataBase/dbConfig';
 import { metaReducers, reducers } from '../store';
@@ -76,7 +75,5 @@ export const appConfig: ApplicationConfig = {
     // importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
     provideNzI18n(zh_CN),
     importProvidersFrom(FormsModule),
-    provideAnimationsAsync(),
-    provideHttpClient(),
   ],
 };

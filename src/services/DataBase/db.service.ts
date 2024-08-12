@@ -31,6 +31,7 @@ import {
   WholeIndexDBConfig,
   WordsItem,
 } from '../../types';
+import { YouDaoHttpService } from '../you-dao-http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,7 @@ export class DbService {
 
   constructor(
     private dbService: NgxIndexedDBService,
+    private youDaoHttp: YouDaoHttpService,
     private http: HttpClient
   ) {}
 
@@ -54,12 +56,7 @@ export class DbService {
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
-      return this.http.get<any>(`${WORDS_COMPLEX_EXPLANATION}/${w.word}`).pipe(
-        map((res) => {
-          res.word = w.word;
-          return res;
-        })
-      );
+      return this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
     });
     return forkJoin(fetchWordsInformation$).pipe(
       map((res) => {
