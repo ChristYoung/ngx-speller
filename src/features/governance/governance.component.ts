@@ -16,13 +16,14 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
 import { FileService } from '../../services/file.service';
 import { format } from 'date-fns';
+import { ScrollControlDirective } from '../../directives/scroll-control.directive';
 
 
 @Component({
   selector: 'app-governance',
   standalone: true,
   template: `
-    <div class="page_container">
+    <div class="page_container" appScrollControl style="overflow-y: auto; max-height: 500px;">
       <div class="title_row" nz-row [nzGutter]="24">
         <div nz-col [nzSpan]="6">
           <input
@@ -143,6 +144,7 @@ import { format } from 'date-fns';
     AngularFireDatabaseModule,
     FormsModule,
     ZorroModule,
+    ScrollControlDirective,
   ],
 })
 export class GovernanceComponent implements OnInit, OnDestroy {
