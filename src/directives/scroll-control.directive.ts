@@ -28,7 +28,6 @@ export class ScrollControlDirective {
 
     this.renderer.listen(this.topButton, 'click', () => this.scrollToTop());
     this.renderer.listen(this.bottomButton, 'click', () => this.scrollToBottom());
-    console.log('dasdasdasd')
   }
 
   private createButton(text: string): HTMLElement {
