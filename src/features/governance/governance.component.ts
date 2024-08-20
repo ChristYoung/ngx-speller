@@ -98,11 +98,8 @@ import { format } from 'date-fns';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
-              <td
-                nz-tooltip
-                nzTooltipTitle="{{ data.right_count }}/{{ data.total_count }}"
-              >
-                {{ data.right_rate }}%
+              <td>
+              {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
               <td>
                 <div class="flex_box">
