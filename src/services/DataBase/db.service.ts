@@ -13,8 +13,7 @@ import {
   tap,
 } from 'rxjs';
 import {
-  DEFAULT_FILTER_LESS_THAN,
-  WORDS_COMPLEX_EXPLANATION,
+  DEFAULT_FILTER_LESS_THAN
 } from '../../core/constant';
 import {
   setCommonSettingsConfig,
