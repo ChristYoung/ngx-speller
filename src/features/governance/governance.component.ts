@@ -15,6 +15,8 @@ import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side
 import { ZorroModule } from '../../zorro/zorro.module';
 import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
 import { FileService } from '../../services/file.service';
+import { format } from 'date-fns';
+
 
 @Component({
   selector: 'app-governance',
@@ -152,7 +154,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   allChecked = false;
   setOfCheckId = new Set<number>();
   openSideNav = false;
-  viewDetailsWord: WordsItem;
   wordListFireBaseRef: any;
   searchKey: string;
   searchKeySubject$ = new Subject<string>();
@@ -219,12 +220,14 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   clickViewDetail(currentWord: WordsItem): void {
-    this.viewDetailsWord = currentWord;
-    this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
-      nzContent: SidePanelDetailsComponent,
-      nzContentParams: { wordItem: this.viewDetailsWord },
-      nzWidth: '800px',
+    this.db.getWordItemFromIndexDBById(currentWord.id as number).subscribe(wordItem => {
+      this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
+        nzContent: SidePanelDetailsComponent,
+        nzContentParams: { wordItem },
+        nzWidth: '800px',
+      });
     });
+    
   }
 
   bulkRemoveWords(): void {
@@ -256,12 +259,14 @@ export class GovernanceComponent implements OnInit, OnDestroy {
 
   clickViewJsonSchema(): void {
     console.log(this.dataSource.map((d) => d.word).join('\n'));
+    const _now = new Date();
+    const currentDate = format(_now, 'yyyy_MM_dd');
     this.fileService.exportJSONFile(
       {
         settings: null,
         words: this.dataSource,
       },
-      'speller_data'
+      `speller_data_${currentDate}_${_now.getTime()}`
     );
   }
 
