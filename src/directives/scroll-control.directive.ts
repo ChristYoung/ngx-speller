@@ -1,3 +1,5 @@
+  // TODO: scroll to position doesn't work, need to do some research on it.
+
 import { ViewportScroller } from '@angular/common';
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 

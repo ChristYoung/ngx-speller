@@ -3,9 +3,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { format } from 'date-fns';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { Subject, debounceTime, finalize, takeUntil, switchMap } from 'rxjs';
+import { Subject, debounceTime, finalize, takeUntil } from 'rxjs';
+import { ScrollControlDirective } from '../../directives/scroll-control.directive';
 import { DbService } from '../../services/DataBase/db.service';
+import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
 import { WordsItem } from '../../types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
@@ -13,17 +16,13 @@ import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
-import { FileService } from '../../services/file.service';
-import { format } from 'date-fns';
-import { ScrollControlDirective } from '../../directives/scroll-control.directive';
 
 
 @Component({
   selector: 'app-governance',
   standalone: true,
   template: `
-    <div class="page_container" appScrollControl style="overflow-y: auto; max-height: 500px;">
+    <div class="page_container">
       <div class="title_row" nz-row [nzGutter]="24">
         <div nz-col [nzSpan]="6">
           <input
