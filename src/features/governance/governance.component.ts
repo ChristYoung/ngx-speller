@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -22,7 +22,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
   selector: 'app-governance',
   standalone: true,
   template: `
-    <div class="page_container">
+    <div class="page_container" id="scrollBar" #scrollBar>
       <div class="title_row" nz-row [nzGutter]="24">
         <div nz-col [nzSpan]="6">
           <input
@@ -61,7 +61,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
           [nzData]="dataSource"
           [nzSize]="'small'"
           [nzFrontPagination]="false"
-          [nzScroll]="{ y: '900px' }"
         >
           <thead>
             <tr>
@@ -130,6 +129,24 @@ import { ZorroModule } from '../../zorro/zorro.module';
         </nz-table>
       </div>
     </div>
+    <button
+      nz-button
+      nzShape="circle"
+      nzSize="large"
+      class="layout_fab4"
+      (click)="scrollToPosition('TOP')"
+    >
+      <span nz-icon nzType="vertical-align-top" nzTheme="outline"></span>
+    </button>
+    <button
+      nz-button
+      nzShape="circle"
+      nzSize="large"
+      class="layout_fab3"
+      (click)="scrollToPosition('BOTTOM')"
+    >
+      <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
+    </button>
     @if (!loading && !searchKey && dataSource.length === 0) {
     <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
     }
@@ -156,6 +173,8 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   searchKey: string;
   searchKeySubject$ = new Subject<string>();
 
+  @ViewChild('scrollBar') private scrollableDiv!: ElementRef;
+
   sortFnByLetter = (a: WordsItem, b: WordsItem) => a.word.localeCompare(b.word);
   sortFnByRightRate = (a: WordsItem, b: WordsItem) =>
     parseFloat(a.right_rate) - parseFloat(b.right_rate);
@@ -167,7 +186,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     private db: DbService,
     private fileService: FileService,
     private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
-    private drawer: NzDrawerService
+    private drawer: NzDrawerService,
   ) {}
 
   ngOnInit(setStore?: boolean): void {
@@ -175,7 +194,8 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .getAllWordsFromIndexDB(setStore)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe((res) => {
-        this.dataSource = res;
+        // reverse order
+        this.dataSource = res.reverse();
         this.allDataFromDB = res;
       });
     this.searchKeySubject$
@@ -190,6 +210,17 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
+    if (direction === 'TOP') {
+      const element = this.scrollableDiv.nativeElement;
+      element.scrollTop = 0;
+    } else {
+      const element = this.scrollableDiv.nativeElement;
+      element.scrollTop = element.scrollHeight;
+    }
+    
   }
 
   syncToFireBase(): void {

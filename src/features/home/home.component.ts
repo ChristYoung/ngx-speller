@@ -38,24 +38,6 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
         >
           <span nz-icon nzType="filter" nzTheme="outline"></span>
         </button>
-        <!-- <button
-          nz-button
-          nzShape="circle"
-          nzSize="large"
-          class="layout_fab3"
-          (click)="scrollToPosition('TOP')"
-        >
-          <span nz-icon nzType="vertical-align-top" nzTheme="outline"></span>
-        </button>
-        <button
-          nz-button
-          nzShape="circle"
-          nzSize="large"
-          class="layout_fab4"
-          (click)="scrollToPosition('BOTTOM')"
-        >
-          <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
-        </button> -->
       </div>
     </main>
   `,
@@ -91,20 +73,4 @@ export class HomeComponent {
     });
   }
 
-  // TODO: scroll to position doesn't work, need to do some research on it.
-  scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
-    const height = document.body.scrollHeight;
-    console.log('height',height)
-    if (direction === 'TOP') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    } else {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-  }
 }
