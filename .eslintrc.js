@@ -1,0 +1,27 @@
+module.exports = {
+    parserOptions: {
+        project: ['./tsconfig.json'],
+        sourceType: 'module',
+    },
+    env: {
+        browser: true,
+        es2021: true,
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@angular-eslint/recommended',
+        'prettier',
+    ],
+    plugins: [
+        '@typescript-eslint',
+        '@angular-eslint',
+        'prettier',
+    ],
+    rules: {
+        'prettier/prettier': ['error'],
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        'no-console': 'warn',
+    },
+};

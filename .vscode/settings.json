@@ -13,7 +13,7 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.options": {
-        "configFile": ".eslintrc.json"
+        "overrideConfigFile": ".eslintrc.js"
     },
     "editor.tabSize": 2,
     "editor.insertSpaces": true,

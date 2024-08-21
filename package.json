@@ -8,9 +8,8 @@
     "build": "ng build --base-href /ngx-speller/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "eslint . -c .ts,.html",
-    "lint:fix": "eslint . --ext .ts,.html --fix",
-    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\""
+    "lint": "eslint --config ./.eslintrc.js . --ext .ts,.html",
+    "lint:fix": "eslint --config ./.eslintrc.js . --ext .ts,.html --fix"
   },
   "private": true,
   "dependencies": {
