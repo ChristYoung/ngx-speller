@@ -8,8 +8,8 @@ import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { Subject, debounceTime, finalize, takeUntil } from 'rxjs';
 import { ScrollControlDirective } from '../../directives/scroll-control.directive';
 import { DbService } from '../../services/DataBase/db.service';
-import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
+import { FileService } from '../../services/file.service';
 import { WordsItem } from '../../types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
 import { EmptyComponent } from '../../widgets/empty/empty.component';
@@ -220,7 +220,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       const element = this.scrollableDiv.nativeElement;
       element.scrollTop = element.scrollHeight;
     }
-    
   }
 
   syncToFireBase(): void {

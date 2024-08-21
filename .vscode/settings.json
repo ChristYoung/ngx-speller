@@ -5,5 +5,16 @@
         "geekblue",
         "ngrx",
         "Popconfirm"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.format.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "eslint.options": {
+        "configFile": ".eslintrc.json"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
 }
