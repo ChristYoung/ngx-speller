@@ -1,3 +1,5 @@
+// TODO: READ the docs of the latest version of ESLint and update this file accordingly.
+// https://eslint.org/blog/2024/04/eslint-v9.0.0-released/
 const { FlatCompat } = require('@eslint/eslintrc');
 const typeScriptEsLintPlugin = require('@typescript-eslint/eslint-plugin');
 const esLintConfigPrettier = require('eslint-config-prettier');
