@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
@@ -17,6 +17,7 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
       </div>
       <div class="layout">
         <router-outlet></router-outlet>
+        <!-- Open Setting Drawer -->
         <button
           nz-button
           nzShape="circle"
@@ -26,6 +27,8 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
         >
           <span nz-icon nzType="setting"></span>
         </button>
+
+        <!-- Open Filter Drawer -->
         <button
           nz-button
           nzShape="circle"
@@ -50,8 +53,9 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
   ],
 })
 export class HomeComponent {
-  constructor(private drawerService: NzDrawerService) {}
-  title = 'Speller';
+  constructor(
+    private drawerService: NzDrawerService,
+  ) {}
 
   openSettingDrawer(): void {
     const _drawerRef = this.drawerService.create({
@@ -68,4 +72,5 @@ export class HomeComponent {
       nzWidth: '520px',
     });
   }
+
 }

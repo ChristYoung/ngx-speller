@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { format } from 'date-fns';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { Subject, debounceTime, finalize, takeUntil, switchMap } from 'rxjs';
+import { Subject, debounceTime, finalize, takeUntil } from 'rxjs';
+import { ScrollControlDirective } from '../../directives/scroll-control.directive';
 import { DbService } from '../../services/DataBase/db.service';
+import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
 import { WordsItem } from '../../types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
@@ -13,14 +16,13 @@ import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { SidePanelJsonViewerComponent } from '../../widgets/side-panel-json-viewer/side-panel-json-viewer.component';
-import { FileService } from '../../services/file.service';
+
 
 @Component({
   selector: 'app-governance',
   standalone: true,
   template: `
-    <div class="page_container">
+    <div class="page_container" id="scrollBar" #scrollBar>
       <div class="title_row" nz-row [nzGutter]="24">
         <div nz-col [nzSpan]="6">
           <input
@@ -59,7 +61,6 @@ import { FileService } from '../../services/file.service';
           [nzData]="dataSource"
           [nzSize]="'small'"
           [nzFrontPagination]="false"
-          [nzScroll]="{ y: '900px' }"
         >
           <thead>
             <tr>
@@ -96,11 +97,8 @@ import { FileService } from '../../services/file.service';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
-              <td
-                nz-tooltip
-                nzTooltipTitle="{{ data.right_count }}/{{ data.total_count }}"
-              >
-                {{ data.right_rate }}%
+              <td>
+              {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
               <td>
                 <div class="flex_box">
@@ -131,6 +129,24 @@ import { FileService } from '../../services/file.service';
         </nz-table>
       </div>
     </div>
+    <button
+      nz-button
+      nzShape="circle"
+      nzSize="large"
+      class="layout_fab4"
+      (click)="scrollToPosition('TOP')"
+    >
+      <span nz-icon nzType="vertical-align-top" nzTheme="outline"></span>
+    </button>
+    <button
+      nz-button
+      nzShape="circle"
+      nzSize="large"
+      class="layout_fab3"
+      (click)="scrollToPosition('BOTTOM')"
+    >
+      <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
+    </button>
     @if (!loading && !searchKey && dataSource.length === 0) {
     <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
     }
@@ -144,6 +160,7 @@ import { FileService } from '../../services/file.service';
     AngularFireDatabaseModule,
     FormsModule,
     ZorroModule,
+    ScrollControlDirective,
   ],
 })
 export class GovernanceComponent implements OnInit, OnDestroy {
@@ -152,10 +169,11 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   allChecked = false;
   setOfCheckId = new Set<number>();
   openSideNav = false;
-  viewDetailsWord: WordsItem;
   wordListFireBaseRef: any;
   searchKey: string;
   searchKeySubject$ = new Subject<string>();
+
+  @ViewChild('scrollBar') private scrollableDiv!: ElementRef;
 
   sortFnByLetter = (a: WordsItem, b: WordsItem) => a.word.localeCompare(b.word);
   sortFnByRightRate = (a: WordsItem, b: WordsItem) =>
@@ -168,7 +186,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     private db: DbService,
     private fileService: FileService,
     private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
-    private drawer: NzDrawerService
+    private drawer: NzDrawerService,
   ) {}
 
   ngOnInit(setStore?: boolean): void {
@@ -176,7 +194,8 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .getAllWordsFromIndexDB(setStore)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe((res) => {
-        this.dataSource = res;
+        // reverse order
+        this.dataSource = res.reverse();
         this.allDataFromDB = res;
       });
     this.searchKeySubject$
@@ -191,6 +210,17 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
+    if (direction === 'TOP') {
+      const element = this.scrollableDiv.nativeElement;
+      element.scrollTop = 0;
+    } else {
+      const element = this.scrollableDiv.nativeElement;
+      element.scrollTop = element.scrollHeight;
+    }
+    
   }
 
   syncToFireBase(): void {
@@ -219,12 +249,14 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   clickViewDetail(currentWord: WordsItem): void {
-    this.viewDetailsWord = currentWord;
-    this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
-      nzContent: SidePanelDetailsComponent,
-      nzContentParams: { wordItem: this.viewDetailsWord },
-      nzWidth: '800px',
+    this.db.getWordItemFromIndexDBById(currentWord.id as number).subscribe(wordItem => {
+      this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
+        nzContent: SidePanelDetailsComponent,
+        nzContentParams: { wordItem },
+        nzWidth: '800px',
+      });
     });
+    
   }
 
   bulkRemoveWords(): void {
@@ -256,12 +288,14 @@ export class GovernanceComponent implements OnInit, OnDestroy {
 
   clickViewJsonSchema(): void {
     console.log(this.dataSource.map((d) => d.word).join('\n'));
+    const _now = new Date();
+    const currentDate = format(_now, 'yyyy_MM_dd');
     this.fileService.exportJSONFile(
       {
         settings: null,
         words: this.dataSource,
       },
-      'speller_data'
+      `speller_data_${currentDate}_${_now.getTime()}`
     );
   }
 

@@ -3,6 +3,7 @@
         "appstore",
         "Firestore",
         "geekblue",
+        "ngrx",
         "Popconfirm"
     ]
 }

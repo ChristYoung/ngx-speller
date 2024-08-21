@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Kirang Haerang
+- Font Author: Copyright 2018 The Kirang Haerang Project Authors
+- Font Source: https://fonts.gstatic.com/s/kiranghaerang/v21/E21-_dn_gvvIjhYON1lpIU4-bcqvWPaJq4no.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
