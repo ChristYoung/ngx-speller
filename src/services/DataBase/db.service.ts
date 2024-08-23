@@ -29,6 +29,7 @@ import {
   Settings,
   WholeIndexDBConfig,
   WordsItem,
+  WordType,
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
 
@@ -48,10 +49,12 @@ export class DbService {
     if (!words) return of(null);
     const newWords = words.trim().split('\n');
     const wordsToAdd: WordsItem[] = newWords.map((word) => {
+      const type: WordType = word.includes(' ') ? 'PHRASE' : 'WORD';
       return {
         word,
         created_timestamp: 0,
         familiar: false,
+        type,
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
@@ -105,6 +108,7 @@ export class DbService {
     return this.dbService.getAll<WordsItem>('words').pipe(
       map((res) => {
         return res.map((item) => {
+          item.type = item.type || 'WORD'; // default type is 'WORD'.
           item.total_count = clearSpellingCount ? 0 : item.total_count;
           item.right_count = clearSpellingCount ? 0 : item.right_count;
           item.right_rate =

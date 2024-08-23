@@ -15,6 +15,8 @@ export interface WordsItem {
   right_rate?: string;
 }
 
+export type WordType = 'WORD' | 'PHRASE';
+
 export interface ExampleItem {
   zh: string;
   en: string;
