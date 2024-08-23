@@ -46,6 +46,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
         <span
           class="single_letter"
           [class.correct]="displayLetters[$index] === item.toLowerCase()"
+          [class.transparent]="item === ' '"
           >{{ displayLetters[$index] ? displayLetters[$index] : '_' }}</span
         >
         } } @if (showHorn) {
