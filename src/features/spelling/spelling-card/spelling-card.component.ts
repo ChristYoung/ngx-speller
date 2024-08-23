@@ -38,16 +38,16 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
         </div>
         @if (mode === 'VIEW') { @for (item of displayLetters; track $index) {
         <span
-          class="single_letter"
-          [class.correct]="displayLetters[$index] === item"
-          >{{ item }}</span
+          class="single_letter correct"
+          [class.transparent]="item === ' '"
+          >{{ item !== ' ' ? item : '_' }}</span
         >
         } } @else { @for (item of wordItem.word.split(''); track $index) {
         <span
           class="single_letter"
           [class.correct]="displayLetters[$index] === item.toLowerCase()"
           [class.transparent]="item === ' '"
-          >{{ displayLetters[$index] ? displayLetters[$index] : '_' }}</span
+          >{{ (displayLetters[$index] && displayLetters[$index] !== ' ') ? displayLetters[$index] : '_' }}</span
         >
         } } @if (showHorn) {
         <app-horn
@@ -102,6 +102,7 @@ export class SpellingCardComponent implements OnChanges {
   ngOnChanges(_changes: SimpleChanges): void {
     this.displayLetters =
       this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
+      console.log('this.displayLetters',this.displayLetters)
   }
 
   @HostListener('window:keydown', ['$event'])
