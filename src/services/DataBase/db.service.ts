@@ -101,10 +101,12 @@ export class DbService {
       });
   }
 
-  getAllWordsFromIndexDB(setToStore?: boolean): Observable<WordsItem[]> {
+  getAllWordsFromIndexDB(setToStore?: boolean, clearSpellingCount?: boolean): Observable<WordsItem[]> {
     return this.dbService.getAll<WordsItem>('words').pipe(
       map((res) => {
         return res.map((item) => {
+          item.total_count = clearSpellingCount ? 0 : item.total_count;
+          item.right_count = clearSpellingCount ? 0 : item.right_count;
           item.right_rate =
             item.total_count === 0
               ? '0'
@@ -157,6 +159,12 @@ export class DbService {
         total_count,
       })
       .subscribe(() => {});
+  }
+
+  bulkClearSpellingCountToIndexDB(): Observable<any> {
+    return this.getAllWordsFromIndexDB(false, true)
+    .pipe(
+      mergeMap((words) => this.dbService.bulkPut<WordsItem>('words', words)))
   }
 
   getSettingConfigsFromIndexDB(
