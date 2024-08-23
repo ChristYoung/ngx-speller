@@ -1,6 +1,7 @@
 export interface WordsItem {
   word: string;
   familiar: boolean;
+  type?: 'WORD' | 'PHRASE';
   created_timestamp?: number;
   explanations?: string[];
   eng_explanation?: string;

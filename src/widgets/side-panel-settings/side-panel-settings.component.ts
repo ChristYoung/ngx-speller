@@ -7,7 +7,6 @@ import { Subject, take, takeUntil } from 'rxjs';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
-import { updateCurrentIndex } from '../../store/words/words.actions';
 import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 

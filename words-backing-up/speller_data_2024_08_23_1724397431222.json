@@ -1,0 +1,3863 @@
+{
+  "settings": null,
+  "words": [
+    {
+      "phonetic": "ˈɡɑːsɪp",
+      "explanations": [
+        "n. 流言蜚语，小道消息；爱说三道四的人；闲聊"
+      ],
+      "example": "He loved gossip and scandal.",
+      "example_zh": "他喜欢闲话和流言蜚语。",
+      "word": "gossip",
+      "similar_words": [
+        "essay",
+        "quidnunc"
+      ],
+      "eng_explanation": "light informal conversation for social occasions",
+      "examples": [
+        {
+          "zh": "他喜欢闲话和流言蜚语。",
+          "en": "He loved gossip and scandal."
+        }
+      ],
+      "familiar": false,
+      "total_count": 0,
+      "right_count": 0,
+      "created_timestamp": 1724369810291,
+      "id": 177,
+      "right_rate": "0"
+    },
+    {
+      "phonetic": "ˈɪndɪkeɪt",
+      "explanations": [
+        "v. 表明，标示；象征，暗示；间接提及，示意；指示，指出；<英>（用灯光或手臂）打行车转向信号；有必要，被建议"
+      ],
+      "example": "Reports from the area indicate that it was a bloodless coup.",
+      "example_zh": "发自该地区的各种报道表明这是一场不流血的政变。",
+      "word": "indicate",
+      "similar_words": [
+        "forecast",
+        "index",
+        "image",
+        "shadow",
+        "figure"
+      ],
+      "eng_explanation": "be a signal for or a symptom of",
+      "examples": [
+        {
+          "zh": "上个月的绩效考核显示，收入和利润都有所下降。",
+          "en": "Last month's performance review indicated a decrease in revenue and profits."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724301831082,
+      "id": 176,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "koʊˈɔːrdɪneɪt",
+      "explanations": [
+        "v. 协调，配合；使身体协调；（使颜色、款式、风格等）搭配，配套；给 （原子或分子）配位，与……形成共价键"
+      ],
+      "example": "She'll show you how to coordinate pattern and colours.",
+      "example_zh": "她会向你展示如何搭配款式和颜色。",
+      "word": "coordinate",
+      "similar_words": [
+        "paratactic",
+        "tantamount"
+      ],
+      "eng_explanation": "a number that identifies a position relative to an axis",
+      "examples": [
+        {
+          "zh": "她会向你展示如何搭配款式和颜色。",
+          "en": "She'll show you how to coordinate pattern and colours."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724300571989,
+      "id": 175,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌɪnkənˈsɪdərət",
+      "explanations": [
+        "adj. 轻率的；不顾别人的；无谋的"
+      ],
+      "example": "It was inconsiderate of you not to call.",
+      "example_zh": "你连个电话也不打，不够体谅人。",
+      "word": "inconsiderate",
+      "similar_words": [
+        "hasty",
+        "thoughtless"
+      ],
+      "eng_explanation": "lacking regard for the rights or feelings of others",
+      "examples": [
+        {
+          "zh": "你连个电话也不打，不够体谅人。",
+          "en": "It was inconsiderate of you not to call."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724300035208,
+      "id": 174,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈsensərʃɪp",
+      "explanations": [
+        "n. 审查，检查，审查制度"
+      ],
+      "example": "I'm opposed to censorship in any shape or form.",
+      "example_zh": "我反对任何形式的审查。",
+      "word": "censorship",
+      "similar_words": [],
+      "eng_explanation": "counterintelligence achieved by banning or deleting any information of value to the enemy",
+      "examples": [
+        {
+          "zh": "我反对任何形式的审查。",
+          "en": "I'm opposed to censorship in any shape or form."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724233355154,
+      "id": 173,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "dəˈmestɪk",
+      "explanations": [
+        "adj. 国内的，本国的；家用的，家庭的；喜爱家庭生活的，乐于操持家务的；非野生的，驯养的"
+      ],
+      "example": "It was a scene of such domestic bliss.",
+      "example_zh": "这是一幕家庭美满的场景。",
+      "word": "domestic",
+      "similar_words": [
+        "internal",
+        "household",
+        "home",
+        "local"
+      ],
+      "eng_explanation": "a servant who is paid to perform menial tasks around the household",
+      "examples": [
+        {
+          "zh": "这是一幕家庭美满的场景。",
+          "en": "It was a scene of such domestic bliss."
+        }
+      ],
+      "familiar": false,
+      "total_count": 19,
+      "right_count": 7,
+      "created_timestamp": 1724232873520,
+      "id": 172,
+      "right_rate": "36.84"
+    },
+    {
+      "phonetic": "juːˈbɪkwɪtəs",
+      "explanations": [
+        "adj. 普遍存在的，无所不在的"
+      ],
+      "example": "The ubiquitous BAM is starting a new trend and I am convinced that many will follow it.",
+      "example_zh": "无处不在的 BAM 正在开始一种新趋势，我坚信许多人将追随这一趋势。",
+      "word": "ubiquitous",
+      "similar_words": [
+        "omnipresent",
+        "illocal"
+      ],
+      "eng_explanation": "being present everywhere at once",
+      "examples": [
+        {
+          "zh": "该品牌的标识无处不在，在世界各地的产品上都能看到。",
+          "en": "The brand’s logo is ubiquitous, seen on products all around the world."
+        }
+      ],
+      "familiar": false,
+      "total_count": 0,
+      "right_count": 0,
+      "created_timestamp": 1724232800084,
+      "id": 171,
+      "right_rate": "0"
+    },
+    {
+      "phonetic": "ˈriːteɪlər",
+      "explanations": [
+        "n. 零售商，零售店；讲述者"
+      ],
+      "example": "A stronger relationship between the retailer/producer and the consumer isn't just about financial incentives.",
+      "example_zh": "零售商或生产商与消费者之间更强的关系不仅仅是经济激励。",
+      "word": "retailer",
+      "similar_words": [
+        "bania",
+        "tradesman"
+      ],
+      "eng_explanation": "a merchant who sells goods at retail",
+      "examples": [
+        {
+          "zh": "零售商或生产商与消费者之间更强的关系不仅仅是经济激励。",
+          "en": "A stronger relationship between the retailer/producer and the consumer isn't just about financial incentives."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724231236079,
+      "id": 169,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kənˈsɜːrvətɪv",
+      "explanations": [
+        "adj. 保守的；保守派的，保守主义的（认为政府应该实行政治保守主义）；（衣着）守旧的，传统的；低估的；保守党的；不愿冒险的，谨慎的"
+      ],
+      "example": "Her style of dress was never conservative.",
+      "example_zh": "她的服装式样一点儿也不保守。",
+      "word": "conservative",
+      "similar_words": [
+        "standpat",
+        "backward-looking"
+      ],
+      "eng_explanation": "a person who has conservative ideas or opinions",
+      "examples": [
+        {
+          "zh": "她的保守投资方法帮助她避免了重大损失。",
+          "en": "Her conservative approach to investing helped her avoid major losses."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 5,
+      "created_timestamp": 1724230479127,
+      "id": 168,
+      "right_rate": "83.33"
+    },
+    {
+      "phonetic": "ˈsuːpərvaɪzər",
+      "explanations": [
+        "n. 监督者，管理者；（英国大学里负责学生研究工作的）指导教师；<美>镇长，县长"
+      ],
+      "example": "The supervisor is always very critical.",
+      "example_zh": "主管总是很挑剔。",
+      "word": "supervisor",
+      "similar_words": [
+        "administrator",
+        "conductor"
+      ],
+      "eng_explanation": "one who supervises or has charge and direction of",
+      "examples": [
+        {
+          "zh": "主管总是很挑剔。",
+          "en": "The supervisor is always very critical."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724062100622,
+      "id": 167,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "veɪɡ",
+      "explanations": [
+        "adj. 不明确的，不清楚的；（形状）模糊的；（感情、记忆等）不完整的，不清晰的；含糊其词的，闪烁其词的；茫然的，心不在焉的"
+      ],
+      "example": "The description was pretty vague.",
+      "example_zh": "这项描述是相当含糊的。",
+      "word": "vague",
+      "similar_words": [
+        "fuzzy",
+        "dark",
+        "uncertain"
+      ],
+      "eng_explanation": "not clearly understood or expressed",
+      "examples": [
+        {
+          "zh": "这项描述是相当含糊的。",
+          "en": "The description was pretty vague."
+        }
+      ],
+      "familiar": false,
+      "total_count": 1,
+      "right_count": 1,
+      "created_timestamp": 1724060805745,
+      "id": 166,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈbɜːd(ə)nsəm",
+      "explanations": [
+        "adj. 负担沉重的，繁重的"
+      ],
+      "example": "As the report authors point out, even near-misses might lead to the \"creation of a burdensome regulatory framework and affect the future disposition of science Cube Sats\".",
+      "example_zh": "正如报告的作者所指出的，即使是差之毫末也可能导致“产生一个繁重的监管框架，并影响科学立方体卫星的未来部署”。",
+      "word": "burdensome",
+      "similar_words": [
+        "heavy",
+        "onerous"
+      ],
+      "eng_explanation": "not easily borne; wearing",
+      "examples": [
+        {
+          "zh": "在社区没有积极参与的情况下，要求项目开源可能是不必要的，也可能是一种负担。",
+          "en": "Requiring projects to be open-source when there's no active community engagement can be unnecessary and potentially burdensome."
+        }
+      ],
+      "familiar": false,
+      "total_count": 7,
+      "right_count": 6,
+      "created_timestamp": 1723619692143,
+      "id": 165,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "sɪˈvɪr",
+      "explanations": [
+        "adj. 十分严重的，极为恶劣的；艰巨的，严峻的；（惩罚、批评）严厉的，重的；严厉的，苛刻的；不加装饰的，朴素的"
+      ],
+      "example": "The patient suffered severe brain trauma.",
+      "example_zh": "患者的大脑受到严重损伤。",
+      "word": "severe",
+      "similar_words": [
+        "tight",
+        "serious"
+      ],
+      "eng_explanation": "intensely or extremely bad or unpleasant in degree or quality",
+      "examples": [
+        {
+          "zh": "患者的大脑受到严重损伤。",
+          "en": "The patient suffered severe brain trauma."
+        }
+      ],
+      "familiar": false,
+      "total_count": 23,
+      "right_count": 15,
+      "created_timestamp": 1723599249470,
+      "id": 164,
+      "right_rate": "65.22"
+    },
+    {
+      "phonetic": "prəˈpoʊz",
+      "explanations": [
+        "v. 提议，建议；提出（理论或解释）；提名，推荐；计划，打算；求婚；（向立法机构或委员会）提交（动议）；提议祝（酒）"
+      ],
+      "example": "What do you propose to do now?",
+      "example_zh": "现在你打算做什么？",
+      "word": "propose",
+      "similar_words": [
+        "schedule",
+        "design",
+        "map",
+        "think",
+        "purpose"
+      ],
+      "eng_explanation": "make a proposal, declare a plan for something",
+      "examples": [
+        {
+          "zh": "现在你打算做什么？",
+          "en": "What do you propose to do now?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1723593447948,
+      "id": 163,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ɪkˈsplɪsɪtli",
+      "explanations": [
+        "adv. 清楚明确地，详述地；直截了当地，坦率地；露骨地，不隐晦地"
+      ],
+      "example": "The report states explicitly that the system was to blame.",
+      "example_zh": "报告明确指出问题出在制度上。",
+      "word": "explicitly",
+      "similar_words": [
+        "positively",
+        "clearly"
+      ],
+      "eng_explanation": "in an explicit manner",
+      "examples": [
+        {
+          "zh": "报告明确指出问题出在制度上。",
+          "en": "The report states explicitly that the system was to blame."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 5,
+      "created_timestamp": 1723593068211,
+      "id": 162,
+      "right_rate": "83.33"
+    },
+    {
+      "phonetic": "ˌriːɪnˈfɔːrs",
+      "explanations": [
+        "v. 加强，强化（观点、思想或感觉）；加固，使更结实；给……加强力量（或装备），增援；寻求（或得到）增援"
+      ],
+      "example": "I hope this will reinforce Indonesian determination to deal with this kind of threat.",
+      "example_zh": "我希望这会加强印度尼西亚对付这类威胁的决心。",
+      "word": "reinforce",
+      "similar_words": [
+        "enhance",
+        "consolidate",
+        "strengthen"
+      ],
+      "eng_explanation": "make stronger",
+      "examples": [
+        {
+          "zh": "如果我同意某个观点，我会明确表示同意，并补充一些见解来强化这一观点。",
+          "en": "If I agree with a viewpoint, I will clearly state my agreement and add some insights to reinforce this viewpoint."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 8,
+      "created_timestamp": 1723592976827,
+      "id": 161,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈθɜːrəli",
+      "explanations": [
+        "adv. 完全地，极度地；仔细地，认真地，彻底地"
+      ],
+      "example": "I'm thoroughly confused.",
+      "example_zh": "我完全给搞糊涂了。",
+      "word": "thoroughly",
+      "similar_words": [
+        "entirely",
+        "completely",
+        "totally",
+        "fully",
+        "absolutely",
+        "strictly"
+      ],
+      "eng_explanation": "in a complete and thorough manner (`good' is sometimes used informally for `thoroughly')",
+      "examples": [
+        {
+          "zh": "我完全给搞糊涂了。",
+          "en": "I'm thoroughly confused."
+        },
+        {
+          "zh": "报告在发表前经过了全面审查。",
+          "en": "The report was thoroughly reviewed before being published."
+        }
+      ],
+      "familiar": false,
+      "total_count": 13,
+      "right_count": 10,
+      "created_timestamp": 1723592822170,
+      "id": 160,
+      "right_rate": "76.92"
+    },
+    {
+      "phonetic": "ˈekspədaɪt",
+      "explanations": [
+        "v. 加速，促进（行为，过程）"
+      ],
+      "example": "We tried to help you expedite your plans.",
+      "example_zh": "我们试图帮你加快你的计划。",
+      "word": "expedite",
+      "similar_words": [
+        "accelerate ",
+        "speed up"
+      ],
+      "eng_explanation": "speed up the progress of; facilitate",
+      "examples": [
+        {
+          "zh": "我们试图帮你加快你的计划。",
+          "en": "We tried to help you expedite your plans."
+        }
+      ],
+      "familiar": false,
+      "total_count": 42,
+      "right_count": 28,
+      "created_timestamp": 1723528839592,
+      "id": 159,
+      "right_rate": "66.67"
+    },
+    {
+      "phonetic": "pərˈsweɪd",
+      "explanations": [
+        "v. 说服，劝服；使相信，使信服；（情形，事件）驱使，敦促"
+      ],
+      "example": "I did my damnedest to persuade her.",
+      "example_zh": "我已经全力以赴地去说服她了。",
+      "word": "persuade",
+      "similar_words": [
+        "satisfy",
+        "convince",
+        "argue"
+      ],
+      "eng_explanation": "win approval or support for",
+      "examples": [
+        {
+          "zh": "我已经全力以赴地去说服她了。",
+          "en": "I did my damnedest to persuade her."
+        }
+      ],
+      "familiar": false,
+      "total_count": 7,
+      "right_count": 7,
+      "created_timestamp": 1723528370171,
+      "id": 158,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈɪntrəvɜːrt",
+      "explanations": [
+        "n. 内向的人"
+      ],
+      "example": "If you're not an introvert yourself, you are surely raising, managing, married to, or coupled with one.",
+      "example_zh": "如果你自己不是一个内向的人，你肯定在养育、管理一个内向的人，或者和一个内向的人结了婚或在约会。",
+      "word": "introvert",
+      "similar_words": [],
+      "eng_explanation": "(psychology) a person who tends to shrink from social contacts and to become preoccupied with their own thoughts",
+      "examples": [
+        {
+          "zh": "作为一个内向的人，比起大型社交聚会，他更喜欢在家度过安静的夜晚。",
+          "en": "As an introvert, he prefers quiet evenings at home over large social gatherings."
+        }
+      ],
+      "familiar": false,
+      "total_count": 9,
+      "right_count": 8,
+      "created_timestamp": 1723454477304,
+      "id": 157,
+      "right_rate": "88.89"
+    },
+    {
+      "phonetic": "səˈfɪʃ(ə)nt",
+      "explanations": [
+        "adj. 足够的，充足的；（理由、条件）充足的，充分的"
+      ],
+      "example": "Is it available in sufficient quantity?",
+      "example_zh": "这东西能不能足量供应？",
+      "word": "sufficient",
+      "similar_words": [
+        "plenty",
+        "wealthy",
+        "enough"
+      ],
+      "eng_explanation": "of a quantity that can fulfill a need or requirement but without being abundant",
+      "examples": [
+        {
+          "zh": "这东西能不能足量供应？",
+          "en": "Is it available in sufficient quantity?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 21,
+      "right_count": 16,
+      "created_timestamp": 1723450767047,
+      "id": 156,
+      "right_rate": "76.19"
+    },
+    {
+      "phonetic": "ˈdiːfekts; dɪˈfekts",
+      "explanations": [
+        "n. 缺点，缺陷，毛病（defect 的复数）"
+      ],
+      "example": "A report has pointed out the defects of the present system.",
+      "example_zh": "一份报告指出了现有体制的缺陷。",
+      "word": "defects",
+      "similar_words": [
+        "drawbacks",
+        "downside"
+      ],
+      "eng_explanation": "an imperfection in a bodily system",
+      "examples": [
+        {
+          "zh": "与上一季度相比，轮胎缺陷略有增加。",
+          "en": "Compared to the last quarter, there's been a slight increase in tire defects."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1723445685677,
+      "id": 154,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ɪɡˈzekjətɪv",
+      "explanations": [
+        "adj. 行政的，有执行权的；高档的，豪华的；供主管人员使用的；（有关）经营管理的，领导的"
+      ],
+      "example": "The heroine is a senior TV executive.",
+      "example_zh": "女主人公是一位电视台高级主管。",
+      "word": "executive",
+      "similar_words": [
+        "administrative",
+        "front-office"
+      ],
+      "eng_explanation": "a person responsible for the administration of a business",
+      "examples": [
+        {
+          "zh": "梅赛德斯-奔驰公司的项目经理鲍勃正在向高级主管费恩介绍 S350 项目的最新进展和挑战。",
+          "en": "Bob, a project manager at Mercedes-Benz, is updating Fern, the senior executive, on the progress and challenges of the S350 project."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1723445529715,
+      "id": 153,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈælɡərɪðəmz",
+      "explanations": [
+        "n. 算法；算法式（algorithm 的复数）"
+      ],
+      "example": "Algorithms process the data, adapting and learning based on the data received.",
+      "example_zh": "算法对数据进行处理，并根据接收到的数据进行适应和学习。",
+      "word": "algorithms",
+      "similar_words": [],
+      "eng_explanation": "a precise rule (or set of rules) specifying how to solve some problem",
+      "examples": [
+        {
+          "zh": "他们研究了各种算法，将效率提高了 15%。",
+          "en": "They worked on various algorithms and increased efficiency by 15%."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1723445121043,
+      "id": 152,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈɑːptɪməl",
+      "explanations": [
+        "adj. 最佳的，最适的"
+      ],
+      "example": "You can get a globally optimal solution from locally optimal solutions to sub-problems.",
+      "example_zh": "你可以通过子问题的局部最优方案从而得到全局优化解决方案。",
+      "word": "optimal",
+      "similar_words": [
+        "first-rank"
+      ],
+      "eng_explanation": "most desirable possible under a restriction expressed or implied",
+      "examples": [
+        {
+          "zh": "均衡饮食对保持最佳健康状态至关重要。",
+          "en": "Eating a balanced diet is essential for maintaining optimal health."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1723201803590,
+      "id": 151,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌflʌktʃuˈeɪʃn",
+      "explanations": [
+        "n. 波动，起伏"
+      ],
+      "example": "Changes in climate before that period caused severe fluctuation in sea level, resulting in the extinction of the dinosaurs.",
+      "example_zh": "在此之前，气候的变化导致了海平面的剧烈波动，恐龙因此灭绝。",
+      "word": "fluctuation",
+      "similar_words": [
+        "wave",
+        "undulation"
+      ],
+      "eng_explanation": "a wave motion",
+      "examples": [
+        {
+          "zh": "在此之前，气候的变化导致了海平面的剧烈波动，恐龙因此灭绝。",
+          "en": "Changes in climate before that period caused severe fluctuation in sea level, resulting in the extinction of the dinosaurs."
+        }
+      ],
+      "familiar": false,
+      "total_count": 9,
+      "right_count": 7,
+      "created_timestamp": 1723201763468,
+      "id": 150,
+      "right_rate": "77.78"
+    },
+    {
+      "phonetic": "ˈæplɪkənt",
+      "explanations": [
+        "n. 申请人"
+      ],
+      "example": "The applicant was irredeemably incompetent.",
+      "example_zh": "申请人无可救药地不合格。",
+      "word": "applicant",
+      "similar_words": [
+        "postulant",
+        "proposer"
+      ],
+      "eng_explanation": "a person who requests or seeks something such as assistance or employment or admission",
+      "examples": [
+        {
+          "zh": "申请人应持有何种学士学位才能申请该职位？",
+          "en": "What bachelor's degree should the applicant hold to apply for the position?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1723167040068,
+      "id": 149,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "əˈsemb(ə)l",
+      "explanations": [
+        "v. （使）集合，（使）聚集；装配，组装"
+      ],
+      "example": "The cupboard is easy to assemble.",
+      "example_zh": "这个橱柜容易组装。",
+      "word": "assemble",
+      "similar_words": [
+        "aggregate",
+        "fall in"
+      ],
+      "eng_explanation": "create by putting components or members together",
+      "examples": [
+        {
+          "zh": "这个橱柜容易组装。",
+          "en": "The cupboard is easy to assemble."
+        },
+        {
+          "zh": "组建一支拥有不同技能的团队，相互取长补短。",
+          "en": "Assemble a team with diverse skills that complement each other."
+        }
+      ],
+      "familiar": false,
+      "total_count": 13,
+      "right_count": 10,
+      "created_timestamp": 1723093255101,
+      "id": 148,
+      "right_rate": "76.92"
+    },
+    {
+      "phonetic": "prəˈpel",
+      "explanations": [
+        "v. 推进，驱动；推搡（某人走向特定方向）； 驱使，促使"
+      ],
+      "example": "The tiny rocket is attached to the spacecraft and is designed to propel it toward Mars.",
+      "example_zh": "微型火箭附在宇宙飞船上，用来推进飞船飞向火星。",
+      "word": "propel",
+      "similar_words": [
+        "stimulate",
+        "drive",
+        "push"
+      ],
+      "eng_explanation": "cause to move forward with force",
+      "examples": [
+        {
+          "zh": "微型火箭附在宇宙飞船上，用来推进飞船飞向火星。",
+          "en": "The tiny rocket is attached to the spacecraft and is designed to propel it toward Mars."
+        },
+        {
+          "zh": "自始至终的项目管理是他们迈向成功的关键",
+          "en": "Managing a project from the beginning to the end is what propels them towards success"
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1723093050605,
+      "id": 147,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌmænəˈdʒɪriəl",
+      "explanations": [
+        "adj. 经营上的，管理上的；经理的，管理人的"
+      ],
+      "example": "Does she have any managerial experience?",
+      "example_zh": "她有没有什么管理经验？",
+      "word": "managerial",
+      "similar_words": [
+        "administrative",
+        "regulatory"
+      ],
+      "eng_explanation": "of or relating to the function or responsibility or activity of management",
+      "examples": [
+        {
+          "zh": "她有没有什么管理经验？",
+          "en": "Does she have any managerial experience?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 24,
+      "right_count": 18,
+      "created_timestamp": 1722992750249,
+      "id": 145,
+      "right_rate": "75.00"
+    },
+    {
+      "phonetic": "ɪnˈdʒestʃən",
+      "explanations": [
+        "n. 摄取；吸收；咽下"
+      ],
+      "example": "Every ingestion of food can affect our mood or thinking processes.",
+      "example_zh": "每次食物的摄取都可能会影响我们的情绪或思维过程。",
+      "word": "ingestion",
+      "similar_words": [
+        "absorption",
+        "merger",
+        "uptake"
+      ],
+      "eng_explanation": "the process of taking food into the body through the mouth (as by eating)",
+      "examples": [
+        {
+          "zh": "每次食物的摄取都可能会影响我们的情绪或思维过程。",
+          "en": "Every ingestion of food can affect our mood or thinking processes."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722938066455,
+      "id": 144,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kruːz",
+      "explanations": [
+        "n. 巡游，乘船游览"
+      ],
+      "example": "He was billed as the new Tom Cruise.",
+      "example_zh": "他被宣传为新汤姆•克鲁斯。",
+      "word": "cruise",
+      "similar_words": [
+        "range",
+        "expatiate"
+      ],
+      "eng_explanation": "an ocean trip taken for pleasure",
+      "examples": [
+        {
+          "zh": "他们决定乘游轮去加勒比海度假。",
+          "en": "They decided to take a cruise to the Caribbean for their vacation."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722910550475,
+      "id": 143,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "əˈspaɪər",
+      "explanations": [
+        "v. 渴望，有志于"
+      ],
+      "example": "Nor do they aspire to such command themselves.",
+      "example_zh": "他们自己也不渴望这样的命令。",
+      "word": "aspire",
+      "similar_words": [
+        "eager to"
+      ],
+      "eng_explanation": "have an ambitious plan or a lofty goal",
+      "examples": [
+        {
+          "zh": "许多年轻人都渴望改变世界。",
+          "en": "Many young people aspire to make a difference in the world."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722862732476,
+      "id": 142,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "fəˈnɑːmɪnən",
+      "explanations": [
+        "n. 现象；杰出的人，非凡的人（或事物）；（哲学）现象"
+      ],
+      "example": "This phenomenon piqued Dr. Morris' interest.",
+      "example_zh": "该现象引起莫里思博士的兴趣。",
+      "word": "phenomenon",
+      "similar_words": [
+        "wonder",
+        "miracle"
+      ],
+      "eng_explanation": "any state or process known through the senses rather than by intuition or reasoning",
+      "examples": [
+        {
+          "zh": "北极光是吸引众多游客的自然现象。",
+          "en": "The Northern Lights are a natural phenomenon that attracts many tourists."
+        }
+      ],
+      "familiar": false,
+      "total_count": 25,
+      "right_count": 17,
+      "created_timestamp": 1722839719756,
+      "id": 141,
+      "right_rate": "68.00"
+    },
+    {
+      "phonetic": "ˈɑːbstək(ə)l",
+      "explanations": [
+        "n. 障碍，阻碍；障碍物"
+      ],
+      "example": "Overcrowding remains a large obstacle to improving conditions.",
+      "example_zh": "过度拥挤仍然是改善条件的一大障碍。",
+      "word": "obstacle",
+      "similar_words": [
+        "setback"
+      ],
+      "eng_explanation": "something immaterial that stands in the way and must be circumvented or surmounted",
+      "examples": [
+        {
+          "zh": "过度拥挤仍然是改善条件的一大障碍。",
+          "en": "Overcrowding remains a large obstacle to improving conditions."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722838064774,
+      "id": 140,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "koʊˈhɪrəns",
+      "explanations": [
+        "n. 连贯性，条理性；凝聚，凝聚力"
+      ],
+      "example": "The anthology has a surprising sense of coherence.",
+      "example_zh": "该诗集的连贯性令人惊奇。",
+      "word": "coherence",
+      "similar_words": [
+        "accordance",
+        "unity",
+        "agreement",
+        "identity",
+        "consensus"
+      ],
+      "eng_explanation": "the state of cohering or sticking together",
+      "examples": [
+        {
+          "zh": "有效的交流要求语言和文字的连贯性。",
+          "en": "Effective communication requires coherence in both speech and writing."
+        }
+      ],
+      "familiar": false,
+      "total_count": 37,
+      "right_count": 23,
+      "created_timestamp": 1722778333973,
+      "id": 139,
+      "right_rate": "62.16"
+    },
+    {
+      "phonetic": "ˈlevərɪdʒ",
+      "explanations": [
+        "n. 影响力，手段；杠杆力，杠杆作用；<美>杠杆比率"
+      ],
+      "example": "His position as mayor gives him leverage to get things done.",
+      "example_zh": "他的市长身份使他有能力办成一些事情。",
+      "word": "leverage",
+      "similar_words": [
+        "instrument",
+        "shift",
+        "road",
+        "tool",
+        "resort"
+      ],
+      "eng_explanation": "the mechanical advantage gained by being in a position to use a lever",
+      "examples": [
+        {
+          "zh": "五年后，我将在这家公司担任领导职务，利用我的技能和经验推动公司的大幅增长和创新。",
+          "en": "In five years, I see myself in a leadership role within this organization, where I can leverage my skills and experience to drive significant growth and innovation."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722740945918,
+      "id": 138,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kənˈseʃ(ə)n",
+      "explanations": [
+        "n. 让步，妥协；特许权；<英>优惠价，减价；商铺；小摊卖的东西；认输"
+      ],
+      "example": "He was ready to make a concession.",
+      "example_zh": "他准备做出让步。",
+      "word": "concession",
+      "similar_words": [
+        "compromise"
+      ],
+      "eng_explanation": "a contract granting the right to operate a subsidiary business",
+      "examples": [
+        {
+          "zh": "他准备做出让步。",
+          "en": "He was ready to make a concession."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1722731520015,
+      "id": 137,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈkɑːmprəmaɪz",
+      "explanations": [
+        "n. 折中，妥协；妥协方案，折中办法"
+      ],
+      "example": "I refuse to compromise my principles.",
+      "example_zh": "我拒绝在原则问题上妥协。",
+      "word": "compromise",
+      "similar_words": [
+        "concession",
+        "to make some concession"
+      ],
+      "eng_explanation": "a middle way between two extremes",
+      "examples": [
+        {
+          "zh": "我拒绝在原则问题上妥协。",
+          "en": "I refuse to compromise my principles."
+        },
+        {
+          "zh": "双方都不愿意妥协",
+          "en": "Neither side is prepared to compromise."
+        }
+      ],
+      "familiar": false,
+      "total_count": 23,
+      "right_count": 17,
+      "created_timestamp": 1722648401296,
+      "id": 136,
+      "right_rate": "73.91"
+    },
+    {
+      "phonetic": "rɪˈmiːdieɪt",
+      "explanations": [
+        "v. （尤指对环境破坏的）矫正；补救；治疗"
+      ],
+      "example": "Can web vulnerability scanners help you remediate the vulnerability?",
+      "example_zh": "Web漏洞扫描器能帮助我们修补漏洞吗？",
+      "word": "remediate",
+      "examples": [
+        {
+          "zh": "Web漏洞扫描器能帮助我们修补漏洞吗？",
+          "en": "Can web vulnerability scanners help you remediate the vulnerability?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1721801329479,
+      "id": 135,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌekspɜːrˈtiːz",
+      "explanations": [
+        "n. 专长，专门技能（知识）；专家的意见"
+      ],
+      "example": "Griffith's expertise is in writing legal briefs.",
+      "example_zh": "格里菲思的专长在于撰写法律案情摘要。",
+      "word": "expertise",
+      "examples": [
+        {
+          "zh": "为了实现我的职业目标，我计划通过外出学习和专业发展，不断提高自己的专业技能。",
+          "en": "To achieve my career goals, I plan to continuously improve my expertise through outgoing-education and professional development."
+        }
+      ],
+      "familiar": false,
+      "total_count": 13,
+      "right_count": 10,
+      "created_timestamp": 1721209028278,
+      "id": 134,
+      "right_rate": "76.92"
+    },
+    {
+      "phonetic": "ˈæmətər",
+      "explanations": [
+        "n. 业余爱好者；生手，外行"
+      ],
+      "example": "She was a keen amateur photographer.",
+      "example_zh": "她是一个痴迷的业余摄影师。",
+      "word": "amateur",
+      "examples": [
+        {
+          "zh": "虽然他是摄影业余爱好者，但他的照片却展现出非凡的创造力和技巧。",
+          "en": "Although he is an amateur in photography, his pictures display remarkable creativity and skill."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1720692388254,
+      "id": 133,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈrɪdʒɪd",
+      "explanations": [
+        "adj. （方法、体制等）严格死板的，僵化的；（人）顽固的，不通融的；刚硬的，不易弯曲的；（因强烈的感情而）僵硬的，僵直的；精确的"
+      ],
+      "example": "The curriculum was too narrow and too rigid.",
+      "example_zh": "课程设置过于狭窄和死板。",
+      "word": "rigid",
+      "examples": [
+        {
+          "zh": "公司僵化的政策使员工难以适应新形势并有效创新。",
+          "en": "The company's rigid policies made it difficult for employees to adapt to new situations and innovate effectively."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1720573535360,
+      "id": 132,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "pəˈzes",
+      "explanations": [
+        "v. <正式> 拥有，持有；具有（品质或能力）；（尤指邪恶的鬼魅或精灵）缠住，迷住；受（感情）支配，受（感情）影响；了解，懂得；<文> 与（女人）性交"
+      ],
+      "example": "Under state law, it is a misdemeanour to possess a firearm on school premises.",
+      "example_zh": "根据该州法律，在校园里拥有枪械是一种轻罪。",
+      "word": "possess",
+      "examples": [
+        {
+          "zh": "她集创造力和分析能力于一身，是团队中不可多得的人才。",
+          "en": "She possesses a rare combination of creativity and analytical skills, making her an invaluable asset to the team."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1720487203636,
+      "id": 131,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "məˈtɪkjələs",
+      "explanations": [
+        "adj. 一丝不苟的，注意细节的"
+      ],
+      "example": "He has been a meticulous manager, a manager par excellence.",
+      "example_zh": "他是位一丝不苟的经理，一位出类拔萃的经理。",
+      "word": "meticulous",
+      "examples": [
+        {
+          "zh": "他以对细节的一丝不苟而闻名，确保项目的每个方面都尽善尽美。",
+          "en": "He is known for his meticulous attention to detail, ensuring that every aspect of the project is perfect."
+        }
+      ],
+      "familiar": false,
+      "total_count": 25,
+      "right_count": 14,
+      "created_timestamp": 1720485233660,
+      "id": 130,
+      "right_rate": "56.00"
+    },
+    {
+      "phonetic": "prəˈfɪʃ(ə)nsi",
+      "explanations": [
+        "n. 熟练，精通"
+      ],
+      "example": "Evidence of basic proficiency in English is part of the admissions requirement.",
+      "example_zh": "基本英语水平的证明是录取条件的一部分。",
+      "word": "proficiency",
+      "examples": [
+        {
+          "zh": "她精通多国语言，因此能与来自世界各地的客户进行有效沟通。",
+          "en": "Her proficiency in multiple languages allowed her to communicate effectively with clients from around the world."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1720440323739,
+      "id": 129,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ɪˈtɜːrn(ə)l",
+      "explanations": [
+        "adj. 永恒的，永存的；似乎无休无止的，没完没了的"
+      ],
+      "example": "He has the upbeat manner of an eternal optimist.",
+      "example_zh": "他永远都持乐观主义者的那种快乐态度。",
+      "word": "eternal",
+      "examples": [
+        {
+          "zh": "这部电影是永恒的经典，在全世界产生了重大影响。",
+          "en": "This movie is an eternal classic and has made a significant impact worldwide."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1719724044317,
+      "id": 128,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈdevəsteɪtɪŋ",
+      "explanations": [
+        "adj. 毁灭性的，极具破坏力的；令人极为震惊的；令人印象深刻的，吸引人的；极有效的，强有力的"
+      ],
+      "example": "It's a devastating and barbaric act that defies all comprehension.",
+      "example_zh": "这是毁灭性的野蛮行径，完全没有方法可理解。",
+      "word": "devastating",
+      "examples": [
+        {
+          "zh": "洪水对我的家乡造成了毁灭性的影响，摧毁了房屋和基础设施，使许多人无家可归。",
+          "en": "The flood had a devastating impact on my hometown, destroying homes, and infrastructure, and leaving many people homeless."
+        }
+      ],
+      "familiar": false,
+      "total_count": 17,
+      "right_count": 13,
+      "created_timestamp": 1718854530527,
+      "id": 126,
+      "right_rate": "76.47"
+    },
+    {
+      "phonetic": "məˈnɪpjuleɪt",
+      "explanations": [
+        "v. 操纵，摆布；操作，使用；正骨，推拿；篡改；巧妙地移动（某物），巧妙地处理（某事）；校正，转移（储存在计算机上的信息）"
+      ],
+      "example": "The technology uses a pen to manipulate a computer.",
+      "example_zh": "这项技术使用笔来操作计算机。",
+      "word": "manipulate",
+      "examples": [
+        {
+          "zh": "这项技术使用笔来操作计算机。",
+          "en": "The technology uses a pen to manipulate a computer."
+        }
+      ],
+      "familiar": false,
+      "total_count": 14,
+      "right_count": 12,
+      "created_timestamp": 1718854530527,
+      "id": 125,
+      "right_rate": "85.71",
+      "similar_words": [
+        "handle",
+        "control"
+      ]
+    },
+    {
+      "phonetic": "ˈfʌzi",
+      "explanations": [
+        "adj. （图片、声音等）不清楚的，模糊的；不明确的，含混的；（计算机，逻）模糊的，模糊逻辑的；有绒毛的，毛茸茸的；（人，头脑）迷糊的，稀里糊涂的；（头发）鬈曲的；<非正式>友善的，令人愉快的；带（或可产生）模糊音的（fuzzed 的别名）"
+      ],
+      "example": "The soundtrack is fuzzy in places.",
+      "example_zh": "这电影声带有些地方模糊不清。",
+      "word": "fuzzy",
+      "examples": [
+        {
+          "zh": "这电影声带有些地方模糊不清。",
+          "en": "The soundtrack is fuzzy in places."
+        }
+      ],
+      "familiar": false,
+      "total_count": 9,
+      "right_count": 8,
+      "created_timestamp": 1718077423639,
+      "id": 124,
+      "right_rate": "88.89"
+    },
+    {
+      "phonetic": "ˈskeɪləbl",
+      "explanations": [
+        "adj. （计算机） 可扩展的；可改变大小的，可缩放的；可攀登的；可称量的；可去鳞的"
+      ],
+      "example": "Scalable vector graphics (SVGs).",
+      "example_zh": "可伸缩的矢量图形（SVG）。",
+      "word": "scalable",
+      "examples": [
+        {
+          "zh": "可伸缩的矢量图形（SVG）。",
+          "en": "Scalable vector graphics (SVGs)."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1718077213105,
+      "id": 123,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "pərˈsuːt",
+      "explanations": [
+        "n. 追求，寻找；继续；追逐，追捕；实行，贯彻；消遣，业余爱好；（自行车赛和滑冰竞赛中的）追逐赛；（生理学）追视"
+      ],
+      "example": "The pursuit of money ruled his life.",
+      "example_zh": "对金钱的追求支配着他的生活。",
+      "word": "pursuit",
+      "examples": [
+        {
+          "zh": "对金钱的追求支配着他的生活。",
+          "en": "The pursuit of money ruled his life."
+        },
+        {
+          "zh": "我相信，我追求知识的每一刻都是在帮助人类。",
+          "en": "I believe that every moment I spend to pursuit knowledge is time to help mankind."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715559221998,
+      "id": 122,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈpɑːvərti",
+      "explanations": [
+        "n. 贫穷，贫困；<正式>贫乏，低劣；个人财产权的放弃（作为宗教誓约的一部分）"
+      ],
+      "example": "He ended his days in poverty.",
+      "example_zh": "他在贫穷中度过余生。",
+      "word": "poverty",
+      "examples": [
+        {
+          "zh": "他在贫穷中度过余生。",
+          "en": "He ended his days in poverty."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1715559221998,
+      "id": 121,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "əˌpɔɪnˈtiː",
+      "explanations": [
+        "n. 被任命者"
+      ],
+      "example": "I am a New appointee!",
+      "example_zh": "我是一只新的手！",
+      "word": "appointee",
+      "examples": [
+        {
+          "zh": "我是一只新的手！",
+          "en": "I am a New appointee!"
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715559221998,
+      "id": 120,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "rɪˈdʌkʃ(ə)n",
+      "explanations": [
+        "n. 减小，降低；减价，折扣；（照片、地图、图片等的）缩图，缩版；归纳，简化；（数学）归约，约化；染色体减半；简编曲（管弦乐改编的钢琴曲或小乐队演奏曲）；浓汤，浓汁；脱臼（或断骨）复位；（化学）还原，被还原；（语音）弱化"
+      ],
+      "example": "There has been some reduction in unemployment.",
+      "example_zh": "失业人数有所减少。",
+      "word": "reduction",
+      "examples": [
+        {
+          "zh": "失业人数有所减少。",
+          "en": "There has been some reduction in unemployment."
+        },
+        {
+          "zh": "这些年来，就业机会减少了太多。",
+          "en": "These years, there has been too much reduction in job opportunities."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715559221998,
+      "id": 119,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌbaɪoʊˈmedɪk(ə)l",
+      "explanations": [
+        "adj. 生物医学的"
+      ],
+      "example": "Biomedical research will enable many individuals infected with HIV to live longer, more comfortable lives.",
+      "example_zh": "生物医学研究将使许多感染艾滋病病毒的人们能够活得时间更长、更舒适。",
+      "word": "biomedical",
+      "examples": [
+        {
+          "zh": "我的第二个博士学位将会是生物医学, 我想研发出治疗癌症和艾滋的药物.",
+          "en": "With my second PhD in biomedical research, I would like to find cures for diseases like cancer and AIDs."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715559221998,
+      "id": 117,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈkɑːlənaɪz",
+      "explanations": [
+        "v. 在……开拓殖民地，移民于殖民地；将（场所，产业）据为己用；移植于，大批繁殖于；<美>从他地非法把选民移入"
+      ],
+      "example": "The first British attempt to colonize Ireland was in the twelfth century.",
+      "example_zh": "英国第一次企图把爱尔兰变成殖民地是在12世纪。",
+      "word": "colonize",
+      "examples": [
+        {
+          "zh": "我想设计空间站。以及殖民其他星球。",
+          "en": "I’d like to design space stations. As well as colonize other planets."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1715559221998,
+      "id": 116,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈeroʊspeɪs",
+      "explanations": [
+        "n. 航空航天工业，航空航天技术；航空与航天空间"
+      ],
+      "example": "His father is a machinist in an aerospace plant.",
+      "example_zh": "他的父亲是一家航空工厂的机械师。",
+      "word": "aerospace",
+      "examples": [
+        {
+          "zh": "他的父亲是一家航空工厂的机械师。",
+          "en": "His father is a machinist in an aerospace plant."
+        },
+        {
+          "zh": "我的第一个博士学位是航天工程学, 我想设计空间站.",
+          "en": "With my first PhD in aerospace engineering, I'd like design space stations."
+        }
+      ],
+      "familiar": false,
+      "total_count": 21,
+      "right_count": 14,
+      "created_timestamp": 1715559221998,
+      "id": 115,
+      "right_rate": "66.67"
+    },
+    {
+      "phonetic": "ˌoʊvərˈwelmd",
+      "explanations": [
+        "adj. 被压倒的，被淹没的；（强烈地影响而使） 不知所措的"
+      ],
+      "example": "The army was overwhelmed by the rebels.",
+      "example_zh": "军队被叛乱者完全击败了。",
+      "word": "overwhelmed",
+      "examples": [
+        {
+          "zh": "我的意思是现在发生的每一件事， 都让我觉得压力很大.",
+          "en": "I mean it's really easy to get overwhelmed with everything that's going on nowadays."
+        },
+        {
+          "zh": "出自歌曲《You don't know you're beautiful》",
+          "en": "The way that you flip your hair gets me overwhelmed."
+        },
+        {
+          "zh": "我一直被日常工作压得喘不过气来，很难赶上最后期限。",
+          "en": "I have been overwhelmed with my daily work, and struggling to keep up with the deadlines."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715470815221,
+      "id": 114,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kræk",
+      "explanations": [
+        "v. 破裂，裂开；崩溃，垮掉；砸开，砸碎；破译，解决；重击，猛击；（使）发出爆裂声，劈啪作响；（嗓音）变嘶哑；说（笑话），开（玩笑）；阻止，打击；开瓶，（尤指）开瓶饮酒；使（碳氢化合物）裂化"
+      ],
+      "example": "The ice started to crack.",
+      "example_zh": "冰开始裂了。",
+      "word": "crack",
+      "examples": [
+        {
+          "zh": "当我破解了一段我喜欢的歌曲旋律的时候, 我会感到无比开心.",
+          "en": "I feel so happy when I cracked the code to the bridge that I loved."
+        }
+      ],
+      "familiar": false,
+      "total_count": 14,
+      "right_count": 12,
+      "created_timestamp": 1715426611066,
+      "id": 113,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "rɪˈhɜːrs",
+      "explanations": [
+        "v. 排练，排演；监督（表演者或团体）排演；默诵，默默地练习；<正式>详述，重复"
+      ],
+      "example": "We were given only two weeks to rehearse.",
+      "example_zh": "只给了我们两个星期排练。",
+      "word": "rehearse",
+      "examples": [
+        {
+          "zh": "只给了我们两个星期排练。",
+          "en": "We were given only two weeks to rehearse."
+        }
+      ],
+      "familiar": false,
+      "total_count": 73,
+      "right_count": 57,
+      "created_timestamp": 1715425356889,
+      "id": 112,
+      "right_rate": "78.08"
+    },
+    {
+      "phonetic": "pəˈrɪfərəl",
+      "explanations": [
+        "adj. 次要的，附带的；外围的，周边的；（计算机设备）外围的；（剖）体表的；周围神经系统的，末梢的"
+      ],
+      "example": "Fund-raising is peripheral to their main activities.",
+      "example_zh": "对他们的主要活动而言，筹集资金是次要的。",
+      "word": "peripheral",
+      "examples": [
+        {
+          "zh": "经理只关注次要的外围问题，导致团队忽视了项目的主要目标。",
+          "en": "The manager's focus on minor, peripheral issues caused the team to lose sight of the project's main objectives."
+        }
+      ],
+      "familiar": false,
+      "total_count": 19,
+      "right_count": 17,
+      "created_timestamp": 1715424257114,
+      "id": 111,
+      "right_rate": "89.47"
+    },
+    {
+      "phonetic": "rɪˈdiːm",
+      "explanations": [
+        "v. 补救，掩饰……之不足；挽回（声誉），弥补（过错）（redeem oneself）；（尤指基督教中）解救，为……赎罪；偿还（欠款）；兑换（优惠券、彩票等）；赎回（股票、债券等）；履行，遵守（诺言）"
+      ],
+      "example": "He was able to redeem his watch from the pawnshop.",
+      "example_zh": "他得以从当铺赎回他的表。",
+      "word": "redeem",
+      "examples": [
+        {
+          "zh": "丑闻之后，他努力挽回自己的声誉，向身边的每一个人证明自己的奉献精神和可靠性。",
+          "en": "He worked hard to redeem his reputation after the scandal, proving his dedication and reliability to everyone around him."
+        }
+      ],
+      "familiar": false,
+      "total_count": 23,
+      "right_count": 16,
+      "created_timestamp": 1715325645308,
+      "id": 110,
+      "right_rate": "69.57",
+      "similar_words": [
+        "compensate"
+      ]
+    },
+    {
+      "phonetic": "fɜːrm",
+      "explanations": [
+        "n. 公司，商行；（以顾问医师为首的）医务小组；<英，非正式>（敌视敌对球队球迷的）球迷俱乐部，球迷联盟"
+      ],
+      "example": "She held firm to her principles.",
+      "example_zh": "她坚持自己的原则。",
+      "word": "firm",
+      "examples": [],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1715001084832,
+      "id": 108,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈpɪlər",
+      "explanations": [
+        "n. 柱子，支柱；主心骨，栋梁；（组织、制度、信仰等的）核心，基础；柱状物；纪念柱；煤柱，矿柱"
+      ],
+      "example": "My father is a pillar of the community.",
+      "example_zh": "我父亲是社区的顶梁柱。",
+      "word": "pillar",
+      "examples": [
+        {
+          "zh": "诚实和正直是牢固和值得信赖的关系的支柱。",
+          "en": "Honesty and integrity are the pillars of a strong and trustworthy relationship."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1715000941605,
+      "id": 106,
+      "right_rate": "87.50",
+      "similar_words": [
+        "basement",
+        "fundemental"
+      ]
+    },
+    {
+      "phonetic": "ɪkˈsplɔɪt",
+      "explanations": [
+        "v. 剥削，压榨；利用（……为自己谋利）；运用，发挥；开发，开拓"
+      ],
+      "example": "As computer systems become even more sophisticated, so too do the methods of those who exploit the technology.",
+      "example_zh": "正如计算机系统变得越来越复杂，开发计算机技术的人所采用的方法也日趋复杂。",
+      "word": "exploit",
+      "examples": [
+        {
+          "zh": "该公司被指控试图剥削工人，让他们长时间工作却得不到公平的补偿。",
+          "en": "The company was accused of trying to exploit its workers by making them work long hours without fair compensation."
+        }
+      ],
+      "familiar": false,
+      "total_count": 13,
+      "right_count": 10,
+      "created_timestamp": 1715000731772,
+      "id": 105,
+      "right_rate": "76.92"
+    },
+    {
+      "phonetic": "ɪnˈtændʒəb(ə)l",
+      "explanations": [
+        "adj. 不可捉摸的，难以确定的；（资产，利益）无形的"
+      ],
+      "example": "The benefits are intangible.",
+      "example_zh": "好处是难以计算的。",
+      "word": "intangible",
+      "examples": [
+        {
+          "zh": "在支持性环境中工作的无形好处包括提高工作满意度和归属感。",
+          "en": "The intangible benefits of working in a supportive environment include increased job satisfaction and a sense of belonging."
+        }
+      ],
+      "familiar": false,
+      "total_count": 21,
+      "right_count": 13,
+      "created_timestamp": 1715000716856,
+      "id": 104,
+      "right_rate": "61.90"
+    },
+    {
+      "phonetic": "daɪˈvɜːrsəti; dɪˈvɜːsɪti",
+      "explanations": [
+        "n. 多样性，多样化；不同，差异"
+      ],
+      "example": "Two of our greatest strengths are diversity and community.",
+      "example_zh": "我们的两个最大优点是多样性和团体精神。",
+      "word": "diversity",
+      "examples": [
+        {
+          "zh": "我们的两个最大优点是多样性和团体精神。",
+          "en": "Two of our greatest strengths are diversity and community."
+        }
+      ],
+      "familiar": false,
+      "total_count": 28,
+      "right_count": 17,
+      "created_timestamp": 1714952555758,
+      "id": 103,
+      "right_rate": "60.71"
+    },
+    {
+      "phonetic": "ˌreɡjuˈleɪʃn",
+      "explanations": [
+        "n. 规章制度，规则；（运用规则条例的）管理，控制"
+      ],
+      "example": "The regulation operates in favour of married couples.",
+      "example_zh": "这一规定的实施有利于已婚夫妇。",
+      "word": "regulation",
+      "examples": [
+        {
+          "zh": "这一规定的实施有利于已婚夫妇。",
+          "en": "The regulation operates in favour of married couples."
+        }
+      ],
+      "familiar": false,
+      "total_count": 8,
+      "right_count": 7,
+      "created_timestamp": 1714913039590,
+      "id": 101,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈstrʌɡ(ə)l",
+      "explanations": [
+        "v. 奋斗，努力；搏斗，扭打，挣扎脱身；争夺，争抢；奋力前进，艰难行进"
+      ],
+      "example": "He gave up the struggle in despair.",
+      "example_zh": "他绝望地放弃了斗争。",
+      "word": "struggle",
+      "examples": [
+        {
+          "zh": "他绝望地放弃了斗争。",
+          "en": "He gave up the struggle in despair."
+        }
+      ],
+      "familiar": false,
+      "total_count": 14,
+      "right_count": 12,
+      "created_timestamp": 1714912996071,
+      "id": 100,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "ˌɪnəˈveɪʃ(ə)n",
+      "explanations": [
+        "n. 新事物，新方法；革新，创新"
+      ],
+      "example": "His greatest innovation was the use of interchangeable parts.",
+      "example_zh": "他最伟大的创新是使用了可互换部件。",
+      "word": "innovation",
+      "examples": [
+        {
+          "zh": "他最伟大的创新是使用了可互换部件。",
+          "en": "His greatest innovation was the use of interchangeable parts."
+        }
+      ],
+      "familiar": false,
+      "total_count": 25,
+      "right_count": 17,
+      "created_timestamp": 1714865047152,
+      "id": 98,
+      "right_rate": "68.00"
+    },
+    {
+      "phonetic": "ˈkrɪtɪk(ə)l",
+      "explanations": [
+        "adj. 批判的，爱挑剔的；极其重要的，关键的；严重的，危急的；病重的，重伤的；评论性的，评论家的；临界的"
+      ],
+      "example": "We need to become critical text-readers.",
+      "example_zh": "我们需要成为批判性的文本阅读者。",
+      "word": "critical",
+      "examples": [
+        {
+          "zh": "我们需要成为批判性的文本阅读者。",
+          "en": "We need to become critical text-readers."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1714556525956,
+      "id": 97,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈkrɪtɪsaɪz",
+      "explanations": [
+        "v. 批评，指责；评论"
+      ],
+      "example": "All you ever do is criticize!",
+      "example_zh": "你就知道批评！",
+      "word": "criticize",
+      "examples": [
+        {
+          "zh": "她倾向于无情地批评别人，而不考虑她的话语对他们感情的影响。",
+          "en": "She tends to criticize others relentlessly without considering the impact of her words on their feelings."
+        }
+      ],
+      "familiar": false,
+      "total_count": 29,
+      "right_count": 21,
+      "created_timestamp": 1714556486885,
+      "id": 96,
+      "right_rate": "72.41"
+    },
+    {
+      "phonetic": "ˈkredɪt",
+      "explanations": [
+        "n. 信用，信贷，赊购；赞扬，信誉，声望；存款金额，余额；补助；退税，抵免；学分；带来荣耀的人（或事）；作品（指影片、电视节目、戏剧等）；信任，相信"
+      ],
+      "example": "Does the hotel take credit cards?",
+      "example_zh": "这家旅馆接受信用卡付款吗？",
+      "word": "credit",
+      "examples": [
+        {
+          "zh": "这家旅馆接受信用卡付款吗？",
+          "en": "Does the hotel take credit cards?"
+        },
+        {
+          "zh": "我现在所拥有的一切，都要归功于教育。",
+          "en": "That's the thing I credit the education for everything I have right now."
+        },
+        {
+          "zh": "我们能取得今天的成功，你们的不懈努力功不可没。",
+          "en": "Your relentless efforts are the thing that I credit for the success we have right now."
+        }
+      ],
+      "familiar": false,
+      "total_count": 10,
+      "right_count": 8,
+      "created_timestamp": 1714556486885,
+      "id": 95,
+      "right_rate": "80.00"
+    },
+    {
+      "phonetic": "ˈmaɪɡreɪt",
+      "explanations": [
+        "v. （候鸟或动物）迁徙；（尤指为找工作）移居，迁移；转移（从一个部位移到另一部位）；把（程序，硬件）从一系统转移到另一系统；改用操作系统"
+      ],
+      "example": "Swallows migrate south in winter.",
+      "example_zh": "燕子在冬天迁徙到南方。",
+      "word": "migrate",
+      "examples": [
+        {
+          "zh": "燕子在冬天迁徙到南方。",
+          "en": "Swallows migrate south in winter."
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1714436471137,
+      "id": 94,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ɡræsp",
+      "explanations": [
+        "v. 抓牢，握紧；理解，领会；抓住（机会）"
+      ],
+      "example": "Success was within her grasp.",
+      "example_zh": "她有把握获得成功。",
+      "word": "grasp",
+      "examples": [
+        {
+          "zh": "我真的觉得中国的年轻人真的需要睁开眼睛，认识到世界就在他们的掌握之中。",
+          "en": "I really feel like the youth in China really need to open their eyes and realize that the world is within their grasp."
+        },
+        {
+          "zh": "我们可能还没有完全理解这个概念，你能提供一些额外的细节吗？也许可以提供一些截图、视频什么的？",
+          "en": "We might not fully grasp the concept, could you please provide some additional details? Perhaps some videos, images, or something?"
+        }
+      ],
+      "familiar": false,
+      "total_count": 6,
+      "right_count": 6,
+      "created_timestamp": 1714436073760,
+      "id": 93,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kənˈstreɪnt",
+      "explanations": [
+        "n. 限制，束缚；克制，拘束"
+      ],
+      "example": "Journalists were given the freedom to visit, investigate, and report without constraint.",
+      "example_zh": "新闻记者被赋予在没有约束下参观、调查和报道的自由。",
+      "word": "constraint",
+      "examples": [
+        {
+          "zh": "新闻记者被赋予在没有约束下参观、调查和报道的自由。",
+          "en": "Journalists were given the freedom to visit, investigate, and report without constraint."
+        },
+        {
+          "zh": "从工程设计的角度来看，我们建议文本保持简洁，以避免 UI 空间的限制。\n\n",
+          "en": "From the engineering perspective, we recommend keeping the text concise to avoid the UI space constraint (肯straint).\n\n"
+        }
+      ],
+      "familiar": false,
+      "total_count": 64,
+      "right_count": 34,
+      "created_timestamp": 1714096274423,
+      "id": 92,
+      "right_rate": "53.13",
+      "similar_words": [
+        "restriction"
+      ]
+    },
+    {
+      "phonetic": "kənˈsaɪs",
+      "explanations": [
+        "adj. 简明的，简洁的"
+      ],
+      "example": "Burton's text is concise and informative.",
+      "example_zh": "伯顿的文章文字简洁、内容丰富。",
+      "word": "concise",
+      "examples": [
+        {
+          "zh": "伯顿的文章文字简洁、内容丰富。",
+          "en": "Burton's text is concise and informative."
+        }
+      ],
+      "familiar": false,
+      "total_count": 14,
+      "right_count": 11,
+      "created_timestamp": 1714096274423,
+      "id": 91,
+      "right_rate": "78.57"
+    },
+    {
+      "phonetic": "ɪnˈkɔːrpəreɪt",
+      "explanations": [
+        "v. 包含，合并；组成公司；掺和，混合（成分）；使具体化，体现"
+      ],
+      "example": "The new cars will incorporate a number of major improvements.",
+      "example_zh": "这种新型汽车将包含许多重大的改进。",
+      "word": "incorporate",
+      "examples": [
+        {
+          "zh": "我们计划在下周四发布的 v0.20 版本中加入这两项改进。",
+          "en": "We plan to incorporate these two improvements into the v0.20 release scheduled for next Thursday."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 45,
+      "right_count": 26,
+      "id": 90,
+      "right_rate": "57.78"
+    },
+    {
+      "phonetic": "ˌdɪfəˈrenʃieɪt",
+      "explanations": [
+        "v. 使不同；求……的微分；区别"
+      ],
+      "example": "I can't differentiate one variety from another.",
+      "example_zh": "我无法将这几个品种区别开来。",
+      "word": "differentiate",
+      "examples": [
+        {
+          "zh": "我无法将这几个品种区别开来。",
+          "en": "I can't differentiate one variety from another."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 45,
+      "right_count": 30,
+      "id": 89,
+      "right_rate": "66.67"
+    },
+    {
+      "phonetic": "ˈnɑːv(ə)lti",
+      "explanations": [
+        "n. 新颖，新奇性；新奇的事物（或人、环境）；廉价小饰物，小玩意儿"
+      ],
+      "example": "Stores really like orange cauliflower because it's a novelty, it's something different.",
+      "example_zh": "商店真地喜欢橘黄色花椰菜，因为它是一种新奇的东西，与众不同。",
+      "word": "novelty",
+      "examples": [
+        {
+          "zh": "商店真地喜欢橘黄色花椰菜，因为它是一种新奇的东西，与众不同。",
+          "en": "Stores really like orange cauliflower because it's a novelty, it's something different."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 38,
+      "right_count": 24,
+      "id": 88,
+      "right_rate": "63.16"
+    },
+    {
+      "phonetic": "rɪˈlentləs",
+      "explanations": [
+        "adj. 坚韧的，不屈不挠的；残酷无情的，不留情面的；不停的，不间断的"
+      ],
+      "example": "His quest for perfection is relentless.",
+      "example_zh": "他对完美的追求是不懈的。",
+      "word": "relentless",
+      "examples": [
+        {
+          "zh": "他对完美的追求是不懈的。",
+          "en": "His quest for perfection is relentless."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 9,
+      "right_count": 8,
+      "id": 87,
+      "right_rate": "88.89"
+    },
+    {
+      "phonetic": "ɪˈnɪʃətɪv",
+      "explanations": [
+        "n. 措施，倡议；主动性，积极性；主动权；（美国某些州的）公民立法提案程序"
+      ],
+      "example": "We have the initiative; we intend to keep it.",
+      "example_zh": "我们拥有主动权；我们想要保持主动权。",
+      "word": "initiative",
+      "examples": [
+        {
+          "zh": "通过主动探索新框架和新技术，我们的团队领导极大地促进了软件开发项目的创新和效率。",
+          "en": "By taking the initiative to explore new frameworks and technologies, our team lead significantly contributed to the innovation and efficiency of our software development projects."
+        },
+        {
+          "zh": "在整个开发过程中，我主动对代码库进行了重构，将复杂的逻辑进行了仔细的解耦。",
+          "en": "Throughout the development process, I took the initiative to refactor the codebase, carefully decoupling complex logic."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 57,
+      "right_count": 37,
+      "id": 86,
+      "right_rate": "64.91"
+    },
+    {
+      "phonetic": "ɑːrˌtɪkjuˈleɪʃn",
+      "explanations": [
+        "n. （想法、思想等的）语言表达；清楚的咬字（或发音），说话；关节连接，铰接式接头"
+      ],
+      "example": "The singer worked hard on the clear articulation of every note.",
+      "example_zh": "歌手苦练以便每一个音都唱得清晰。",
+      "word": "articulation",
+      "examples": [
+        {
+          "zh": "歌手苦练以便每一个音都唱得清晰。",
+          "en": "The singer worked hard on the clear articulation of every note."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 85,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "ænˈtɪsɪpeɪt",
+      "explanations": [
+        "v. 预期，预料；预见（并做准备）；期望，盼望；先于……做，早于……行动；提前使用；在期限内履行（义务），偿还（债务）"
+      ],
+      "example": "We anticipate that sales will rise next year.",
+      "example_zh": "我们预料明年销售量将会增加。",
+      "word": "anticipate",
+      "examples": [
+        {
+          "zh": "我们预计将在下周一恢复暂存环境，届时您可以恢复测试，感谢您的理解。",
+          "en": "We anticipate restoring the staging environment next Monday, enabling you to resume testing at that time, thank you for your understanding."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 13,
+      "right_count": 10,
+      "id": 84,
+      "right_rate": "76.92",
+      "similar_words": [
+        "expect"
+      ]
+    },
+    {
+      "phonetic": "ɪnˈtuːɪtɪv",
+      "explanations": [
+        "adj. 直觉的；有直觉力的；易懂的，使用简便的"
+      ],
+      "example": "He had an intuitive sense of what the reader wanted.",
+      "example_zh": "他能直觉地感到读者需要什么。",
+      "word": "intuitive",
+      "examples": [
+        {
+          "zh": "他能直觉地感到读者需要什么。",
+          "en": "He had an intuitive sense of what the reader wanted."
+        },
+        {
+          "zh": "从表面上看，人们正在接受口音的多样性，但人们仍然凭直觉判断他人的口音。",
+          "en": "On the surface, people are embracing the diversity of accents, but people still judge others by accents intuitively."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 83,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ɪˈlɪmɪneɪt",
+      "explanations": [
+        "v. 剔除，根除；对……不予考虑，把……排除在外；（比赛中）淘汰；铲除，杀害；（生理）排除，排泄；消去"
+      ],
+      "example": "This diet claims to eliminate toxins from the body.",
+      "example_zh": "这种饮食据称具有排除体内毒素的作用。",
+      "word": "eliminate",
+      "examples": [
+        {
+          "zh": "这种饮食据称具有排除体内毒素的作用。",
+          "en": "This diet claims to eliminate toxins from the body."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 13,
+      "right_count": 10,
+      "id": 82,
+      "right_rate": "76.92"
+    },
+    {
+      "phonetic": "ɪmˈbreɪs",
+      "explanations": [
+        "v. 拥抱；欣然接受，乐意采纳；包括，涉及；围绕，环绕"
+      ],
+      "example": "He held her in a warm embrace.",
+      "example_zh": "他热烈地拥抱着她。",
+      "word": "embrace",
+      "examples": [
+        {
+          "zh": "我们公司欢迎每个人的多样性。",
+          "en": "Our company embraces the diversity of every individual."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 11,
+      "id": 81,
+      "right_rate": "78.57"
+    },
+    {
+      "phonetic": "kəˌlæbəˈreɪʃ(ə)n",
+      "explanations": [
+        "n. 合作，协作；勾结，通敌；合作成果"
+      ],
+      "example": "It was a collaboration that produced extremely useful results.",
+      "example_zh": "这是一次带来极其有益的成果的合作。",
+      "word": "collaboration",
+      "examples": [
+        {
+          "zh": "这是一次带来极其有益的成果的合作。",
+          "en": "It was a collaboration that produced extremely useful results."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 26,
+      "right_count": 19,
+      "id": 80,
+      "right_rate": "73.08"
+    },
+    {
+      "phonetic": "ɪnˈkaʊntər",
+      "explanations": [
+        "v. 遭遇；偶遇，邂逅"
+      ],
+      "example": "Did you encounter anyone in the building?",
+      "example_zh": "你在那栋大楼里偶然遇到什么人了吗？",
+      "word": "encounter",
+      "examples": [
+        {
+          "zh": "你在那栋大楼里偶然遇到什么人了吗？",
+          "en": "Did you encounter anyone in the building?"
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 79,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "praɪˈɔːrətaɪz",
+      "explanations": [
+        "v. 按优先顺序列出；优先考虑（处理）"
+      ],
+      "example": "The organization was formed to prioritize the needs of older people.",
+      "example_zh": "这个机构是为优先满足老年人的需要而成立的。",
+      "word": "prioritize",
+      "examples": [
+        {
+          "zh": "这个机构是为优先满足老年人的需要而成立的。",
+          "en": "The organization was formed to prioritize the needs of older people."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 54,
+      "right_count": 34,
+      "id": 78,
+      "right_rate": "62.96"
+    },
+    {
+      "phonetic": "ˌɪləˈstreɪʃ(ə)n",
+      "explanations": [
+        "n. 插图，图解；说明，例释；实例，示例"
+      ],
+      "example": "Let me, by way of illustration , quote from one of her poems.",
+      "example_zh": "作为说明，让我援引她的一首诗。",
+      "word": "illustration",
+      "examples": [
+        {
+          "zh": "作为说明，让我援引她的一首诗。",
+          "en": "Let me, by way of illustration , quote from one of her poems."
+        },
+        {
+          "zh": "这说明，如果重挂载破坏了应用程序的逻辑，通常会发现现有的错误。",
+          "en": "This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 21,
+      "right_count": 16,
+      "id": 77,
+      "right_rate": "76.19"
+    },
+    {
+      "phonetic": "səˈnærioʊ",
+      "explanations": [
+        "n. 设想，可能发生的情况 ；（电影、戏剧等的）剧情梗概；（艺术或文学作品中的）场景"
+      ],
+      "example": "The worst-case scenario is an aircraft will crash if a bird destroys an engine.",
+      "example_zh": "如果小鸟毁坏了一部发动机，最坏的情形是飞机坠毁。",
+      "word": "scenario",
+      "examples": [
+        {
+          "zh": "如果小鸟毁坏了一部发动机，最坏的情形是飞机坠毁。",
+          "en": "The worst-case scenario is an aircraft will crash if a bird destroys an engine."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 76,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈsɜːrkəmstæns",
+      "explanations": [
+        "n. 条件，情况，环境；境况，经济状况；详情，原委；命运，境遇"
+      ],
+      "example": "I know I can trust her in any circumstance.",
+      "example_zh": "我知道我在任何情况下都能信任她。",
+      "word": "circumstance",
+      "examples": [
+        {
+          "zh": "我知道我在任何情况下都能信任她。",
+          "en": "I know I can trust her in any circumstance."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 48,
+      "right_count": 31,
+      "id": 75,
+      "right_rate": "64.58"
+    },
+    {
+      "phonetic": "ɪkˈsepʃən(ə)l",
+      "explanations": [
+        "adj. 卓越的，杰出的；不寻常的，罕见的；（心理或身体上）有缺陷的"
+      ],
+      "example": "This deadline will be extended only in exceptional circumstances.",
+      "example_zh": "只有在特殊情况下才会延长最后期限。",
+      "word": "exceptional",
+      "examples": [
+        {
+          "zh": "只有在特殊情况下才会延长最后期限。",
+          "en": "This deadline will be extended only in exceptional circumstances."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 74,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "əˈkruːd",
+      "explanations": [
+        "adj. [会计]应计的；增值的；权责已发生的"
+      ],
+      "example": "The firm had accrued debts of over $6m.",
+      "example_zh": "该公司已积欠了600多万元的债务。",
+      "word": "accrued",
+      "examples": [
+        {
+          "zh": "该公司已积欠了600多万元的债务。",
+          "en": "The firm had accrued debts of over $6m."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 73,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈmændətɔːri",
+      "explanations": [
+        "adj. 强制性的，义务的；受（前国际联盟）委任统治的"
+      ],
+      "example": "He was married, and that was mandatory.",
+      "example_zh": "他结婚了，这是强制性的。",
+      "word": "mandatory",
+      "examples": [
+        {
+          "zh": "他结婚了，这是强制性的。",
+          "en": "He was married, and that was mandatory."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 72,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "prəˈpoʊnənt",
+      "explanations": [
+        "n. <正式>支持者，建议者；提出认证遗嘱者"
+      ],
+      "example": "Halsey was identified as a leading proponent of the values of progressive education.",
+      "example_zh": "哈尔西被认为是进步教育价值观的首要支持者。",
+      "word": "proponent",
+      "examples": [
+        {
+          "zh": "哈尔西被认为是进步教育价值观的首要支持者。",
+          "en": "Halsey was identified as a leading proponent of the values of progressive education."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 71,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "trænˈzækʃ(ə)n",
+      "explanations": [
+        "n. 交易，买卖，业务；（学术团体会议的）议事录，公报；（人与人之间的）交流，相互影响；事务（元），事项"
+      ],
+      "example": "The transaction is completed by payment of the fee.",
+      "example_zh": "交易在支付费用之后就完成了。",
+      "word": "transaction",
+      "examples": [
+        {
+          "zh": "交易在支付费用之后就完成了。",
+          "en": "The transaction is completed by payment of the fee."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 70,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "əˈkɑːmədeɪt",
+      "explanations": [
+        "v. 为……提供住宿；容纳，提供空间；考虑到，顾及；顺应，适应；帮助（某人），向……施以援手；迎合，迁就；调解"
+      ],
+      "example": "I needed to accommodate to the new schedule.",
+      "example_zh": "我需要适应新的时间表。",
+      "word": "accommodate",
+      "examples": [
+        {
+          "zh": "我需要适应新的时间表。",
+          "en": "I needed to accommodate to the new schedule."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 30,
+      "right_count": 19,
+      "id": 69,
+      "right_rate": "63.33"
+    },
+    {
+      "phonetic": "dɪˈmɑːkrəsi",
+      "explanations": [
+        "n. 民主政体；民主国家；民主，民主精神"
+      ],
+      "example": null,
+      "example_zh": null,
+      "word": "democracy",
+      "examples": [
+        {
+          "zh": "在一个健康的民主社会中，公民有权通过投票和公民参与来影响政府决策。",
+          "en": "In a healthy democracy, citizens have the power to influence government decisions through voting and civic engagement."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 28,
+      "right_count": 21,
+      "id": 68,
+      "right_rate": "75.00"
+    },
+    {
+      "phonetic": "ɪˈsenʃ(ə)l",
+      "explanations": [
+        "adj. 必不可少的，非常重要的；基本的，精髓的；（氨基酸、脂肪酸）必需的；（疾病）自发的，原发的"
+      ],
+      "example": "Money is not essential to happiness.",
+      "example_zh": "金钱对于幸福并非必不可少。",
+      "word": "essential",
+      "examples": [
+        {
+          "zh": "金钱对于幸福并非必不可少。",
+          "en": "Money is not essential to happiness."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 67,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kəmˈpetɪtər",
+      "explanations": [
+        "n. 竞争者，对手；选手，参赛者"
+      ],
+      "example": "The opposite of an opportunist is a competitor.",
+      "example_zh": "与机会主义者对立的是竞争者。",
+      "word": "competitor",
+      "examples": [
+        {
+          "zh": "与机会主义者对立的是竞争者。",
+          "en": "The opposite of an opportunist is a competitor."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 24,
+      "right_count": 18,
+      "id": 66,
+      "right_rate": "75.00"
+    },
+    {
+      "phonetic": "ˌɪntərˈmiːdiət",
+      "explanations": [
+        "adj. 居中的，中间的；中等程度的，中级的"
+      ],
+      "example": "Students are categorized as novice, intermediate, or advanced.",
+      "example_zh": "学生分为新生、中级生或高级生。",
+      "word": "intermediate",
+      "examples": [
+        {
+          "zh": "学生分为新生、中级生或高级生。",
+          "en": "Students are categorized as novice, intermediate, or advanced."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 65,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌsʌbstɪˈtuːʃn",
+      "explanations": [
+        "n. 代替，替换；代替物；（数） 置换"
+      ],
+      "example": "In my experience a straight substitution of carob for chocolate doesn't work.",
+      "example_zh": "以我的经验，角豆直接代替巧克力不会奏效。",
+      "word": "substitution",
+      "examples": [
+        {
+          "zh": "以我的经验，角豆直接代替巧克力不会奏效。",
+          "en": "In my experience a straight substitution of carob for chocolate doesn't work."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 64,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ɪnˈfektɪd",
+      "explanations": [
+        "adj. （身体部位或伤口）受感染的；（食品、水等）受细菌污染的；（计算机或磁盘）受病毒感染的"
+      ],
+      "example": "Dog bites can get infected.",
+      "example_zh": "狗咬的伤口会感染。",
+      "word": "infected",
+      "examples": [
+        {
+          "zh": "狗咬的伤口会感染。",
+          "en": "Dog bites can get infected."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 63,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈmʌntʃiz",
+      "explanations": [
+        "n. 小点心"
+      ],
+      "example": "He foraged in the refrigerator for munchies.",
+      "example_zh": "他在冰箱里搜找零食。",
+      "word": "munchies",
+      "examples": [
+        {
+          "zh": "他在冰箱里搜找零食。",
+          "en": "He foraged in the refrigerator for munchies."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 27,
+      "right_count": 20,
+      "id": 62,
+      "right_rate": "74.07"
+    },
+    {
+      "phonetic": "kənˈdʌkt",
+      "explanations": [
+        "v. 实施，进行；指挥；带领，引导；举止，表现；传导"
+      ],
+      "example": "He was ejected for unsporting conduct.",
+      "example_zh": "他因为不符合运动员道德的行为被驱逐。",
+      "word": "conduct",
+      "examples": [
+        {
+          "zh": "他因为不符合运动员道德的行为被驱逐。",
+          "en": "He was ejected for unsporting conduct."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 61,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kənˈsɪstənt",
+      "explanations": [
+        "adj. 始终如一的，一贯的；持续的，连续的；固守的，坚持的；一致的，吻合的"
+      ],
+      "example": "A theory should be internally consistent.",
+      "example_zh": "一套理论应当内在一致。",
+      "word": "consistent",
+      "examples": [
+        {
+          "zh": "一套理论应当内在一致。",
+          "en": "A theory should be internally consistent."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 30,
+      "right_count": 20,
+      "id": 60,
+      "right_rate": "66.67"
+    },
+    {
+      "phonetic": "ˌvʌlnərəˈbɪləti",
+      "explanations": [
+        "n. 易损性，弱点；（桥牌）局况"
+      ],
+      "example": "David accepts his own vulnerability.",
+      "example_zh": "戴维承认自己的脆弱。",
+      "word": "vulnerability",
+      "examples": [
+        {
+          "zh": "分享自己的感受会让人感到脆弱，但同时也能建立信任。",
+          "en": "Sharing your feelings can create a sense of vulnerability, but it also builds trust."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 38,
+      "right_count": 24,
+      "id": 59,
+      "right_rate": "63.16"
+    },
+    {
+      "phonetic": "ˌproʊˈæktɪvli",
+      "explanations": [
+        "adv. 前摄地；主动地"
+      ],
+      "example": "Proactively calculate the value you provide to your employer.",
+      "example_zh": "积极主动地计算你提供给老板的价值。",
+      "word": "proactively",
+      "examples": [
+        {
+          "zh": "积极主动地计算你提供给老板的价值。",
+          "en": "Proactively calculate the value you provide to your employer."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 58,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈkæʒuəl",
+      "explanations": [
+        "adj. 休闲的，便装的；随便的，非正式的；漫不经心的，随意的；临时的，短期的；碰巧的，偶然的；不认真的，马虎的；不定期的，偶尔的；感情不深的，疏远的"
+      ],
+      "example": "The boy was cheeky and casual.",
+      "example_zh": "这个男孩嘻皮笑脸、随随便便。",
+      "word": "casual",
+      "examples": [
+        {
+          "zh": "这个男孩嘻皮笑脸、随随便便。",
+          "en": "The boy was cheeky and casual."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 57,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "ˈvɜːrsət(ə)l",
+      "explanations": [
+        "adj. 多才多艺的，有多种技能的；多用途的，多功能的"
+      ],
+      "example": "He is sparkling and versatile in front of the camera.",
+      "example_zh": "他在摄影机前聪颖机智、多才多艺。",
+      "word": "versatile",
+      "examples": [
+        {
+          "zh": "他在摄影机前聪颖机智、多才多艺。",
+          "en": "He is sparkling and versatile in front of the camera."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 32,
+      "right_count": 23,
+      "id": 56,
+      "right_rate": "71.88"
+    },
+    {
+      "phonetic": "ˌkɑːmplɪˈment(ə)ri",
+      "explanations": [
+        "adj. 相互补充的，相辅相成的；互补色的；（基因序列、核苷酸等）互补的；（与）补充医学（有关）的；余角的，互为余角的"
+      ],
+      "example": "He has done experiments complementary to those of Eigen.",
+      "example_zh": "他已经做了与艾根的实验互补的实验。",
+      "word": "complementary",
+      "examples": [
+        {
+          "zh": "他已经做了与艾根的实验互补的实验。",
+          "en": "He has done experiments complementary to those of Eigen."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 11,
+      "id": 55,
+      "right_rate": "78.57"
+    },
+    {
+      "phonetic": "preɪ",
+      "explanations": [
+        "v. 祈祷，祷告；渴望，祈望；祈求，恳求"
+      ],
+      "example": "Will you pray to Our Lady for me?",
+      "example_zh": "你能为我向圣母马利亚祈祷吗？",
+      "word": "pray",
+      "examples": [
+        {
+          "zh": "你能为我向圣母马利亚祈祷吗？",
+          "en": "Will you pray to Our Lady for me?"
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 54,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "ˈembəsi",
+      "explanations": [
+        "n. 大使馆工作人员；大使馆；（外交）特别使团"
+      ],
+      "example": "Iran reopened its embassy in London.",
+      "example_zh": "伊朗重新开放了在伦敦的大使馆。",
+      "word": "embassy",
+      "examples": [
+        {
+          "zh": "伊朗重新开放了在伦敦的大使馆。",
+          "en": "Iran reopened its embassy in London."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 53,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈɪntɜːrn",
+      "explanations": [
+        "v. （由于政治原因或战时）拘留，扣押；<美>做实习医生（或实习生）"
+      ],
+      "example": "The intern likely took the letter again once nobody was watching it.",
+      "example_zh": "这个实习生很有可能在没人看管的时候又拿走了这封信。",
+      "word": "intern",
+      "examples": [
+        {
+          "zh": "这个实习生很有可能在没人看管的时候又拿走了这封信。",
+          "en": "The intern likely took the letter again once nobody was watching it."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 52,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌkɑːmplɪˈmentri",
+      "explanations": [
+        "adj. 赞美的，表示钦佩的；免费赠送的"
+      ],
+      "example": "There was a complimentary basket of fruit in our room.",
+      "example_zh": "我们房间里有一篮免费赠送的水果。",
+      "word": "complimentary",
+      "examples": [
+        {
+          "zh": "我们房间里有一篮免费赠送的水果。",
+          "en": "There was a complimentary basket of fruit in our room."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 34,
+      "right_count": 23,
+      "id": 51,
+      "right_rate": "67.65"
+    },
+    {
+      "phonetic": "ˈɪntɪɡreɪt",
+      "explanations": [
+        "v. （使）合并，成为一体；（使）加入，融入群体；（使）取消种族隔离；求……的积分；表示（面积、温度等）的总和，表示……的平均值"
+      ],
+      "example": "The strategy is to integrate the development of these cities for a better economic structure.",
+      "example_zh": "策略就是整合这些城市的发展，以便形成更好的经济结构。",
+      "word": "Integrate",
+      "examples": [
+        {
+          "zh": "策略就是整合这些城市的发展，以便形成更好的经济结构。",
+          "en": "The strategy is to integrate the development of these cities for a better economic structure."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 11,
+      "id": 50,
+      "right_rate": "78.57"
+    },
+    {
+      "phonetic": "ˈheɪtrɪd",
+      "explanations": [
+        "n. 仇恨，憎恨，敌意"
+      ],
+      "example": "The room was charged with hatred.",
+      "example_zh": "这个房间里充满了敌意。",
+      "word": "hatred",
+      "examples": [
+        {
+          "zh": "这个房间里充满了敌意。",
+          "en": "The room was charged with hatred."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 49,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈfɔːrmoʊst",
+      "explanations": [
+        "adj. 最前的，最重要的"
+      ],
+      "example": "It is first and foremost a trade agreement.",
+      "example_zh": "它首先是一项贸易协定。",
+      "word": "foremost",
+      "examples": [
+        {
+          "zh": "它首先是一项贸易协定。",
+          "en": "It is first and foremost a trade agreement."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 48,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "æŋˈzaɪəti",
+      "explanations": [
+        "n. 焦虑，忧虑；令人焦虑的事；渴望；焦虑症"
+      ],
+      "example": "Her voice was full of anxiety.",
+      "example_zh": "她的声音饱含焦虑。",
+      "word": "anxiety",
+      "examples": [
+        {
+          "zh": "她的声音饱含焦虑。",
+          "en": "Her voice was full of anxiety."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 47,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "əbˈhɔːrənt",
+      "explanations": [
+        "adj. 可恶的；厌恶的；格格不入的"
+      ],
+      "example": "Racism is abhorrent to a civilized society.",
+      "example_zh": "文明社会憎恶种族主义。",
+      "word": "abhorrent",
+      "examples": [
+        {
+          "zh": "文明社会憎恶种族主义。",
+          "en": "Racism is abhorrent to a civilized society."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 21,
+      "right_count": 16,
+      "id": 46,
+      "right_rate": "76.19"
+    },
+    {
+      "phonetic": "ˈterərɪzəm",
+      "explanations": [
+        "n. 恐怖主义"
+      ],
+      "example": "We need to unite against terrorism.",
+      "example_zh": "我们需要团结起来反对恐怖主义。",
+      "word": "terrorism",
+      "examples": [
+        {
+          "zh": "我们需要团结起来反对恐怖主义。",
+          "en": "We need to unite against terrorism."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 25,
+      "right_count": 16,
+      "id": 45,
+      "right_rate": "64.00"
+    },
+    {
+      "phonetic": "ˈkɑːmpenseɪt",
+      "explanations": [
+        "v. 赔偿，偿付；弥补，补偿；抵消；酬报（某人）"
+      ],
+      "example": "Nothing can compensate for the loss of a loved one.",
+      "example_zh": "失去心爱的人是无法补偿的。",
+      "word": "compensate",
+      "examples": [
+        {
+          "zh": "失去心爱的人是无法补偿的。",
+          "en": "Nothing can compensate for the loss of a loved one."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 44,
+      "right_rate": "100.00",
+      "similar_words": [
+        "redeem"
+      ]
+    },
+    {
+      "phonetic": "ˈɪmɪteɪt",
+      "explanations": [
+        "v. 模仿，仿效；作滑稽模仿；仿造，伪造"
+      ],
+      "example": "Teachers provide a model for children to imitate.",
+      "example_zh": "教师是孩子仿效的典范。",
+      "word": "imitate",
+      "examples": [
+        {
+          "zh": "教师是孩子仿效的典范。",
+          "en": "Teachers provide a model for children to imitate."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 39,
+      "right_count": 25,
+      "id": 43,
+      "right_rate": "64.10"
+    },
+    {
+      "phonetic": "səˈlebrəti",
+      "explanations": [
+        "n. 名声，名望；名人，明星"
+      ],
+      "example": "She achieved celebrity status overnight.",
+      "example_zh": "她一夜之间成为名流。",
+      "word": "celebrity",
+      "examples": [
+        {
+          "zh": "她一夜之间成为名流。",
+          "en": "She achieved celebrity status overnight."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 25,
+      "right_count": 18,
+      "id": 42,
+      "right_rate": "72.00"
+    },
+    {
+      "phonetic": "ɪˈmɜːrs",
+      "explanations": [
+        "v. 使沉浸（于），使深陷（于）；使浸没（于液体中）"
+      ],
+      "example": "Their commitments do not permit them to immerse themselves in current affairs as fully as they might wish.",
+      "example_zh": "他们的职责不允许他们如其所愿地埋头于时事。",
+      "word": "immerse",
+      "examples": [
+        {
+          "zh": "他们的职责不允许他们如其所愿地埋头于时事。",
+          "en": "Their commitments do not permit them to immerse themselves in current affairs as fully as they might wish."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 41,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "rɪˈstrɪkʃ(ə)n",
+      "explanations": [
+        "n. 限制规定，限制法规；（受）限制（状态），（受）约束（状态）；制约因素"
+      ],
+      "example": "Since the costs of science were rising faster than inflation, some restriction on funding was necessary.",
+      "example_zh": "既然科学成本上涨快于通货膨胀，资助上的一些限制是必要的。",
+      "word": "restriction",
+      "examples": [
+        {
+          "zh": "既然科学成本上涨快于通货膨胀，资助上的一些限制是必要的。",
+          "en": "Since the costs of science were rising faster than inflation, some restriction on funding was necessary."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 32,
+      "right_count": 22,
+      "id": 40,
+      "right_rate": "68.75",
+      "similar_words": [
+        "constraint"
+      ]
+    },
+    {
+      "phonetic": "prəˈpoʊz(ə)l",
+      "explanations": [
+        "n. 提议，建议；提案；（计划、建议等的）提出；求婚"
+      ],
+      "example": "The proposal was emphatically defeated.",
+      "example_zh": "这个建议已被断然否决。",
+      "word": "proposal",
+      "examples": [
+        {
+          "zh": "这个建议已被断然否决。",
+          "en": "The proposal was emphatically defeated."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 39,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "kəmˈpætəb(ə)l",
+      "explanations": [
+        "adj. 兼容的；可共存的；可和睦相处的；与……一致的"
+      ],
+      "example": "The new system will be compatible with existing equipment.",
+      "example_zh": "新的系统将与现有的设备相互兼容。",
+      "word": "compatible",
+      "examples": [
+        {
+          "zh": "新的系统将与现有的设备相互兼容。",
+          "en": "The new system will be compatible with existing equipment."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 28,
+      "right_count": 19,
+      "id": 38,
+      "right_rate": "67.86"
+    },
+    {
+      "phonetic": "meɪnˈteɪnəbl",
+      "explanations": [
+        "adj. 可维持的；可主张的；可维修的"
+      ],
+      "example": "Design maintainable CSS structure.",
+      "example_zh": "设计可维护的CSS结构。",
+      "word": "maintainable",
+      "examples": [
+        {
+          "zh": "设计可维护的CSS结构。",
+          "en": "Design maintainable CSS structure."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 8,
+      "id": 37,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈtaɪpoʊ",
+      "explanations": [
+        "n. <非正式>排印错误"
+      ],
+      "example": "That is not a typo!",
+      "example_zh": "这不是打错字了！",
+      "word": "typo",
+      "examples": [
+        {
+          "zh": "这不是打错字了！",
+          "en": "That is not a typo!"
+        }
+      ],
+      "familiar": true,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 36,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "səbˈstænʃəli",
+      "explanations": [
+        "adv. 大量地，可观地；大体上，基本上；很坚固地"
+      ],
+      "example": "The costs have increased substantially.",
+      "example_zh": "成本大大提高了。",
+      "word": "substantially",
+      "examples": [
+        {
+          "zh": "成本大大提高了。",
+          "en": "The costs have increased substantially."
+        },
+        {
+          "zh": "生活成本从去年开始大大地提高了",
+          "en": "The cost of living has increased substantially over the past year."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 29,
+      "right_count": 22,
+      "id": 35,
+      "right_rate": "75.86",
+      "similar_words": [
+        "adequately",
+        "mainly"
+      ]
+    },
+    {
+      "phonetic": "ˈʃʌv(ə)l",
+      "explanations": [
+        "n. 铲子，铁锹；（推土机、挖土机等的）铲，铲形部分；一铲（的量）"
+      ],
+      "example": "He has to get out and shovel snow.",
+      "example_zh": "他不得不出去铲雪。",
+      "word": "shovel",
+      "examples": [
+        {
+          "zh": "他不得不出去铲雪。",
+          "en": "He has to get out and shovel snow."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 21,
+      "right_count": 16,
+      "id": 34,
+      "right_rate": "76.19"
+    },
+    {
+      "phonetic": "ˈskæfoʊld",
+      "explanations": [
+        "n. 脚手架；鹰架；绞刑台"
+      ],
+      "example": "They were standing on top of a giant scaffold.",
+      "example_zh": "他们站在一个巨大的脚手架顶上。",
+      "word": "scaffold",
+      "examples": [
+        {
+          "zh": "他们站在一个巨大的脚手架顶上。",
+          "en": "They were standing on top of a giant scaffold."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 33,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌpriːˈrekwəzɪt",
+      "explanations": [
+        "n. 先决条件，前提；预备课程"
+      ],
+      "example": "Good self-esteem is a prerequisite for a happy life.",
+      "example_zh": "良好的自尊心是幸福生活的先决条件。",
+      "word": "prerequisite",
+      "examples": [
+        {
+          "zh": "良好的自尊心是幸福生活的先决条件。",
+          "en": "Good self-esteem is a prerequisite for a happy life."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 21,
+      "right_count": 16,
+      "id": 32,
+      "right_rate": "76.19"
+    },
+    {
+      "phonetic": "poʊˈspoʊn",
+      "explanations": [
+        "v. 推迟，延缓；把……放在次要地位；把……放在后面"
+      ],
+      "example": "I, for one, would prefer to postpone the meeting.",
+      "example_zh": "主张推迟会期的，我就是一个。",
+      "word": "postpone",
+      "examples": [
+        {
+          "zh": "主张推迟会期的，我就是一个。",
+          "en": "I, for one, would prefer to postpone the meeting."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 31,
+      "right_rate": "100.00",
+      "similar_words": [
+        "hold over",
+        "put over",
+        "defer"
+      ]
+    },
+    {
+      "phonetic": "pərˈspektɪv",
+      "explanations": [
+        "n. （观察问题的）视角，观点；透视（画）法；（几何）透视关系，投影比例；洞察力，判断力；景观，远景；角度；（声音）立体效果"
+      ],
+      "example": "In his art he broke the laws of scientific linear perspective.",
+      "example_zh": "他在自己的绘画艺术中打破了科学的直线透视法规律。",
+      "word": "perspective",
+      "examples": [
+        {
+          "zh": "在她看来，尽管挑战重重，但项目取得了成功。",
+          "en": "From her perspective, the project was a success despite the challenges."
+        },
+        {
+          "zh": "旅行有助于拓宽您对不同文化的视野。",
+          "en": "Traveling can help broaden your perspective on different cultures."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 24,
+      "right_count": 18,
+      "id": 30,
+      "right_rate": "75.00"
+    },
+    {
+      "phonetic": "ˌpɪriˈɑːdɪkli",
+      "explanations": [
+        "adv. 定期地，周期性地；偶尔，间歇"
+      ],
+      "example": "Mailing lists are updated periodically.",
+      "example_zh": "邮寄名单定期更新。",
+      "word": "periodically",
+      "examples": [
+        {
+          "zh": "邮寄名单定期更新。",
+          "en": "Mailing lists are updated periodically."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 29,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "pərˈtɪkjələrli",
+      "explanations": [
+        "adv. 非常，尤其；特别是；清楚地，明确地"
+      ],
+      "example": "2003 was a particularly fine vintage.",
+      "example_zh": "2003年是特别好的酿酒年份。",
+      "word": "particularly",
+      "examples": [
+        {
+          "zh": "2003年是特别好的酿酒年份。",
+          "en": "2003 was a particularly fine vintage."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 28,
+      "right_rate": "100.00",
+      "similar_words": [
+        "specifically"
+      ]
+    },
+    {
+      "phonetic": "ˌɔːriənˈteɪʃ(ə)n",
+      "explanations": [
+        "n. 目标，定位；方向，朝向；（基本的）态度，倾向；（岗前、学前、课前等的）情况介绍，培训；适应，熟悉"
+      ],
+      "example": "His sexual orientation was a lot more gay than straight.",
+      "example_zh": "他的性取向更像是同性恋的而非异性恋的。",
+      "word": "orientation",
+      "examples": [
+        {
+          "zh": "他的性取向更像是同性恋的而非异性恋的。",
+          "en": "His sexual orientation was a lot more gay than straight."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 26,
+      "right_rate": "85.71"
+    },
+    {
+      "phonetic": "ˈɑːptɪmaɪz",
+      "explanations": [
+        "v. 优化，充分利用（形势，机会，资源）；使（数据、软件等）优化；持乐观态度（=optimise）"
+      ],
+      "example": "Companies can also optimize their energy use and cut down on the cost of electricity.",
+      "example_zh": "企业还可以优化能源使用，降低用电成本。",
+      "word": "optimize",
+      "examples": [
+        {
+          "zh": "企业还可以优化能源使用，降低用电成本。",
+          "en": "Companies can also optimize their energy use and cut down on the cost of electricity."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 25,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈnuːˌɑːnst",
+      "explanations": [
+        "adj. 微妙的；具有细微差别的"
+      ],
+      "example": "We are long past being surprised when complicated and nuanced problems are, amid an electoral whirlwind, turned into reductionist rallying cries.",
+      "example_zh": "我们过去一直很惊讶，在选举旋风当中，简化论者会把所有复杂和琐碎的问题都会呼天抢地地吵闹一番。",
+      "word": "nuanced",
+      "examples": [
+        {
+          "zh": "我们过去一直很惊讶，在选举旋风当中，简化论者会把所有复杂和琐碎的问题都会呼天抢地地吵闹一番。",
+          "en": "We are long past being surprised when complicated and nuanced problems are, amid an electoral whirlwind, turned into reductionist rallying cries."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 26,
+      "right_count": 19,
+      "id": 24,
+      "right_rate": "73.08",
+      "similar_words": [
+        "delicate"
+      ]
+    },
+    {
+      "phonetic": "ˈdʒɜːrn(ə)l",
+      "explanations": [
+        "n. 杂志，期刊，报纸；日记，日志；（会计）日记账"
+      ],
+      "example": "Sara confided to her journal.",
+      "example_zh": "萨拉在日记中倾吐心事。",
+      "word": "journal",
+      "examples": [
+        {
+          "zh": "萨拉在日记中倾吐心事。",
+          "en": "Sara confided to her journal."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 23,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈɪnfrəstrʌktʃər",
+      "explanations": [
+        "n. 下面结构；永久性军事设施；基础设施，基础建设"
+      ],
+      "example": "Although South Africa has many of the attributes of the First World – some good infrastructure, millions of rich people – it is still not part of that world.",
+      "example_zh": "尽管南非具有第一世界的很多特征-良好的基础设施，成千上万的富翁-但它还并不属于那个世界。",
+      "word": "infrastructure",
+      "examples": [
+        {
+          "zh": "尽管南非具有第一世界的很多特征-良好的基础设施，成千上万的富翁-但它还并不属于那个世界。",
+          "en": "Although South Africa has many of the attributes of the First World – some good infrastructure, millions of rich people – it is still not part of that world."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 23,
+      "right_count": 15,
+      "id": 22,
+      "right_rate": "65.22"
+    },
+    {
+      "phonetic": "ˈɡrædʒuəl",
+      "explanations": [
+        "adj. 逐渐的，渐进的；平缓的，不陡的"
+      ],
+      "example": "Losing weight is a slow, gradual process.",
+      "example_zh": "减肥是一个缓慢而逐渐的过程。",
+      "word": "gradual",
+      "examples": [
+        {
+          "zh": "减肥是一个缓慢而逐渐的过程。",
+          "en": "Losing weight is a slow, gradual process."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 21,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˈɡʌvərnəns",
+      "explanations": [
+        "n. 统治方式，管理方法"
+      ],
+      "example": "By most measures, corporate governance has become a lot tighter and more rigorous since the 1970s.",
+      "example_zh": "从大多数标准来看，自上世纪70年代以来，公司治理已经变得越来越严苛。",
+      "word": "governance",
+      "examples": [
+        {
+          "zh": "从大多数标准来看，自上世纪70年代以来，公司治理已经变得越来越严苛。",
+          "en": "By most measures, corporate governance has become a lot tighter and more rigorous since the 1970s."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 20,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "flɪp",
+      "explanations": [
+        "v. （使）快速翻转，迅速翻动；快速翻阅，浏览；<非正式>勃然大怒，心烦意乱；（快速地）调频道，换台；轻抛，轻掷；按（开关）；（话题、活动或意见）突然改变，突然转换；改变，交换（位置）；突然变得热情，突然极感兴趣；为盈利而从速转卖（股份，财产）"
+      ],
+      "example": "The handstand was followed by a back flip.",
+      "example_zh": "先倒立，接着后空翻。",
+      "word": "flip",
+      "examples": [
+        {
+          "zh": "先倒立，接着后空翻。",
+          "en": "The handstand was followed by a back flip."
+        }
+      ],
+      "familiar": true,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 19,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌelɪˈmentri",
+      "explanations": [
+        "adj. 简单的，基本的；基础的，初级的；小学的；单一元素的，非化合物的"
+      ],
+      "example": "Literacy now includes elementary computer skills.",
+      "example_zh": "有文化现在包括基本的计算机技能。",
+      "word": "elementary",
+      "examples": [
+        {
+          "zh": "有文化现在包括基本的计算机技能。",
+          "en": "Literacy now includes elementary computer skills."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 18,
+      "right_rate": "87.50",
+      "similar_words": [
+        "fundamental",
+        "primary"
+      ]
+    },
+    {
+      "phonetic": "ˈdaʊnsaɪd",
+      "explanations": [
+        "n. 缺点，不利方面"
+      ],
+      "example": "The downside of this approach is a lack of clear leadership.",
+      "example_zh": "这种方式的不足之处是缺乏明确的指挥。",
+      "word": "downside",
+      "examples": [
+        {
+          "zh": "这种方式的不足之处是缺乏明确的指挥。",
+          "en": "The downside of this approach is a lack of clear leadership."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 17,
+      "right_rate": "100.00",
+      "similar_words": [
+        "defect"
+      ]
+    },
+    {
+      "phonetic": "dɪˈstɪŋkʃn",
+      "explanations": [
+        "n. 差别，区分；杰出，卓越；特点；荣誉"
+      ],
+      "example": "We need to draw a distinction between the two events.",
+      "example_zh": "我们得把两起事件区别开来。",
+      "word": "distinction",
+      "examples": [
+        {
+          "zh": "我们得把两起事件区别开来。",
+          "en": "We need to draw a distinction between the two events."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 24,
+      "right_count": 18,
+      "id": 16,
+      "right_rate": "75.00"
+    },
+    {
+      "phonetic": "dɪˈploʊmə",
+      "explanations": [
+        "n. 毕业文凭，学位证书；文凭课程，职业课程；公文，文书"
+      ],
+      "example": "Satisfactory completion of the course will lead to the award of the Diploma of Social Work.",
+      "example_zh": "合格完成此课程者将获得社会福利工作文凭。",
+      "word": "diploma",
+      "examples": [
+        {
+          "zh": "合格完成此课程者将获得社会福利工作文凭。",
+          "en": "Satisfactory completion of the course will lead to the award of the Diploma of Social Work."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 15,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "dɪkˈteɪʃ(ə)n",
+      "explanations": [
+        "n. 口述，听写；命令，发号施令"
+      ],
+      "example": "She is transcribing, from his dictation, the diaries of Simon Forman.",
+      "example_zh": "她正在根据他的口述记录西蒙·福曼的日记。",
+      "word": "dictation",
+      "examples": [
+        {
+          "zh": "她正在根据他的口述记录西蒙·福曼的日记。",
+          "en": "She is transcribing, from his dictation, the diaries of Simon Forman."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 14,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈdaɪəɡræm",
+      "explanations": [
+        "n. 图表，图解；几何图形"
+      ],
+      "example": "Like any such diagram, it is a simplification.",
+      "example_zh": "正如任何此类图表，这是个简图。",
+      "word": "diagram",
+      "examples": [
+        {
+          "zh": "正如任何此类图表，这是个简图。",
+          "en": "Like any such diagram, it is a simplification."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 13,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˌdaɪəɡˈnoʊsɪs",
+      "explanations": [
+        "n. 诊断，判断"
+      ],
+      "example": "They are waiting for the doctor's diagnosis.",
+      "example_zh": "他们正在等待医生的诊断结论。",
+      "word": "diagnosis",
+      "examples": [
+        {
+          "zh": "他们正在等待医生的诊断结论。",
+          "en": "They are waiting for the doctor's diagnosis."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 10,
+      "right_count": 8,
+      "id": 12,
+      "right_rate": "80.00"
+    },
+    {
+      "phonetic": "ˈdezɪɡneɪt",
+      "explanations": [
+        "v. 把……定名为，把……描述为；任命，指定；标明，标示"
+      ],
+      "example": "Japan's prime minister-designate is completing his cabinet today.",
+      "example_zh": "日本即将上任的首相今天将完成他的内阁组建。",
+      "word": "designate",
+      "examples": [
+        {
+          "zh": "日本即将上任的首相今天将完成他的内阁组建。",
+          "en": "Japan's prime minister-designate is completing his cabinet today."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 21,
+      "right_count": 15,
+      "id": 11,
+      "right_rate": "71.43",
+      "similar_words": [
+        "appoint"
+      ]
+    },
+    {
+      "phonetic": "ˈdemənstreɪt",
+      "explanations": [
+        "v. 证明；示范，演示；表露；游行，示威"
+      ],
+      "example": "We want to demonstrate our commitment to human rights.",
+      "example_zh": "我们想表明我们对人权的信念。",
+      "word": "demonstrate",
+      "examples": [
+        {
+          "zh": "我按照你在视频中的演示进行了尝试，也遇到了同样的问题，只有在特定的屏幕尺寸下才会出现这种情况。",
+          "en": "I tried as you demonstrate in the video, and also has the same problem, it only occurs with a certain screen size."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 10,
+      "right_rate": "100.00",
+      "similar_words": [
+        "illustrate"
+      ]
+    },
+    {
+      "phonetic": "ˌdeməˈɡræfɪk",
+      "explanations": [
+        "adj. 人口的，人口统计的"
+      ],
+      "example": "Such changes are also indicators of economic dynamism and demographic expansion.",
+      "example_zh": "这些变化也是经济活跃和人口膨胀的指示器。",
+      "word": "demographic",
+      "examples": [
+        {
+          "zh": "这些变化也是经济活跃和人口膨胀的指示器。",
+          "en": "Such changes are also indicators of economic dynamism and demographic expansion."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 9,
+      "right_rate": "100.00",
+      "similar_words": []
+    },
+    {
+      "phonetic": "ˈkɑːntræst",
+      "explanations": [
+        "n. 差异，对比；对照物，明显不同的事物；（摄影或绘画中的）颜色反差，明暗对比；（电视屏幕的）图像明暗对比度，反差"
+      ],
+      "example": "There is also an artful contrast of shapes.",
+      "example_zh": "还有一种不同形状的巧妙对比。",
+      "word": "contrast",
+      "examples": [
+        {
+          "zh": "还有一种不同形状的巧妙对比。",
+          "en": "There is also an artful contrast of shapes."
+        },
+        {
+          "zh": "报告对比了两个邻国的经济增长情况。",
+          "en": "The report contrasts the economic growth of two neighboring countries."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 48,
+      "right_count": 29,
+      "id": 8,
+      "right_rate": "60.42",
+      "similar_words": [
+        "parallel",
+        "distinction",
+        "differential"
+      ]
+    },
+    {
+      "phonetic": "kənˈsɑːlɪdeɪt",
+      "explanations": [
+        "v. 使巩固，使加强；合并，统一"
+      ],
+      "example": "The question is: will the junta consolidate its power by force?",
+      "example_zh": "问题是，这个军政府会通过武力来巩固它的政权吗？",
+      "word": "consolidate",
+      "examples": [
+        {
+          "zh": "问题是，这个军政府会通过武力来巩固它的政权吗？",
+          "en": "The question is: will the junta consolidate its power by force?"
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 7,
+      "right_rate": "87.50",
+      "similar_words": [
+        "strengthen",
+        "enhance",
+        "reinforce"
+      ]
+    },
+    {
+      "phonetic": "ˌkɑːmprɪˈhensɪv",
+      "explanations": [
+        "adj. 综合性的，全面的；有理解力的"
+      ],
+      "example": "Streaming within comprehensive schools is common practice.",
+      "example_zh": "综合中学常把学生按能力分班。",
+      "word": "comprehensive",
+      "examples": [
+        {
+          "zh": "综合中学常把学生按能力分班。",
+          "en": "Streaming within comprehensive schools is common practice."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 14,
+      "right_count": 12,
+      "id": 6,
+      "right_rate": "85.71",
+      "similar_words": [
+        "extensive",
+        "integrated",
+        "synthetic",
+        "widespread",
+        "general"
+      ]
+    },
+    {
+      "phonetic": "kæˈskeɪd",
+      "explanations": [
+        "n. 小瀑布（尤指大瀑布的一支）；倾泻，流注；瀑布状物；倾泻（或涌出）的东西；（很快发生的）一连串事情；（尤指信息或知识等的）连续传递过程；（一个过程中前一个引发后一个的）连续阶段，一系列装置"
+      ],
+      "example": "If one firm goes under it could provoke a cascade of bankruptcies.",
+      "example_zh": "如果一家公司倒闭，可能会引起一连串的破产。",
+      "word": "cascade",
+      "examples": [
+        {
+          "zh": "如果一家公司倒闭，可能会引起一连串的破产。",
+          "en": "If one firm goes under it could provoke a cascade of bankruptcies."
+        }
+      ],
+      "familiar": true,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 5,
+      "right_rate": "87.50"
+    },
+    {
+      "phonetic": "ˈbruːt(ə)l",
+      "explanations": [
+        "adj. 野蛮的，凶残的；毫不掩饰的，直截了当的；令人不快的，糟糕的"
+      ],
+      "example": "They lived in happy insulation from brutal facts.",
+      "example_zh": "他们生活在幸福中，与残酷事实相隔绝。",
+      "word": "brutal",
+      "examples": [
+        {
+          "zh": "他们生活在幸福中，与残酷事实相隔绝。",
+          "en": "They lived in happy insulation from brutal facts."
+        }
+      ],
+      "familiar": true,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 4,
+      "right_rate": "87.50",
+      "similar_words": [
+        "wild",
+        "cruel",
+        "inhuman"
+      ]
+    },
+    {
+      "phonetic": "ˈɑːrkɪtektʃər",
+      "explanations": [
+        "n. 建筑设计，建筑风格；建筑学；结构；计算机的体系结构，架构"
+      ],
+      "example": "He began a new magazine on post-war architecture.",
+      "example_zh": "他创办了一份专论战后建筑的新杂志。",
+      "word": "architecture",
+      "examples": [],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 6,
+      "right_count": 6,
+      "id": 3,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "əˈprɑːksɪmət",
+      "explanations": [
+        "adj. 大概的，近似的"
+      ],
+      "example": "The approximate cost varies from around $150 to $250.",
+      "example_zh": "大致的费用在$150至$250之间不等。",
+      "word": "approximate",
+      "examples": [
+        {
+          "zh": "大致的费用在$150至$250之间不等。",
+          "en": "The approximate cost varies from around $150 to $250."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 7,
+      "right_count": 7,
+      "id": 2,
+      "right_rate": "100.00"
+    },
+    {
+      "phonetic": "ˌæɡrɪˈɡeɪʃn",
+      "explanations": [
+        "n. 聚集，聚合；（互联网）相关内容项的集合；聚集体，集合体"
+      ],
+      "example": "This distinction misses the point that it is processing and aggregation, not the mere possession of bits, that gives the data value.",
+      "example_zh": "这一区别忽略了一点，即赋予数据价值的是信息的处理和聚合，而不非仅仅拥有信息。",
+      "word": "aggregation",
+      "examples": [
+        {
+          "zh": "这一区别忽略了一点，即赋予数据价值的是信息的处理和聚合，而不非仅仅拥有信息。",
+          "en": "This distinction misses the point that it is processing and aggregation, not the mere possession of bits, that gives the data value."
+        }
+      ],
+      "familiar": false,
+      "created_timestamp": 1696521600000,
+      "total_count": 8,
+      "right_count": 7,
+      "id": 1,
+      "right_rate": "87.50",
+      "similar_words": [
+        "collection",
+        "accumulation",
+        "assemblage"
+      ]
+    }
+  ]
+}
