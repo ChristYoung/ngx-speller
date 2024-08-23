@@ -36,7 +36,11 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
         ></app-similar-words>
       </div>
       <div class="word_bar">
-        <span>{{wordItem.right_count}}/{{wordItem.total_count}}</span>
+        <div class="word_info">
+          <p>{{wordItem.right_count}}/{{wordItem.total_count}}</p>
+          <div class="divide_line"></div>
+          <p>{{wordItem.right_rate}}%</p>
+        </div>
         @if (mode === 'VIEW') { @for (item of displayLetters; track $index) {
         <span
           class="single_letter"
