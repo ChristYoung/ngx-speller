@@ -33,7 +33,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
           />
         </div>
         <div nz-col [nzSpan]="18">
-          <button nz-button nzType="primary">Sync to FireBase</button>
+          <!-- <button nz-button nzType="primary">Sync to FireBase</button> -->
           <button
             nz-button
             nzType="default"
@@ -51,7 +51,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
             Bulk Remove
           </button>
           <button nz-button nzType="default" (click)="clickViewJsonSchema()">
-            View the JSON schema
+            Back Up
           </button>
         </div>
       </div>

@@ -9,6 +9,7 @@ import { DbService } from '../../services/DataBase/db.service';
 import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
 import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { updateCurrentIndex } from '../../store/words/words.actions';
 
 @Component({
   selector: 'app-side-panel-settings',
@@ -78,9 +79,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
           >
             Apply
           </button>
-          <button *nzSpaceItem nz-button (click)="onResetClicked()">
-            Reset
-          </button>
           <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
             Save in DataBase
           </button>
@@ -134,11 +132,9 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
         commonSettings: commonSettingValue as CommonSettingsConfig,
       })
     );
+    this.store.dispatch(updateCurrentIndex({ index: 0 }));
     this.nzDrawerRef.close();
   }
-
-  // TODO: Rest the setting configurations to the initial state from the index DataBase.
-  onResetClicked(): void {}
 
   onSaveDataBaseClicked(): void {
     const commonSettings = this.commonSettingsForm
