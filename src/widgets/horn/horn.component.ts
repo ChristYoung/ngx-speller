@@ -107,7 +107,7 @@ export class HornComponent implements OnChanges, OnInit {
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     const { code } = event;
-    if (this.spaceKeyDownPlay && code === 'Space') {
+    if (this.spaceKeyDownPlay && code === 'Backspace') {
       this.playAudioManual();
     }
   }

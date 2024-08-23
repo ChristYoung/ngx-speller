@@ -49,12 +49,10 @@ export class DbService {
     if (!words) return of(null);
     const newWords = words.trim().split('\n');
     const wordsToAdd: WordsItem[] = newWords.map((word) => {
-      const type: WordType = word.includes(' ') ? 'PHRASE' : 'WORD';
       return {
         word,
         created_timestamp: 0,
         familiar: false,
-        type,
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
@@ -70,6 +68,7 @@ export class DbService {
             w.total_count = 0;
             w.right_count = 0;
             w.created_timestamp = new Date().getTime();
+            w.type = w.word.includes(' ') ? 'PHRASE' : 'WORD';
           });
           return wordsRes as WordsItem[];
         }

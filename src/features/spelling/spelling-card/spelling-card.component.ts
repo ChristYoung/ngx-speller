@@ -20,13 +20,8 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
   selector: 'app-spelling-card',
   standalone: true,
   template: `
-    <!-- TODO: Need to discovery the long press to show the answer. -->
-    <!-- [appHoldKeypress]="true"
-      [targetKeycode]="'Tab'"
-      (keyHold)="handleLongPress($event)"
-      (keyRelease)="displayLetters = []" -->
     <div class="__spelling_card_container">
-      @if (showPhonetic) {
+      @if (showPhonetic && wordItem.phonetic) {
       <div class="phonetic">/{{ wordItem.phonetic }}/</div>
       }
       <div class="similar_words">
@@ -113,7 +108,7 @@ export class SpellingCardComponent implements OnChanges {
     if (this.mode === 'VIEW' || !this.enableSpelling) return;
     const { code, key } = event;
     if (isChineseSymbol(key)) return;
-    if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft', 'Space'].includes(code))
+    if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft'].includes(code))
       return;
     const displayWordLen = this.displayLetters.length;
     if (!this.wordItem.word[displayWordLen]) return;
