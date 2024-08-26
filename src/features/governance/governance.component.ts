@@ -82,11 +82,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
               ></th>
               <th [nzWidth]="'60px'">Order</th>
               <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
-              <th>Phonetic</th>
+              <th [nzWidth]="'300px'">Phonetic</th>
               <th
-                [nzWidth]="'120px'"
+                [nzWidth]="'300px'"
                 [nzSortFn]="sortFnByRightRate"
                 [nzSortPriority]="3"
+                style="text-align: right"
               >
                 Right Rate
               </th>
@@ -107,7 +108,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
-              <td>
+              <td style="text-align: right">
               {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
               <td>
