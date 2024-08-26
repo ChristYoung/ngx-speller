@@ -10,7 +10,7 @@ import { ScrollControlDirective } from '../../directives/scroll-control.directiv
 import { DbService } from '../../services/DataBase/db.service';
 import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
-import { WordsItem } from '../../types';
+import { WordsItem, WordType } from '../../types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
 import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
@@ -24,13 +24,20 @@ import { ZorroModule } from '../../zorro/zorro.module';
   template: `
     <div class="page_container" id="scrollBar" #scrollBar>
       <div class="title_row" nz-row [nzGutter]="24">
-        <div nz-col [nzSpan]="6">
+        <div nz-col [nzSpan]="2">
           <input
             nz-input
             placeholder="Search words"
             [(ngModel)]="searchKey"
             (ngModelChange)="searchKeySubject$.next($event)"
           />
+        </div>
+        <div nz-col [nzSpan]="2">
+          <nz-select style="width: 120px" [(ngModel)]="wordType" nzPlaceHolder="Word type">
+            <nz-option nzValue="ALL" nzLabel="All"></nz-option>
+            <nz-option nzValue="WORD" nzLabel="Word"></nz-option>
+            <nz-option nzValue="PHRASE" nzLabel="Phrase"></nz-option>
+          </nz-select>
         </div>
         <div nz-col [nzSpan]="18">
           <!-- <button nz-button nzType="primary">Sync to FireBase</button> -->
@@ -52,6 +59,9 @@ import { ZorroModule } from '../../zorro/zorro.module';
           </button>
           <button nz-button nzType="default" (click)="clickViewJsonSchema()">
             Back Up
+          </button>
+          <button nz-button nzType="default">
+            Clear spell data
           </button>
         </div>
       </div>
@@ -171,6 +181,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   openSideNav = false;
   wordListFireBaseRef: any;
   searchKey: string;
+  wordType: WordType;
   searchKeySubject$ = new Subject<string>();
 
   @ViewChild('scrollBar') private scrollableDiv!: ElementRef;
