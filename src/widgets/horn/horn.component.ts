@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import { AUDIO_SRC } from '../../core/constant';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 
 @Component({
   selector: 'app-horn',
   standalone: true,
-  imports: [ZorroModule],
+  imports: [ZorroModule, PreventButtonDefaultDirective],
   template: `
     <!-- <button
       mat-icon-button
@@ -43,6 +44,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       nzLoading="{{ loading }}"
       nzType="default"
       nzShape="circle"
+      appPreventButtonDefault
     >
       <span nz-icon nzType="sound" nzTheme="outline"></span>
     </button>

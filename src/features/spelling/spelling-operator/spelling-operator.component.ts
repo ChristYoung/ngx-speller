@@ -1,3 +1,4 @@
+import { PreventButtonDefaultDirective } from './../../../directives/prevent-button-default.directive';
 import { CommonModule } from '@angular/common';
 import {
   Component,
@@ -16,7 +17,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
 @Component({
   selector: 'app-spelling-operator',
   standalone: true,
-  imports: [ZorroModule, CommonModule],
+  imports: [ZorroModule, CommonModule, PreventButtonDefaultDirective],
   template: `
     <div class="mat-elevation-z2">
       <button
@@ -24,16 +25,18 @@ import { ZorroModule } from '../../../zorro/zorro.module';
         nzType="link"
         (click)="changeCursorHandler('prev')"
         [disabled]="prevDisabled"
+        appPreventButtonDefault
       >
         <span nz-icon nzType="left" nzTheme="outline"></span>
       </button>
-      <button nz-button nzType="link" (click)="clickViewDetail()">
+      <button nz-button nzType="link" (click)="clickViewDetail()" appPreventButtonDefault>
         <span nz-icon nzType="edit" nzTheme="outline"></span>
       </button>
       <button
         nzType="link"
         nz-button
         (click)="familiar = !familiar; updateFamiliarity.emit(familiar)"
+        appPreventButtonDefault
       >
         <span
           class="operator_item"
@@ -50,6 +53,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
         nzType="link"
         [disabled]="nextDisabled"
         (click)="changeCursorHandler('next')"
+        appPreventButtonDefault
       >
         <span nz-icon nzType="right" nzTheme="outline"></span>
       </button>
