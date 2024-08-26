@@ -33,7 +33,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
           />
         </div>
         <div nz-col [nzSpan]="2">
-          <nz-select style="width: 120px" [(ngModel)]="wordType" nzPlaceHolder="Word type">
+          <nz-select style="width: 120px" [(ngModel)]="wordType" nzPlaceHolder="Word type" (ngModelChange)="wordTypeSubject$.next($event)">
             <nz-option nzValue="ALL" nzLabel="All"></nz-option>
             <nz-option nzValue="WORD" nzLabel="Word"></nz-option>
             <nz-option nzValue="PHRASE" nzLabel="Phrase"></nz-option>
@@ -184,6 +184,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   searchKey: string;
   wordType: WordType;
   searchKeySubject$ = new Subject<string>();
+  wordTypeSubject$ = new Subject<WordType>();
 
   @ViewChild('scrollBar') private scrollableDiv!: ElementRef;
 
@@ -215,8 +216,15 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => {
         this.dataSource = searchKey
           ? frontEndSearchWordsByKeyword(searchKey, this.allDataFromDB)
-          : [...this.allDataFromDB];
+          : [...this.dataSource];
       });
+    this.wordTypeSubject$
+      .pipe(debounceTime(300), takeUntil(this.destroy$))
+      .subscribe((wordType) => {
+        this.dataSource = wordType
+          ? this.allDataFromDB.filter((item) => item.type === wordType)
+          : [...this.dataSource];
+      })
   }
 
   ngOnDestroy(): void {

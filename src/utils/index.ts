@@ -1,4 +1,4 @@
-import { FiltersConfig, WordsCollections, WordsItem } from '../types';
+import { FiltersConfig, WordsCollections, WordsItem, WordType } from '../types';
 export * from './24-tool.util';
 
 export const SoundSourceMapping = {
@@ -131,8 +131,11 @@ export const organizeWordsByFirstLetter = (
 
 export const frontEndSearchWordsByKeyword = (
   keyWords: string,
-  wordList: WordsItem[]
+  wordList: WordsItem[],
+  wordType?: WordType,
 ): WordsItem[] => {
   const keyWordsUpper = keyWords.toLowerCase();
-  return wordList.filter((w) => w.word.toLowerCase().includes(keyWordsUpper));
+  const searchResult = wordList.filter((w) => w.word.toLowerCase().includes(keyWordsUpper));
+  // filter the searchResult by wordType, and if any single word's type is not exist, treat it as 'Word' type.
+  return wordType ? searchResult.filter((w) => w.type === wordType) : searchResult;
 };
