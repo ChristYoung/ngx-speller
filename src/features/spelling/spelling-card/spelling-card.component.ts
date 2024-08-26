@@ -102,7 +102,6 @@ export class SpellingCardComponent implements OnChanges {
   ngOnChanges(_changes: SimpleChanges): void {
     this.displayLetters =
       this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
-      console.log('this.displayLetters',this.displayLetters)
   }
 
   @HostListener('window:keydown', ['$event'])
