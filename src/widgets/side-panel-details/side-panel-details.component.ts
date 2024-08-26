@@ -28,10 +28,11 @@ import { YOU_DAO_API } from '../../core/constant';
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <div class="explains_container">
-        <p [contentEditable]="true">{{ wordItem.explanations.join(';') }}</p>
-        <!-- when users click the edit icon here, they can edit the explanations -->
-        <span style="cursor: pointer" nz-icon nzType="edit" nzTheme="outline"></span>
+      <div class="explains_container"
+        [class.editable_content]="contentEditable"
+        [contentEditable]="contentEditable">
+        {{ wordItem.explanations.join(';') }}
+        <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
       </div>
       <div class="examples_container">
         @for (item of examples; track $index) {
@@ -103,6 +104,7 @@ export class SidePanelDetailsComponent implements OnInit {
   inputChineseExample: string;
   examples: ExampleItem[] = [];
   similarWords: string[] = [];
+  contentEditable = false;
 
   ngOnInit(): void {
     this.examples = this.wordItem.examples || [];
@@ -124,6 +126,10 @@ export class SidePanelDetailsComponent implements OnInit {
   removeExample(index: number): void {
     this.examples = this.examples.filter((_, _index) => _index !== index);
     this.updateCurrentExamples(this.examples, 'remove');
+  }
+
+  updateExplanations(): void {
+    this.contentEditable = !this.contentEditable;
   }
 
   similarWordsChange(tags: string[]): void {
