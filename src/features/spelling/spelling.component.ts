@@ -37,6 +37,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             [wordItem]="currentWordItem$ | async"
             [mode]="(setting$ | async).commonSettings.mode"
             [enableSpelling]="enableSpelling"
+            [backSpaceKeyDownPlay]="enableSpelling"
             [autoPlay]="(setting$ | async).commonSettings.autoPlay"
             [showHorn]="(setting$ | async).commonSettings.showHorn"
             [showExamples]="(setting$ | async).commonSettings.showExamples"

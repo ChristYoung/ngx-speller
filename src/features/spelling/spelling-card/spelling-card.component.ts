@@ -54,7 +54,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
           class="horn"
           [word]="wordItem?.word"
           [preloadSrc]="true"
-          [spaceKeyDownPlay]="true"
+          [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
           [autoPlay]="autoPlay"
         ></app-horn>
         }
@@ -95,6 +95,7 @@ export class SpellingCardComponent implements OnChanges {
   @Input() enableSpelling = true;
   @Input() muteKeyBoard = false;
   @Input() autoPlay = false;
+  @Input() backSpaceKeyDownPlay = true;
   @Output() onCorrectSpelling = new EventEmitter<EmitParams>();
   @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
   displayLetters: string[] = [];

@@ -29,7 +29,9 @@ import { YOU_DAO_API } from '../../core/constant';
         ></app-similar-words>
       </div>
       <div class="explains_container">
-        {{ wordItem.explanations.join(';') }}
+        <p [contentEditable]="true">{{ wordItem.explanations.join(';') }}</p>
+        <!-- when users click the edit icon here, they can edit the explanations -->
+        <span style="cursor: pointer" nz-icon nzType="edit" nzTheme="outline"></span>
       </div>
       <div class="examples_container">
         @for (item of examples; track $index) {

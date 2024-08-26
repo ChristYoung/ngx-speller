@@ -65,7 +65,7 @@ export class HornComponent implements OnChanges, OnInit {
   @Input({ required: true }) word: string = '';
   @Input() autoPlay = false;
   @Input() preloadSrc = false;
-  @Input() spaceKeyDownPlay = false;
+  @Input() backSpaceKeyDownPlay = false;
   loading: boolean = false;
   audioSrc: string = '';
   @ViewChild('audioPlayer') audioPlayer: ElementRef<HTMLAudioElement>;
@@ -109,7 +109,7 @@ export class HornComponent implements OnChanges, OnInit {
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     const { code } = event;
-    if (this.spaceKeyDownPlay && code === 'Backspace') {
+    if (this.backSpaceKeyDownPlay && code === 'Backspace') {
       this.playAudioManual();
     }
   }
