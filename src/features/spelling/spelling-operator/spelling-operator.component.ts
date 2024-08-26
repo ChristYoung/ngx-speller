@@ -69,6 +69,7 @@ export class SpellingOperatorComponent implements OnChanges {
   @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
   @Output() moveCursor = new EventEmitter<'next' | 'prev'>();
   @Output() updateFamiliarity = new EventEmitter<boolean>();
+  @Output() onClickToEdit = new EventEmitter<boolean>(false);
 
   familiar: boolean;
 
@@ -108,6 +109,7 @@ export class SpellingOperatorComponent implements OnChanges {
   }
 
   clickViewDetail(): void {
+    this.onClickToEdit.emit(true);
     this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
       nzContent: SidePanelDetailsComponent,
       nzContentParams: { wordItem: this.wordDetails },

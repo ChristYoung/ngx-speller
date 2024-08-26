@@ -37,7 +37,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             [wordItem]="currentWordItem$ | async"
             [mode]="(setting$ | async).commonSettings.mode"
             [enableSpelling]="enableSpelling"
-            [backSpaceKeyDownPlay]="enableSpelling"
+            [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
             [autoPlay]="(setting$ | async).commonSettings.autoPlay"
             [showHorn]="(setting$ | async).commonSettings.showHorn"
             [showExamples]="(setting$ | async).commonSettings.showExamples"
@@ -65,6 +65,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             (moveCursor)="onMoveCursorHandler($event)"
             (onIncorrectSpelling)="incorrectHandler($event)"
             (updateFamiliarity)="updateFamiliarity($event)"
+            (onClickToEdit)="onClickToEditHandler($event)"
           ></app-spelling-operator>
         </div>
       </div>
@@ -94,6 +95,7 @@ export class SpellingComponent {
   setting$: Observable<Settings>;
 
   enableSpelling = true;
+  backSpaceKeyDownPlay = true;
 
   constructor() {
     this.currentWordIndex$ = this.store
@@ -122,6 +124,10 @@ export class SpellingComponent {
 
   incorrectHandler(e: EmitParams): void {
     this.singleWordSpellingEnd(false, e.lastWord, e.word);
+  }
+
+  onClickToEditHandler($event: boolean): void {
+    this.backSpaceKeyDownPlay = !$event;
   }
 
   private singleWordSpellingEnd(
