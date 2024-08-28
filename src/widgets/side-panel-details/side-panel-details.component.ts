@@ -31,7 +31,7 @@ import { YOU_DAO_API } from '../../core/constant';
       <div class="explains_container"
         [class.editable_content]="contentEditable"
         [contentEditable]="contentEditable">
-        {{ wordItem.explanations.join(';') }}
+        {{ wordItem.explanations }}
         <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
       </div>
       <div class="examples_container">
