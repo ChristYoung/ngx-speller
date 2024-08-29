@@ -161,8 +161,9 @@ export class SidePanelDetailsComponent implements OnInit {
         {
           ...this.wordItem,
           eng_explanation: newEnglishExplanations,
-        }
-      )
+        },
+        true
+      ).subscribe(() => {});
     }
   }
 
