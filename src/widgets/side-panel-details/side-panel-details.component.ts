@@ -132,10 +132,8 @@ export class SidePanelDetailsComponent implements OnInit {
 
   updateExplanations(): void {
     this.contentEditable = !this.contentEditable;
-    console.log('this.contentEditable',this.contentEditable)
     if (!this.contentEditable) {
       const newExplanations = (this.editableContent.nativeElement as HTMLDivElement).innerText;
-      console.log('newExplanations',newExplanations);
       this.db.updateWordItemFromIndexDB(
         {
           ...this.wordItem,
