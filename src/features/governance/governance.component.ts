@@ -10,7 +10,7 @@ import { ScrollControlDirective } from '../../directives/scroll-control.directiv
 import { DbService } from '../../services/DataBase/db.service';
 import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
-import { WordsItem } from '../../types';
+import { WordsItem, WordType } from '../../types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
 import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
@@ -24,7 +24,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
   template: `
     <div class="page_container" id="scrollBar" #scrollBar>
       <div class="title_row" nz-row [nzGutter]="24">
-        <div nz-col [nzSpan]="6">
+        <div nz-col [nzSpan]="2">
           <input
             nz-input
             placeholder="Search words"
@@ -32,8 +32,15 @@ import { ZorroModule } from '../../zorro/zorro.module';
             (ngModelChange)="searchKeySubject$.next($event)"
           />
         </div>
+        <div nz-col [nzSpan]="2">
+          <nz-select style="width: 120px" [(ngModel)]="wordType" nzPlaceHolder="Word type" (ngModelChange)="wordTypeSubject$.next($event)">
+            <nz-option nzValue="ALL" nzLabel="All"></nz-option>
+            <nz-option nzValue="WORD" nzLabel="Word"></nz-option>
+            <nz-option nzValue="PHRASE" nzLabel="Phrase"></nz-option>
+          </nz-select>
+        </div>
         <div nz-col [nzSpan]="18">
-          <button nz-button nzType="primary">Sync to FireBase</button>
+          <!-- <button nz-button nzType="primary">Sync to FireBase</button> -->
           <button
             nz-button
             nzType="default"
@@ -51,7 +58,10 @@ import { ZorroModule } from '../../zorro/zorro.module';
             Bulk Remove
           </button>
           <button nz-button nzType="default" (click)="clickViewJsonSchema()">
-            View the JSON schema
+            Download as JSON
+          </button>
+          <button nz-button nzType="default">
+            Clear spell data
           </button>
         </div>
       </div>
@@ -72,11 +82,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
               ></th>
               <th [nzWidth]="'60px'">Order</th>
               <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
-              <th>Phonetic</th>
+              <th [nzWidth]="'300px'">Phonetic</th>
               <th
-                [nzWidth]="'120px'"
+                [nzWidth]="'300px'"
                 [nzSortFn]="sortFnByRightRate"
                 [nzSortPriority]="3"
+                style="text-align: right"
               >
                 Right Rate
               </th>
@@ -97,7 +108,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
-              <td>
+              <td style="text-align: right">
               {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
               <td>
@@ -171,7 +182,9 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   openSideNav = false;
   wordListFireBaseRef: any;
   searchKey: string;
+  wordType: WordType;
   searchKeySubject$ = new Subject<string>();
+  wordTypeSubject$ = new Subject<WordType>();
 
   @ViewChild('scrollBar') private scrollableDiv!: ElementRef;
 
@@ -203,8 +216,15 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .subscribe((searchKey) => {
         this.dataSource = searchKey
           ? frontEndSearchWordsByKeyword(searchKey, this.allDataFromDB)
-          : [...this.allDataFromDB];
+          : [...this.dataSource];
       });
+    this.wordTypeSubject$
+      .pipe(debounceTime(300), takeUntil(this.destroy$))
+      .subscribe((wordType) => {
+        this.dataSource = wordType
+          ? this.allDataFromDB.filter((item) => item.type === wordType)
+          : [...this.dataSource];
+      })
   }
 
   ngOnDestroy(): void {

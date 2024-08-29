@@ -29,6 +29,7 @@ import {
   Settings,
   WholeIndexDBConfig,
   WordsItem,
+  WordType,
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
 
@@ -67,6 +68,7 @@ export class DbService {
             w.total_count = 0;
             w.right_count = 0;
             w.created_timestamp = new Date().getTime();
+            w.type = w.word.includes(' ') ? 'PHRASE' : 'WORD';
           });
           return wordsRes as WordsItem[];
         }
@@ -101,10 +103,13 @@ export class DbService {
       });
   }
 
-  getAllWordsFromIndexDB(setToStore?: boolean): Observable<WordsItem[]> {
+  getAllWordsFromIndexDB(setToStore?: boolean, clearSpellingCount?: boolean): Observable<WordsItem[]> {
     return this.dbService.getAll<WordsItem>('words').pipe(
       map((res) => {
         return res.map((item) => {
+          item.type = item.type || 'WORD'; // default type is 'WORD'.
+          item.total_count = clearSpellingCount ? 0 : item.total_count;
+          item.right_count = clearSpellingCount ? 0 : item.right_count;
           item.right_rate =
             item.total_count === 0
               ? '0'
@@ -157,6 +162,12 @@ export class DbService {
         total_count,
       })
       .subscribe(() => {});
+  }
+
+  bulkClearSpellingCountToIndexDB(): Observable<any> {
+    return this.getAllWordsFromIndexDB(false, true)
+    .pipe(
+      mergeMap((words) => this.dbService.bulkPut<WordsItem>('words', words)))
   }
 
   getSettingConfigsFromIndexDB(

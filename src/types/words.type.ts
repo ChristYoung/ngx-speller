@@ -1,8 +1,9 @@
 export interface WordsItem {
   word: string;
   familiar: boolean;
+  type?: WordType;
   created_timestamp?: number;
-  explanations?: string[];
+  explanation?: string;
   eng_explanation?: string;
   similar_words?: string[];
   examples?: ExampleItem[];
@@ -13,6 +14,8 @@ export interface WordsItem {
   total_count?: number;
   right_rate?: string;
 }
+
+export type WordType = 'WORD' | 'PHRASE' | 'ALL';
 
 export interface ExampleItem {
   zh: string;

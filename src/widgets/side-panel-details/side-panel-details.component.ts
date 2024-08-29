@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 import { DbService } from '../../services/DataBase/db.service';
@@ -28,8 +28,12 @@ import { YOU_DAO_API } from '../../core/constant';
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <div class="explains_container">
-        {{ wordItem.explanations.join(';') }}
+      <div class="explains_container"
+        #editableContent
+        [class.editable_content]="contentEditable"
+        [contentEditable]="contentEditable">
+        {{ wordItem.explanation }}
+        <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
       </div>
       <div class="examples_container">
         @for (item of examples; track $index) {
@@ -96,11 +100,13 @@ import { YOU_DAO_API } from '../../core/constant';
 })
 export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
+  @ViewChild('editableContent', { static: false}) editableContent: ElementRef;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
   examples: ExampleItem[] = [];
   similarWords: string[] = [];
+  contentEditable = false;
 
   ngOnInit(): void {
     this.examples = this.wordItem.examples || [];
@@ -122,6 +128,20 @@ export class SidePanelDetailsComponent implements OnInit {
   removeExample(index: number): void {
     this.examples = this.examples.filter((_, _index) => _index !== index);
     this.updateCurrentExamples(this.examples, 'remove');
+  }
+
+  updateExplanations(): void {
+    this.contentEditable = !this.contentEditable;
+    if (!this.contentEditable) {
+      const newExplanations = (this.editableContent.nativeElement as HTMLDivElement).innerText;
+      this.db.updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          explanation: newExplanations,
+        },
+        true
+      ).subscribe(() => {});
+    }
   }
 
   similarWordsChange(tags: string[]): void {
@@ -160,7 +180,6 @@ export class SidePanelDetailsComponent implements OnInit {
           this.inputChineseExample = '';
           this.inputEnglishExample = '';
         }
-        console.log('currentExamples', currentExamples);
         this.examples = [...currentExamples];
       });
   }

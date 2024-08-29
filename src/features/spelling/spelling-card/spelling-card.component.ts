@@ -20,13 +20,8 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
   selector: 'app-spelling-card',
   standalone: true,
   template: `
-    <!-- TODO: Need to discovery the long press to show the answer. -->
-    <!-- [appHoldKeypress]="true"
-      [targetKeycode]="'Tab'"
-      (keyHold)="handleLongPress($event)"
-      (keyRelease)="displayLetters = []" -->
     <div class="__spelling_card_container">
-      @if (showPhonetic) {
+      @if (showPhonetic && wordItem.phonetic) {
       <div class="phonetic">/{{ wordItem.phonetic }}/</div>
       }
       <div class="similar_words">
@@ -43,22 +38,23 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
         </div>
         @if (mode === 'VIEW') { @for (item of displayLetters; track $index) {
         <span
-          class="single_letter"
-          [class.correct]="displayLetters[$index] === item"
-          >{{ item }}</span
+          class="single_letter correct"
+          [class.transparent]="item === ' '"
+          >{{ item !== ' ' ? item : '_' }}</span
         >
         } } @else { @for (item of wordItem.word.split(''); track $index) {
         <span
           class="single_letter"
           [class.correct]="displayLetters[$index] === item.toLowerCase()"
-          >{{ displayLetters[$index] ? displayLetters[$index] : '_' }}</span
+          [class.transparent]="item === ' '"
+          >{{ (displayLetters[$index] && displayLetters[$index] !== ' ') ? displayLetters[$index] : '_' }}</span
         >
         } } @if (showHorn) {
         <app-horn
           class="horn"
           [word]="wordItem?.word"
           [preloadSrc]="true"
-          [spaceKeyDownPlay]="true"
+          [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
           [autoPlay]="autoPlay"
         ></app-horn>
         }
@@ -99,6 +95,7 @@ export class SpellingCardComponent implements OnChanges {
   @Input() enableSpelling = true;
   @Input() muteKeyBoard = false;
   @Input() autoPlay = false;
+  @Input() backSpaceKeyDownPlay = true;
   @Output() onCorrectSpelling = new EventEmitter<EmitParams>();
   @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
   displayLetters: string[] = [];
@@ -113,7 +110,7 @@ export class SpellingCardComponent implements OnChanges {
     if (this.mode === 'VIEW' || !this.enableSpelling) return;
     const { code, key } = event;
     if (isChineseSymbol(key)) return;
-    if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft', 'Space'].includes(code))
+    if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft'].includes(code))
       return;
     const displayWordLen = this.displayLetters.length;
     if (!this.wordItem.word[displayWordLen]) return;

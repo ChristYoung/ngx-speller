@@ -11,11 +11,12 @@ import {
 } from '@angular/core';
 import { AUDIO_SRC } from '../../core/constant';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 
 @Component({
   selector: 'app-horn',
   standalone: true,
-  imports: [ZorroModule],
+  imports: [ZorroModule, PreventButtonDefaultDirective],
   template: `
     <!-- <button
       mat-icon-button
@@ -43,6 +44,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       nzLoading="{{ loading }}"
       nzType="default"
       nzShape="circle"
+      appPreventButtonDefault
     >
       <span nz-icon nzType="sound" nzTheme="outline"></span>
     </button>
@@ -63,7 +65,7 @@ export class HornComponent implements OnChanges, OnInit {
   @Input({ required: true }) word: string = '';
   @Input() autoPlay = false;
   @Input() preloadSrc = false;
-  @Input() spaceKeyDownPlay = false;
+  @Input() backSpaceKeyDownPlay = false;
   loading: boolean = false;
   audioSrc: string = '';
   @ViewChild('audioPlayer') audioPlayer: ElementRef<HTMLAudioElement>;
@@ -107,7 +109,7 @@ export class HornComponent implements OnChanges, OnInit {
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
     const { code } = event;
-    if (this.spaceKeyDownPlay && code === 'Space') {
+    if (this.backSpaceKeyDownPlay && code === 'Backspace') {
       this.playAudioManual();
     }
   }

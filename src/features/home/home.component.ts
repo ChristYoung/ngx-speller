@@ -6,6 +6,7 @@ import { SidePanelSettingsComponent } from '../../widgets/side-panel-settings/si
 import { VerticalMenuComponent } from '../../widgets/vertical-menu/vertical-menu.component';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-panel-filter.component';
+import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +20,12 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
         <router-outlet></router-outlet>
         <!-- Open Setting Drawer -->
         <button
+          type="button"
           nz-button
           nzShape="circle"
           nzSize="large"
           class="layout_fab"
+          appPreventButtonDefault
           (click)="openSettingDrawer()"
         >
           <span nz-icon nzType="setting"></span>
@@ -30,10 +33,12 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
 
         <!-- Open Filter Drawer -->
         <button
+          type="button"
           nz-button
           nzShape="circle"
           nzSize="large"
           class="layout_fab2"
+          appPreventButtonDefault
           (click)="openFilterDrawer()"
         >
           <span nz-icon nzType="filter" nzTheme="outline"></span>
@@ -50,6 +55,7 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
     SidePanelSettingsComponent,
     ZorroModule,
     VerticalMenuComponent,
+    PreventButtonDefaultDirective,
   ],
 })
 export class HomeComponent {
