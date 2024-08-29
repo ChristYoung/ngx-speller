@@ -35,6 +35,13 @@ import { YOU_DAO_API } from '../../core/constant';
         {{ wordItem.explanation }}
         <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
       </div>
+      <div class="explains_container explains_container_eng"
+        #editableContentEng
+        [class.editable_content]="englishContentEditable"
+        [contentEditable]="englishContentEditable">
+        {{ wordItem.eng_explanation ? wordItem.eng_explanation : 'No English explanation' }}
+        <span class="edit_explanations_icon" nz-icon nzType="{{englishContentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateEnglishExplanations()"></span>
+      </div>
       <div class="examples_container">
         @for (item of examples; track $index) {
         <div class="examples_item">
@@ -101,12 +108,14 @@ import { YOU_DAO_API } from '../../core/constant';
 export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
   @ViewChild('editableContent', { static: false}) editableContent: ElementRef;
+  @ViewChild('editableContentEng', { static: false}) editableContentEnglish: ElementRef;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
   examples: ExampleItem[] = [];
   similarWords: string[] = [];
   contentEditable = false;
+  englishContentEditable = false;
 
   ngOnInit(): void {
     this.examples = this.wordItem.examples || [];
@@ -138,6 +147,20 @@ export class SidePanelDetailsComponent implements OnInit {
         {
           ...this.wordItem,
           explanation: newExplanations,
+        },
+        true
+      ).subscribe(() => {});
+    }
+  }
+
+  updateEnglishExplanations(): void {
+    this.englishContentEditable = !this.englishContentEditable;
+    if (!this.englishContentEditable) {
+      const newEnglishExplanations = (this.editableContentEnglish.nativeElement as HTMLDivElement).innerText;
+      this.db.updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          eng_explanation: newEnglishExplanations,
         },
         true
       ).subscribe(() => {});

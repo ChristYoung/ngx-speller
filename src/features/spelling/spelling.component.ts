@@ -128,6 +128,7 @@ export class SpellingComponent {
 
   onClickToEditHandler($event: boolean): void {
     this.backSpaceKeyDownPlay = !$event;
+    this.enableSpelling = !$event;
   }
 
   private singleWordSpellingEnd(
