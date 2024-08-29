@@ -180,7 +180,6 @@ export class SidePanelDetailsComponent implements OnInit {
           this.inputChineseExample = '';
           this.inputEnglishExample = '';
         }
-        console.log('currentExamples', currentExamples);
         this.examples = [...currentExamples];
       });
   }
