@@ -61,6 +61,9 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
       </div>
       @if (showExplanations) {
       <div class="explanations">{{ wordItem.explanation }}</div>
+        @if (wordItem.eng_explanation) {
+          <div class="explanations">{{ wordItem.eng_explanation }}</div>
+        }
       } @if (showExamples) {
       <div class="examples_container">
         @for (item of wordItem.examples; track $index) {
