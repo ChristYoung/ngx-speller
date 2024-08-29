@@ -58,7 +58,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
             Bulk Remove
           </button>
           <button nz-button nzType="default" (click)="clickViewJsonSchema()">
-            Back Up
+            Download as JSON
           </button>
           <button nz-button nzType="default">
             Clear spell data
