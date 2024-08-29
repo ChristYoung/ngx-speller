@@ -142,7 +142,7 @@ export class SidePanelDetailsComponent implements OnInit {
           explanation: newExplanations,
         },
         true
-      );
+      ).subscribe(() => {});
     }
   }
 
