@@ -27,7 +27,10 @@ export class ContentEditableComponent implements OnInit {
   }
 
   onBlur(): void {
-    this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
+    const newContent = this.tplInputRef.nativeElement.innerHTML;
+    if (newContent !== this.htmlContent) {
+      this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
+    }
   }
 
 }
