@@ -111,10 +111,13 @@ export class SpellingOperatorComponent implements OnChanges {
 
   clickViewDetail(): void {
     this.onClickToEdit.emit(true);
-    this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
+    const _drawerRef = this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
       nzContent: SidePanelDetailsComponent,
       nzContentParams: { wordItem: this.wordDetails },
       nzWidth: '800px',
     });
+    _drawerRef.afterClose.subscribe(() => {
+      this.onClickToEdit.emit(false);
+    })
   }
 }
