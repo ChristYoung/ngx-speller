@@ -29,8 +29,8 @@ import { ContentEditableComponent } from '../content-editable/content-editable.c
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']"></app-content-editable>
-      <app-content-editable style="text-align: center; display: block;" [htmlContent]="wordItem.eng_explanation"></app-content-editable>
+      <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']" (contentChange)="updateExplanations($event)"></app-content-editable>
+      <app-content-editable style="text-align: center; display: block;" [htmlContent]="wordItem.eng_explanation" (contentChange)="updateEnglishExplanations($event)"></app-content-editable>
       <div class="examples_container">
         @for (item of examples; track $index) {
         <div class="examples_item">
