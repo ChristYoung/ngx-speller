@@ -8,6 +8,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
 import { YOU_DAO_API } from '../../core/constant';
+import { ContentEditableComponent } from '../content-editable/content-editable.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -28,20 +29,8 @@ import { YOU_DAO_API } from '../../core/constant';
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <div class="explains_container"
-        #editableContent
-        [class.editable_content]="contentEditable"
-        [contentEditable]="contentEditable">
-        {{ wordItem.explanation }}
-        <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
-      </div>
-      <div class="explains_container explains_container_eng"
-        #editableContentEng
-        [class.editable_content]="englishContentEditable"
-        [contentEditable]="englishContentEditable">
-        {{ wordItem.eng_explanation ? wordItem.eng_explanation : 'No English explanation' }}
-        <span class="edit_explanations_icon" nz-icon nzType="{{englishContentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateEnglishExplanations()"></span>
-      </div>
+      <app-content-editable [htmlContent]="wordItem.explanation || wordItem['explanations']"></app-content-editable>
+      <app-content-editable [htmlContent]="wordItem.eng_explanation"></app-content-editable>
       <div class="examples_container">
         @for (item of examples; track $index) {
         <div class="examples_item">
@@ -103,6 +92,7 @@ import { YOU_DAO_API } from '../../core/constant';
     FormsModule,
     ZorroModule,
     SimilarWordsComponent,
+    ContentEditableComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {

@@ -18,7 +18,7 @@ import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
 })
 export class ContentEditableComponent implements OnInit {
 
-  @Input() htmlContent: string = '';
+  @Input({required: true}) htmlContent: string = '';
   @Output() contentChange = new EventEmitter<string>();
 
   @ViewChild('tplInput', { static: true }) private tplInputRef: ElementRef;

@@ -14,6 +14,12 @@
         "@schematics/angular:service": {
           "skipTests": true
         },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
         "@ngrx/schematics:reducer": {
           "skipTests": true,
           "flat": false
@@ -145,6 +151,9 @@
     "schematicCollections": [
       "@schematics/angular",
       "@ngrx/schematics"
-    ]
+    ],
+    "cache": {
+      "enabled": false
+    }
   }
 }
