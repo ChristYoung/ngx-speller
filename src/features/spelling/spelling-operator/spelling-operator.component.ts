@@ -65,6 +65,7 @@ export class SpellingOperatorComponent implements OnChanges {
   @Input() prevDisabled: boolean;
   @Input() nextDisabled: boolean;
   @Input('wordItem') wordDetails: WordsItem;
+  @Input() enableSwitch: boolean;
   @Input() mode: ModeType = 'SPELLING';
   @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
   @Output() moveCursor = new EventEmitter<'next' | 'prev'>();
@@ -96,7 +97,7 @@ export class SpellingOperatorComponent implements OnChanges {
   handleKeyDown(event: KeyboardEvent) {
     const { code } = event;
     const allowedCodes = ['ArrowRight', 'ArrowLeft'];
-    if (allowedCodes.includes(code)) {
+    if (allowedCodes.includes(code) && this.enableSwitch) {
       event.preventDefault();
       if (code === 'ArrowRight' && !this.nextDisabled) {
         this.changeCursorHandler('next');

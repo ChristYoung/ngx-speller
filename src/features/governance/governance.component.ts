@@ -104,7 +104,9 @@ import { ZorroModule } from '../../zorro/zorro.module';
               <td>{{ data.word }}</td>
               <td>
                 <div class="Phonetic_box">
-                  <span>/{{ data.phonetic }}/</span>
+                  @if (data.phonetic) {
+                    <span>/{{ data.phonetic }}/</span>
+                  }
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>

@@ -8,6 +8,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
 import { YOU_DAO_API } from '../../core/constant';
+import { ContentEditableComponent } from '../content-editable/content-editable.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -28,20 +29,8 @@ import { YOU_DAO_API } from '../../core/constant';
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <div class="explains_container"
-        #editableContent
-        [class.editable_content]="contentEditable"
-        [contentEditable]="contentEditable">
-        {{ wordItem.explanation }}
-        <span class="edit_explanations_icon" nz-icon nzType="{{contentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateExplanations()"></span>
-      </div>
-      <div class="explains_container explains_container_eng"
-        #editableContentEng
-        [class.editable_content]="englishContentEditable"
-        [contentEditable]="englishContentEditable">
-        {{ wordItem.eng_explanation ? wordItem.eng_explanation : 'No English explanation' }}
-        <span class="edit_explanations_icon" nz-icon nzType="{{englishContentEditable ? 'check' : 'edit'}}" nzTheme="outline" (click)="updateEnglishExplanations()"></span>
-      </div>
+      <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']" (contentChange)="updateExplanations($event)"></app-content-editable>
+      <app-content-editable style="text-align: center; display: block;" [htmlContent]="wordItem.eng_explanation" (contentChange)="updateEnglishExplanations($event)"></app-content-editable>
       <div class="examples_container">
         @for (item of examples; track $index) {
         <div class="examples_item">
@@ -103,12 +92,11 @@ import { YOU_DAO_API } from '../../core/constant';
     FormsModule,
     ZorroModule,
     SimilarWordsComponent,
+    ContentEditableComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
-  @ViewChild('editableContent', { static: false}) editableContent: ElementRef;
-  @ViewChild('editableContentEng', { static: false}) editableContentEnglish: ElementRef;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
@@ -139,32 +127,24 @@ export class SidePanelDetailsComponent implements OnInit {
     this.updateCurrentExamples(this.examples, 'remove');
   }
 
-  updateExplanations(): void {
-    this.contentEditable = !this.contentEditable;
-    if (!this.contentEditable) {
-      const newExplanations = (this.editableContent.nativeElement as HTMLDivElement).innerText;
-      this.db.updateWordItemFromIndexDB(
-        {
-          ...this.wordItem,
-          explanation: newExplanations,
-        },
-        true
-      ).subscribe(() => {});
-    }
+  updateExplanations(newExplanations: string): void {
+    this.db.updateWordItemFromIndexDB(
+      {
+        ...this.wordItem,
+        explanation: newExplanations,
+      },
+      true
+    ).subscribe(() => {});
   }
 
-  updateEnglishExplanations(): void {
-    this.englishContentEditable = !this.englishContentEditable;
-    if (!this.englishContentEditable) {
-      const newEnglishExplanations = (this.editableContentEnglish.nativeElement as HTMLDivElement).innerText;
-      this.db.updateWordItemFromIndexDB(
-        {
-          ...this.wordItem,
-          eng_explanation: newEnglishExplanations,
-        },
-        true
-      ).subscribe(() => {});
-    }
+  updateEnglishExplanations(newEnglishExplanations: string): void {
+    this.db.updateWordItemFromIndexDB(
+      {
+        ...this.wordItem,
+        eng_explanation: newEnglishExplanations,
+      },
+      true
+    ).subscribe(() => {});
   }
 
   similarWordsChange(tags: string[]): void {
