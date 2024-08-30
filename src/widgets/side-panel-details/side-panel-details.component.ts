@@ -29,8 +29,8 @@ import { ContentEditableComponent } from '../content-editable/content-editable.c
           (onTagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
-      <app-content-editable [htmlContent]="wordItem.explanation || wordItem['explanations']"></app-content-editable>
-      <app-content-editable [htmlContent]="wordItem.eng_explanation"></app-content-editable>
+      <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']"></app-content-editable>
+      <app-content-editable style="text-align: center; display: block;" [htmlContent]="wordItem.eng_explanation"></app-content-editable>
       <div class="examples_container">
         @for (item of examples; track $index) {
         <div class="examples_item">
@@ -97,8 +97,6 @@ import { ContentEditableComponent } from '../content-editable/content-editable.c
 })
 export class SidePanelDetailsComponent implements OnInit {
   @Input({ required: true }) wordItem: WordsItem;
-  @ViewChild('editableContent', { static: false}) editableContent: ElementRef;
-  @ViewChild('editableContentEng', { static: false}) editableContentEnglish: ElementRef;
   db = inject(DbService);
   inputEnglishExample: string;
   inputChineseExample: string;
@@ -129,32 +127,24 @@ export class SidePanelDetailsComponent implements OnInit {
     this.updateCurrentExamples(this.examples, 'remove');
   }
 
-  updateExplanations(): void {
-    this.contentEditable = !this.contentEditable;
-    if (!this.contentEditable) {
-      const newExplanations = (this.editableContent.nativeElement as HTMLDivElement).innerText;
-      this.db.updateWordItemFromIndexDB(
-        {
-          ...this.wordItem,
-          explanation: newExplanations,
-        },
-        true
-      ).subscribe(() => {});
-    }
+  updateExplanations(newExplanations: string): void {
+    this.db.updateWordItemFromIndexDB(
+      {
+        ...this.wordItem,
+        explanation: newExplanations,
+      },
+      true
+    ).subscribe(() => {});
   }
 
-  updateEnglishExplanations(): void {
-    this.englishContentEditable = !this.englishContentEditable;
-    if (!this.englishContentEditable) {
-      const newEnglishExplanations = (this.editableContentEnglish.nativeElement as HTMLDivElement).innerText;
-      this.db.updateWordItemFromIndexDB(
-        {
-          ...this.wordItem,
-          eng_explanation: newEnglishExplanations,
-        },
-        true
-      ).subscribe(() => {});
-    }
+  updateEnglishExplanations(newEnglishExplanations: string): void {
+    this.db.updateWordItemFromIndexDB(
+      {
+        ...this.wordItem,
+        eng_explanation: newEnglishExplanations,
+      },
+      true
+    ).subscribe(() => {});
   }
 
   similarWordsChange(tags: string[]): void {
