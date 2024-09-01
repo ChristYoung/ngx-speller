@@ -19,6 +19,7 @@ import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
 export class ContentEditableComponent implements OnInit {
 
   @Input({required: true}) htmlContent: string = '';
+  @Input() highLight: string;
   @Output() contentChange = new EventEmitter<string>();
 
   @ViewChild('tplInput', { static: true }) private tplInputRef: ElementRef;
@@ -27,7 +28,10 @@ export class ContentEditableComponent implements OnInit {
   }
 
   onBlur(): void {
-    this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
+    const newContent = this.tplInputRef.nativeElement.innerHTML;
+    if (newContent !== this.htmlContent) {
+      this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
+    }
   }
 
 }

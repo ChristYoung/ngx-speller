@@ -1,14 +1,16 @@
+// TODO: Need to confirm whether we should introduce Rich text plugin like Quill or CKEditor here.
+// Quill2: https://slab.com/blog/announcing-quill-2-0/
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { YOU_DAO_API } from '../../core/constant';
 import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 import { DbService } from '../../services/DataBase/db.service';
 import { ExampleItem, WordsItem } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { ContentEditableComponent } from '../content-editable/content-editable.component';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
-import { YOU_DAO_API } from '../../core/constant';
-import { ContentEditableComponent } from '../content-editable/content-editable.component';
 
 @Component({
   selector: 'app-side-panel-details',
