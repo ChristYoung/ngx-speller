@@ -35,16 +35,15 @@ import { ZorroModule } from '../../../zorro/zorro.module';
       <button
         nzType="link"
         nz-button
-        (click)="familiar = !familiar; updateFamiliarity.emit(familiar)"
+        (click)="mispronounce = !mispronounce; updateMisPronounce.emit(mispronounce)"
         appPreventButtonDefault
       >
         <span
           class="operator_item"
           nzType="link"
           nz-icon
-          [nzType]="'heart'"
-          [nzTheme]="familiar ? 'twotone' : 'outline'"
-          [nzTwotoneColor]="'#eb2f96'"
+          [nzType]="'sp:shutup'"
+          [class.mispronounce]="mispronounce"
         ></span>
       </button>
       <button
@@ -69,16 +68,16 @@ export class SpellingOperatorComponent implements OnChanges {
   @Input() mode: ModeType = 'SPELLING';
   @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
   @Output() moveCursor = new EventEmitter<'next' | 'prev'>();
-  @Output() updateFamiliarity = new EventEmitter<boolean>();
+  @Output() updateMisPronounce = new EventEmitter<boolean>();
   @Output() onClickToEdit = new EventEmitter<boolean>(false);
 
-  familiar: boolean;
+  mispronounce: boolean;
 
   constructor(private drawer: NzDrawerService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['wordItem']) {
-      this.familiar = !!this.wordDetails?.familiar;
+    if (changes['wordDetails']) {
+      this.mispronounce = !!this.wordDetails?.mispronounce;
     }
   }
 

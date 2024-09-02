@@ -8,9 +8,8 @@ import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
-import { FamiliarType } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { FiltersConfig } from './../../types/settings.type';
+import { FiltersConfig, PronounceableType } from './../../types/settings.type';
 import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
 
 @Component({
@@ -26,10 +25,10 @@ import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
               <span class="label_span">random order:</span>
               <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
             </div>
-            <nz-radio-group [(ngModel)]="familiarType">
+            <nz-radio-group [(ngModel)]="pronounceableType">
               <label nz-radio nzValue="ALL">All</label>
-              <label nz-radio nzValue="FAMILIAR">Familiar</label>
-              <label nz-radio nzValue="UNFAMILIAR">Unfamiliar</label>
+              <label nz-radio nzValue="PRONOUNCED">Pronounced</label>
+              <label nz-radio nzValue="UNPRONOUNCED">Unpronounced</label>
             </nz-radio-group>
           </div>
           <div class="form_control_container pd_l slider_padding_0">
@@ -105,7 +104,7 @@ export class SidePanelFilterComponent implements OnInit {
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
   lessThanCount: number = DEFAULT_FILTER_LESS_THAN; // pick out these words whose right count is less than the `lessThanCount`.
   maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
-  familiarType?: FamiliarType = 'ALL';
+  pronounceableType?: PronounceableType = 'ALL';
 
   db = inject(DbService);
   store = inject(Store);
@@ -128,7 +127,7 @@ export class SidePanelFilterComponent implements OnInit {
           this.lessThanRate = filters.lessThanRate;
           this.lessThanCount =
             filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
-          this.familiarType = filters.familiarType;
+          this.pronounceableType = filters.pronounceableType;
         } else {
           this.pickRange = [1, allWordsCount];
         }
@@ -140,7 +139,7 @@ export class SidePanelFilterComponent implements OnInit {
       randomOrder,
       pickRange,
       lessThanRate,
-      familiarType,
+      pronounceableType,
       lessThanCount,
     } = this;
     this.store.dispatch(
@@ -149,7 +148,7 @@ export class SidePanelFilterComponent implements OnInit {
           randomOrder,
           pickRange,
           lessThanRate,
-          familiarType,
+          pronounceableType,
           lessThanCount,
         } as FiltersConfig,
       })
@@ -160,7 +159,7 @@ export class SidePanelFilterComponent implements OnInit {
       randomOrder,
       pickRange,
       lessThanRate,
-      familiarType,
+      pronounceableType,
       lessThanCount,
     } as FiltersConfig;
   }

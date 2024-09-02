@@ -1,6 +1,6 @@
 export interface WordsItem {
   word: string;
-  familiar: boolean;
+  mispronounce?: boolean;
   type?: WordType;
   created_timestamp?: number;
   explanation?: string;

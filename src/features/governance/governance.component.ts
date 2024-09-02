@@ -123,11 +123,10 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   >
                   <span
                     class="operator_item"
+                    [class.mispronounce]="data.mispronounce"
                     nz-icon
-                    [nzType]="'heart'"
-                    [nzTheme]="data.familiar ? 'twotone' : 'outline'"
-                    (click)="updateFamiliarity(data)"
-                    [nzTwotoneColor]="'#eb2f96'"
+                    [nzType]="'sp:shutup'"
+                    (click)="updateMisPronounce(data)"
                   ></span>
                   <span
                     class="operator_item"
@@ -302,9 +301,9 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     this.setOfCheckId.clear();
   }
 
-  updateFamiliarity(element: WordsItem): void {
-    const familiar = element.familiar;
-    element.familiar = !familiar;
+  updateMisPronounce(element: WordsItem): void {
+    const mispronounce = element.mispronounce;
+    element.mispronounce = !mispronounce;
     this.db.updateWordItemFromIndexDB(element, true).subscribe(() => {});
   }
 

@@ -52,7 +52,7 @@ export class DbService {
       return {
         word,
         created_timestamp: 0,
-        familiar: false,
+        mispronounce: false,
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
@@ -64,7 +64,7 @@ export class DbService {
           const wordsRes = [...res];
           wordsRes.forEach((w: WordsItem) => {
             w.examples = [{ zh: w['example_zh'], en: w['example'] }];
-            w.familiar = false;
+            w.mispronounce = false;
             w.total_count = 0;
             w.right_count = 0;
             w.created_timestamp = new Date().getTime();
@@ -183,7 +183,7 @@ export class DbService {
         showHorn: true,
       },
       filters: {
-        familiarType: 'ALL',
+        pronounceableType: 'ALL',
         pickRange: [0, allWordsLen],
         randomOrder: false,
         lessThanRate: 1,

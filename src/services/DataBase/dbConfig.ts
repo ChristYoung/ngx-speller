@@ -15,8 +15,8 @@ export const dbConfig: DBConfig = {
           options: { unique: false },
         },
         {
-          name: 'familiar', // 单词是否掌握
-          keypath: 'familiar',
+          name: 'mispronounce', // 单词是否会读
+          keypath: 'mispronounce',
           options: { unique: false },
         },
         {

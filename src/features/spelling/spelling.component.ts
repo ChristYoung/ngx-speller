@@ -65,7 +65,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             [enableSwitch]="enableSwitch"
             (moveCursor)="onMoveCursorHandler($event)"
             (onIncorrectSpelling)="incorrectHandler($event)"
-            (updateFamiliarity)="updateFamiliarity($event)"
+            (updateMisPronounce)="updateMisPronounce($event)"
             (onClickToEdit)="onClickToEditHandler($event)"
           ></app-spelling-operator>
         </div>
@@ -108,10 +108,10 @@ export class SpellingComponent {
     this.currentWordItem$ = this.store.select('words', 'currentWordItem');
   }
 
-  updateFamiliarity(familiar: boolean): void {
+  updateMisPronounce(mispronounce: boolean): void {
     this.currentWordItem$.pipe(take(1)).subscribe((w) => {
       this.db
-        .updateWordItemFromIndexDB({ ...w, familiar }, true)
+        .updateWordItemFromIndexDB({ ...w, mispronounce }, true)
         .subscribe((_w) => {});
     });
   }

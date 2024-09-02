@@ -6,45 +6,28 @@ import {
 import { provideRouter, withHashLocation } from '@angular/router';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
+import { registerLocaleData } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getDatabase, provideDatabase } from '@angular/fire/database';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import {
-  getRemoteConfig,
-  provideRemoteConfig,
-} from '@angular/fire/remote-config';
-import { getStorage, provideStorage } from '@angular/fire/storage';
+import zh from '@angular/common/locales/zh';
+import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { firstValueFrom, mergeMap } from 'rxjs';
-import { DbService } from '../services/DataBase/db.service';
+import { provideNzI18n, zh_CN } from 'ng-zorro-antd/i18n';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { dbConfig } from '../services/DataBase/dbConfig';
+import { StartUpService } from '../services/start-up.service';
 import { metaReducers, reducers } from '../store';
 import { SettingsEffects } from '../store/settings/settings.effect';
 import { routes } from './app.routes';
-import { zh_CN, provideNzI18n } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import zh from '@angular/common/locales/zh';
-import { FormsModule } from '@angular/forms';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { Icons } from './icon.config';
 
 registerLocaleData(zh);
 
 // Attention: initializeUserData must return a type like '() => Promise<void>'!
-export function initializeUserData(db: DbService): () => Promise<void> {
-  return async () => {
-    const total$ = db.getAllWordsFromIndexDB(true).pipe(
-      mergeMap((words) => {
-        return db.getSettingConfigsFromIndexDB(words.length, true);
-      })
-    );
-    await firstValueFrom(total$);
-  };
+export function initializeUserData(startup: StartUpService): () => Promise<void> {
+  return startup.load();
 }
 
 export const appConfig: ApplicationConfig = {
@@ -63,7 +46,7 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       useFactory: initializeUserData,
       multi: true,
-      deps: [DbService],
+      deps: [StartUpService],
     },
     // importProvidersFrom(
     //   provideFirebaseApp(() => initializeApp(environment.fireBaseConfig))
