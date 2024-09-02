@@ -42,7 +42,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
           class="operator_item"
           nzType="link"
           nz-icon
-          [nzType]="'heart'"
+          [nzType]="'read'"
           [nzTheme]="mispronounce ? 'twotone' : 'outline'"
           [nzTwotoneColor]="'#eb2f96'"
         ></span>

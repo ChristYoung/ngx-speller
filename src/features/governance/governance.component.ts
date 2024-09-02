@@ -124,7 +124,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   <span
                     class="operator_item"
                     nz-icon
-                    [nzType]="'heart'"
+                    [nzType]="'read'"
                     [nzTheme]="data.mispronounce ? 'twotone' : 'outline'"
                     (click)="updateMisPronounce(data)"
                     [nzTwotoneColor]="'#eb2f96'"
