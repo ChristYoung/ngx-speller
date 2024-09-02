@@ -85,7 +85,7 @@ export const BiggestFilter = (
   let filterList =
     filterConfig.pronounceableType === 'ALL'
       ? [..._list]
-      : _list.filter((item) => item.mispronounce === pronounceable);
+      : _list.filter((item) => item.mispronounce === !pronounceable);
 
   filterList = filterList.filter((item) => {
     const right_rate =
