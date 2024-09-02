@@ -76,7 +76,7 @@ export class SpellingOperatorComponent implements OnChanges {
   constructor(private drawer: NzDrawerService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['wordItem']) {
+    if (changes['wordDetails']) {
       this.mispronounce = !!this.wordDetails?.mispronounce;
     }
   }
