@@ -1,5 +1,5 @@
 export type ModeType = 'VIEW' | 'SPELLING' | 'QUIZ';
-export type FamiliarType = 'FAMILIAR' | 'UNFAMILIAR' | 'ALL';
+export type PronounceableType = 'PRONOUNCED' | 'UNPRONOUNCED' | 'ALL';
 
 export type CommonSettingsConfig = {
   mode: ModeType;
@@ -15,7 +15,7 @@ export type FiltersConfig = {
   startDate?: number;
   endDate?: number;
   recentDays?: number;
-  familiarType?: FamiliarType;
+  pronounceableType?: PronounceableType;
   randomOrder?: boolean;
   pickRange?: number[]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate?: number; // pick out these words whose right count is less than the `lessThanRate`.
