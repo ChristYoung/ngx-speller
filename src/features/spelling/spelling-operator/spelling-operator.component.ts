@@ -43,8 +43,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
           nzType="link"
           nz-icon
           [nzType]="'read'"
-          [nzTheme]="mispronounce ? 'twotone' : 'outline'"
-          [nzTwotoneColor]="'#eb2f96'"
+          [class.mispronounce]="mispronounce"
         ></span>
       </button>
       <button

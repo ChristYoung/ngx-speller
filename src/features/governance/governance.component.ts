@@ -123,11 +123,10 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   >
                   <span
                     class="operator_item"
+                    [class.mispronounce]="data.mispronounce"
                     nz-icon
                     [nzType]="'read'"
-                    [nzTheme]="data.mispronounce ? 'twotone' : 'outline'"
                     (click)="updateMisPronounce(data)"
-                    [nzTwotoneColor]="'#eb2f96'"
                   ></span>
                   <span
                     class="operator_item"
