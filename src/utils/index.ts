@@ -80,12 +80,12 @@ export const BiggestFilter = (
   _list: WordsItem[],
   filterConfig: FiltersConfig
 ): WordsItem[] => {
-  const isFilterFamiliar = filterConfig.familiarType === 'FAMILIAR';
+  const pronounceable = filterConfig.pronounceableType === 'PRONOUNCED';
   const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 999];
   let filterList =
-    filterConfig.familiarType === 'ALL'
+    filterConfig.pronounceableType === 'ALL'
       ? [..._list]
-      : _list.filter((item) => item.familiar === isFilterFamiliar);
+      : _list.filter((item) => item.mispronounce === pronounceable);
 
   filterList = filterList.filter((item) => {
     const right_rate =
