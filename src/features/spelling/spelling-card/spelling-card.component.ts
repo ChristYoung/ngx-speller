@@ -15,6 +15,7 @@ import { HighlightComponent } from '../../../widgets/highlight/highlight.compone
 import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
+import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 
 @Component({
   selector: 'app-spelling-card',
@@ -62,7 +63,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
       @if (showExplanations) {
       <div class="explanations">{{ wordItem.explanation || wordItem['explanations'] }}</div>
         @if (wordItem.eng_explanation && mode !== 'QUIZ') {
-          <div class="explanations">{{ wordItem.eng_explanation }}</div>
+          <div class="explanations" [innerHTML]="wordItem.eng_explanation | trustHtml"></div>
         }
       } @if (showExamples) {
       <div class="examples_container">
@@ -85,6 +86,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
     HoldKeypressDirective,
     ZorroModule,
     SimilarWordsComponent,
+    TrustHtmlPipe,
   ],
 })
 export class SpellingCardComponent implements OnChanges {
