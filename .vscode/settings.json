@@ -4,6 +4,7 @@
         "Firestore",
         "geekblue",
         "ngrx",
-        "Popconfirm"
+        "Popconfirm",
+        "shutup"
     ]
 }

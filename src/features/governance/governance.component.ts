@@ -125,7 +125,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                     class="operator_item"
                     [class.mispronounce]="data.mispronounce"
                     nz-icon
-                    [nzType]="'read'"
+                    [nzType]="'sp:shutup'"
                     (click)="updateMisPronounce(data)"
                   ></span>
                   <span

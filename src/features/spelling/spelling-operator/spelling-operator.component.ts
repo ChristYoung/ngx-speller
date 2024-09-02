@@ -42,7 +42,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
           class="operator_item"
           nzType="link"
           nz-icon
-          [nzType]="'read'"
+          [nzType]="'sp:shutup'"
           [class.mispronounce]="mispronounce"
         ></span>
       </button>
