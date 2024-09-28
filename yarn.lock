@@ -120,6 +120,15 @@
     ora "5.4.1"
     rxjs "7.8.1"
 
+"@angular-slider/ngx-slider@^17.0.2":
+  version "17.0.2"
+  resolved "https://registry.npmjs.org/@angular-slider/ngx-slider/-/ngx-slider-17.0.2.tgz"
+  integrity sha512-6fQ0wOH/pZvC2kbw3ZFab7eXwDaKZtj/cuA7pbhyKWHp8pwhaptoDDoEXttlAZIUEnrMG8rkg0OBcVWwwBLEJA==
+  dependencies:
+    detect-passive-events "^2.0.3"
+    rxjs "^7.8.1"
+    tslib "^2.3.0"
+
 "@angular/animations@^17.0.0", "@angular/animations@17.3.11":
   version "17.3.11"
   resolved "https://registry.npmjs.org/@angular/animations/-/animations-17.3.11.tgz"
@@ -160,7 +169,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^17.0.0", "@angular/common@^17.0.0 || ^18.0.0", "@angular/common@^17.0.1", "@angular/common@>=10.0.6", "@angular/common@17.3.11":
+"@angular/common@^17.0.0", "@angular/common@^17.0.0 || ^18.0.0", "@angular/common@^17.0.1", "@angular/common@^17.1.1", "@angular/common@>=10.0.6", "@angular/common@17.3.11":
   version "17.3.11"
   resolved "https://registry.npmjs.org/@angular/common/-/common-17.3.11.tgz"
   integrity sha512-WG+HQjUaQziYLGdbcv2aW+G73uroN5VF9yk4qWYcolW+VB8SV/DOAol8uFVgCF21cIOl5+wfJZvA4r5oG3dYaw==
@@ -188,7 +197,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^17.0.0", "@angular/core@^17.0.0 || ^18.0.0", "@angular/core@^17.0.1", "@angular/core@>=10.0.6", "@angular/core@17.3.11":
+"@angular/core@^17.0.0", "@angular/core@^17.0.0 || ^18.0.0", "@angular/core@^17.0.1", "@angular/core@^17.1.1", "@angular/core@>=10.0.6", "@angular/core@17.3.11":
   version "17.3.11"
   resolved "https://registry.npmjs.org/@angular/core/-/core-17.3.11.tgz"
   integrity sha512-2wPZwXFei3kVxK2ylIH6CdGebrC4kvooFx7qoX+250OITAEFMODJGdh/e3x0DpFUjlRvQtIFQ+YpQlfC5JnL4g==
@@ -217,7 +226,7 @@
     tslib "^2.3.0"
     winston "^3.0.0"
 
-"@angular/forms@^17.0.0":
+"@angular/forms@^17.0.0", "@angular/forms@^17.1.1":
   version "17.3.11"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-17.3.11.tgz"
   integrity sha512-719flo/1L64YOAxL3pzszTK+7bczVVOQDXT1khnjb48GVZdBUBwW2D+cFbqSW1VMuWWr2Amwy1lL4YM5S7qPJQ==
@@ -3283,10 +3292,22 @@ destroy@1.2.0:
   resolved "https://registry.npmjs.org/destroy/-/destroy-1.2.0.tgz"
   integrity sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==
 
+detect-it@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/detect-it/-/detect-it-4.0.1.tgz"
+  integrity sha512-dg5YBTJYvogK1+dA2mBUDKzOWfYZtHVba89SyZUhc4+e3i2tzgjANFg5lDRCd3UOtRcw00vUTMK8LELcMdicug==
+
 detect-node@^2.0.4:
   version "2.1.0"
   resolved "https://registry.npmjs.org/detect-node/-/detect-node-2.1.0.tgz"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
+
+detect-passive-events@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/detect-passive-events/-/detect-passive-events-2.0.3.tgz"
+  integrity sha512-QN/1X65Axis6a9D8qg8Py9cwY/fkWAmAH/edTbmLMcv4m5dboLJ7LcAi8CfaCON2tjk904KwKX/HTdsHC6yeRg==
+  dependencies:
+    detect-it "^4.0.1"
 
 di@^0.0.1:
   version "0.0.1"
