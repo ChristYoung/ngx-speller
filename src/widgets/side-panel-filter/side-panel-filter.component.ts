@@ -39,7 +39,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
             </p>
             <nz-input-number [(ngModel)]="lessThanCount" [nzMin]="0" [nzMax]="maxLessThanCount"></nz-input-number>
           </div>
-          <div class="form_control_container pd_l slider_padding_0">
+          <div class="form_control_container pd_l slider_padding_0 custom-slider">
             <p>
               pick the words whose right rate were less than:
               {{ lessThanRate * 100 | toFixed : 2 }}%
@@ -52,7 +52,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
             }"></ngx-slider>
           </div>
           <div
-            class="form_control_container pd_l slider_padding_0 slider_padding_t20"
+            class="form_control_container pd_l slider_padding_0 slider_padding_t20 custom-slider"
           >
             <p>
               pick the words from {{ minRange }} to

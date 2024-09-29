@@ -1,3 +1,35 @@
+// overwrite ngx-slider styles
+// We need to use ::ng-deep to overcome view encapsulation
+::ng-deep {
+    .custom-slider {
+        .ngx-slider {
+            .ngx-slider-pointer {
+                top: -9px;
+                width: 20px;
+                height: 20px;
+                background-color: #1890ff;
+
+                &:after {
+                    width: 4px;
+                    height: 4px;
+                    top: 8px;
+                    left: 8px;
+                }
+
+                &.ngx-slider-active {
+                    &:after {
+                        background-color: #fff;
+                    }
+                }
+            }
+
+            .ngx-slider-selection {
+                background-color: #1890ff;
+            }
+        }
+    }
+}
+
 .side_panel_settings_container {
     padding: 0 50px;
     height: 100%;
