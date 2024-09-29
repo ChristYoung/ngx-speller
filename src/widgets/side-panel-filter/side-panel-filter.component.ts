@@ -1,21 +1,22 @@
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { combineLatestWith, map, take } from 'rxjs/operators';
+import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { FiltersConfig, PronounceableType } from './../../types/settings.type';
-import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
 
 @Component({
   selector: 'app-side-panel-filter',
   standalone: true,
-  imports: [ZorroModule, FormsModule, CommonModule, ToFixedPipe],
+  imports: [ZorroModule, FormsModule, CommonModule, ToFixedPipe, NgxSliderModule],
   template: `
     <div class="side_panel_settings_container">
       <div class="content">
@@ -33,46 +34,40 @@ import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
           </div>
           <div class="form_control_container pd_l slider_padding_0">
             <p>
-              pick the words whose right rate were less than:
-              {{ lessThanRate * 100 | toFixed : 2 }}%
-            </p>
-            <nz-slider
-              [nzMax]="1"
-              [nzMin]="0"
-              [nzStep]="0.01"
-              [(ngModel)]="lessThanRate"
-            ></nz-slider>
-          </div>
-          <div class="form_control_container pd_l slider_padding_0">
-            <p>
               pick the words whose spell count were less than:
               {{ lessThanCount }}
             </p>
-            <nz-slider
-              [nzMax]="maxLessThanCount"
-              [nzMin]="0"
-              [nzStep]="1"
-              [(ngModel)]="lessThanCount"
-            ></nz-slider>
+            <nz-input-number [(ngModel)]="lessThanCount" [nzMin]="0" [nzMax]="maxLessThanCount"></nz-input-number>
+          </div>
+          <div class="form_control_container pd_l slider_padding_0">
+            <p>
+              pick the words whose right rate were less than:
+              {{ lessThanRate * 100 | toFixed : 2 }}%
+            </p>
+            <ngx-slider [(value)]="lessThanRate" [options]="{
+              floor: 0,
+              ceil: 1,
+              step: 0.01,
+              animate: false,
+            }"></ngx-slider>
           </div>
           <div
             class="form_control_container pd_l slider_padding_0 slider_padding_t20"
           >
             <p>
-              pick the words from {{ pickRange[0] }} to
+              pick the words from {{ minRange }} to
               {{
-                pickRange[1] <= (allWordsCount$ | async)
-                  ? pickRange[1]
+                maxRange <= (allWordsCount$ | async)
+                  ? maxRange
                   : (allWordsCount$ | async)
               }}:
             </p>
-            <nz-slider
-              nzRange
-              [nzMin]="0"
-              [nzMax]="allWordsCount$ | async"
-              [nzStep]="1"
-              [(ngModel)]="pickRange"
-            ></nz-slider>
+            <ngx-slider [(value)]="minRange" [(highValue)]="maxRange" [options]="{
+              floor: 0,
+              ceil: (allWordsCount$ | async) ?? 9999,
+              step: 1,
+              animate: false,
+            }"></ngx-slider>
           </div>
         </div>
       </div>
@@ -99,10 +94,12 @@ import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
   styleUrl: './side-panel-filter.component.less',
 })
 export class SidePanelFilterComponent implements OnInit {
+
   randomOrder: boolean = false;
-  pickRange: number[] = [0, 9999]; // pick out these words whose right count is in the `pickRange`.
+  minRange: number = 0;
+  maxRange: number = 9999;
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
-  lessThanCount: number = DEFAULT_FILTER_LESS_THAN; // pick out these words whose right count is less than the `lessThanCount`.
+  lessThanCount: number = 1; // pick out these words whose right count is less than the `lessThanCount`.
   maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
   pronounceableType?: PronounceableType = 'ALL';
 
@@ -123,13 +120,15 @@ export class SidePanelFilterComponent implements OnInit {
         const { filters } = settings;
         if (filters) {
           this.randomOrder = filters.randomOrder;
-          this.pickRange = filters.pickRange;
+          this.minRange = filters.pickRange[0];
+          this.maxRange = filters.pickRange[1];
           this.lessThanRate = filters.lessThanRate;
           this.lessThanCount =
             filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
           this.pronounceableType = filters.pronounceableType;
         } else {
-          this.pickRange = [1, allWordsCount];
+          this.minRange = 1;
+          this.maxRange = allWordsCount;
         }
       });
   }
@@ -137,16 +136,17 @@ export class SidePanelFilterComponent implements OnInit {
   onApplyClicked(): FiltersConfig {
     const {
       randomOrder,
-      pickRange,
       lessThanRate,
       pronounceableType,
       lessThanCount,
+      minRange,
+      maxRange,
     } = this;
     this.store.dispatch(
       setFiltersConfig({
         filters: {
           randomOrder,
-          pickRange,
+          pickRange: [minRange, maxRange] as [number, number],
           lessThanRate,
           pronounceableType,
           lessThanCount,
@@ -157,7 +157,7 @@ export class SidePanelFilterComponent implements OnInit {
     this.nzDrawerRef.close();
     return {
       randomOrder,
-      pickRange,
+      pickRange: [minRange, maxRange],
       lessThanRate,
       pronounceableType,
       lessThanCount,

@@ -5,4 +5,4 @@ export const WORDS_SIMPLE_SUGGESTIONS =
 export const WORDS_COMPLEX_EXPLANATION = `${BASE_API}/explanations`; // 获取单词的释义， 音标, 和例句等
 export const YOU_DAO_API =
   'https://dict.youdao.com/jsonapi?jsonversion=2&client=mobile&q='; // 有道词典的API
-export const DEFAULT_FILTER_LESS_THAN = 100; // 默认过滤拼写次数小于999的单词
+export const DEFAULT_FILTER_LESS_THAN = 999; // 默认过滤拼写次数小于999的单词
