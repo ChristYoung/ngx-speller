@@ -83,6 +83,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
               <th [nzWidth]="'60px'">Order</th>
               <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
               <th [nzWidth]="'300px'">Phonetic</th>
+              <th [nzWidth]="'150px'" style="text-align: right">Created Date</th>
               <th
                 [nzWidth]="'300px'"
                 [nzSortFn]="sortFnByRightRate"
@@ -110,6 +111,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
+              <td style="text-align: right">{{data.created_timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</td>
               <td style="text-align: right">
               {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
