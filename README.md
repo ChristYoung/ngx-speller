@@ -26,6 +26,8 @@
  - https://docs.amplify.aws/angular/start/quickstart/
  - https://docs.amplify.aws/angular/build-a-backend/auth/set-up-auth/
  - https://eu-north-1.console.aws.amazon.com/amplify/apps/d2dd6r33kwn6o7/branches/main/deployments
+ - [Configure AWS for local development](https://docs.amplify.aws/angular/start/account-setup/)
+ - [IAM identity Center](https://eu-north-1.console.aws.amazon.com/singlesignon/home?region=eu-north-1#!/)
 
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
