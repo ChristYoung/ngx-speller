@@ -30,6 +30,7 @@
     "@ngrx/entity": "^17.1.1",
     "@ngrx/store": "^17.1.1",
     "@ngrx/store-devtools": "^17.1.1",
+    "aws-amplify": "^6.6.3",
     "date-fns": "^3.6.0",
     "ng-zorro-antd": "^17.4.0",
     "ngx-indexed-db": "^16.0.0",
@@ -42,14 +43,21 @@
     "@angular-devkit/build-angular": "^17.0.2",
     "@angular/cli": "^17.0.2",
     "@angular/compiler-cli": "^17.0.0",
+    "@aws-amplify/backend": "^1.3.0",
+    "@aws-amplify/backend-cli": "^1.2.8",
     "@ngrx/schematics": "^17.1.1",
     "@types/jasmine": "~5.1.0",
+    "aws-cdk": "^2.160.0",
+    "aws-cdk-lib": "^2.160.0",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.24.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.2.2"
+    "tsx": "^4.19.1",
+    "typescript": "^5.4.5"
   }
 }
