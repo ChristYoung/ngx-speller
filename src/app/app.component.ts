@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Amplify } from 'aws-amplify';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
+import outputs from '../../amplify_outputs.json';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +13,8 @@ import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/u
   styleUrl: './app.component.less',
 })
 export class AppComponent {
-  constructor(public authenticator: AuthenticatorService) {}
+    
+  constructor(public authenticator: AuthenticatorService) {
+    Amplify.configure(outputs);
+  }
 }
