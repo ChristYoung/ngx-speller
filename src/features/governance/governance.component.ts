@@ -16,6 +16,7 @@ import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { signIn, signOut } from 'aws-amplify/auth'
 
 
 @Component({
@@ -63,6 +64,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
           <button nz-button nzType="default">
             Clear spell data
           </button>
+          <button nz-button nzType="default" (click)="signOutHandler()">Sign Out</button>
         </div>
       </div>
       <div class="table_container">
@@ -201,7 +203,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   constructor(
     private db: DbService,
     private fileService: FileService,
-    private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
+    private store: Store,
     private drawer: NzDrawerService,
   ) {}
 
@@ -227,12 +229,16 @@ export class GovernanceComponent implements OnInit, OnDestroy {
         this.dataSource = wordType
           ? this.allDataFromDB.filter((item) => item.type === wordType)
           : [...this.dataSource];
-      })
+      });
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  async signOutHandler(): Promise<void> {
+    await signOut({global: true});
   }
 
   scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {

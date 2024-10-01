@@ -48,14 +48,6 @@ export const appConfig: ApplicationConfig = {
       multi: true,
       deps: [StartUpService],
     },
-    // importProvidersFrom(
-    //   provideFirebaseApp(() => initializeApp(environment.fireBaseConfig))
-    // ),
-    // importProvidersFrom(provideAuth(() => getAuth())),
-    // importProvidersFrom(provideFirestore(() => getFirestore())),
-    // importProvidersFrom(provideDatabase(() => getDatabase())),
-    // importProvidersFrom(provideStorage(() => getStorage())),
-    // importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
     provideNzI18n(zh_CN),
     importProvidersFrom(FormsModule),
   ],

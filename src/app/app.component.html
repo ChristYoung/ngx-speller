@@ -1,2 +1,16 @@
 <!-- NG-ZORRO -->
-<router-outlet></router-outlet>
+<p>{{authState}}</p>
+<p>{{user | json}}</p>
+<ng-container *ngIf="!currentUser; else Auth">
+    <amplify-authenticator>
+        <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+            <router-outlet></router-outlet>
+        </ng-template>
+    </amplify-authenticator>
+</ng-container>
+<ng-template #Auth><router-outlet></router-outlet></ng-template>
+<!-- <amplify-authenticator>
+    <ng-template amplifySlot="authenticated" let-user="user" let-signOut="signOut">
+        <router-outlet></router-outlet>
+    </ng-template>
+</amplify-authenticator> -->
