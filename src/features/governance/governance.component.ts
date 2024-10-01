@@ -16,7 +16,7 @@ import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
+import { signIn, signOut } from 'aws-amplify/auth'
 
 
 @Component({
@@ -64,7 +64,7 @@ import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/u
           <button nz-button nzType="default">
             Clear spell data
           </button>
-          <button nz-button nzType="default" (click)="signOut()">Sign Out</button>
+          <button nz-button nzType="default" (click)="signOutHandler()">Sign Out</button>
         </div>
       </div>
       <div class="table_container">
@@ -205,7 +205,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     private fileService: FileService,
     private store: Store,
     private drawer: NzDrawerService,
-    private auth: AuthenticatorService,
   ) {}
 
   ngOnInit(setStore?: boolean): void {
@@ -230,7 +229,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
         this.dataSource = wordType
           ? this.allDataFromDB.filter((item) => item.type === wordType)
           : [...this.dataSource];
-      })
+      });
   }
 
   ngOnDestroy(): void {
@@ -238,8 +237,8 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  signOut(): void {
-    this.auth.signOut();
+  async signOutHandler(): Promise<void> {
+    await signOut({global: true});
   }
 
   scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
