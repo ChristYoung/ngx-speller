@@ -64,7 +64,6 @@ import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/u
           <button nz-button nzType="default">
             Clear spell data
           </button>
-          <button nz-button nzType="default" (click)="signOut()">Sign Out</button>
         </div>
       </div>
       <div class="table_container">
@@ -238,10 +237,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  signOut(): void {
-    this.auth.signOut();
-  }
-
   scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
     if (direction === 'TOP') {
       const element = this.scrollableDiv.nativeElement;
@@ -251,19 +246,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       element.scrollTop = element.scrollHeight;
     }
     
-  }
-
-  syncToFireBase(): void {
-    // listVal(ref(this.angularFireDataBase, FIREBASE_WORD_DB_PATH)).subscribe(
-    //   (res) => {
-    //     console.log('uploadFireBase,res', res);
-    //   }
-    // );
-    // set(ref(this.realTimeDataBase, FIREBASE_WORD_DB_PATH), [
-    //   ...this.dataSource,
-    // ]).then(() => console.log('更新成功'));
-    // const qry = orderByKey();
-    // console.log('qry', qry);
   }
 
   onItemChecked(id: number, checked: boolean): void {
