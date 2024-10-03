@@ -32,6 +32,7 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzResultModule } from 'ng-zorro-antd/result';
 
 @NgModule({
   exports: [
@@ -68,6 +69,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzNotificationModule,
     NzPopconfirmModule,
     NzInputNumberModule,
+    NzResultModule,
   ],
 })
 export class ZorroModule {}
