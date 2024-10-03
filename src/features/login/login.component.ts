@@ -23,7 +23,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       </div>
       <div *nzModalFooter>
         <button nz-button nzType="default" (click)="isVisible = false">Cancel</button>
-        <button nz-button nzType="primary" (click)="submitLogin()" [nzLoading]="isConfirmLoading">Submit</button>
+        <button nz-button nzType="primary" [disabled]="!username || !password" (click)="submitLogin()" [nzLoading]="isConfirmLoading">Submit</button>
       </div>
     </nz-modal>
   `,
@@ -36,7 +36,6 @@ export class LoginComponent {
   username = '';
   password = '';
   router = inject(Router);
-
 
   async submitLogin(): Promise<void> {
     this.isConfirmLoading = true;

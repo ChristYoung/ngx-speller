@@ -81,9 +81,6 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
           >
             Apply
           </button>
-          <button *nzSpaceItem nz-button (click)="onResetClicked()">
-            Reset
-          </button>
           <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
             Save in DataBase
           </button>
@@ -163,8 +160,6 @@ export class SidePanelFilterComponent implements OnInit {
       lessThanCount,
     } as FiltersConfig;
   }
-
-  onResetClicked(): void {}
 
   onSaveDataBaseClicked(): void {
     const filterConfigs = this.onApplyClicked();

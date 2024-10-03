@@ -10,6 +10,9 @@ import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
 import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { updateCurrentIndex } from '../../store/words/words.actions';
+import { signOut } from 'aws-amplify/auth';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-side-panel-settings',
@@ -55,7 +58,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
             <div class="form_control_container pd_l">
               <span class="label_span">show explanation</span>
               <nz-switch nzSize="small" formControlName="showExplanation"
-                >show explanation</nz-switch
+                ></nz-switch
               >
             </div>
             <div class="form_control_container pd_l">
@@ -63,24 +66,32 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
                 >auto play media for every single word</span
               >
               <nz-switch nzSize="small" formControlName="autoPlay"
-                >show explanation</nz-switch
+                ></nz-switch
               >
+            </div>
+            <div class="form_control_container pd_l logout_operation" (click)="onSignOutClicked()">
+              @if (logoutLoading) {
+                <span class="icon" nz-icon nzType="loading"></span>
+              } @else {
+                <span class="icon" nz-icon nzType="logout" nzTheme="outline"></span>
+              }
+              <span>Sign Out</span>
             </div>
           </form>
         </div>
       </div>
       <div class="operator_area">
         <nz-space>
-          <button
+          <!-- <button
             *nzSpaceItem
             nz-button
             nzType="primary"
             (click)="onApplyClicked()"
           >
             Apply
-          </button>
-          <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
-            Save in DataBase
+          </button> -->
+          <button *nzSpaceItem nz-button nzType="primary" (click)="onSaveDataBaseClicked()">
+            Apply
           </button>
         </nz-space>
       </div>
@@ -92,9 +103,11 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
   fb = inject(FormBuilder);
   db = inject(DbService);
   store = inject(Store);
+  router = inject(Router);
   settings$ = this.store.select('settings');
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
   destroy$: Subject<void> = new Subject<void>();
+  logoutLoading = false;
   private nzDrawerRef = inject(NzDrawerRef<void>);
 
   constructor() {}
@@ -143,6 +156,14 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     this.db
       .updateCommonSettingConfigsToIndexDB(commonSettings)
       .subscribe(() => {});
+  }
+
+  async onSignOutClicked(): Promise<void> {
+    this.logoutLoading = true;
+    await signOut();
+    this.logoutLoading = false;
+    this.nzDrawerRef.close();
+    this.router.navigate(['/login']);
   }
 
   private autoSettingWhenQuiz(enable: boolean): void {
