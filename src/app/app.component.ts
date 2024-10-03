@@ -14,11 +14,7 @@ import outputs from '../../amplify_outputs.json';
 })
 export class AppComponent {
 
-  authState: any;
-    
   constructor(public authenticator: AuthenticatorService) {
     Amplify.configure(outputs);
-    this.authState = this.authenticator.authStatus;
-    console.log('this.authState',this.authState)
   }
 }

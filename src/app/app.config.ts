@@ -32,9 +32,10 @@ export function initializeUserData(startup: StartUpService): () => Promise<void>
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withHashLocation()),
     importProvidersFrom(NgxIndexedDBModule.forRoot(dbConfig)),
     importProvidersFrom(NzIconModule.forRoot(Icons)),
+    importProvidersFrom(FormsModule),
+    provideRouter(routes, withHashLocation()),
     provideAnimationsAsync(),
     provideHttpClient(),
     provideStore(reducers, { metaReducers }),
@@ -48,15 +49,6 @@ export const appConfig: ApplicationConfig = {
       multi: true,
       deps: [StartUpService],
     },
-    // importProvidersFrom(
-    //   provideFirebaseApp(() => initializeApp(environment.fireBaseConfig))
-    // ),
-    // importProvidersFrom(provideAuth(() => getAuth())),
-    // importProvidersFrom(provideFirestore(() => getFirestore())),
-    // importProvidersFrom(provideDatabase(() => getDatabase())),
-    // importProvidersFrom(provideStorage(() => getStorage())),
-    // importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
     provideNzI18n(zh_CN),
-    importProvidersFrom(FormsModule),
   ],
 };

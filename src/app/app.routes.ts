@@ -1,11 +1,14 @@
 import { Routes } from '@angular/router';
+import { EasterEggsComponent } from '../features/esEggs/easter-eggs/easter-eggs.component';
 import { GovernanceComponent } from '../features/governance/governance.component';
 import { HomeComponent } from '../features/home/home.component';
 import { InputComponent } from '../features/input/input.component';
+import { LoginComponent } from '../features/login/login.component';
 import { SpellingComponent } from '../features/spelling/spelling.component';
-import { EasterEggsComponent } from '../features/esEggs/easter-eggs/easter-eggs.component';
+import { authGuard } from '../guard/auth.guard';
 
 export const RoutePathEnum = {
+  Login: 'login', // Auth
   Input: 'input',
   View: 'view',
   Governance: 'governance',
@@ -18,9 +21,11 @@ export const RoutePathEnum = {
 
 export const routes: Routes = [
   { path: '', redirectTo: RoutePathEnum.Home, pathMatch: 'full' },
+  { path: RoutePathEnum.Login, component: LoginComponent },
   {
     path: RoutePathEnum.Home,
     component: HomeComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: RoutePathEnum.Governance, pathMatch: 'full' },
       {
