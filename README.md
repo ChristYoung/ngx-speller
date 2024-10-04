@@ -28,6 +28,7 @@
  - https://eu-north-1.console.aws.amazon.com/amplify/apps/d2dd6r33kwn6o7/branches/main/deployments
  - [Configure AWS for local development](https://docs.amplify.aws/angular/start/account-setup/)
  - [IAM identity Center](https://eu-north-1.console.aws.amazon.com/singlesignon/home?region=eu-north-1#!/)
+ - [Setting Environment variables](https://docs.aws.amazon.com/amplify/latest/userguide/setting-env-vars.html)
 
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
