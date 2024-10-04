@@ -12,7 +12,8 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot) => {
   const router = inject(Router);
   const platFormService = inject(PlatformService);
-  return getCurrentUser$(platFormService.getPlatform()).pipe(
+  const platFormType = platFormService.getPlatform();
+  return getCurrentUser$(platFormType).pipe(
     map((user) => {
       const { userId } = user;
       if (userId) {

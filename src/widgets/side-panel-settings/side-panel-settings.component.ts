@@ -12,6 +12,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { updateCurrentIndex } from '../../store/words/words.actions';
 import { signOut } from 'aws-amplify/auth';
 import { Router } from '@angular/router';
+import { PlatformService } from '../../services/platform.service';
 
 
 @Component({
@@ -69,14 +70,16 @@ import { Router } from '@angular/router';
                 ></nz-switch
               >
             </div>
-            <div class="form_control_container pd_l logout_operation" (click)="onSignOutClicked()">
+            @if (platFormType && platFormType === 'AWS') {
+              <div class="form_control_container pd_l logout_operation" (click)="onSignOutClicked()">
               @if (logoutLoading) {
                 <span class="icon" nz-icon nzType="loading"></span>
               } @else {
                 <span class="icon" nz-icon nzType="logout" nzTheme="outline"></span>
               }
               <span>Sign Out</span>
-            </div>
+             </div>
+            }
           </form>
         </div>
       </div>
@@ -108,6 +111,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
   destroy$: Subject<void> = new Subject<void>();
   logoutLoading = false;
+  platFormType = inject(PlatformService).getPlatform();
   private nzDrawerRef = inject(NzDrawerRef<void>);
 
   constructor() {}
