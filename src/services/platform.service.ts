@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 
+export type PlatFormType = 'AWS' | 'GITHUB';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlatformService {
 
-  private _platform: 'AWS' | 'GITHUB' = 'GITHUB';
+  private _platform: PlatFormType = 'GITHUB';
 
   constructor() { }
 
-  getPlatform(): 'AWS' | 'GITHUB' {
+  getPlatform(): PlatFormType {
     return this._platform;
   }
 
-  setPlatform(platform: 'AWS' | 'GITHUB') {
+  setPlatform(platform: PlatFormType) {
     this._platform = platform;
   }
 }
