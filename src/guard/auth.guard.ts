@@ -2,11 +2,17 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { getCurrentUser } from 'aws-amplify/auth';
 import { catchError, from, map, of } from 'rxjs';
+import { PlatformService, PlatFormType } from '../services/platform.service';
+
+const getCurrentUser$ = (platForm: PlatFormType) => platForm === 'AWS' ? from(getCurrentUser()) : of({
+  userId: 'GITHUB_PAGES'
+});
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot) => {
   const router = inject(Router);
-  return from(getCurrentUser()).pipe(
+  const platFormService = inject(PlatformService);
+  return getCurrentUser$(platFormService.getPlatform()).pipe(
     map((user) => {
       const { userId } = user;
       if (userId) {
