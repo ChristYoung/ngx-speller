@@ -1,9 +1,0 @@
-{
-  "hosting": [
-    {
-      "target": "ng-speller",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
-}
