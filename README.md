@@ -33,3 +33,5 @@
  - npm install --save-dev prettier
  - create a .prettierrc file in your project root
  - add "prettier" to your package.json scripts
+ - npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier -D
+ - 在eslint.json配置文件的extends中添加"plugin:prettier/recommended"
