@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { FormsModule } from '@angular/forms';
 import { YOU_DAO_API } from '../../../core/constant';
@@ -26,15 +19,10 @@ import { YOU_DAO_API } from '../../../core/constant';
       <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
     </nz-tag>
     @if (!freezed) {
-    <nz-tag
-      *ngIf="!inputVisible"
-      class="editable-tag"
-      nzNoAnimation
-      (click)="showInput()"
-    >
-      <span nz-icon nzType="plus"></span>
-      add new
-    </nz-tag>
+      <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
+        <span nz-icon nzType="plus"></span>
+        add new
+      </nz-tag>
     }
     <input
       #inputElement
@@ -71,9 +59,9 @@ import { YOU_DAO_API } from '../../../core/constant';
   ],
 })
 export class SimilarWordsComponent {
-  @Input({ required: true }) tags = [];
+  @Input({ required: true }) tags: string[] = [];
   @Input() freezed = false;
-  @Output() onTagsChange = new EventEmitter();
+  @Output() tagsChange = new EventEmitter();
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
   inputVisible = false;
   inputValue = '';
@@ -92,9 +80,9 @@ export class SimilarWordsComponent {
     'purple',
   ];
 
-  handleClose(removedTag: {}): void {
+  handleClose(removedTag: string): void {
     this.tags = this.tags.filter((tag) => tag !== removedTag);
-    this.onTagsChange.emit(this.tags);
+    this.tagsChange.emit(this.tags);
   }
 
   showInput(): void {
@@ -107,7 +95,7 @@ export class SimilarWordsComponent {
   handleInputConfirm(): void {
     if (this.inputValue && this.tags.indexOf(this.inputValue) === -1) {
       this.tags = [...this.tags, this.inputValue];
-      this.onTagsChange.emit(this.tags);
+      this.tagsChange.emit(this.tags);
     }
     this.inputValue = '';
     this.inputVisible = false;

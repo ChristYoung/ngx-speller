@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
+import { NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
 import { WordsItem } from '../../../types';
 import { ZorroModule } from '../../../zorro/zorro.module';
-import { NzModalRef, NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-confirm',
@@ -11,8 +11,7 @@ import { NzModalRef, NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
   template: `
     <div>
       <p>
-        Oops, You got {{ wordsList.length }} words that spelled incorrectly, as
-        the below shows:
+        Oops, You got {{ wordsList.length }} words that spelled incorrectly, as the below shows:
         <span class="error_words"
           ><b>{{ wordString }}</b></span
         >. Try to spell them one more time?

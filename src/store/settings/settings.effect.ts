@@ -18,11 +18,9 @@ export class SettingsEffects {
       withLatestFrom(this.db.getAllWordsFromIndexDB()),
       switchMap(([action, wordList]) => {
         const { filters } = action;
-        const returnWordsList = filters
-          ? BiggestFilter(wordList, filters)
-          : wordList;
+        const returnWordsList = filters ? BiggestFilter(wordList, filters) : wordList;
         return of(setWordsList({ words: returnWordsList }));
-      })
+      }),
     );
   });
 }

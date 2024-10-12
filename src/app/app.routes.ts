@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+
+import { EasterEggsComponent } from '../features/esEggs/easter-eggs/easter-eggs.component';
 import { GovernanceComponent } from '../features/governance/governance.component';
 import { HomeComponent } from '../features/home/home.component';
 import { InputComponent } from '../features/input/input.component';
 import { SpellingComponent } from '../features/spelling/spelling.component';
-import { EasterEggsComponent } from '../features/esEggs/easter-eggs/easter-eggs.component';
 
 export const RoutePathEnum = {
   Input: 'input',

@@ -6,14 +6,13 @@ import { DbService } from './DataBase/db.service';
 import { SvgService } from './svg.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StartUpService {
-
   constructor(
     private svgService: SvgService,
     private dbService: DbService,
-  ) { }
+  ) {}
 
   load(): () => Promise<void> {
     return async () => {
@@ -24,18 +23,17 @@ export class StartUpService {
 
   viaIndexDBInit(): Promise<Settings> {
     const total$ = this.dbService.getAllWordsFromIndexDB(true).pipe(
-        mergeMap((words) => {
-          return this.dbService.getSettingConfigsFromIndexDB(words.length, true);
-        })
-      );
+      mergeMap((words) => {
+        return this.dbService.getSettingConfigsFromIndexDB(words.length, true);
+      }),
+    );
     return firstValueFrom(total$);
   }
 
   viaSvgInit(): Promise<void> {
-    return new Promise((resolve, _reject) => {
+    return new Promise((resolve) => {
       this.svgService.init();
       resolve();
     });
   }
-
 }

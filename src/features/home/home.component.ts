@@ -1,12 +1,12 @@
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
+import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
+import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-panel-filter.component';
 import { SidePanelSettingsComponent } from '../../widgets/side-panel-settings/side-panel-settings.component';
 import { VerticalMenuComponent } from '../../widgets/vertical-menu/vertical-menu.component';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-panel-filter.component';
-import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 
 @Component({
   selector: 'app-home',
@@ -59,12 +59,10 @@ import { PreventButtonDefaultDirective } from '../../directives/prevent-button-d
   ],
 })
 export class HomeComponent {
-  constructor(
-    private drawerService: NzDrawerService,
-  ) {}
+  constructor(private drawerService: NzDrawerService) {}
 
   openSettingDrawer(): void {
-    const _drawerRef = this.drawerService.create({
+    this.drawerService.create({
       nzTitle: 'Setting Config',
       nzContent: SidePanelSettingsComponent,
       nzWidth: '520px',
@@ -72,11 +70,10 @@ export class HomeComponent {
   }
 
   openFilterDrawer(): void {
-    const _drawerRef = this.drawerService.create({
+    this.drawerService.create({
       nzTitle: 'Filter Words',
       nzContent: SidePanelFilterComponent,
       nzWidth: '520px',
     });
   }
-
 }

@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { Settings } from '../../types';
 import { setCommonSettingsConfig, setFiltersConfig } from './settings.actions';
 
@@ -13,5 +14,5 @@ export const settingsReducer = createReducer(
   on(setFiltersConfig, (_state, { filters }) => ({
     ..._state,
     filters,
-  }))
+  })),
 );

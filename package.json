@@ -1,17 +1,19 @@
 {
   "homepage": ".",
   "name": "ngx-speller",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "description": "A spell checker for Angular applications",
   "author": "Jay Young (858851768@qq.com)",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build --base-href /ngx-speller/",
+    "build": "ng lint && ng build --base-href /ngx-speller/",
     "build:aws": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
@@ -40,16 +42,29 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.2",
+    "@angular-eslint/builder": "17.5.3",
+    "@angular-eslint/eslint-plugin": "17.5.3",
+    "@angular-eslint/eslint-plugin-template": "17.5.3",
+    "@angular-eslint/schematics": "17.5.3",
+    "@angular-eslint/template-parser": "17.5.3",
     "@angular/cli": "^17.0.2",
     "@angular/compiler-cli": "^17.0.0",
     "@ngrx/schematics": "^17.1.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/jasmine": "~5.1.0",
+    "@typescript-eslint/eslint-plugin": "7.11.0",
+    "@typescript-eslint/parser": "7.11.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.3.3",
+    "prettier-eslint": "^16.3.0",
     "typescript": "~5.2.2"
   }
 }

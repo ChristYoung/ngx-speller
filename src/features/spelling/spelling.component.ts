@@ -22,57 +22,49 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
   standalone: true,
   template: `
     @if ((wordList$ | async)?.length > 0) {
-    <div class="container">
-      <nz-progress
-        [nzPercent]="
-          ((currentWordIndex$ | async) / (wordList$ | async).length) * 100
-        "
-      ></nz-progress>
-      <p class="progress_text">
-        {{ currentWordIndex$ | async }}/{{ (wordList$ | async).length }}
-      </p>
-      <div class="content_wrap">
-        <div class="card_container">
-          <app-spelling-card
-            [wordItem]="currentWordItem$ | async"
-            [mode]="(setting$ | async).commonSettings.mode"
-            [enableSpelling]="enableSpelling"
-            [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
-            [autoPlay]="(setting$ | async).commonSettings.autoPlay"
-            [showHorn]="(setting$ | async).commonSettings.showHorn"
-            [showExamples]="(setting$ | async).commonSettings.showExamples"
-            [showExplanations]="
-              (setting$ | async).commonSettings.showExplanation
-            "
-            [showPhonetic]="(setting$ | async).commonSettings.showPhonetic"
-            [lastWord]="
-              (currentWordIndex$ | async) >= (wordList$ | async).length
-            "
-            (onCorrectSpelling)="correctHandler($event)"
-            (onIncorrectSpelling)="incorrectHandler($event)"
-          ></app-spelling-card>
-        </div>
-        <div class="operator_container">
-          <app-spelling-operator
-            [prevDisabled]="
-              (currentWordIndex$ | async) <= 1 ||
-              (setting$ | async).commonSettings.mode === 'QUIZ'
-            "
-            [nextDisabled]="
-              (currentWordIndex$ | async) >= (wordList$ | async).length
-            "
-            [wordItem]="currentWordItem$ | async"
-            [enableSwitch]="enableSwitch"
-            (moveCursor)="onMoveCursorHandler($event)"
-            (onIncorrectSpelling)="incorrectHandler($event)"
-            (updateMisPronounce)="updateMisPronounce($event)"
-            (onClickToEdit)="onClickToEditHandler($event)"
-          ></app-spelling-operator>
+      <div class="container">
+        <nz-progress
+          [nzPercent]="((currentWordIndex$ | async) / (wordList$ | async).length) * 100"
+        ></nz-progress>
+        <p class="progress_text">
+          {{ currentWordIndex$ | async }}/{{ (wordList$ | async).length }}
+        </p>
+        <div class="content_wrap">
+          <div class="card_container">
+            <app-spelling-card
+              [wordItem]="currentWordItem$ | async"
+              [mode]="(setting$ | async).commonSettings.mode"
+              [enableSpelling]="enableSpelling"
+              [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
+              [autoPlay]="(setting$ | async).commonSettings.autoPlay"
+              [showHorn]="(setting$ | async).commonSettings.showHorn"
+              [showExamples]="(setting$ | async).commonSettings.showExamples"
+              [showExplanations]="(setting$ | async).commonSettings.showExplanation"
+              [showPhonetic]="(setting$ | async).commonSettings.showPhonetic"
+              [lastWord]="(currentWordIndex$ | async) >= (wordList$ | async).length"
+              (correctSpellingHandler)="correctHandler($event)"
+              (incorrectSpellingHandler)="incorrectHandler($event)"
+            ></app-spelling-card>
+          </div>
+          <div class="operator_container">
+            <app-spelling-operator
+              [prevDisabled]="
+                (currentWordIndex$ | async) <= 1 ||
+                (setting$ | async).commonSettings.mode === 'QUIZ'
+              "
+              [nextDisabled]="(currentWordIndex$ | async) >= (wordList$ | async).length"
+              [wordItem]="currentWordItem$ | async"
+              [enableSwitch]="enableSwitch"
+              (moveCursor)="onMoveCursorHandler($event)"
+              (incorrectSpellingHandler)="incorrectHandler($event)"
+              (updateMisPronounce)="updateMisPronounce($event)"
+              (clickToEdit)="clickToEditHandler($event)"
+            ></app-spelling-operator>
+          </div>
         </div>
       </div>
-    </div>
     } @else {
-    <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
+      <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
     }
   `,
   styleUrl: './spelling.component.less',
@@ -110,9 +102,7 @@ export class SpellingComponent {
 
   updateMisPronounce(mispronounce: boolean): void {
     this.currentWordItem$.pipe(take(1)).subscribe((w) => {
-      this.db
-        .updateWordItemFromIndexDB({ ...w, mispronounce }, true)
-        .subscribe((_w) => {});
+      this.db.updateWordItemFromIndexDB({ ...w, mispronounce }, true).subscribe(() => {});
     });
   }
 
@@ -128,17 +118,13 @@ export class SpellingComponent {
     this.singleWordSpellingEnd(false, e.lastWord, e.word);
   }
 
-  onClickToEditHandler($event: boolean): void {
+  clickToEditHandler($event: boolean): void {
     this.backSpaceKeyDownPlay = !$event;
     this.enableSpelling = !$event;
     this.enableSwitch = !$event;
   }
 
-  private singleWordSpellingEnd(
-    isCorrect: boolean,
-    isLastWord: boolean,
-    w?: WordsItem
-  ): void {
+  private singleWordSpellingEnd(isCorrect: boolean, isLastWord: boolean, w?: WordsItem): void {
     this.setting$.pipe(take(1)).subscribe((setting) => {
       if (isCorrect) {
         if (isLastWord) {
@@ -152,26 +138,16 @@ export class SpellingComponent {
         }
       } else {
         if (setting.commonSettings.mode === 'QUIZ') {
-          const isExist = this.spellingErrorWordsCollection.find(
-            (word) => word.word === w.word
-          );
+          const isExist = this.spellingErrorWordsCollection.find((word) => word.word === w.word);
           !isExist && this.spellingErrorWordsCollection.push(w);
           isLastWord && this.onQuizEnd();
         }
       }
-      this.updateWordSpellingCount(
-        w.id,
-        setting.commonSettings.mode,
-        isCorrect
-      );
+      this.updateWordSpellingCount(w.id, setting.commonSettings.mode, isCorrect);
     });
   }
 
-  private updateWordSpellingCount(
-    wordId: number,
-    mode: ModeType,
-    correct: boolean
-  ): void {
+  private updateWordSpellingCount(wordId: number, mode: ModeType, correct: boolean): void {
     if (mode !== 'QUIZ') return;
     this.db.getWordItemFromIndexDBById(wordId).subscribe((w) => {
       const { right_count, total_count } = w;
@@ -187,12 +163,9 @@ export class SpellingComponent {
   private onQuizEnd(): void {
     this.enableSpelling = false;
     if (this.spellingErrorWordsCollection.length > 0) {
-      console.log(
-        'this.spellingErrorWordsCollection',
-        this.spellingErrorWordsCollection
-      );
+      console.log('this.spellingErrorWordsCollection', this.spellingErrorWordsCollection);
       // Finish the quiz and alert the user if there are any spelling errors!
-      const _confirmDialogRef = this.dialog.confirm({
+      this.dialog.confirm({
         nzTitle: 'Finish Quiz with errors',
         nzContent: ConfirmComponent,
         nzWidth: '350px',
@@ -201,7 +174,7 @@ export class SpellingComponent {
           this.store.dispatch(
             setWordsList({
               words: [...this.spellingErrorWordsCollection],
-            })
+            }),
           );
           this.enableSpelling = true;
           this.spellingErrorWordsCollection = [];
@@ -210,7 +183,7 @@ export class SpellingComponent {
       });
     } else {
       // Finish the quiz and congratulations the user if there are no spelling errors!
-      const _confirmDialogRef = this.dialog.confirm({
+      this.dialog.confirm({
         nzTitle: 'Congratulations!',
         nzContent: CongratulationComponent,
         nzWidth: '350px',

@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { RoutePathEnum } from '../../app/app.routes';
 import { ZorroModule } from '../../zorro/zorro.module';
@@ -23,15 +18,15 @@ export type MenuItem = {
   template: `
     <div class="vertical_container">
       @for (item of menuList; track $index) {
-      <div
-        class="menu_item"
-        [class.active]="item.active"
-        (click)="clickToRoute(item.link)"
-        nz-tooltip
-        [nzTooltipTitle]="item.tooltip"
-      >
-        <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
-      </div>
+        <div
+          class="menu_item"
+          [class.active]="item.active"
+          (click)="clickToRoute(item.link)"
+          nz-tooltip
+          [nzTooltipTitle]="item.tooltip"
+        >
+          <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
+        </div>
       }
     </div>
   `,

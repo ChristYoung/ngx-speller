@@ -46,9 +46,9 @@ import { canReach24, ResultOf24 } from '../../../utils';
         Calculate
       </button>
       @if (resultOf24?.success) {
-      <h3>{{ resultOf24.expression }}</h3>
+        <h3>{{ resultOf24.expression }}</h3>
       } @else {
-      <h3>Can not calculate to 24</h3>
+        <h3>Can not calculate to 24</h3>
       }
     </div>
   `,
@@ -62,11 +62,6 @@ export class EasterEggsComponent {
   resultOf24: ResultOf24;
 
   onCalculateClick() {
-    this.resultOf24 = canReach24([
-      this.value1,
-      this.value2,
-      this.value3,
-      this.value4,
-    ]);
+    this.resultOf24 = canReach24([this.value1, this.value2, this.value3, this.value4]);
   }
 }

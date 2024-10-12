@@ -26,3 +26,12 @@
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
 
+# Angular项目如何配置eslint
+ - ng add @angular-eslint/schematics
+
+# Angular项目如何配置prettier
+ - npm install --save-dev prettier
+ - create a .prettierrc file in your project root
+ - add "prettier" to your package.json scripts
+ - npm install prettier-eslint eslint-config-prettier eslint-plugin-prettier -D
+ - 在eslint.json配置文件的extends中添加"plugin:prettier/recommended"

@@ -1,4 +1,5 @@
 import { FiltersConfig, WordsCollections, WordsItem, WordType } from '../types';
+
 export * from './24-tool.util';
 
 export const SoundSourceMapping = {
@@ -52,13 +53,10 @@ export const BANNED_KEYS = [
 
 export const isChineseSymbol = (val: string): boolean =>
   /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201c|\u201d|\u2018|\u2019|\uff08|\uff09|\u300a|\u300b|\u3008|\u3009|\u3010|\u3011|\u300e|\u300f|\u300c|\u300d|\ufe43|\ufe44|\u3014|\u3015|\u2026|\u2014|\uff5e|\ufe4f|\uffe5]/.test(
-    val
+    val,
   );
 
-export const playSound = (params: {
-  soundsType?: SoundsType;
-  src?: string;
-}) => {
+export const playSound = (params: { soundsType?: SoundsType; src?: string }) => {
   const { soundsType, src } = params;
   const audio = new Audio();
   const audioUrl = src || SoundSourceMapping[soundsType];
@@ -76,10 +74,7 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   return newArray;
 };
 
-export const BiggestFilter = (
-  _list: WordsItem[],
-  filterConfig: FiltersConfig
-): WordsItem[] => {
+export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): WordsItem[] => {
   const pronounceable = filterConfig.pronounceableType === 'PRONOUNCED';
   const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 999];
   let filterList =
@@ -89,9 +84,7 @@ export const BiggestFilter = (
 
   filterList = filterList.filter((item) => {
     const right_rate =
-      item.total_count === 0
-        ? 0
-        : parseFloat((item.right_count / item.total_count).toFixed(2));
+      item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
     return right_rate <= filterConfig.lessThanRate;
   });
 
@@ -103,20 +96,14 @@ export const BiggestFilter = (
     filterList = filterList.slice(pickStart, pickEnd);
   }
 
-  return filterConfig.randomOrder
-    ? shuffleArray<WordsItem>(filterList)
-    : filterList;
+  return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterList) : filterList;
 };
 
-export const organizeWordsByFirstLetter = (
-  words: WordsItem[]
-): WordsCollections[] => {
+export const organizeWordsByFirstLetter = (words: WordsItem[]): WordsCollections[] => {
   const wordsCollections: WordsCollections[] = [];
   words.forEach((w) => {
     const firstLetter = w.word[0].toUpperCase();
-    const index = wordsCollections.findIndex(
-      (wc) => wc.firstLetter === firstLetter
-    );
+    const index = wordsCollections.findIndex((wc) => wc.firstLetter === firstLetter);
     if (index === -1) {
       wordsCollections.push({
         firstLetter,

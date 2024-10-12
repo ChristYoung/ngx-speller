@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CapitalizeFirstLetterPipe } from '../../pipes/capitalize-first-letter.pipe';
 
 @Component({
@@ -13,17 +7,15 @@ import { CapitalizeFirstLetterPipe } from '../../pipes/capitalize-first-letter.p
   imports: [CapitalizeFirstLetterPipe],
   template: `
     @if (includeHighLight >= 0) {
-    {{ before }}
-    <span
-      class="highlight"
-      [style]="{ fontWeight: 'bold', color: '#f44336', fontStyle: 'italic' }"
-      >{{
-        highlightWord | capitalizeFirstLetter : includeHighLight === 0
-      }}</span
-    >
-    {{ after }}
+      {{ before }}
+      <span
+        class="highlight"
+        [style]="{ fontWeight: 'bold', color: '#f44336', fontStyle: 'italic' }"
+        >{{ highlightWord | capitalizeFirstLetter: includeHighLight === 0 }}</span
+      >
+      {{ after }}
     } @else {
-    {{ example }}
+      {{ example }}
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -43,9 +35,7 @@ export class HighlightComponent implements OnChanges {
         : -1;
       if (this.includeHighLight >= 0) {
         this.before = this.example.slice(0, this.includeHighLight);
-        this.after = this.example.slice(
-          this.includeHighLight + this.highlightWord.length
-        );
+        this.after = this.example.slice(this.includeHighLight + this.highlightWord.length);
       }
     }
   }

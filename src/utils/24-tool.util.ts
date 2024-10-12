@@ -5,11 +5,7 @@ export interface ResultOf24 {
   expression: string;
 }
 
-export function compute(
-  a: number,
-  b: number,
-  operator: Operator
-): number | null {
+export function compute(a: number, b: number, operator: Operator): number | null {
   switch (operator) {
     case '+':
       return a + b;
@@ -35,9 +31,7 @@ export function canReach24(numbers: number[]): ResultOf24 {
   for (let i = 0; i < numbers.length; i++) {
     for (let j = 0; j < numbers.length; j++) {
       if (i !== j) {
-        let remaining = numbers.filter(
-          (_, index) => index !== i && index !== j
-        );
+        const remaining = numbers.filter((_, index) => index !== i && index !== j);
 
         for (const operator of ['+', '-', '*', '/'] as Operator[]) {
           const result = compute(numbers[i], numbers[j], operator);

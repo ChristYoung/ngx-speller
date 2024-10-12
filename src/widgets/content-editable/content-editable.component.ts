@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
 
 @Component({
@@ -6,26 +6,23 @@ import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
   standalone: true,
   imports: [TrustHtmlPipe],
   template: `
-    <div class="__editableContent"
-    [tabIndex]="0"
-    [contentEditable]="true"
-    [innerHTML]="htmlContent | trustHtml"
-    (blur)="onBlur()"
-    #tplInput
-   ></div>
+    <div
+      class="__editableContent"
+      [tabIndex]="0"
+      [contentEditable]="true"
+      [innerHTML]="htmlContent | trustHtml"
+      (blur)="onBlur()"
+      #tplInput
+    ></div>
   `,
-  styleUrl: './content-editable.component.less'
+  styleUrl: './content-editable.component.less',
 })
-export class ContentEditableComponent implements OnInit {
-
-  @Input({required: true}) htmlContent: string = '';
+export class ContentEditableComponent {
+  @Input({ required: true }) htmlContent: string = '';
   @Input() highLight: string;
   @Output() contentChange = new EventEmitter<string>();
 
   @ViewChild('tplInput', { static: true }) private tplInputRef: ElementRef;
-
-  ngOnInit(): void {
-  }
 
   onBlur(): void {
     const newContent = this.tplInputRef.nativeElement.innerHTML;
@@ -33,5 +30,4 @@ export class ContentEditableComponent implements OnInit {
       this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
     }
   }
-
 }

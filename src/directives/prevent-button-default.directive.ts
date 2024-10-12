@@ -2,11 +2,9 @@ import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appPreventButtonDefault]',
-  standalone: true
+  standalone: true,
 })
 export class PreventButtonDefaultDirective {
-
-
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent): void {
     const target = event.target as HTMLElement;
@@ -22,6 +20,4 @@ export class PreventButtonDefaultDirective {
       target.blur();
     }
   }
-
-
 }

@@ -1,0 +1,10 @@
+.eslintrc
+.gitignore
+.prettierignore
+*.json
+*config.js
+coverage
+dist
+README.md
+yarn-error.log
+yarn.lock
