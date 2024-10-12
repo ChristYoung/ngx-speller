@@ -8,5 +8,13 @@
     "importOrder": [
         "^@/(.*)$",
         "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderParserPlugins": [
+        "classProperties",
+        "[\"decorators\", { \"decoratorsBeforeExport\": true }]"
+    ],
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
     ]
 }
