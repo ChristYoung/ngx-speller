@@ -8,7 +8,8 @@ const schema = a.schema({
       created_timestamp: a.timestamp(),
       mispronounce: a.boolean(),
       explanations: a.string(),
-      examples: a.json(),
+      // examples: a.json(),
+      examples: a.hasMany('team', 'like'),
     })
     .authorization((allow) => [allow.authenticated()]),
 });
