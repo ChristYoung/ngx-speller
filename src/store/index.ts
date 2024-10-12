@@ -1,7 +1,8 @@
 import { isDevMode } from '@angular/core';
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { wordsReducer } from './words/words.reducer';
+
 import { settingsReducer } from './settings/settings.reducer';
+import { wordsReducer } from './words/words.reducer';
 
 export interface State {}
 

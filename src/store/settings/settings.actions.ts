@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { FiltersConfig, CommonSettingsConfig } from '../../types';
 
 export const setCommonSettingsConfig = createAction(

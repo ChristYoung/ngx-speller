@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { Settings } from '../../types';
 import { setCommonSettingsConfig, setFiltersConfig } from './settings.actions';
 
