@@ -1,10 +1,4 @@
-import {
-  Directive,
-  EventEmitter,
-  HostListener,
-  Input,
-  Output,
-} from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[appHoldKeypress]',
@@ -14,8 +8,7 @@ export class HoldKeypressDirective {
   @Input() holdThreshold: number = 500;
   @Input('appHoldKeypress') enable = true;
   @Input() targetKeycode: string;
-  @Output() keyHold: EventEmitter<KeyboardEvent> =
-    new EventEmitter<KeyboardEvent>();
+  @Output() keyHold: EventEmitter<KeyboardEvent> = new EventEmitter<KeyboardEvent>();
   @Output() keyRelease: EventEmitter<void> = new EventEmitter<void>();
 
   private timeout: any;

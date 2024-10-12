@@ -11,8 +11,7 @@ import { ZorroModule } from '../../../zorro/zorro.module';
   template: `
     <div>
       <p>
-        Oops, You got {{ wordsList.length }} words that spelled incorrectly, as
-        the below shows:
+        Oops, You got {{ wordsList.length }} words that spelled incorrectly, as the below shows:
         <span class="error_words"
           ><b>{{ wordString }}</b></span
         >. Try to spell them one more time?

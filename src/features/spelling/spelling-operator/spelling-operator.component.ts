@@ -117,6 +117,6 @@ export class SpellingOperatorComponent implements OnChanges {
     });
     _drawerRef.afterClose.subscribe(() => {
       this.clickToEdit.emit(false);
-    })
+    });
   }
 }

@@ -2,33 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import {
-  Observable,
-  catchError,
-  concatMap,
-  forkJoin,
-  map,
-  mergeMap,
-  of,
-  tap,
-} from 'rxjs';
-import {
-  DEFAULT_FILTER_LESS_THAN
-} from '../../core/constant';
-import {
-  setCommonSettingsConfig,
-  setFiltersConfig,
-} from '../../store/settings/settings.actions';
-import {
-  setWordsList,
-  updateCurrentWordItem,
-} from '../../store/words/words.actions';
+import { Observable, catchError, concatMap, forkJoin, map, mergeMap, of, tap } from 'rxjs';
+import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
+import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
+import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
   CommonSettingsConfig,
   FiltersConfig,
   Settings,
   WholeIndexDBConfig,
-  WordsItem
+  WordsItem,
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
 
@@ -41,7 +24,7 @@ export class DbService {
   constructor(
     private dbService: NgxIndexedDBService,
     private youDaoHttp: YouDaoHttpService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {}
 
   addWordsToIndexDBByInput(words: string): Observable<any> {
@@ -73,36 +56,32 @@ export class DbService {
         }
         return [];
       }),
-      concatMap((res) => this.insertWordsToIndexDB$(res))
+      concatMap((res) => this.insertWordsToIndexDB$(res)),
     );
   }
 
-  addWordsToIndexDBByJSONFile(
-    jsonFileContent: WholeIndexDBConfig,
-    setToStore?: boolean
-  ): void {
+  addWordsToIndexDBByJSONFile(jsonFileContent: WholeIndexDBConfig, setToStore?: boolean): void {
     const { settings, words } = jsonFileContent;
     this.dbService
       .clear('words')
       .pipe(
         concatMap(() => this.dbService.bulkAdd('words', words)),
         concatMap(() => this.dbService.clear('settings')),
-        concatMap(() =>
-          settings ? this.dbService.add('settings', settings) : of(null)
-        )
+        concatMap(() => (settings ? this.dbService.add('settings', settings) : of(null))),
       )
       .subscribe(() => {
         if (setToStore) {
-          this.store.dispatch(
-            setCommonSettingsConfig({ commonSettings: settings.commonSettings })
-          );
+          this.store.dispatch(setCommonSettingsConfig({ commonSettings: settings.commonSettings }));
           this.store.dispatch(setFiltersConfig({ filters: settings.filters }));
           this.store.dispatch(setWordsList({ words }));
         }
       });
   }
 
-  getAllWordsFromIndexDB(setToStore?: boolean, clearSpellingCount?: boolean): Observable<WordsItem[]> {
+  getAllWordsFromIndexDB(
+    setToStore?: boolean,
+    clearSpellingCount?: boolean,
+  ): Observable<WordsItem[]> {
     return this.dbService.getAll<WordsItem>('words').pipe(
       map((res) => {
         return res.map((item) => {
@@ -110,9 +89,7 @@ export class DbService {
           item.total_count = clearSpellingCount ? 0 : item.total_count;
           item.right_count = clearSpellingCount ? 0 : item.right_count;
           item.right_rate =
-            item.total_count === 0
-              ? '0'
-              : ((item.right_count / item.total_count) * 100).toFixed(2);
+            item.total_count === 0 ? '0' : ((item.right_count / item.total_count) * 100).toFixed(2);
           return item;
         });
       }),
@@ -120,7 +97,7 @@ export class DbService {
         if (setToStore) {
           this.store.dispatch(setWordsList({ words: res }));
         }
-      })
+      }),
     );
   }
 
@@ -132,16 +109,13 @@ export class DbService {
     return this.dbService.bulkDelete('words', wordsIds);
   }
 
-  updateWordItemFromIndexDB(
-    word: WordsItem,
-    setToStore?: boolean
-  ): Observable<WordsItem> {
+  updateWordItemFromIndexDB(word: WordsItem, setToStore?: boolean): Observable<WordsItem> {
     return this.dbService.update<WordsItem>('words', { ...word }).pipe(
       tap(() => {
         if (setToStore) {
           this.store.dispatch(updateCurrentWordItem({ word }));
         }
-      })
+      }),
     );
   }
 
@@ -149,10 +123,7 @@ export class DbService {
     return this.dbService.getByID<WordsItem>('words', id);
   }
 
-  updateWordSpellingCountToIndexDB(
-    w: WordsItem,
-    { right_count, total_count },
-  ): void {
+  updateWordSpellingCountToIndexDB(w: WordsItem, { right_count, total_count }): void {
     this.dbService
       .update<WordsItem>('words', {
         ...w,
@@ -163,15 +134,12 @@ export class DbService {
   }
 
   bulkClearSpellingCountToIndexDB(): Observable<any> {
-    return this.getAllWordsFromIndexDB(false, true)
-    .pipe(
-      mergeMap((words) => this.dbService.bulkPut<WordsItem>('words', words)))
+    return this.getAllWordsFromIndexDB(false, true).pipe(
+      mergeMap((words) => this.dbService.bulkPut<WordsItem>('words', words)),
+    );
   }
 
-  getSettingConfigsFromIndexDB(
-    allWordsLen: number,
-    setToStore?: boolean
-  ): Observable<Settings> {
+  getSettingConfigsFromIndexDB(allWordsLen: number, setToStore?: boolean): Observable<Settings> {
     const _defaultSettings: Settings = {
       commonSettings: {
         mode: 'SPELLING',
@@ -192,26 +160,22 @@ export class DbService {
       map((res) => res[0] || _defaultSettings),
       tap((res) => {
         if (setToStore) {
-          this.store.dispatch(
-            setCommonSettingsConfig({ commonSettings: res.commonSettings })
-          );
+          this.store.dispatch(setCommonSettingsConfig({ commonSettings: res.commonSettings }));
           this.store.dispatch(setFiltersConfig({ filters: res.filters }));
         }
-      })
+      }),
     );
   }
 
-  updateCommonSettingConfigsToIndexDB(
-    commonSettings: CommonSettingsConfig
-  ): Observable<Settings> {
+  updateCommonSettingConfigsToIndexDB(commonSettings: CommonSettingsConfig): Observable<Settings> {
     return this.dbService.getAll<Settings>('settings').pipe(
       mergeMap((settings: Settings[]) =>
         this.dbService.update<Settings>('settings', {
           ...settings[0],
           id: 1,
           commonSettings,
-        })
-      )
+        }),
+      ),
     );
   }
 
@@ -222,8 +186,8 @@ export class DbService {
           ...settings[0],
           id: 1,
           filters,
-        })
-      )
+        }),
+      ),
     );
   }
 

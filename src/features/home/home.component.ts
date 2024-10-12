@@ -59,9 +59,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
   ],
 })
 export class HomeComponent {
-  constructor(
-    private drawerService: NzDrawerService,
-  ) {}
+  constructor(private drawerService: NzDrawerService) {}
 
   openSettingDrawer(): void {
     this.drawerService.create({
@@ -78,5 +76,4 @@ export class HomeComponent {
       nzWidth: '520px',
     });
   }
-
 }

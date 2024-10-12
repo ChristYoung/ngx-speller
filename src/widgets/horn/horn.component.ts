@@ -6,7 +6,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { AUDIO_SRC } from '../../core/constant';
 import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
@@ -49,12 +49,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
     </button>
 
     @if (word) {
-    <audio
-      #audioPlayer
-      (loadedmetadata)="mediaLoaded()"
-      [src]="audioSrc"
-      [hidden]="true"
-    ></audio>
+      <audio #audioPlayer (loadedmetadata)="mediaLoaded()" [src]="audioSrc" [hidden]="true"></audio>
     }
   `,
   styleUrl: './horn.component.less',

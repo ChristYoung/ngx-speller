@@ -26,9 +26,7 @@ export const wordsReducer = createReducer(
   })),
   on(changeCurrentWordByStep, (_state, { step }) => {
     const currentWordIndex =
-      (_state.currentWordIndex +
-        (step === 'next' ? 1 : -1) +
-        _state.words.length) %
+      (_state.currentWordIndex + (step === 'next' ? 1 : -1) + _state.words.length) %
       _state.words.length;
     return {
       ..._state,
@@ -39,14 +37,11 @@ export const wordsReducer = createReducer(
   on(updateCurrentWordItem, (_state, { word }) => ({
     ..._state,
     words: _state.words.map((w) => (w.id === word.id ? { ...word } : w)),
-    currentWordItem:
-      word.id === _state.currentWordItem.id
-        ? { ...word }
-        : _state.currentWordItem,
+    currentWordItem: word.id === _state.currentWordItem.id ? { ...word } : _state.currentWordItem,
   })),
   on(updateCurrentIndex, (_state, { index }) => ({
     ..._state,
     currentWordIndex: index,
     currentWordItem: { ..._state.words[index] },
-  }))
+  })),
 );

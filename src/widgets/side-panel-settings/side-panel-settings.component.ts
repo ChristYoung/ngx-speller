@@ -14,13 +14,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
 @Component({
   selector: 'app-side-panel-settings',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ToFixedPipe,
-    ZorroModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ToFixedPipe, ZorroModule],
   template: `
     <div class="side_panel_settings_container">
       <div class="content">
@@ -36,21 +30,15 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">show phonetic</span>
-              <nz-switch nzSize="small" formControlName="showPhonetic"
-                >show phonetic</nz-switch
-              >
+              <nz-switch nzSize="small" formControlName="showPhonetic">show phonetic</nz-switch>
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">show example</span>
-              <nz-switch nzSize="small" formControlName="showExamples"
-                >show example</nz-switch
-              >
+              <nz-switch nzSize="small" formControlName="showExamples">show example</nz-switch>
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">show horn</span>
-              <nz-switch nzSize="small" formControlName="showHorn"
-                >show horn</nz-switch
-              >
+              <nz-switch nzSize="small" formControlName="showHorn">show horn</nz-switch>
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">show explanation</span>
@@ -59,29 +47,16 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               >
             </div>
             <div class="form_control_container pd_l">
-              <span class="label_span"
-                >auto play media for every single word</span
-              >
-              <nz-switch nzSize="small" formControlName="autoPlay"
-                >show explanation</nz-switch
-              >
+              <span class="label_span">auto play media for every single word</span>
+              <nz-switch nzSize="small" formControlName="autoPlay">show explanation</nz-switch>
             </div>
           </form>
         </div>
       </div>
       <div class="operator_area">
         <nz-space>
-          <button
-            *nzSpaceItem
-            nz-button
-            nzType="primary"
-            (click)="onApplyClicked()"
-          >
-            Apply
-          </button>
-          <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">
-            Save in DataBase
-          </button>
+          <button *nzSpaceItem nz-button nzType="primary" (click)="onApplyClicked()">Apply</button>
+          <button *nzSpaceItem nz-button (click)="onSaveDataBaseClicked()">Save in DataBase</button>
         </nz-space>
       </div>
     </div>
@@ -130,30 +105,21 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     this.store.dispatch(
       setCommonSettingsConfig({
         commonSettings: commonSettingValue as CommonSettingsConfig,
-      })
+      }),
     );
     this.store.dispatch(updateCurrentIndex({ index: 0 }));
     this.nzDrawerRef.close();
   }
 
   onSaveDataBaseClicked(): void {
-    const commonSettings = this.commonSettingsForm
-      .value as CommonSettingsConfig;
+    const commonSettings = this.commonSettingsForm.value as CommonSettingsConfig;
     this.onApplyClicked();
-    this.db
-      .updateCommonSettingConfigsToIndexDB(commonSettings)
-      .subscribe(() => {});
+    this.db.updateCommonSettingConfigsToIndexDB(commonSettings).subscribe(() => {});
   }
 
   private autoSettingWhenQuiz(enable: boolean): void {
-    this.commonSettingsForm
-      .get('showExamples')
-      .setValue(enable, { emitEvent: false });
-    this.commonSettingsForm
-      .get('showHorn')
-      .setValue(enable, { emitEvent: false });
-    this.commonSettingsForm
-      .get('showPhonetic')
-      .setValue(enable, { emitEvent: false });
+    this.commonSettingsForm.get('showExamples').setValue(enable, { emitEvent: false });
+    this.commonSettingsForm.get('showHorn').setValue(enable, { emitEvent: false });
+    this.commonSettingsForm.get('showPhonetic').setValue(enable, { emitEvent: false });
   }
 }

@@ -3,10 +3,10 @@ import { FiltersConfig, CommonSettingsConfig } from '../../types';
 
 export const setCommonSettingsConfig = createAction(
   '[Setting] Setting Config',
-  props<{ commonSettings: CommonSettingsConfig }>()
+  props<{ commonSettings: CommonSettingsConfig }>(),
 );
 
 export const setFiltersConfig = createAction(
   '[Setting] Filter Config',
-  props<{ filters: FiltersConfig }>()
+  props<{ filters: FiltersConfig }>(),
 );

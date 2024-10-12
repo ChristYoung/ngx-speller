@@ -1,10 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { ImportJsonToDbComponent } from '../import-json-to-db/import-json-to-db.component';

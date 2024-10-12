@@ -17,73 +17,78 @@ import { HornComponent } from '../horn/horn.component';
   standalone: true,
   template: `
     @if (wordItem) {
-    <div class="details_container">
-      <h3 class="word_title" (click)="redirectToDetails(wordItem.word)">
-        {{ wordItem.word }}
-      </h3>
-      <div class="word_details">
-        <span>/{{ wordItem.phonetic }}/</span>
-        <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
-      </div>
-      <div class="similar_words">
-        <app-similar-words
-          [tags]="similarWords"
-          (tagsChange)="similarWordsChange($event)"
-        ></app-similar-words>
-      </div>
-      <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']" (contentChange)="updateExplanations($event)"></app-content-editable>
-      <app-content-editable style="text-align: center; display: block;" [htmlContent]="wordItem.eng_explanation" (contentChange)="updateEnglishExplanations($event)"></app-content-editable>
-      <div class="examples_container">
-        @for (item of examples; track $index) {
-        <div class="examples_item">
-          <p class="en">
-            <app-highlight
-              [highlightWord]="wordItem.word"
-              [example]="item.en"
-            ></app-highlight>
-          </p>
-          <p class="zh">{{ item.zh }}</p>
-          <span
-            class="delete_example"
-            nz-icon
-            nz-tooltip
-            [nzType]="'delete'"
-            [nzTooltipTitle]="'Remove this example'"
-            (click)="removeExample($index)"
-          ></span>
+      <div class="details_container">
+        <h3 class="word_title" (click)="redirectToDetails(wordItem.word)">
+          {{ wordItem.word }}
+        </h3>
+        <div class="word_details">
+          <span>/{{ wordItem.phonetic }}/</span>
+          <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
         </div>
-        }
-      </div>
-      <div class="add_new_examples">
-        <div class="example-full-width">
-          <textarea
-            nz-input
-            [nzAutosize]="{ minRows: 2, maxRows: 6 }"
-            placeholder="input your English example"
-            [(ngModel)]="inputEnglishExample"
-            nzAutosize
-          ></textarea>
+        <div class="similar_words">
+          <app-similar-words
+            [tags]="similarWords"
+            (tagsChange)="similarWordsChange($event)"
+          ></app-similar-words>
         </div>
-        <div class="example-full-width">
-          <textarea
-            nz-input
-            [nzAutosize]="{ minRows: 2, maxRows: 6 }"
-            placeholder="input your Chinese example"
-            [(ngModel)]="inputChineseExample"
-            nzAutosize
-          ></textarea>
+        <app-content-editable
+          style="text-align: center; margin-bottom: 10px; display: block;"
+          [htmlContent]="wordItem.explanation || wordItem['explanations']"
+          (contentChange)="updateExplanations($event)"
+        ></app-content-editable>
+        <app-content-editable
+          style="text-align: center; display: block;"
+          [htmlContent]="wordItem.eng_explanation"
+          (contentChange)="updateEnglishExplanations($event)"
+        ></app-content-editable>
+        <div class="examples_container">
+          @for (item of examples; track $index) {
+            <div class="examples_item">
+              <p class="en">
+                <app-highlight [highlightWord]="wordItem.word" [example]="item.en"></app-highlight>
+              </p>
+              <p class="zh">{{ item.zh }}</p>
+              <span
+                class="delete_example"
+                nz-icon
+                nz-tooltip
+                [nzType]="'delete'"
+                [nzTooltipTitle]="'Remove this example'"
+                (click)="removeExample($index)"
+              ></span>
+            </div>
+          }
         </div>
-        <button
-          type="button"
-          nz-button
-          nzType="primary"
-          (click)="clickAddExample()"
-          [disabled]="!inputChineseExample || !inputEnglishExample"
-        >
-          Add an example
-        </button>
+        <div class="add_new_examples">
+          <div class="example-full-width">
+            <textarea
+              nz-input
+              [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+              placeholder="input your English example"
+              [(ngModel)]="inputEnglishExample"
+              nzAutosize
+            ></textarea>
+          </div>
+          <div class="example-full-width">
+            <textarea
+              nz-input
+              [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+              placeholder="input your Chinese example"
+              [(ngModel)]="inputChineseExample"
+              nzAutosize
+            ></textarea>
+          </div>
+          <button
+            type="button"
+            nz-button
+            nzType="primary"
+            (click)="clickAddExample()"
+            [disabled]="!inputChineseExample || !inputEnglishExample"
+          >
+            Add an example
+          </button>
+        </div>
       </div>
-    </div>
     }
   `,
   styleUrl: './side-panel-details.component.less',
@@ -130,23 +135,27 @@ export class SidePanelDetailsComponent implements OnInit {
   }
 
   updateExplanations(newExplanations: string): void {
-    this.db.updateWordItemFromIndexDB(
-      {
-        ...this.wordItem,
-        explanation: newExplanations,
-      },
-      true
-    ).subscribe(() => {});
+    this.db
+      .updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          explanation: newExplanations,
+        },
+        true,
+      )
+      .subscribe(() => {});
   }
 
   updateEnglishExplanations(newEnglishExplanations: string): void {
-    this.db.updateWordItemFromIndexDB(
-      {
-        ...this.wordItem,
-        eng_explanation: newEnglishExplanations,
-      },
-      true
-    ).subscribe(() => {});
+    this.db
+      .updateWordItemFromIndexDB(
+        {
+          ...this.wordItem,
+          eng_explanation: newEnglishExplanations,
+        },
+        true,
+      )
+      .subscribe(() => {});
   }
 
   similarWordsChange(tags: string[]): void {
@@ -161,7 +170,7 @@ export class SidePanelDetailsComponent implements OnInit {
           ...this.wordItem,
           similar_words: [...currentTags],
         },
-        true
+        true,
       )
       .subscribe(() => {
         this.similarWords = [...currentTags];
@@ -170,7 +179,7 @@ export class SidePanelDetailsComponent implements OnInit {
 
   private updateCurrentExamples(
     currentExamples: ExampleItem[],
-    type: 'add' | 'remove' = 'add'
+    type: 'add' | 'remove' = 'add',
   ): void {
     this.db
       .updateWordItemFromIndexDB(
@@ -178,7 +187,7 @@ export class SidePanelDetailsComponent implements OnInit {
           ...this.wordItem,
           examples: [...currentExamples],
         },
-        true
+        true,
       )
       .subscribe(() => {
         if (type === 'add') {

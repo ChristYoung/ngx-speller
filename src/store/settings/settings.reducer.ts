@@ -13,5 +13,5 @@ export const settingsReducer = createReducer(
   on(setFiltersConfig, (_state, { filters }) => ({
     ..._state,
     filters,
-  }))
+  })),
 );

@@ -17,7 +17,6 @@ import { HornComponent } from '../../widgets/horn/horn.component';
 import { SidePanelDetailsComponent } from '../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../zorro/zorro.module';
 
-
 @Component({
   selector: 'app-governance',
   standalone: true,
@@ -33,7 +32,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
           />
         </div>
         <div nz-col [nzSpan]="2">
-          <nz-select style="width: 120px" [(ngModel)]="wordType" nzPlaceHolder="Word type" (ngModelChange)="wordTypeSubject$.next($event)">
+          <nz-select
+            style="width: 120px"
+            [(ngModel)]="wordType"
+            nzPlaceHolder="Word type"
+            (ngModelChange)="wordTypeSubject$.next($event)"
+          >
             <nz-option nzValue="ALL" nzLabel="All"></nz-option>
             <nz-option nzValue="WORD" nzLabel="Word"></nz-option>
             <nz-option nzValue="PHRASE" nzLabel="Phrase"></nz-option>
@@ -60,18 +64,11 @@ import { ZorroModule } from '../../zorro/zorro.module';
           <button nz-button nzType="default" (click)="clickViewJsonSchema()">
             Download as JSON
           </button>
-          <button nz-button nzType="default">
-            Clear spell data
-          </button>
+          <button nz-button nzType="default">Clear spell data</button>
         </div>
       </div>
       <div class="table_container">
-        <nz-table
-          #headerTable
-          [nzData]="dataSource"
-          [nzSize]="'small'"
-          [nzFrontPagination]="false"
-        >
+        <nz-table #headerTable [nzData]="dataSource" [nzSize]="'small'" [nzFrontPagination]="false">
           <thead>
             <tr>
               <th
@@ -111,16 +108,15 @@ import { ZorroModule } from '../../zorro/zorro.module';
                   <app-horn [word]="data.word"></app-horn>
                 </div>
               </td>
-              <td style="text-align: right">{{data.created_timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</td>
               <td style="text-align: right">
-              {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
+                {{ data.created_timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}
+              </td>
+              <td style="text-align: right">
+                {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
               </td>
               <td>
                 <div class="flex_box">
-                  <a
-                    href="javascript:;"
-                    class="operator_item"
-                    (click)="clickViewDetail(data)"
+                  <a href="javascript:;" class="operator_item" (click)="clickViewDetail(data)"
                     >View Details</a
                   >
                   <span
@@ -162,7 +158,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
     </button>
     @if (!loading && !searchKey && dataSource.length === 0) {
-    <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
+      <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
     }
   `,
   styleUrl: './governance.component.less',
@@ -227,7 +223,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
         this.dataSource = wordType
           ? this.allDataFromDB.filter((item) => item.type === wordType)
           : [...this.dataSource];
-      })
+      });
   }
 
   ngOnDestroy(): void {
@@ -243,7 +239,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       const element = this.scrollableDiv.nativeElement;
       element.scrollTop = element.scrollHeight;
     }
-    
   }
 
   syncToFireBase(): void {
@@ -272,14 +267,13 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   clickViewDetail(currentWord: WordsItem): void {
-    this.db.getWordItemFromIndexDBById(currentWord.id as number).subscribe(wordItem => {
+    this.db.getWordItemFromIndexDBById(currentWord.id as number).subscribe((wordItem) => {
       this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
         nzContent: SidePanelDetailsComponent,
         nzContentParams: { wordItem },
         nzWidth: '800px',
       });
     });
-    
   }
 
   bulkRemoveWords(): void {
@@ -296,9 +290,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   pickUp(): void {
-    const pickUpWords = this.dataSource.filter((d) =>
-      this.setOfCheckId.has(d.id as number)
-    );
+    const pickUpWords = this.dataSource.filter((d) => this.setOfCheckId.has(d.id as number));
     this.store.dispatch(setWordsList({ words: pickUpWords }));
     this.setOfCheckId.clear();
   }
@@ -318,7 +310,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
         settings: null,
         words: this.dataSource,
       },
-      `speller_data_${currentDate}_${_now.getTime()}`
+      `speller_data_${currentDate}_${_now.getTime()}`,
     );
   }
 

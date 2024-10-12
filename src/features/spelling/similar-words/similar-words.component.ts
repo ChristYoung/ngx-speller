@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { FormsModule } from '@angular/forms';
 import { YOU_DAO_API } from '../../../core/constant';
@@ -26,15 +19,10 @@ import { YOU_DAO_API } from '../../../core/constant';
       <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
     </nz-tag>
     @if (!freezed) {
-    <nz-tag
-      *ngIf="!inputVisible"
-      class="editable-tag"
-      nzNoAnimation
-      (click)="showInput()"
-    >
-      <span nz-icon nzType="plus"></span>
-      add new
-    </nz-tag>
+      <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
+        <span nz-icon nzType="plus"></span>
+        add new
+      </nz-tag>
     }
     <input
       #inputElement

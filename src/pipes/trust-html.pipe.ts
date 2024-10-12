@@ -6,10 +6,7 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
   standalone: true,
 })
 export class TrustHtmlPipe implements PipeTransform {
-
-  constructor(
-    private sanitizer: DomSanitizer,
-  ) { }
+  constructor(private sanitizer: DomSanitizer) {}
 
   transform(value: string): SafeHtml {
     if (!value || value === '' || !value.includes('<')) {
@@ -17,5 +14,4 @@ export class TrustHtmlPipe implements PipeTransform {
     }
     return this.sanitizer.bypassSecurityTrustHtml(value);
   }
-
 }

@@ -1,14 +1,13 @@
-  // TODO: scroll to position doesn't work, need to do some research on it.
+// TODO: scroll to position doesn't work, need to do some research on it.
 
 import { ViewportScroller } from '@angular/common';
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appScrollControl]',
-  standalone: true
+  standalone: true,
 })
 export class ScrollControlDirective {
-
   @Input() scrollThreshold: number = 200;
 
   private topButton: HTMLElement;
@@ -17,7 +16,7 @@ export class ScrollControlDirective {
   constructor(
     private el: ElementRef,
     private renderer: Renderer2,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
   ) {
     this.topButton = this.createButton('Scroll Top');
     this.bottomButton = this.createButton('Scroll Bottom');
@@ -50,11 +49,10 @@ export class ScrollControlDirective {
 
   @HostListener('scroll', [])
   onScroll(): void {
-    
     const scrollTop = this.el.nativeElement.scrollTop;
     const scrollHeight = this.el.nativeElement.scrollHeight;
     const clientHeight = this.el.nativeElement.clientHeight;
-    console.log('scrollTop',scrollTop)
+    console.log('scrollTop', scrollTop);
 
     if (scrollTop > this.scrollThreshold) {
       this.renderer.setStyle(this.topButton, 'display', 'block');
@@ -70,5 +68,4 @@ export class ScrollControlDirective {
       this.renderer.setStyle(this.bottomButton, 'display', 'none');
     }
   }
-
 }

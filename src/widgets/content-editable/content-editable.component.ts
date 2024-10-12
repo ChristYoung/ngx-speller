@@ -6,19 +6,19 @@ import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
   standalone: true,
   imports: [TrustHtmlPipe],
   template: `
-    <div class="__editableContent"
-    [tabIndex]="0"
-    [contentEditable]="true"
-    [innerHTML]="htmlContent | trustHtml"
-    (blur)="onBlur()"
-    #tplInput
-   ></div>
+    <div
+      class="__editableContent"
+      [tabIndex]="0"
+      [contentEditable]="true"
+      [innerHTML]="htmlContent | trustHtml"
+      (blur)="onBlur()"
+      #tplInput
+    ></div>
   `,
-  styleUrl: './content-editable.component.less'
+  styleUrl: './content-editable.component.less',
 })
 export class ContentEditableComponent {
-
-  @Input({required: true}) htmlContent: string = '';
+  @Input({ required: true }) htmlContent: string = '';
   @Input() highLight: string;
   @Output() contentChange = new EventEmitter<string>();
 
@@ -30,5 +30,4 @@ export class ContentEditableComponent {
       this.contentChange.emit(this.tplInputRef.nativeElement.innerHTML);
     }
   }
-
 }

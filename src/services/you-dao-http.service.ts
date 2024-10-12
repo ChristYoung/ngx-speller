@@ -14,7 +14,7 @@ export class YouDaoHttpService {
       map((res) => {
         res.word = wordStr;
         return res;
-      })
+      }),
     );
   }
 }
