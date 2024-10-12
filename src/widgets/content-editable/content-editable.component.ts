@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
 
 @Component({
@@ -16,16 +16,13 @@ import { TrustHtmlPipe } from '../../pipes/trust-html.pipe';
   `,
   styleUrl: './content-editable.component.less'
 })
-export class ContentEditableComponent implements OnInit {
+export class ContentEditableComponent {
 
   @Input({required: true}) htmlContent: string = '';
   @Input() highLight: string;
   @Output() contentChange = new EventEmitter<string>();
 
   @ViewChild('tplInput', { static: true }) private tplInputRef: ElementRef;
-
-  ngOnInit(): void {
-  }
 
   onBlur(): void {
     const newContent = this.tplInputRef.nativeElement.innerHTML;

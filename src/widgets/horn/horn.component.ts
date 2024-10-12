@@ -5,13 +5,12 @@ import {
   HostListener,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { AUDIO_SRC } from '../../core/constant';
-import { ZorroModule } from '../../zorro/zorro.module';
 import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
+import { ZorroModule } from '../../zorro/zorro.module';
 
 @Component({
   selector: 'app-horn',
@@ -61,7 +60,7 @@ import { PreventButtonDefaultDirective } from '../../directives/prevent-button-d
   styleUrl: './horn.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HornComponent implements OnChanges, OnInit {
+export class HornComponent implements OnChanges {
   @Input({ required: true }) word: string = '';
   @Input() autoPlay = false;
   @Input() preloadSrc = false;
@@ -71,8 +70,6 @@ export class HornComponent implements OnChanges, OnInit {
   @ViewChild('audioPlayer') audioPlayer: ElementRef<HTMLAudioElement>;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   ngOnChanges(_changes: SimpleChanges): void {
     if (_changes['word']) {

@@ -32,7 +32,7 @@ export class StartUpService {
   }
 
   viaSvgInit(): Promise<void> {
-    return new Promise((resolve, _reject) => {
+    return new Promise((resolve) => {
       this.svgService.init();
       resolve();
     });

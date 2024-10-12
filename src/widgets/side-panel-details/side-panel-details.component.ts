@@ -28,7 +28,7 @@ import { HornComponent } from '../horn/horn.component';
       <div class="similar_words">
         <app-similar-words
           [tags]="similarWords"
-          (onTagsChange)="similarWordsChange($event)"
+          (tagsChange)="similarWordsChange($event)"
         ></app-similar-words>
       </div>
       <app-content-editable style="text-align: center; margin-bottom: 10px; display: block;" [htmlContent]="wordItem.explanation || wordItem['explanations']" (contentChange)="updateExplanations($event)"></app-content-editable>

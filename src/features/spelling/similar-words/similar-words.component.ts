@@ -71,9 +71,9 @@ import { YOU_DAO_API } from '../../../core/constant';
   ],
 })
 export class SimilarWordsComponent {
-  @Input({ required: true }) tags = [];
+  @Input({ required: true }) tags: string[] = [];
   @Input() freezed = false;
-  @Output() onTagsChange = new EventEmitter();
+  @Output() tagsChange = new EventEmitter();
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
   inputVisible = false;
   inputValue = '';
@@ -92,9 +92,9 @@ export class SimilarWordsComponent {
     'purple',
   ];
 
-  handleClose(removedTag: {}): void {
+  handleClose(removedTag: string): void {
     this.tags = this.tags.filter((tag) => tag !== removedTag);
-    this.onTagsChange.emit(this.tags);
+    this.tagsChange.emit(this.tags);
   }
 
   showInput(): void {
@@ -107,7 +107,7 @@ export class SimilarWordsComponent {
   handleInputConfirm(): void {
     if (this.inputValue && this.tags.indexOf(this.inputValue) === -1) {
       this.tags = [...this.tags, this.inputValue];
-      this.onTagsChange.emit(this.tags);
+      this.tagsChange.emit(this.tags);
     }
     this.inputValue = '';
     this.inputVisible = false;

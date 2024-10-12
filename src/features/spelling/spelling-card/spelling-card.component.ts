@@ -5,17 +5,16 @@ import {
   HostListener,
   Input,
   OnChanges,
-  Output,
-  SimpleChanges,
+  Output
 } from '@angular/core';
+import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
+import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 import { EmitParams, ModeType, WordsItem } from '../../../types';
-import { HornComponent } from '../../../widgets/horn/horn.component';
 import { BANNED_KEYS, isChineseSymbol, playSound } from '../../../utils';
 import { HighlightComponent } from '../../../widgets/highlight/highlight.component';
-import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
+import { HornComponent } from '../../../widgets/horn/horn.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
-import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 
 @Component({
   selector: 'app-spelling-card',
@@ -101,11 +100,11 @@ export class SpellingCardComponent implements OnChanges {
   @Input() muteKeyBoard = false;
   @Input() autoPlay = false;
   @Input() backSpaceKeyDownPlay = true;
-  @Output() onCorrectSpelling = new EventEmitter<EmitParams>();
-  @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
+  @Output() correctSpellingHandler = new EventEmitter<EmitParams>();
+  @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
   displayLetters: string[] = [];
 
-  ngOnChanges(_changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.displayLetters =
       this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
   }
@@ -127,7 +126,7 @@ export class SpellingCardComponent implements OnChanges {
       this.displayLetters.push(key);
       if (isLastLetter) {
         playSound({ soundsType: 'Correct' });
-        this.onCorrectSpelling.emit({
+        this.correctSpellingHandler.emit({
           word: this.wordItem,
           lastWord: this.lastWord,
         });
@@ -135,7 +134,7 @@ export class SpellingCardComponent implements OnChanges {
       }
     } else {
       playSound({ soundsType: 'Incorrect' });
-      this.onIncorrectSpelling.emit({
+      this.incorrectSpellingHandler.emit({
         word: this.wordItem,
         lastWord: this.lastWord,
       });

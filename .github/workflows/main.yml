@@ -18,6 +18,8 @@ jobs:
           node-version: "20.x"
       - name: 🪜 install the dependencies
         run: npm install --force
+      - name: 📦 lint code
+        run: npm run lint
       - name: 🛠 build the project
         run: npm run build
 

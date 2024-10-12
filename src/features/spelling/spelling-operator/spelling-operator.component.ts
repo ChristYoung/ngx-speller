@@ -66,10 +66,10 @@ export class SpellingOperatorComponent implements OnChanges {
   @Input('wordItem') wordDetails: WordsItem;
   @Input() enableSwitch: boolean;
   @Input() mode: ModeType = 'SPELLING';
-  @Output() onIncorrectSpelling = new EventEmitter<EmitParams>();
+  @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
   @Output() moveCursor = new EventEmitter<'next' | 'prev'>();
   @Output() updateMisPronounce = new EventEmitter<boolean>();
-  @Output() onClickToEdit = new EventEmitter<boolean>(false);
+  @Output() clickToEdit = new EventEmitter<boolean>(false);
 
   mispronounce: boolean;
 
@@ -85,7 +85,7 @@ export class SpellingOperatorComponent implements OnChanges {
     this.moveCursor.emit(direction);
     // When in the QUIZ mode, once the user change cursor manually, emit the incorrect event
     if (this.mode === 'QUIZ' && direction === 'next') {
-      this.onIncorrectSpelling.emit({
+      this.incorrectSpellingHandler.emit({
         word: this.wordDetails,
         lastWord: this.nextDisabled,
       });
@@ -109,14 +109,14 @@ export class SpellingOperatorComponent implements OnChanges {
   }
 
   clickViewDetail(): void {
-    this.onClickToEdit.emit(true);
+    this.clickToEdit.emit(true);
     const _drawerRef = this.drawer.create<SidePanelDetailsComponent, { wordItem: WordsItem }>({
       nzContent: SidePanelDetailsComponent,
       nzContentParams: { wordItem: this.wordDetails },
       nzWidth: '800px',
     });
     _drawerRef.afterClose.subscribe(() => {
-      this.onClickToEdit.emit(false);
+      this.clickToEdit.emit(false);
     })
   }
 }

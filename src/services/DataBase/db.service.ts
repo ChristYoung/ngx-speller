@@ -28,8 +28,7 @@ import {
   FiltersConfig,
   Settings,
   WholeIndexDBConfig,
-  WordsItem,
-  WordType,
+  WordsItem
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
 
@@ -153,7 +152,6 @@ export class DbService {
   updateWordSpellingCountToIndexDB(
     w: WordsItem,
     { right_count, total_count },
-    setToStore?: boolean
   ): void {
     this.dbService
       .update<WordsItem>('words', {

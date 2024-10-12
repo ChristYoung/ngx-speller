@@ -35,7 +35,7 @@ export function canReach24(numbers: number[]): ResultOf24 {
   for (let i = 0; i < numbers.length; i++) {
     for (let j = 0; j < numbers.length; j++) {
       if (i !== j) {
-        let remaining = numbers.filter(
+        const remaining = numbers.filter(
           (_, index) => index !== i && index !== j
         );
 

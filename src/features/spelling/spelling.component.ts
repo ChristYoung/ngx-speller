@@ -48,8 +48,8 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             [lastWord]="
               (currentWordIndex$ | async) >= (wordList$ | async).length
             "
-            (onCorrectSpelling)="correctHandler($event)"
-            (onIncorrectSpelling)="incorrectHandler($event)"
+            (correctSpellingHandler)="correctHandler($event)"
+            (incorrectSpellingHandler)="incorrectHandler($event)"
           ></app-spelling-card>
         </div>
         <div class="operator_container">
@@ -64,9 +64,9 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             [wordItem]="currentWordItem$ | async"
             [enableSwitch]="enableSwitch"
             (moveCursor)="onMoveCursorHandler($event)"
-            (onIncorrectSpelling)="incorrectHandler($event)"
+            (incorrectSpellingHandler)="incorrectHandler($event)"
             (updateMisPronounce)="updateMisPronounce($event)"
-            (onClickToEdit)="onClickToEditHandler($event)"
+            (clickToEdit)="clickToEditHandler($event)"
           ></app-spelling-operator>
         </div>
       </div>
@@ -112,7 +112,7 @@ export class SpellingComponent {
     this.currentWordItem$.pipe(take(1)).subscribe((w) => {
       this.db
         .updateWordItemFromIndexDB({ ...w, mispronounce }, true)
-        .subscribe((_w) => {});
+        .subscribe(() => {});
     });
   }
 
@@ -128,7 +128,7 @@ export class SpellingComponent {
     this.singleWordSpellingEnd(false, e.lastWord, e.word);
   }
 
-  onClickToEditHandler($event: boolean): void {
+  clickToEditHandler($event: boolean): void {
     this.backSpaceKeyDownPlay = !$event;
     this.enableSpelling = !$event;
     this.enableSwitch = !$event;
@@ -192,7 +192,7 @@ export class SpellingComponent {
         this.spellingErrorWordsCollection
       );
       // Finish the quiz and alert the user if there are any spelling errors!
-      const _confirmDialogRef = this.dialog.confirm({
+      this.dialog.confirm({
         nzTitle: 'Finish Quiz with errors',
         nzContent: ConfirmComponent,
         nzWidth: '350px',
@@ -210,7 +210,7 @@ export class SpellingComponent {
       });
     } else {
       // Finish the quiz and congratulations the user if there are no spelling errors!
-      const _confirmDialogRef = this.dialog.confirm({
+      this.dialog.confirm({
         nzTitle: 'Congratulations!',
         nzContent: CongratulationComponent,
         nzWidth: '350px',
