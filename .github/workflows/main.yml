@@ -18,11 +18,8 @@ jobs:
           node-version: "20.x"
       - name: 🪜 install the dependencies
         run: yarn install --frozen-lockfile
-      - name: 📦 lint code
-        run: yarn lint
       - name: 🛠 build the project
         run: yarn build
-
       - name: 🚀 deploy this project
         uses: ptienchuan/deploy-github-pages-action@master
         env:
