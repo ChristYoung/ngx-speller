@@ -34,7 +34,7 @@
     "@ngrx/store": "^18.1.0",
     "@ngrx/store-devtools": "^18.1.0",
     "date-fns": "^3.6.0",
-    "ng-zorro-antd": "^17.4.0",
+    "ng-zorro-antd": "^18.1.1",
     "ngx-indexed-db": "^16.0.0",
     "ngx-json-viewer": "^3.2.1",
     "rxjs": "~7.8.0",
