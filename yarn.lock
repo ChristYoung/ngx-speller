@@ -219,10 +219,10 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "18.3.1"
 
-"@angular-slider/ngx-slider@^17.0.2":
-  version "17.0.2"
-  resolved "https://registry.npmjs.org/@angular-slider/ngx-slider/-/ngx-slider-17.0.2.tgz"
-  integrity sha512-6fQ0wOH/pZvC2kbw3ZFab7eXwDaKZtj/cuA7pbhyKWHp8pwhaptoDDoEXttlAZIUEnrMG8rkg0OBcVWwwBLEJA==
+"@angular-slider/ngx-slider@^18.0.0":
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-slider/ngx-slider/-/ngx-slider-18.0.0.tgz#262befda815d7273e2a5f5f360134653118ab8aa"
+  integrity sha512-QR5zP3B++cLCqUkfg7j65y+4wrt5xPrua6mANoClj2iaoHaAzf3qi+/ANgYTeZ9StoFu22r35uy5Qg0GigjhxQ==
   dependencies:
     detect-passive-events "^2.0.3"
     rxjs "^7.8.1"
@@ -2703,6 +2703,13 @@
   integrity sha512-pIthc6aQAkgdm8kk0TJ7NLirVLgBfYof9cmnIfqBsEFyY8SQhFrAperuiIMO6t5Aaa/DnUYGUxhk0vrsd6+nNQ==
   dependencies:
     tslib "^2.0.0"
+
+"@ngrx/operators@^18.0.0":
+  version "18.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/operators/-/operators-18.1.0.tgz#9149a22f736f75d97a07c249f34e94be48faff25"
+  integrity sha512-C4/57yiBigrFisrEWFA7XS8OgpGK2Vmvu7y6MYltLzK8FTr2r9FsTCG9oxlOHIxGzd5EJrzHNqqBzqVh/9/nww==
+  dependencies:
+    tslib "^2.3.0"
 
 "@ngrx/schematics@^18.1.0":
   version "18.1.0"
@@ -8712,10 +8719,10 @@ typed-assert@^1.0.8:
   resolved "https://registry.npmjs.org/typed-assert/-/typed-assert-1.0.9.tgz"
   integrity sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==
 
-typescript@5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.3.tgz#e1b0a3c394190838a0b168e771b0ad56a0af0faa"
-  integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
+typescript@5.4.5:
+  version "5.4.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.5.tgz#42ccef2c571fdbd0f6718b1d1f5e6e5ef006f611"
+  integrity sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==
 
 typescript@^5.2.2:
   version "5.6.3"
