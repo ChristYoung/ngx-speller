@@ -31,7 +31,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
             (ngModelChange)="searchKeySubject$.next($event)"
           />
         </div>
-        <div nz-col [nzSpan]="2">
+        <div nz-col [nzSpan]="18">
           <nz-select
             style="width: 120px"
             [(ngModel)]="wordType"
@@ -42,29 +42,26 @@ import { ZorroModule } from '../../zorro/zorro.module';
             <nz-option nzValue="WORD" nzLabel="Word"></nz-option>
             <nz-option nzValue="PHRASE" nzLabel="Phrase"></nz-option>
           </nz-select>
-        </div>
-        <div nz-col [nzSpan]="18">
-          <!-- <button nz-button nzType="primary">Sync to FireBase</button> -->
-          <button
-            nz-button
-            nzType="default"
-            (click)="pickUp()"
-            [disabled]="setOfCheckId.size === 0"
-          >
-            Pick Up
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu888" [nzTrigger]="'click'">
+            Actions
+            <span nz-icon nzType="down"></span>
           </button>
-          <button
-            nz-button
-            nzType="default"
-            (click)="bulkRemoveWords()"
-            [disabled]="setOfCheckId.size === 0"
-          >
-            Bulk Remove
-          </button>
-          <button nz-button nzType="default" (click)="clickViewJsonSchema()">
-            Download as JSON
-          </button>
-          <button nz-button nzType="default">Clear spell data</button>
+          <nz-dropdown-menu #menu888="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item (click)="pickUp()">
+                <span nz-icon nzType="sp:pickup" nzTheme="outline"></span>
+                <span>Pick Up</span>
+              </li>
+              <li nz-menu-item (click)="bulkRemoveWords()">
+                <span nz-icon nzType="delete" nzTheme="outline"></span>
+                <span>Bulk Remove</span>
+              </li>
+              <li nz-menu-item (click)="clickViewJsonSchema()">
+                <span nz-icon nzType="download" nzTheme="outline"></span>
+                <span>Export Words</span>
+              </li>
+            </ul>
+          </nz-dropdown-menu>
         </div>
       </div>
       <div class="table_container">
@@ -277,6 +274,9 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   bulkRemoveWords(): void {
+    if (this.setOfCheckId.size === 0) {
+      return;
+    }
     this.db.removeWordsFromIndexDB([...this.setOfCheckId]).subscribe(() => {
       this.ngOnInit(true);
       this.setOfCheckId.clear();
@@ -290,6 +290,9 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   }
 
   pickUp(): void {
+    if (this.setOfCheckId.size === 0) {
+      return;
+    }
     const pickUpWords = this.dataSource.filter((d) => this.setOfCheckId.has(d.id as number));
     this.store.dispatch(setWordsList({ words: pickUpWords }));
     this.setOfCheckId.clear();
