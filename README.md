@@ -27,7 +27,7 @@
 - https://blog.csdn.net/ht370671963/article/details/111995883
 
 # Angular项目如何配置eslint
- - ng add @angular-eslint/schematics
+ - ng add @angular-eslint/schematics (如何后续更新Angular版本的话, 也需要执行相应的ng update @angular-eslint/schematics)
 
 # Angular项目如何配置prettier
  - npm install --save-dev prettier
