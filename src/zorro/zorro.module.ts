@@ -7,6 +7,7 @@ import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -68,6 +69,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzNotificationModule,
     NzPopconfirmModule,
     NzInputNumberModule,
+    NzDropDownModule,
   ],
 })
 export class ZorroModule {}

@@ -11,6 +11,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { ContentEditableComponent } from '../content-editable/content-editable.component';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
+import { SpeechComponent } from '../speech/speech.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -56,6 +57,7 @@ import { HornComponent } from '../horn/horn.component';
                 [nzTooltipTitle]="'Remove this example'"
                 (click)="removeExample($index)"
               ></span>
+              <!-- <app-speech [speechText]="item.en"></app-speech> -->
             </div>
           }
         </div>
@@ -100,6 +102,7 @@ import { HornComponent } from '../horn/horn.component';
     ZorroModule,
     SimilarWordsComponent,
     ContentEditableComponent,
+    SpeechComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {
