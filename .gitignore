@@ -46,5 +46,9 @@ Thumbs.db
 amplify_outputs*
 amplifyconfiguration*
 
+# nx
 .nx/cache
 .nx/workspace-data
+
+# env
+.env

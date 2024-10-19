@@ -1,7 +1,7 @@
 {
   "homepage": ".",
   "name": "ngx-speller",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description": "A spell checker for Angular applications",
   "author": "Jay Young (858851768@qq.com)",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "@ngrx/store": "^18.1.0",
     "@ngrx/store-devtools": "^18.1.0",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
     "ng-zorro-antd": "^18.1.1",
     "ngx-indexed-db": "^16.0.0",
     "ngx-json-viewer": "^3.2.1",
