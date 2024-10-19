@@ -74,9 +74,6 @@
                   "maximumError": "10mb"
                 }
               ],
-              "scripts": [
-                "node scripts/set-env.js"
-              ],
               "outputHashing": "all"
             },
             "development": {
@@ -88,9 +85,6 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
                 }
-              ],
-              "scripts": [
-                "node scripts/set-env.js"
               ]
             }
           },
