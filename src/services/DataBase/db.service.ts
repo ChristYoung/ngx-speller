@@ -3,11 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable, catchError, concatMap, forkJoin, map, mergeMap, of, tap } from 'rxjs';
-import {
-  DEFAULT_FILTER_LESS_THAN,
-  DEFAULT_RANDOM_PICK_COUNT,
-  getDefaultSettings,
-} from '../../core/constant';
+import { getDefaultSettings } from '../../core/constant';
 import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
 import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
