@@ -1,11 +1,11 @@
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { combineLatestWith, map, take } from 'rxjs/operators';
-import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
+import { DEFAULT_FILTER_LESS_THAN, getDefaultSettings } from '../../core/constant';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
@@ -120,6 +120,7 @@ export class SidePanelFilterComponent implements OnInit {
 
   db = inject(DbService);
   store = inject(Store);
+  _cd = inject(ChangeDetectorRef);
   settings$ = this.store.select('settings');
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
   private nzDrawerRef = inject(NzDrawerRef<void>);
@@ -186,7 +187,29 @@ export class SidePanelFilterComponent implements OnInit {
     } as FiltersConfig;
   }
 
-  onResetClicked(): void {}
+  onResetClicked(): void {
+    this.allWordsCount$.subscribe((allWordsCount) => {
+      const { filters } = getDefaultSettings(allWordsCount);
+      const {
+        randomOrder,
+        randomPick,
+        randomPickCount,
+        pickRange,
+        lessThanRate,
+        pronounceableType,
+        lessThanCount,
+      } = filters;
+      this.randomOrder = randomOrder;
+      this.randomPick = randomPick;
+      this.randomPickCount = randomPickCount;
+      this.minRange = pickRange[0];
+      this.maxRange = pickRange[1];
+      this.lessThanRate = lessThanRate;
+      this.lessThanCount = lessThanCount;
+      this.pronounceableType = pronounceableType;
+      this._cd.markForCheck();
+    });
+  }
 
   onSaveDataBaseClicked(): void {
     const filterConfigs = this.onApplyClicked();
