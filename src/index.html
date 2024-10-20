@@ -15,7 +15,6 @@
   <meta name="msapplication-tap-highlight" content="no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>Ngx-speller</title>
-  <base href="/">
   <style type="text/css">
     .preloader {
       position: fixed;
@@ -113,13 +112,21 @@
   </style>
 </head>
 
-<body>
+<body class="mat-typography">
   <app-root></app-root>
   <div class="preloader">
     <div class="cs-loader">
-      <div class="cs-loader-inner"><label> ●</label><label> ●</label><label> ●</label><label> ●</label><label>
-          ●</label><label> ●</label></div>
+      <div class="cs-loader-inner">
+        <label> ●</label>
+        <label> ●</label>
+        <label> ●</label>
+        <label> ●</label>
+        <label>
+          ●</label>
+        <label> ●</label>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>
