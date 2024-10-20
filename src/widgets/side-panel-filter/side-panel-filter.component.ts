@@ -1,11 +1,11 @@
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { combineLatestWith, map, take } from 'rxjs/operators';
-import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
+import { DEFAULT_FILTER_LESS_THAN, getDefaultSettings } from '../../core/constant';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
@@ -21,12 +21,27 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
     <div class="side_panel_settings_container">
       <div class="content">
         <div class="filters_setting">
+          <div class="form_control_container pd_l">
+            <span class="label_span">random order:</span>
+            <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
+          </div>
           <div class="form_control_container">
-            <div class="form_control_container pd_l">
-              <span class="label_span">random order:</span>
-              <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
-            </div>
-            <nz-radio-group [(ngModel)]="pronounceableType">
+            <span class="label_span">random pick:</span>
+            <nz-switch
+              [style]="{ marginRight: '10px' }"
+              nzSize="small"
+              [(ngModel)]="randomPick"
+            ></nz-switch>
+            @if (randomPick) {
+              <nz-input-number
+                [(ngModel)]="randomPickCount"
+                [nzMin]="1"
+                [nzMax]="allWordsCount$ | async"
+              ></nz-input-number>
+            }
+          </div>
+          <div class="form_control_container">
+            <nz-radio-group [(ngModel)]="pronounceableType" [disabled]="randomPick">
               <label nz-radio nzValue="ALL">All</label>
               <label nz-radio nzValue="PRONOUNCED">Pronounced</label>
               <label nz-radio nzValue="UNPRONOUNCED">Unpronounced</label>
@@ -41,6 +56,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
               [(ngModel)]="lessThanCount"
               [nzMin]="0"
               [nzMax]="maxLessThanCount"
+              [disabled]="randomPick"
             ></nz-input-number>
           </div>
           <div class="form_control_container pd_l slider_padding_0 custom-slider">
@@ -55,6 +71,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
                 ceil: 1,
                 step: 0.01,
                 animate: false,
+                disabled: randomPick,
               }"
             ></ngx-slider>
           </div>
@@ -73,6 +90,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
                 ceil: (allWordsCount$ | async) ?? 9999,
                 step: 1,
                 animate: false,
+                disabled: randomPick,
               }"
             ></ngx-slider>
           </div>
@@ -91,6 +109,8 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
 })
 export class SidePanelFilterComponent implements OnInit {
   randomOrder: boolean = false;
+  randomPick: boolean = false;
+  randomPickCount: number = 1;
   minRange: number = 0;
   maxRange: number = 9999;
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
@@ -100,6 +120,7 @@ export class SidePanelFilterComponent implements OnInit {
 
   db = inject(DbService);
   store = inject(Store);
+  _cd = inject(ChangeDetectorRef);
   settings$ = this.store.select('settings');
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
   private nzDrawerRef = inject(NzDrawerRef<void>);
@@ -120,6 +141,8 @@ export class SidePanelFilterComponent implements OnInit {
           this.lessThanRate = filters.lessThanRate;
           this.lessThanCount = filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
           this.pronounceableType = filters.pronounceableType;
+          this.randomPick = filters.randomPick;
+          this.randomPickCount = filters.randomPickCount;
         } else {
           this.minRange = 1;
           this.maxRange = allWordsCount;
@@ -128,12 +151,22 @@ export class SidePanelFilterComponent implements OnInit {
   }
 
   onApplyClicked(): FiltersConfig {
-    const { randomOrder, lessThanRate, pronounceableType, lessThanCount, minRange, maxRange } =
-      this;
+    const {
+      randomOrder,
+      randomPick,
+      randomPickCount,
+      lessThanRate,
+      pronounceableType,
+      lessThanCount,
+      minRange,
+      maxRange,
+    } = this;
     this.store.dispatch(
       setFiltersConfig({
         filters: {
           randomOrder,
+          randomPick,
+          randomPickCount,
           pickRange: [minRange, maxRange] as [number, number],
           lessThanRate,
           pronounceableType,
@@ -148,11 +181,35 @@ export class SidePanelFilterComponent implements OnInit {
       pickRange: [minRange, maxRange],
       lessThanRate,
       pronounceableType,
+      randomPick,
+      randomPickCount,
       lessThanCount,
     } as FiltersConfig;
   }
 
-  onResetClicked(): void {}
+  onResetClicked(): void {
+    this.allWordsCount$.subscribe((allWordsCount) => {
+      const { filters } = getDefaultSettings(allWordsCount);
+      const {
+        randomOrder,
+        randomPick,
+        randomPickCount,
+        pickRange,
+        lessThanRate,
+        pronounceableType,
+        lessThanCount,
+      } = filters;
+      this.randomOrder = randomOrder;
+      this.randomPick = randomPick;
+      this.randomPickCount = randomPickCount;
+      this.minRange = pickRange[0];
+      this.maxRange = pickRange[1];
+      this.lessThanRate = lessThanRate;
+      this.lessThanCount = lessThanCount;
+      this.pronounceableType = pronounceableType;
+      this._cd.markForCheck();
+    });
+  }
 
   onSaveDataBaseClicked(): void {
     const filterConfigs = this.onApplyClicked();

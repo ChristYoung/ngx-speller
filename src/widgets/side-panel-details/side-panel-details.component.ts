@@ -43,6 +43,7 @@ import { SpeechComponent } from '../speech/speech.component';
           (contentChange)="updateEnglishExplanations($event)"
         ></app-content-editable>
         <div class="examples_container">
+          {{ examples | json }}
           @for (item of examples; track $index) {
             <div class="examples_item">
               <p class="en">
@@ -184,6 +185,11 @@ export class SidePanelDetailsComponent implements OnInit {
     currentExamples: ExampleItem[],
     type: 'add' | 'remove' = 'add',
   ): void {
+    this.examples = [...currentExamples];
+    if (type === 'add') {
+      this.inputChineseExample = '';
+      this.inputEnglishExample = '';
+    }
     this.db
       .updateWordItemFromIndexDB(
         {
@@ -192,12 +198,6 @@ export class SidePanelDetailsComponent implements OnInit {
         },
         true,
       )
-      .subscribe(() => {
-        if (type === 'add') {
-          this.inputChineseExample = '';
-          this.inputEnglishExample = '';
-        }
-        this.examples = [...currentExamples];
-      });
+      .subscribe(() => {});
   }
 }

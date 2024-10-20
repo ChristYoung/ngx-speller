@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of, switchMap, withLatestFrom } from 'rxjs';
 import { DbService } from '../../services/DataBase/db.service';
-import { BiggestFilter } from '../../utils';
+import { BiggestFilter, randomPicker } from '../../utils';
 import { setWordsList } from '../words/words.actions';
 import { setFiltersConfig } from './settings.actions';
 
@@ -18,6 +18,9 @@ export class SettingsEffects {
       withLatestFrom(this.db.getAllWordsFromIndexDB()),
       switchMap(([action, wordList]) => {
         const { filters } = action;
+        if (filters?.randomPick && filters?.randomPickCount > 0) {
+          return of(setWordsList({ words: randomPicker(wordList, filters.randomPickCount) }));
+        }
         const returnWordsList = filters ? BiggestFilter(wordList, filters) : wordList;
         return of(setWordsList({ words: returnWordsList }));
       }),

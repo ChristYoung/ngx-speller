@@ -3,7 +3,11 @@ import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable, catchError, concatMap, forkJoin, map, mergeMap, of, tap } from 'rxjs';
-import { DEFAULT_FILTER_LESS_THAN } from '../../core/constant';
+import {
+  DEFAULT_FILTER_LESS_THAN,
+  DEFAULT_RANDOM_PICK_COUNT,
+  getDefaultSettings,
+} from '../../core/constant';
 import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
 import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
@@ -140,28 +144,17 @@ export class DbService {
   }
 
   getSettingConfigsFromIndexDB(allWordsLen: number, setToStore?: boolean): Observable<Settings> {
-    const _defaultSettings: Settings = {
-      commonSettings: {
-        mode: 'SPELLING',
-        showExamples: true,
-        showPhonetic: true,
-        showExplanation: true,
-        showHorn: true,
-      },
-      filters: {
-        pronounceableType: 'ALL',
-        pickRange: [0, allWordsLen],
-        randomOrder: false,
-        lessThanRate: 1,
-        lessThanCount: DEFAULT_FILTER_LESS_THAN,
-      },
-    };
+    const { commonSettings: _defaultCommonSetting, filters: _defaultFilterSetting } =
+      getDefaultSettings(allWordsLen);
     return this.dbService.getAll<Settings>('settings').pipe(
-      map((res) => res[0] || _defaultSettings),
-      tap((res) => {
+      map((res) => ({
+        commonSettings: (res?.length > 0 && res[0]?.commonSettings) || _defaultCommonSetting,
+        filters: (res?.length > 0 && res[0]?.filters) || _defaultFilterSetting,
+      })),
+      tap(({ commonSettings, filters }) => {
         if (setToStore) {
-          this.store.dispatch(setCommonSettingsConfig({ commonSettings: res.commonSettings }));
-          this.store.dispatch(setFiltersConfig({ filters: res.filters }));
+          this.store.dispatch(setCommonSettingsConfig({ commonSettings }));
+          this.store.dispatch(setFiltersConfig({ filters }));
         }
       }),
     );

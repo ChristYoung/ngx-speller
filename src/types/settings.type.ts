@@ -17,6 +17,8 @@ export type FiltersConfig = {
   recentDays?: number;
   pronounceableType?: PronounceableType;
   randomOrder?: boolean;
+  randomPick?: boolean;
+  randomPickCount?: number;
   pickRange?: number[]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate?: number; // pick out these words whose right count is less than the `lessThanRate`.
   lessThanCount?: number; // pick out these words whose right count is less than the `lessThanCount`.
