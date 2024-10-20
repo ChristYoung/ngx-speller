@@ -1,5 +1,6 @@
 import { FiltersConfig, WordsCollections, WordsItem, WordType } from '../types';
 
+export * from './preloader.util';
 export * from './24-tool.util';
 
 export const SoundSourceMapping = {

@@ -1,7 +1,7 @@
 {
   "homepage": ".",
   "name": "ngx-speller",
-  "version": "1.2.9",
+  "version": "1.2.92",
   "description": "A spell checker for Angular applications",
   "author": "Jay Young (858851768@qq.com)",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "@angular/cli": "^18.2.8",
     "@angular/compiler-cli": "^18.2.8",
     "@ngrx/schematics": "^18.1.0",
+    "@ngx-env/builder": "18.0.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "7.11.0",

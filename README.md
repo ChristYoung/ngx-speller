@@ -23,6 +23,9 @@
 - https://github.com/angular/angularfire/blob/master/docs/database.md (Real Time database)
 - https://www.youtube.com/watch?v=586O934xrhQ (Fire base auth)
 
+# 使用ngx-env配置Angular读取.env中的环境变量
+ - https://www.npmjs.com/package/@ngx-env/builder
+
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
 
