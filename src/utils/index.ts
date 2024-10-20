@@ -99,6 +99,10 @@ export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): 
   return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterList) : filterList;
 };
 
+export const randomPicker = (list: WordsItem[], count: number): WordsItem[] => {
+  return shuffleArray<WordsItem>(list).slice(0, count);
+};
+
 export const organizeWordsByFirstLetter = (words: WordsItem[]): WordsCollections[] => {
   const wordsCollections: WordsCollections[] = [];
   words.forEach((w) => {
