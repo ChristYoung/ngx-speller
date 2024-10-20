@@ -43,7 +43,6 @@ import { SpeechComponent } from '../speech/speech.component';
           (contentChange)="updateEnglishExplanations($event)"
         ></app-content-editable>
         <div class="examples_container">
-          {{ examples | json }}
           @for (item of examples; track $index) {
             <div class="examples_item">
               <p class="en">
