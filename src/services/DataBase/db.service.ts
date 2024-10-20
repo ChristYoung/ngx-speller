@@ -3,7 +3,11 @@ import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Observable, catchError, concatMap, forkJoin, map, mergeMap, of, tap } from 'rxjs';
-import { DEFAULT_FILTER_LESS_THAN, DEFAULT_RANDOM_PICK_COUNT } from '../../core/constant';
+import {
+  DEFAULT_FILTER_LESS_THAN,
+  DEFAULT_RANDOM_PICK_COUNT,
+  getDefaultSettings,
+} from '../../core/constant';
 import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
 import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
@@ -140,22 +144,8 @@ export class DbService {
   }
 
   getSettingConfigsFromIndexDB(allWordsLen: number, setToStore?: boolean): Observable<Settings> {
-    const _defaultFilterSetting: FiltersConfig = {
-      pronounceableType: 'ALL',
-      pickRange: [0, allWordsLen],
-      randomOrder: false,
-      randomPick: false,
-      randomPickCount: DEFAULT_RANDOM_PICK_COUNT,
-      lessThanRate: 1,
-      lessThanCount: DEFAULT_FILTER_LESS_THAN,
-    };
-    const _defaultCommonSetting: CommonSettingsConfig = {
-      mode: 'VIEW',
-      showExamples: true,
-      showPhonetic: true,
-      showExplanation: true,
-      showHorn: true,
-    };
+    const { commonSettings: _defaultCommonSetting, filters: _defaultFilterSetting } =
+      getDefaultSettings(allWordsLen);
     return this.dbService.getAll<Settings>('settings').pipe(
       map((res) => ({
         commonSettings: (res?.length > 0 && res[0]?.commonSettings) || _defaultCommonSetting,
