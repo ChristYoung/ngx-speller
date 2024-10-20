@@ -140,6 +140,8 @@ export class SidePanelFilterComponent implements OnInit {
           this.lessThanRate = filters.lessThanRate;
           this.lessThanCount = filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
           this.pronounceableType = filters.pronounceableType;
+          this.randomPick = filters.randomPick;
+          this.randomPickCount = filters.randomPickCount;
         } else {
           this.minRange = 1;
           this.maxRange = allWordsCount;

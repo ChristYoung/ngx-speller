@@ -33,14 +33,14 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
           <div class="card_container">
             <app-spelling-card
               [wordItem]="currentWordItem$ | async"
-              [mode]="(setting$ | async).commonSettings.mode"
+              [mode]="(setting$ | async).commonSettings?.mode"
               [enableSpelling]="enableSpelling"
               [backSpaceKeyDownPlay]="backSpaceKeyDownPlay"
-              [autoPlay]="(setting$ | async).commonSettings.autoPlay"
-              [showHorn]="(setting$ | async).commonSettings.showHorn"
-              [showExamples]="(setting$ | async).commonSettings.showExamples"
-              [showExplanations]="(setting$ | async).commonSettings.showExplanation"
-              [showPhonetic]="(setting$ | async).commonSettings.showPhonetic"
+              [autoPlay]="(setting$ | async).commonSettings?.autoPlay"
+              [showHorn]="(setting$ | async).commonSettings?.showHorn"
+              [showExamples]="(setting$ | async).commonSettings?.showExamples"
+              [showExplanations]="(setting$ | async).commonSettings?.showExplanation"
+              [showPhonetic]="(setting$ | async).commonSettings?.showPhonetic"
               [lastWord]="(currentWordIndex$ | async) >= (wordList$ | async).length"
               (correctSpellingHandler)="correctHandler($event)"
               (incorrectSpellingHandler)="incorrectHandler($event)"
@@ -50,7 +50,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             <app-spelling-operator
               [prevDisabled]="
                 (currentWordIndex$ | async) <= 1 ||
-                (setting$ | async).commonSettings.mode === 'QUIZ'
+                (setting$ | async).commonSettings?.mode === 'QUIZ'
               "
               [nextDisabled]="(currentWordIndex$ | async) >= (wordList$ | async).length"
               [wordItem]="currentWordItem$ | async"
@@ -128,7 +128,7 @@ export class SpellingComponent {
     this.setting$.pipe(take(1)).subscribe((setting) => {
       if (isCorrect) {
         if (isLastWord) {
-          if (setting.commonSettings.mode === 'QUIZ') {
+          if (setting.commonSettings?.mode === 'QUIZ') {
             this.onQuizEnd();
           } else {
             this.onMoveCursorHandler('next');
@@ -137,13 +137,13 @@ export class SpellingComponent {
           this.onMoveCursorHandler('next'); // when the word is spelled correctly, then move to the next word automatically.
         }
       } else {
-        if (setting.commonSettings.mode === 'QUIZ') {
+        if (setting.commonSettings?.mode === 'QUIZ') {
           const isExist = this.spellingErrorWordsCollection.find((word) => word.word === w.word);
           !isExist && this.spellingErrorWordsCollection.push(w);
           isLastWord && this.onQuizEnd();
         }
       }
-      this.updateWordSpellingCount(w.id, setting.commonSettings.mode, isCorrect);
+      this.updateWordSpellingCount(w.id, setting.commonSettings?.mode, isCorrect);
     });
   }
 
