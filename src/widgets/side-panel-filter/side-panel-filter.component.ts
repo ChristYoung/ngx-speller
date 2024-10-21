@@ -11,7 +11,8 @@ import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { FiltersConfig, PronounceableType } from './../../types/settings.type';
+import { FiltersConfig, PronounceableType, Settings } from './../../types/settings.type';
+import { WordType } from '../../types';
 
 @Component({
   selector: 'app-side-panel-filter',
@@ -22,11 +23,11 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
       <div class="content">
         <div class="filters_setting">
           <div class="form_control_container pd_l">
-            <span class="label_span">random order:</span>
+            <span class="label_span">Random order:</span>
             <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
           </div>
           <div class="form_control_container">
-            <span class="label_span">random pick:</span>
+            <span class="label_span">Random pick:</span>
             <nz-switch
               [style]="{ marginRight: '10px' }"
               nzSize="small"
@@ -41,15 +42,24 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
             }
           </div>
           <div class="form_control_container">
+            <p>WordType:</p>
+            <nz-radio-group [(ngModel)]="wordType" [disabled]="randomPick">
+              <label nz-radio nzValue="ALL">All</label>
+              <label nz-radio nzValue="WORD">Word</label>
+              <label nz-radio nzValue="PHRASE">Phrase</label>
+            </nz-radio-group>
+          </div>
+          <div class="form_control_container">
+            <p>Pronounceable:</p>
             <nz-radio-group [(ngModel)]="pronounceableType" [disabled]="randomPick">
               <label nz-radio nzValue="ALL">All</label>
               <label nz-radio nzValue="PRONOUNCED">Pronounced</label>
               <label nz-radio nzValue="UNPRONOUNCED">Unpronounced</label>
             </nz-radio-group>
           </div>
-          <div class="form_control_container pd_l slider_padding_0">
+          <div class="form_control_container pd_l">
             <p>
-              pick the words whose spell count were less than:
+              Pick the words whose spell count were less than:
               {{ lessThanCount }}
             </p>
             <nz-input-number
@@ -61,7 +71,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
           </div>
           <div class="form_control_container pd_l slider_padding_0 custom-slider">
             <p>
-              pick the words whose right rate were less than:
+              Pick the words whose right rate were less than:
               {{ lessThanRate * 100 | toFixed: 2 }}%
             </p>
             <ngx-slider
@@ -79,7 +89,7 @@ import { FiltersConfig, PronounceableType } from './../../types/settings.type';
             class="form_control_container pd_l slider_padding_0 slider_padding_t20 custom-slider"
           >
             <p>
-              pick the words from {{ minRange }} to
+              Pick the words from {{ minRange }} to
               {{ maxRange <= (allWordsCount$ | async) ? maxRange : (allWordsCount$ | async) }}:
             </p>
             <ngx-slider
@@ -117,6 +127,7 @@ export class SidePanelFilterComponent implements OnInit {
   lessThanCount: number = 1; // pick out these words whose right count is less than the `lessThanCount`.
   maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
   pronounceableType?: PronounceableType = 'ALL';
+  wordType: WordType = 'ALL';
 
   db = inject(DbService);
   store = inject(Store);
@@ -133,7 +144,7 @@ export class SidePanelFilterComponent implements OnInit {
         take(1),
       )
       .subscribe(({ settings, allWordsCount }) => {
-        const { filters } = settings;
+        const { filters } = settings as Settings;
         if (filters) {
           this.randomOrder = filters.randomOrder;
           this.minRange = filters.pickRange[0];
@@ -143,6 +154,7 @@ export class SidePanelFilterComponent implements OnInit {
           this.pronounceableType = filters.pronounceableType;
           this.randomPick = filters.randomPick;
           this.randomPickCount = filters.randomPickCount;
+          this.wordType = filters.wordType;
         } else {
           this.minRange = 1;
           this.maxRange = allWordsCount;
@@ -160,6 +172,7 @@ export class SidePanelFilterComponent implements OnInit {
       lessThanCount,
       minRange,
       maxRange,
+      wordType,
     } = this;
     this.store.dispatch(
       setFiltersConfig({
@@ -167,10 +180,11 @@ export class SidePanelFilterComponent implements OnInit {
           randomOrder,
           randomPick,
           randomPickCount,
-          pickRange: [minRange, maxRange] as [number, number],
+          pickRange: [minRange, maxRange] as number[],
           lessThanRate,
           pronounceableType,
           lessThanCount,
+          wordType,
         } as FiltersConfig,
       }),
     );
@@ -184,6 +198,7 @@ export class SidePanelFilterComponent implements OnInit {
       randomPick,
       randomPickCount,
       lessThanCount,
+      wordType,
     } as FiltersConfig;
   }
 
@@ -207,6 +222,7 @@ export class SidePanelFilterComponent implements OnInit {
       this.lessThanRate = lessThanRate;
       this.lessThanCount = lessThanCount;
       this.pronounceableType = pronounceableType;
+      this.wordType = filters.wordType;
       this._cd.markForCheck();
     });
   }

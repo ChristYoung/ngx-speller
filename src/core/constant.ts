@@ -17,6 +17,7 @@ export const getDefaultSettings = (allWordsLen: number): Settings => {
     randomPickCount: DEFAULT_RANDOM_PICK_COUNT,
     lessThanRate: 1,
     lessThanCount: DEFAULT_FILTER_LESS_THAN,
+    wordType: 'ALL',
   };
   const commonSettings: CommonSettingsConfig = {
     mode: 'VIEW',
