@@ -64,77 +64,90 @@ import { ZorroModule } from '../../zorro/zorro.module';
           </nz-dropdown-menu>
         </div>
       </div>
-      <div class="table_container">
-        <nz-table #headerTable [nzData]="dataSource" [nzSize]="'small'" [nzFrontPagination]="false">
-          <thead>
-            <tr>
-              <th
-                [nzWidth]="'40px'"
-                [nzChecked]="allChecked"
-                nzLabel="Select all"
-                (nzCheckedChange)="onAllChecked($event)"
-              ></th>
-              <th [nzWidth]="'60px'">Order</th>
-              <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
-              <th [nzWidth]="'300px'">Phonetic</th>
-              <th [nzWidth]="'150px'" style="text-align: right">Created Date</th>
-              <th
-                [nzWidth]="'300px'"
-                [nzSortFn]="sortFnByRightRate"
-                [nzSortPriority]="3"
-                style="text-align: right"
-              >
-                Right Rate
-              </th>
-              <th>Operators</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let data of headerTable.data; let index = index">
-              <td
-                [nzChecked]="setOfCheckId.has(data.id)"
-                (nzCheckedChange)="onItemChecked(data.id, $event)"
-              ></td>
-              <td>{{ index + 1 }}</td>
-              <td>{{ data.word }}</td>
-              <td>
-                <div class="Phonetic_box">
-                  @if (data.phonetic) {
-                    <span>/{{ data.phonetic }}/</span>
-                  }
-                  <app-horn [word]="data.word"></app-horn>
-                </div>
-              </td>
-              <td style="text-align: right">
-                {{ data.created_timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}
-              </td>
-              <td style="text-align: right">
-                {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
-              </td>
-              <td>
-                <div class="flex_box">
-                  <a href="javascript:;" class="operator_item" (click)="clickViewDetail(data)"
-                    >View Details</a
-                  >
-                  <span
-                    class="operator_item"
-                    [class.mispronounce]="data.mispronounce"
-                    nz-icon
-                    [nzType]="'sp:shutup'"
-                    (click)="updateMisPronounce(data)"
-                  ></span>
-                  <span
-                    class="operator_item"
-                    nz-icon
-                    [nzType]="'delete'"
-                    (click)="removeWord(data.id)"
-                  ></span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </nz-table>
-      </div>
+      @if (dataSource?.length > 0) {
+        <div class="table_container">
+          <nz-table
+            #headerTable
+            [nzData]="dataSource"
+            [nzSize]="'small'"
+            [nzFrontPagination]="false"
+          >
+            <thead>
+              <tr>
+                <th
+                  [nzWidth]="'40px'"
+                  [nzChecked]="allChecked"
+                  nzLabel="Select all"
+                  (nzCheckedChange)="onAllChecked($event)"
+                ></th>
+                <th [nzWidth]="'60px'">Order</th>
+                <th [nzSortFn]="sortFnByLetter" [nzSortPriority]="1">Word</th>
+                <th [nzWidth]="'300px'">Phonetic</th>
+                <th [nzWidth]="'150px'" style="text-align: right">Created Date</th>
+                <th
+                  [nzWidth]="'300px'"
+                  [nzSortFn]="sortFnByRightRate"
+                  [nzSortPriority]="3"
+                  style="text-align: right"
+                >
+                  Right Rate
+                </th>
+                <th>Operators</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of headerTable.data; let index = index">
+                <td
+                  [nzChecked]="setOfCheckId.has(data.id)"
+                  (nzCheckedChange)="onItemChecked(data.id, $event)"
+                ></td>
+                <td>{{ index + 1 }}</td>
+                <td>{{ data.word }}</td>
+                <td>
+                  <div class="Phonetic_box">
+                    @if (data.phonetic) {
+                      <span>/{{ data.phonetic }}/</span>
+                    }
+                    <app-horn [word]="data.word"></app-horn>
+                  </div>
+                </td>
+                <td style="text-align: right">
+                  {{ data.created_timestamp | date: 'yyyy-MM-dd HH:mm:ss' }}
+                </td>
+                <td style="text-align: right">
+                  {{ data.right_count }}/{{ data.total_count }} = {{ data.right_rate }}%
+                </td>
+                <td>
+                  <div class="flex_box">
+                    <a href="javascript:;" class="operator_item" (click)="clickViewDetail(data)"
+                      >View Details</a
+                    >
+                    <span
+                      class="operator_item"
+                      [class.mispronounce]="data.mispronounce"
+                      nz-icon
+                      [nzType]="'sp:shutup'"
+                      (click)="updateMisPronounce(data)"
+                    ></span>
+                    <span
+                      class="operator_item"
+                      nz-icon
+                      [nzType]="'delete'"
+                      (click)="removeWord(data.id)"
+                    ></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+        </div>
+      }
+      @if (!loading && !searchKey && dataSource.length === 0) {
+        <app-empty
+          emptyTips="Empty word list, please add words first!"
+          (uploadedDone)="uploadedDoneHandler()"
+        ></app-empty>
+      }
     </div>
     <button
       nz-button
@@ -154,9 +167,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
     >
       <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
     </button>
-    @if (!loading && !searchKey && dataSource.length === 0) {
-      <app-empty emptyTips="Empty word list, please add words first!"></app-empty>
-    }
   `,
   styleUrl: './governance.component.less',
   imports: [
@@ -175,8 +185,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   loading = true;
   allChecked = false;
   setOfCheckId = new Set<number>();
-  openSideNav = false;
-  wordListFireBaseRef: any;
   searchKey: string;
   wordType: WordType;
   searchKeySubject$ = new Subject<string>();
@@ -228,6 +236,12 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  uploadedDoneHandler(): void {
+    this.searchKey = '';
+    this.wordType = 'ALL';
+    this.ngOnInit();
+  }
+
   scrollToPosition(direction: 'TOP' | 'BOTTOM'): void {
     if (direction === 'TOP') {
       const element = this.scrollableDiv.nativeElement;
@@ -236,19 +250,6 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       const element = this.scrollableDiv.nativeElement;
       element.scrollTop = element.scrollHeight;
     }
-  }
-
-  syncToFireBase(): void {
-    // listVal(ref(this.angularFireDataBase, FIREBASE_WORD_DB_PATH)).subscribe(
-    //   (res) => {
-    //     console.log('uploadFireBase,res', res);
-    //   }
-    // );
-    // set(ref(this.realTimeDataBase, FIREBASE_WORD_DB_PATH), [
-    //   ...this.dataSource,
-    // ]).then(() => console.log('更新成功'));
-    // const qry = orderByKey();
-    // console.log('qry', qry);
   }
 
   onItemChecked(id: number, checked: boolean): void {

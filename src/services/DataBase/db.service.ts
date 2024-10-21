@@ -60,22 +60,23 @@ export class DbService {
     );
   }
 
-  addWordsToIndexDBByJSONFile(jsonFileContent: WholeIndexDBConfig, setToStore?: boolean): void {
+  addWordsToIndexDBByJSONFile(
+    jsonFileContent: WholeIndexDBConfig,
+    setToStore?: boolean,
+  ): Observable<any> {
     const { settings, words } = jsonFileContent;
-    this.dbService
-      .clear('words')
-      .pipe(
-        concatMap(() => this.dbService.bulkAdd('words', words)),
-        concatMap(() => this.dbService.clear('settings')),
-        concatMap(() => (settings ? this.dbService.add('settings', settings) : of(null))),
-      )
-      .subscribe(() => {
+    return this.dbService.clear('words').pipe(
+      concatMap(() => this.dbService.bulkAdd('words', words)),
+      concatMap(() => this.dbService.clear('settings')),
+      concatMap(() => (settings ? this.dbService.add('settings', settings) : of(null))),
+      tap(() => {
         if (setToStore) {
           this.store.dispatch(setCommonSettingsConfig({ commonSettings: settings.commonSettings }));
           this.store.dispatch(setFiltersConfig({ filters: settings.filters }));
           this.store.dispatch(setWordsList({ words }));
         }
-      });
+      }),
+    );
   }
 
   getAllWordsFromIndexDB(
