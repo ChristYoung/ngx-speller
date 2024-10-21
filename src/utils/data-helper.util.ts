@@ -11,14 +11,15 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 
 export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): WordsItem[] => {
   const pronounceable = filterConfig.pronounceableType === 'PRONOUNCED';
-  const wordType = filterConfig.wordType;
   const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 999];
   let filterList =
-    filterConfig.wordType === 'ALL' ? [..._list] : _list.filter((item) => item.type === wordType);
+    filterConfig.wordType === 'ALL'
+      ? [..._list]
+      : _list.filter((item) => item.type === filterConfig.wordType);
   filterList =
     filterConfig.pronounceableType === 'ALL'
-      ? [..._list]
-      : _list.filter((item) => item.mispronounce === !pronounceable);
+      ? [...filterList]
+      : filterList.filter((item) => item.mispronounce === !pronounceable);
 
   filterList = filterList.filter((item) => {
     const right_rate =
