@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
 import { DbService } from '../../services/DataBase/db.service';
 import { FileService } from '../../services/file.service';
 import { WholeIndexDBConfig } from '../../types';
@@ -18,6 +18,8 @@ export class ImportJsonToDbComponent {
   private fileReader = inject(FileService);
   private db = inject(DbService);
 
+  @Output() uploadedDone = new EventEmitter<void>();
+
   importClicked(): void {
     const input = document.createElement('input');
     input.type = 'file';
@@ -27,7 +29,9 @@ export class ImportJsonToDbComponent {
       if (files && files.length > 0) {
         this.fileReader.readJSONFile(files[0]).subscribe({
           next: (data: WholeIndexDBConfig) => {
-            this.db.addWordsToIndexDBByJSONFile(data);
+            this.db.addWordsToIndexDBByJSONFile(data).subscribe(() => {
+              this.uploadedDone.emit();
+            });
           },
           error: (error) => {
             console.error(error);

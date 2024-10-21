@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  inject,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { ImportJsonToDbComponent } from '../import-json-to-db/import-json-to-db.component';
@@ -21,7 +28,10 @@ import { ImportJsonToDbComponent } from '../import-json-to-db/import-json-to-db.
           <button nz-button nzType="primary" *nzSpaceItem (click)="navigate()">
             Go to input new words.
           </button>
-          <app-import-json-to-db *nzSpaceItem></app-import-json-to-db>
+          <app-import-json-to-db
+            *nzSpaceItem
+            (uploadedDone)="uploadedDone.emit()"
+          ></app-import-json-to-db>
         </nz-space>
       </ng-template>
     </nz-empty>
@@ -42,6 +52,7 @@ import { ImportJsonToDbComponent } from '../import-json-to-db/import-json-to-db.
 export class EmptyComponent {
   private router = inject(Router);
   @Input({ required: true }) emptyTips: string;
+  @Output() uploadedDone = new EventEmitter<void>();
 
   navigate(): void {
     this.router.navigate(['../layout/input']);
