@@ -32,10 +32,19 @@ jobs:
       - name: PR build completed
         run: echo "Build completed for PR"
   deploy-to-github-pages:
-    needs: npm-build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+      - name: 🧞‍♂️ Load the content of the repository
+        uses: actions/checkout@v4
+      - name: 📦 install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+      - name: 🪜 install the dependencies
+        run: yarn install --frozen-lockfile
+      - name: 🛠 build the project
+        run: yarn build
       - name: 🚀 deploy this project
         uses: ptienchuan/deploy-github-pages-action@master
         env:
