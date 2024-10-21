@@ -194,7 +194,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
   constructor(
     private db: DbService,
     private fileService: FileService,
-    private store: Store, // private angularFireDataBase: AngularFireDatabase, // private realTimeDataBase: Database
+    private store: Store,
     private drawer: NzDrawerService,
   ) {}
 
@@ -209,17 +209,17 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       });
     this.searchKeySubject$
       .pipe(debounceTime(300), takeUntil(this.destroy$))
-      .subscribe((searchKey) => {
-        this.dataSource = searchKey
-          ? frontEndSearchWordsByKeyword(searchKey, this.allDataFromDB)
-          : [...this.dataSource];
-      });
+      .subscribe(
+        (searchKey) =>
+          (this.dataSource = frontEndSearchWordsByKeyword(searchKey, this.allDataFromDB)),
+      );
     this.wordTypeSubject$
       .pipe(debounceTime(300), takeUntil(this.destroy$))
       .subscribe((wordType) => {
-        this.dataSource = wordType
-          ? this.allDataFromDB.filter((item) => item.type === wordType)
-          : [...this.dataSource];
+        this.dataSource =
+          wordType && wordType !== 'ALL'
+            ? this.allDataFromDB.filter((item) => item.type === wordType)
+            : this.allDataFromDB;
       });
   }
 

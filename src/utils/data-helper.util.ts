@@ -46,8 +46,11 @@ export const frontEndSearchWordsByKeyword = (
   wordList: WordsItem[],
   wordType?: WordType,
 ): WordsItem[] => {
+  if (!keyWords) return wordList;
   const keyWordsUpper = keyWords.toLowerCase();
   const searchResult = wordList.filter((w) => w.word.toLowerCase().includes(keyWordsUpper));
   // filter the searchResult by wordType, and if any single word's type is not exist, treat it as 'Word' type.
-  return wordType ? searchResult.filter((w) => w.type === wordType) : searchResult;
+  return wordType && wordType !== 'ALL'
+    ? searchResult.filter((w) => w.type === wordType)
+    : searchResult;
 };
