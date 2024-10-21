@@ -24,6 +24,18 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: 🛠 build the project
         run: yarn build
+  build-for-pr:
+    needs: npm-build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR build completed
+        run: echo "Build completed for PR"
+  deploy-to-github-pages:
+    needs: npm-build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
       - name: 🚀 deploy this project
         uses: ptienchuan/deploy-github-pages-action@master
         env:
