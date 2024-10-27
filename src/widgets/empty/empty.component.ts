@@ -55,6 +55,6 @@ export class EmptyComponent {
   @Output() uploadedDone = new EventEmitter<void>();
 
   navigate(): void {
-    this.router.navigate(['../layout/input']);
+    this.router.navigate(['../home/input']);
   }
 }
