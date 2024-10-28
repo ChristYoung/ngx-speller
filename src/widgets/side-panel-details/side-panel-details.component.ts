@@ -74,6 +74,8 @@ import { SpeechComponent } from '../speech/speech.component';
                   nzType="instagram"
                   nzTheme="outline"
                   [nzTooltipTitle]="'Mark this sentence as a quiz'"
+                  [style.color]="item.quiz ? 'red' : ''"
+                  (click)="updateExampleQuiz($index, !item.quiz)"
                 ></span>
                 <!-- <app-speech [speechText]="item.en"></app-speech> -->
               </div>
@@ -151,6 +153,19 @@ export class SidePanelDetailsComponent implements OnInit {
     this.updateCurrentExamples(currentExamples);
   }
 
+  updateExampleQuiz(index: number, markAsQuiz: boolean): void {
+    this.examples = this.examples.map((example, _index) => {
+      if (_index === index) {
+        return {
+          ...example,
+          quiz: markAsQuiz,
+        };
+      }
+      return example;
+    });
+    this.updateCurrentExamples(this.examples, 'update');
+  }
+
   removeExample(index: number): void {
     this.examples = this.examples.filter((_, _index) => _index !== index);
     this.updateCurrentExamples(this.examples, 'remove');
@@ -201,7 +216,7 @@ export class SidePanelDetailsComponent implements OnInit {
 
   private updateCurrentExamples(
     currentExamples: ExampleItem[],
-    type: 'add' | 'remove' = 'add',
+    type: 'add' | 'remove' | 'update' = 'add',
   ): void {
     this.examples = [...currentExamples];
     if (type === 'add') {
