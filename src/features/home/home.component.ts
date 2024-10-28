@@ -26,6 +26,8 @@ import { ZorroModule } from '../../zorro/zorro.module';
           nzSize="large"
           class="layout_fab"
           appPreventButtonDefault
+          nz-tooltip
+          [nzTooltipTitle]="'Settings'"
           (click)="openSettingDrawer()"
         >
           <span nz-icon nzType="setting"></span>

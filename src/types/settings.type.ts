@@ -11,6 +11,7 @@ export type CommonSettingsConfig = {
   showHorn: boolean;
   muteKeyBoard?: boolean;
   autoPlay?: boolean;
+  disabledYoudao?: boolean;
 };
 
 export type FiltersConfig = {

@@ -20,6 +20,7 @@ import { YouDaoHttpService } from '../you-dao-http.service';
 })
 export class DbService {
   private store = inject(Store);
+  private _setting: CommonSettingsConfig = null;
 
   constructor(
     private dbService: NgxIndexedDBService,
@@ -38,14 +39,20 @@ export class DbService {
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
-      return this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      const disabledYoudaoApi = this._setting.disabledYoudao;
+      return disabledYoudaoApi
+        ? of({
+            word: w.word,
+          })
+        : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
     });
     return forkJoin(fetchWordsInformation$).pipe(
       map((res) => {
         if (res?.length > 0) {
           const wordsRes = [...res];
           wordsRes.forEach((w: WordsItem) => {
-            w.examples = [{ zh: w['example_zh'], en: w['example'] }];
+            w.examples =
+              w['example_zh'] && w['example'] ? [{ zh: w['example_zh'], en: w['example'] }] : [];
             w.mispronounce = false;
             w.total_count = 0;
             w.right_count = 0;
@@ -149,6 +156,7 @@ export class DbService {
         filters: (res?.length > 0 && res[0]?.filters) || _defaultFilterSetting,
       })),
       tap(({ commonSettings, filters }) => {
+        this._setting = { ...commonSettings };
         if (setToStore) {
           this.store.dispatch(setCommonSettingsConfig({ commonSettings }));
           this.store.dispatch(setFiltersConfig({ filters }));
