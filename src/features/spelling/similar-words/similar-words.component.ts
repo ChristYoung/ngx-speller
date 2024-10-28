@@ -10,7 +10,7 @@ import { YOU_DAO_API } from '../../../core/constant';
   imports: [CommonModule, ZorroModule, FormsModule],
   template: `
     <div class="similar_words_container" [style.justify-content]="alignWay">
-      <nz-tag
+      <!-- <nz-tag
         class="tag_item"
         *ngFor="let tag of tags; let i = index"
         [nzMode]="freezed ? 'default' : 'closeable'"
@@ -18,7 +18,14 @@ import { YOU_DAO_API } from '../../../core/constant';
         (nzOnClose)="handleClose(tag)"
       >
         <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
-      </nz-tag>
+      </nz-tag> -->
+      <a
+        *ngFor="let tag of tags; let i = index"
+        href="{{ _youDaoApi }}{{ tag }}"
+        class="editable-tag-href"
+        target="_blank"
+        >{{ tag }}</a
+      >
       @if (!freezed) {
         <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
           <span nz-icon nzType="plus"></span>
@@ -43,6 +50,11 @@ import { YOU_DAO_API } from '../../../core/constant';
       .editable-tag {
         background: rgb(255, 255, 255);
         border-style: dashed;
+      }
+
+      .editable-tag-href {
+        font-style: italic;
+        margin: 0 4px;
       }
 
       .similar_words_container {

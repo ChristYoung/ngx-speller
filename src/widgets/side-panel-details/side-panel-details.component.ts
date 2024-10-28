@@ -19,48 +19,58 @@ import { SpeechComponent } from '../speech/speech.component';
   template: `
     @if (wordItem) {
       <div class="details_container">
-        <h3 class="word_title" (click)="redirectToDetails(wordItem.word)">
+        <h3 nz-typography class="word_title" (click)="redirectToDetails(wordItem.word)">
           {{ wordItem.word }}
         </h3>
         <div class="word_details">
           <span>/{{ wordItem.phonetic }}/</span>
           <app-horn [word]="wordItem.word" [preloadSrc]="true"></app-horn>
         </div>
-        <div class="similar_words">
+        <div class="detail_card similar_words">
+          <h5 class="card_title">Similar</h5>
           <app-similar-words
             [tags]="similarWords"
             (tagsChange)="similarWordsChange($event)"
             [alignWay]="'flex-start'"
           ></app-similar-words>
         </div>
-        <app-content-editable
-          style="text-align: center; margin-bottom: 10px; display: block;"
-          [htmlContent]="wordItem.explanation || wordItem['explanations']"
-          (contentChange)="updateExplanations($event)"
-        ></app-content-editable>
-        <app-content-editable
-          style="text-align: center; display: block;"
-          [htmlContent]="wordItem.eng_explanation"
-          (contentChange)="updateEnglishExplanations($event)"
-        ></app-content-editable>
-        <div class="examples_container">
-          @for (item of examples; track $index) {
-            <div class="examples_item">
-              <p class="en">
-                <app-highlight [highlightWord]="wordItem.word" [example]="item.en"></app-highlight>
-              </p>
-              <p class="zh">{{ item.zh }}</p>
-              <span
-                class="delete_example"
-                nz-icon
-                nz-tooltip
-                [nzType]="'delete'"
-                [nzTooltipTitle]="'Remove this example'"
-                (click)="removeExample($index)"
-              ></span>
-              <!-- <app-speech [speechText]="item.en"></app-speech> -->
-            </div>
-          }
+        <div class="detail_card">
+          <h5 class="card_title">Definition</h5>
+          <app-content-editable
+            style="text-align: center; margin-bottom: 10px; display: block;"
+            [htmlContent]="wordItem.explanation || wordItem['explanations']"
+            (contentChange)="updateExplanations($event)"
+          ></app-content-editable>
+          <app-content-editable
+            style="text-align: center; display: block;"
+            [htmlContent]="wordItem.eng_explanation"
+            (contentChange)="updateEnglishExplanations($event)"
+          ></app-content-editable>
+        </div>
+        <div class="detail_card">
+          <h5 class="card_title">Examples</h5>
+          <div class="examples_container">
+            @for (item of examples; track $index) {
+              <div class="examples_item">
+                <p class="en">
+                  <app-highlight
+                    [highlightWord]="wordItem.word"
+                    [example]="item.en"
+                  ></app-highlight>
+                </p>
+                <p class="zh">{{ item.zh }}</p>
+                <span
+                  class="delete_example"
+                  nz-icon
+                  nz-tooltip
+                  [nzType]="'delete'"
+                  [nzTooltipTitle]="'Remove this example'"
+                  (click)="removeExample($index)"
+                ></span>
+                <!-- <app-speech [speechText]="item.en"></app-speech> -->
+              </div>
+            }
+          </div>
         </div>
         <div class="add_new_examples">
           <div class="example-full-width">
