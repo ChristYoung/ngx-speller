@@ -9,32 +9,34 @@ import { YOU_DAO_API } from '../../../core/constant';
   standalone: true,
   imports: [CommonModule, ZorroModule, FormsModule],
   template: `
-    <nz-tag
-      class="tag_item"
-      *ngFor="let tag of tags; let i = index"
-      [nzMode]="freezed ? 'default' : 'closeable'"
-      [nzColor]="colorMaps[i % colorMaps.length]"
-      (nzOnClose)="handleClose(tag)"
-    >
-      <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
-    </nz-tag>
-    @if (!freezed) {
-      <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
-        <span nz-icon nzType="plus"></span>
-        add new
+    <div class="similar_words_container" [style.justify-content]="alignWay">
+      <nz-tag
+        class="tag_item"
+        *ngFor="let tag of tags; let i = index"
+        [nzMode]="freezed ? 'default' : 'closeable'"
+        [nzColor]="colorMaps[i % colorMaps.length]"
+        (nzOnClose)="handleClose(tag)"
+      >
+        <a href="{{ _youDaoApi }}{{ tag }}" target="_blank">{{ tag }}</a>
       </nz-tag>
-    }
-    <input
-      #inputElement
-      nz-input
-      nzSize="small"
-      *ngIf="inputVisible"
-      type="text"
-      [(ngModel)]="inputValue"
-      style="width: 78px;"
-      (blur)="handleInputConfirm()"
-      (keydown.enter)="handleInputConfirm()"
-    />
+      @if (!freezed) {
+        <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
+          <span nz-icon nzType="plus"></span>
+          add new
+        </nz-tag>
+      }
+      <input
+        #inputElement
+        nz-input
+        nzSize="small"
+        *ngIf="inputVisible"
+        type="text"
+        [(ngModel)]="inputValue"
+        style="width: 78px;"
+        (blur)="handleInputConfirm()"
+        (keydown.enter)="handleInputConfirm()"
+      />
+    </div>
   `,
   styles: [
     `
@@ -43,11 +45,10 @@ import { YOU_DAO_API } from '../../../core/constant';
         border-style: dashed;
       }
 
-      :host {
+      .similar_words_container {
         display: flex;
         margin: 10px 0;
         align-items: center;
-        justify-content: center;
         flex-wrap: wrap;
       }
 
@@ -61,6 +62,7 @@ import { YOU_DAO_API } from '../../../core/constant';
 export class SimilarWordsComponent {
   @Input({ required: true }) tags: string[] = [];
   @Input() freezed = false;
+  @Input() alignWay: 'flex-start' | 'center' = 'center';
   @Output() tagsChange = new EventEmitter();
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
   inputVisible = false;

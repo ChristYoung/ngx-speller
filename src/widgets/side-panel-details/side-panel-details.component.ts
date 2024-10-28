@@ -30,6 +30,7 @@ import { SpeechComponent } from '../speech/speech.component';
           <app-similar-words
             [tags]="similarWords"
             (tagsChange)="similarWordsChange($event)"
+            [alignWay]="'flex-start'"
           ></app-similar-words>
         </div>
         <app-content-editable
