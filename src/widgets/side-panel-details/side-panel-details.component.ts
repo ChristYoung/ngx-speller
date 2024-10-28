@@ -67,6 +67,14 @@ import { SpeechComponent } from '../speech/speech.component';
                   [nzTooltipTitle]="'Remove this example'"
                   (click)="removeExample($index)"
                 ></span>
+                <span
+                  nz-tooltip
+                  class="mark_as_quiz"
+                  nz-icon
+                  nzType="instagram"
+                  nzTheme="outline"
+                  [nzTooltipTitle]="'Mark this sentence as a quiz'"
+                ></span>
                 <!-- <app-speech [speechText]="item.en"></app-speech> -->
               </div>
             }
