@@ -12,14 +12,7 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): WordsItem[] => {
   const pronounceable = filterConfig.pronounceableType === 'PRONOUNCED';
   const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 999];
-  let filterList =
-    filterConfig.wordType === 'ALL'
-      ? [..._list]
-      : _list.filter((item) => item.type === filterConfig.wordType);
-  filterList =
-    filterConfig.pronounceableType === 'ALL'
-      ? [...filterList]
-      : filterList.filter((item) => item.mispronounce === !pronounceable);
+  let filterList = [..._list];
 
   filterList = filterList.filter((item) => {
     const right_rate =
@@ -34,6 +27,15 @@ export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): 
   if (pickStart >= 0 && pickEnd <= filterList.length) {
     filterList = filterList.slice(pickStart, pickEnd);
   }
+
+  filterList =
+    filterConfig.wordType === 'ALL'
+      ? [...filterList]
+      : filterList.filter((item) => item.type === filterConfig.wordType);
+  filterList =
+    filterConfig.pronounceableType === 'ALL'
+      ? [...filterList]
+      : filterList.filter((item) => item.mispronounce === !pronounceable);
 
   return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterList) : filterList;
 };

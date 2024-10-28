@@ -19,7 +19,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
   template: `
     <button
       nz-button
-      (click)="playAudioManual()"
+      (click)="playAudio()"
       nzLoading="{{ loading }}"
       nzType="default"
       nzShape="circle"
@@ -40,6 +40,7 @@ export class HornComponent implements OnChanges {
   @Input() autoPlay = false;
   @Input() preloadSrc = false;
   @Input() backSpaceKeyDownPlay = false;
+  @Input() playMode: 'AUDIO_SRC' | 'SPEECH_API' = 'AUDIO_SRC';
   loading: boolean = false;
   audioSrc: string = '';
   @ViewChild('audioPlayer') audioPlayer: ElementRef<HTMLAudioElement>;
@@ -66,6 +67,14 @@ export class HornComponent implements OnChanges {
     }
   }
 
+  playAudio(): void {
+    if (this.playMode === 'AUDIO_SRC') {
+      this.playAudioManual();
+    } else {
+      this.playAudioBySpeechApi();
+    }
+  }
+
   playAudioManual(): void {
     if (this.audioPlayer) {
       if (!this.preloadSrc && !this.audioSrc) {
@@ -76,6 +85,14 @@ export class HornComponent implements OnChanges {
         this.audioPlayer.nativeElement.play();
       }, 0);
     }
+  }
+
+  playAudioBySpeechApi(): void {
+    const utterance = new SpeechSynthesisUtterance(this.word);
+    utterance.lang = 'en-US';
+    utterance.pitch = 1;
+    utterance.rate = 1;
+    window.speechSynthesis.speak(utterance);
   }
 
   @HostListener('window:keydown', ['$event'])
