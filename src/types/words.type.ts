@@ -20,6 +20,7 @@ export type WordType = 'WORD' | 'PHRASE' | 'ALL';
 export interface ExampleItem {
   zh: string;
   en: string;
+  quiz?: boolean;
 }
 
 export type EmitParams = {
