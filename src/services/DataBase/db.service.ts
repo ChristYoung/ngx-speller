@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
@@ -7,6 +6,7 @@ import { getDefaultSettings } from '../../core/constant';
 import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
 import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
+  ApiType,
   CommonSettingsConfig,
   FiltersConfig,
   Settings,
@@ -14,6 +14,7 @@ import {
   WordsItem,
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
+import { DictionaryService } from '../dictionary.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +25,10 @@ export class DbService {
   constructor(
     private dbService: NgxIndexedDBService,
     private youDaoHttp: YouDaoHttpService,
-    private http: HttpClient,
+    private dictionaryHttp: DictionaryService,
   ) {}
 
-  addWordsToIndexDBByInput(words: string): Observable<any> {
+  addWordsToIndexDBByInput(words: string, apiType?: ApiType): Observable<any> {
     if (!words) return of(null);
     const newWords = words.trim().split('\n');
     const wordsToAdd: WordsItem[] = newWords.map((word) => {
@@ -38,14 +39,16 @@ export class DbService {
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
-      return this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      return apiType === 'Dic' && !w.word.includes(' ')
+        ? this.dictionaryHttp.getYouDaoWordItemByHttp(w.word)
+        : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
     });
     return forkJoin(fetchWordsInformation$).pipe(
       map((res) => {
         if (res?.length > 0) {
           const wordsRes = [...res];
           wordsRes.forEach((w: WordsItem) => {
-            w.examples = [{ zh: w['example_zh'], en: w['example'] }];
+            w.examples = w['example'] ? [{ zh: w['example_zh'], en: w['example'] }] : [];
             w.mispronounce = false;
             w.total_count = 0;
             w.right_count = 0;

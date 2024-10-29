@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { WORDS_COMPLEX_EXPLANATION } from '../core/constant';
 import { map, Observable } from 'rxjs';
+import { WORDS_COMPLEX_EXPLANATION } from '../core/constant';
 
 @Injectable({
   providedIn: 'root',

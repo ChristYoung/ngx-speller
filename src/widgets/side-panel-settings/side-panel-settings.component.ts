@@ -25,7 +25,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               <nz-radio-group formControlName="mode">
                 <label nz-radio nzValue="VIEW">View</label>
                 <label nz-radio nzValue="SPELLING">Spelling</label>
-                <label nz-radio nzValue="QUIZ">Quiz</label>
+                <label nz-radio nzValue="QUIZ">Strict</label>
               </nz-radio-group>
             </div>
             <div class="form_control_container pd_l">
@@ -49,6 +49,14 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
             <div class="form_control_container pd_l">
               <span class="label_span">auto play media for every single word</span>
               <nz-switch nzSize="small" formControlName="autoPlay">show explanation</nz-switch>
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">api</span>
+              <!-- <nz-switch nzSize="small" formControlName="disabledYoudao"></nz-switch> -->
+              <nz-radio-group formControlName="apiType">
+                <label nz-radio nzValue="YouDao">YouDao</label>
+                <label nz-radio nzValue="Dic">Dic</label>
+              </nz-radio-group>
             </div>
           </form>
         </div>
@@ -81,6 +89,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     showExplanation: true,
     showHorn: true,
     autoPlay: false,
+    apiType: 'Dic',
   });
 
   ngOnInit(): void {
