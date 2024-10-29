@@ -211,10 +211,9 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .getAllWordsFromIndexDB(setStore)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe((res) => {
-        console.log('res', res);
         // reverse order
-        this.dataSource = res.reverse();
-        this.allDataFromDB = res;
+        this.dataSource = [...res].reverse();
+        this.allDataFromDB = [...res];
       });
     this.searchKeySubject$
       .pipe(debounceTime(300), takeUntil(this.destroy$))
