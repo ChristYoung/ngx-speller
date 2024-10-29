@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DbService } from '../../services/DataBase/db.service';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { Store } from '@ngrx/store';
+import { finalize, Observable, switchMap } from 'rxjs';
+import { Settings } from '../../types';
 
 @Component({
   selector: 'app-input',
@@ -33,14 +36,27 @@ import { ZorroModule } from '../../zorro/zorro.module';
   styleUrl: './input.component.less',
 })
 export class InputComponent {
-  constructor(private db: DbService) {}
+  private db = inject(DbService);
+  private store = inject(Store);
+  private setting$: Observable<Settings>;
+
   inputWords: string = '';
   loading = false;
+
+  constructor() {
+    this.setting$ = this.store.select('settings');
+  }
+
   onSubmit() {
     this.loading = true;
-    this.db.addWordsToIndexDBByInput(this.inputWords).subscribe(() => {
-      this.loading = false;
-      this.inputWords = '';
-    });
+    this.setting$
+      .pipe(
+        switchMap((setting) => {
+          const apiType = setting.commonSettings.apiType;
+          return this.db.addWordsToIndexDBByInput(this.inputWords, apiType);
+        }),
+        finalize(() => (this.loading = false)),
+      )
+      .subscribe(() => (this.inputWords = '')); // clear input after submit
   }
 }

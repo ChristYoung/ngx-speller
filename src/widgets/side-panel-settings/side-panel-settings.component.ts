@@ -51,8 +51,12 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               <nz-switch nzSize="small" formControlName="autoPlay">show explanation</nz-switch>
             </div>
             <div class="form_control_container pd_l">
-              <span class="label_span">disable youdao API</span>
-              <nz-switch nzSize="small" formControlName="disabledYoudao"></nz-switch>
+              <span class="label_span">API</span>
+              <!-- <nz-switch nzSize="small" formControlName="disabledYoudao"></nz-switch> -->
+              <nz-radio-group formControlName="apiType">
+                <label nz-radio nzValue="YouDao">YouDao</label>
+                <label nz-radio nzValue="Dic">Dic</label>
+              </nz-radio-group>
             </div>
           </form>
         </div>
