@@ -5,11 +5,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { Store } from '@ngrx/store';
 import { finalize, Observable, switchMap } from 'rxjs';
 import { Settings } from '../../types';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ZorroModule, FormsModule],
+  imports: [ZorroModule, FormsModule, CommonModule],
   template: `
     <div class="container">
       <textarea
@@ -38,7 +39,7 @@ import { Settings } from '../../types';
 export class InputComponent {
   private db = inject(DbService);
   private store = inject(Store);
-  private setting$: Observable<Settings>;
+  setting$: Observable<Settings>;
 
   inputWords: string = '';
   loading = false;
