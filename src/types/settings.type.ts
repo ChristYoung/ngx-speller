@@ -2,6 +2,7 @@ import { WordType } from './words.type';
 
 export type ModeType = 'VIEW' | 'SPELLING' | 'QUIZ';
 export type PronounceableType = 'PRONOUNCED' | 'UNPRONOUNCED' | 'ALL';
+export type ApiType = 'YouDao' | 'Dic';
 
 export type CommonSettingsConfig = {
   mode: ModeType;
@@ -11,7 +12,7 @@ export type CommonSettingsConfig = {
   showHorn: boolean;
   muteKeyBoard?: boolean;
   autoPlay?: boolean;
-  disabledYoudao?: boolean;
+  apiType?: ApiType;
 };
 
 export type FiltersConfig = {

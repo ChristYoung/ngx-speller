@@ -85,7 +85,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     showExplanation: true,
     showHorn: true,
     autoPlay: false,
-    disabledYoudao: false,
+    apiType: 'Dic',
   });
 
   ngOnInit(): void {

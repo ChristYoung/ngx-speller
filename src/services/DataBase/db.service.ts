@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
@@ -7,6 +6,7 @@ import { getDefaultSettings } from '../../core/constant';
 import { setCommonSettingsConfig, setFiltersConfig } from '../../store/settings/settings.actions';
 import { setWordsList, updateCurrentWordItem } from '../../store/words/words.actions';
 import {
+  ApiType,
   CommonSettingsConfig,
   FiltersConfig,
   Settings,
@@ -14,21 +14,21 @@ import {
   WordsItem,
 } from '../../types';
 import { YouDaoHttpService } from '../you-dao-http.service';
+import { DictionaryService } from '../dictionary.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DbService {
   private store = inject(Store);
-  private _setting: CommonSettingsConfig = null;
 
   constructor(
     private dbService: NgxIndexedDBService,
     private youDaoHttp: YouDaoHttpService,
-    private http: HttpClient,
+    private dictionaryHttp: DictionaryService,
   ) {}
 
-  addWordsToIndexDBByInput(words: string): Observable<any> {
+  addWordsToIndexDBByInput(words: string, apiType?: ApiType): Observable<any> {
     if (!words) return of(null);
     const newWords = words.trim().split('\n');
     const wordsToAdd: WordsItem[] = newWords.map((word) => {
@@ -39,11 +39,8 @@ export class DbService {
       };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
-      const disabledYoudaoApi = this._setting.disabledYoudao;
-      return disabledYoudaoApi
-        ? of({
-            word: w.word,
-          })
+      return apiType === 'Dic' && !w.word.includes(' ')
+        ? this.dictionaryHttp.getYouDaoWordItemByHttp(w.word)
         : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
     });
     return forkJoin(fetchWordsInformation$).pipe(
@@ -156,7 +153,6 @@ export class DbService {
         filters: (res?.length > 0 && res[0]?.filters) || _defaultFilterSetting,
       })),
       tap(({ commonSettings, filters }) => {
-        this._setting = { ...commonSettings };
         if (setToStore) {
           this.store.dispatch(setCommonSettingsConfig({ commonSettings }));
           this.store.dispatch(setFiltersConfig({ filters }));
