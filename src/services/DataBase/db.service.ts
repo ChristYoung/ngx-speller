@@ -48,8 +48,7 @@ export class DbService {
         if (res?.length > 0) {
           const wordsRes = [...res];
           wordsRes.forEach((w: WordsItem) => {
-            w.examples =
-              w['example_zh'] && w['example'] ? [{ zh: w['example_zh'], en: w['example'] }] : [];
+            w.examples = w['example'] ? [{ zh: w['example_zh'], en: w['example'] }] : [];
             w.mispronounce = false;
             w.total_count = 0;
             w.right_count = 0;
