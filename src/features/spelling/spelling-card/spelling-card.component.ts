@@ -58,7 +58,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
       </div>
       @if (showExplanations) {
         <div class="explanations">{{ wordItem.explanation || wordItem['explanations'] }}</div>
-        @if (wordItem.eng_explanation && mode !== 'QUIZ') {
+        @if (wordItem.eng_explanation && mode !== 'STRICT') {
           <div class="explanations" [innerHTML]="wordItem.eng_explanation | trustHtml"></div>
         }
       }

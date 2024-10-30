@@ -1,6 +1,6 @@
 import { WordType } from './words.type';
 
-export type ModeType = 'VIEW' | 'SPELLING' | 'QUIZ';
+export type ModeType = 'VIEW' | 'SPELLING' | 'STRICT';
 export type PronounceableType = 'PRONOUNCED' | 'UNPRONOUNCED' | 'ALL';
 export type ApiType = 'YouDao' | 'Dic';
 

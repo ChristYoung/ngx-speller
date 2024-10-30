@@ -83,8 +83,8 @@ export class SpellingOperatorComponent implements OnChanges {
 
   changeCursorHandler(direction: 'next' | 'prev'): void {
     this.moveCursor.emit(direction);
-    // When in the QUIZ mode, once the user change cursor manually, emit the incorrect event
-    if (this.mode === 'QUIZ' && direction === 'next') {
+    // When in the STRICT mode, once the user change cursor manually, emit the incorrect event
+    if (this.mode === 'STRICT' && direction === 'next') {
       this.incorrectSpellingHandler.emit({
         word: this.wordDetails,
         lastWord: this.nextDisabled,

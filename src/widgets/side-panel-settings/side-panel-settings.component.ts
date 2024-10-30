@@ -25,7 +25,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               <nz-radio-group formControlName="mode">
                 <label nz-radio nzValue="VIEW">View</label>
                 <label nz-radio nzValue="SPELLING">Spelling</label>
-                <label nz-radio nzValue="QUIZ">Strict</label>
+                <label nz-radio nzValue="STRICT">Strict</label>
               </nz-radio-group>
             </div>
             <div class="form_control_container pd_l">
@@ -101,7 +101,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     this.commonSettingsForm
       .get('mode')
       .valueChanges.pipe(takeUntil(this.destroy$))
-      .subscribe((value) => this.autoSettingWhenQuiz(value !== 'QUIZ'));
+      .subscribe((value) => this.autoSettingWhenQuiz(value !== 'STRICT'));
   }
 
   ngOnDestroy(): void {
