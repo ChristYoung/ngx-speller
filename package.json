@@ -8,8 +8,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng lint && ng build --base-href /ngx-speller/",
-    "build:aws": "ng build --configuration production",
+    "build:github": "ng lint && ng build --base-href /ngx-speller/",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
