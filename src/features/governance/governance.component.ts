@@ -64,6 +64,9 @@ import { ZorroModule } from '../../zorro/zorro.module';
           </nz-dropdown-menu>
         </div>
       </div>
+      @if (loading) {
+        <nz-skeleton [nzActive]="true"></nz-skeleton>
+      }
       @if (dataSource?.length > 0) {
         <div class="table_container">
           <nz-table

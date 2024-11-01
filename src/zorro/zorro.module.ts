@@ -33,6 +33,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzTransferModule } from 'ng-zorro-antd/transfer';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 
 @NgModule({
   exports: [
@@ -70,6 +71,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
     NzPopconfirmModule,
     NzInputNumberModule,
     NzDropDownModule,
+    NzSkeletonModule,
   ],
 })
 export class ZorroModule {}
