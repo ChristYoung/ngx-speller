@@ -8,6 +8,7 @@ import { HighlightComponent } from '../../../widgets/highlight/highlight.compone
 import { HornComponent } from '../../../widgets/horn/horn.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-spelling-card',
@@ -32,6 +33,8 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
               item !== ' ' ? item : '_'
             }}</span>
           }
+        } @else if (mode === 'QUIZ') {
+          <input nz-input placeholder="input word" nzSize="large" nzBorderless="true" />
         } @else {
           @for (item of wordItem.word.split(''); track $index) {
             <span
@@ -80,6 +83,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
     HoldKeypressDirective,
     ZorroModule,
     SimilarWordsComponent,
+    FormsModule,
     TrustHtmlPipe,
   ],
 })
@@ -97,10 +101,13 @@ export class SpellingCardComponent implements OnChanges {
   @Input() backSpaceKeyDownPlay = true;
   @Output() correctSpellingHandler = new EventEmitter<EmitParams>();
   @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
+
   displayLetters: string[] = [];
+  quizWord: string = '';
 
   ngOnChanges(): void {
     this.displayLetters = this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
+    this.quizWord = '';
   }
 
   @HostListener('window:keydown', ['$event'])
