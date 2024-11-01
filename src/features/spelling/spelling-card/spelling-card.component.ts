@@ -9,6 +9,7 @@ import { HornComponent } from '../../../widgets/horn/horn.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
 import { FormsModule } from '@angular/forms';
+import { QuizInputComponent } from './quiz-input/quiz-input.component';
 
 @Component({
   selector: 'app-spelling-card',
@@ -34,7 +35,7 @@ import { FormsModule } from '@angular/forms';
             }}</span>
           }
         } @else if (mode === 'QUIZ') {
-          <input nz-input placeholder="input word" nzSize="large" nzBorderless="true" />
+          <app-quiz-input [word]="wordItem.word"></app-quiz-input>
         } @else {
           @for (item of wordItem.word.split(''); track $index) {
             <span
@@ -85,6 +86,7 @@ import { FormsModule } from '@angular/forms';
     SimilarWordsComponent,
     FormsModule,
     TrustHtmlPipe,
+    QuizInputComponent,
   ],
 })
 export class SpellingCardComponent implements OnChanges {
@@ -103,16 +105,14 @@ export class SpellingCardComponent implements OnChanges {
   @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
 
   displayLetters: string[] = [];
-  quizWord: string = '';
 
   ngOnChanges(): void {
     this.displayLetters = this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
-    this.quizWord = '';
   }
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent): void {
-    if (this.mode === 'VIEW' || !this.enableSpelling) return;
+    if (this.mode === 'VIEW' || this.mode === 'QUIZ' || !this.enableSpelling) return;
     const { code, key } = event;
     if (isChineseSymbol(key)) return;
     if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft'].includes(code)) return;
