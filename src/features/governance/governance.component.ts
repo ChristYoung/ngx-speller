@@ -65,7 +65,10 @@ import { ZorroModule } from '../../zorro/zorro.module';
         </div>
       </div>
       @if (loading) {
-        <nz-skeleton [nzActive]="true"></nz-skeleton>
+        <div class="skeleton_container">
+          <!-- <nz-skeleton [nzActive]="true"></nz-skeleton> -->
+          <nz-spin nzSimple></nz-spin>
+        </div>
       }
       @if (dataSource?.length > 0) {
         <div class="table_container">
