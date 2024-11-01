@@ -67,7 +67,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       @if (loading) {
         <div class="skeleton_container">
           <!-- <nz-skeleton [nzActive]="true"></nz-skeleton> -->
-          <nz-spin nzSimple></nz-spin>
+          <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
         </div>
       }
       @if (dataSource?.length > 0) {

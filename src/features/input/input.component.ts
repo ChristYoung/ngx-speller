@@ -50,7 +50,7 @@ export class InputComponent {
     this.setting$ = this.store.select('settings');
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.loading = true;
     this.setting$
       .pipe(
@@ -60,6 +60,7 @@ export class InputComponent {
         }),
         finalize(() => (this.loading = false)),
         catchError((e) => {
+          console.error('input word error:', e);
           const errorMessage =
             e?.target?.error?.message ?? 'Input word error, please try again later.';
           this.nzMessage.error(errorMessage);
