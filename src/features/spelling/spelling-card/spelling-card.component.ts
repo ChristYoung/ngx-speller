@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
 import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 import { EmitParams, ModeType, WordsItem } from '../../../types';
@@ -8,7 +9,6 @@ import { HighlightComponent } from '../../../widgets/highlight/highlight.compone
 import { HornComponent } from '../../../widgets/horn/horn.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
-import { FormsModule } from '@angular/forms';
 import { QuizInputComponent } from './quiz-input/quiz-input.component';
 
 @Component({
@@ -35,7 +35,11 @@ import { QuizInputComponent } from './quiz-input/quiz-input.component';
             }}</span>
           }
         } @else if (mode === 'QUIZ') {
-          <app-quiz-input [word]="wordItem.word"></app-quiz-input>
+          <app-quiz-input
+            [word]="wordItem?.word"
+            [wordType]="wordItem?.type"
+            (answerCorrect)="onQuizAnswerChange($event)"
+          ></app-quiz-input>
         } @else {
           @for (item of wordItem.word.split(''); track $index) {
             <span
@@ -93,7 +97,7 @@ export class SpellingCardComponent implements OnChanges {
   @Input({ required: true }) wordItem: WordsItem;
   @Input() mode: ModeType = 'SPELLING';
   @Input() showHorn = true;
-  @Input() lastWord: boolean;
+  @Input() lastWord: boolean; // if current word is the last word in the list
   @Input() showPhonetic = true;
   @Input() showExamples = true;
   @Input() showExplanations = true;
@@ -108,6 +112,22 @@ export class SpellingCardComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.displayLetters = this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
+  }
+
+  onQuizAnswerChange(isTypingCorrect: boolean): void {
+    if (isTypingCorrect) {
+      playSound({ soundsType: 'Correct' });
+      this.correctSpellingHandler.emit({
+        word: this.wordItem,
+        lastWord: this.lastWord,
+      });
+    } else {
+      playSound({ soundsType: 'Incorrect' });
+      this.incorrectSpellingHandler.emit({
+        word: this.wordItem,
+        lastWord: this.lastWord,
+      });
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
