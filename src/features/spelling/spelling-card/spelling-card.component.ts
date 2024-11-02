@@ -66,7 +66,7 @@ import { QuizInputComponent } from './quiz-input/quiz-input.component';
       </div>
       @if (showExplanations) {
         <div class="explanations">{{ wordItem.explanation || wordItem['explanations'] }}</div>
-        @if (wordItem.eng_explanation && mode !== 'STRICT') {
+        @if (wordItem.eng_explanation && mode !== 'STRICT' && mode !== 'QUIZ') {
           <div class="explanations" [innerHTML]="wordItem.eng_explanation | trustHtml"></div>
         }
       }
