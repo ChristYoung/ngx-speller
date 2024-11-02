@@ -148,7 +148,7 @@ export class SpellingComponent {
   }
 
   private updateWordSpellingCount(wordId: number, mode: ModeType, correct: boolean): void {
-    if (mode !== 'STRICT') return;
+    if (mode !== 'STRICT' && mode !== 'QUIZ') return;
     this.db.getWordItemFromIndexDBById(wordId).subscribe((w) => {
       const { right_count, total_count } = w;
       const currentRightCount = correct ? right_count + 1 : right_count;
