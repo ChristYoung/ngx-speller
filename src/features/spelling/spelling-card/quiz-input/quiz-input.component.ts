@@ -1,0 +1,62 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ZorroModule } from '../../../../zorro/zorro.module';
+import { WordType } from '../../../../types';
+
+@Component({
+  selector: 'app-quiz-input',
+  standalone: true,
+  imports: [ZorroModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <input
+      nz-input
+      placeholder="{{ wordType === 'WORD' ? 'please enter the word' : 'please enter the phrase' }}"
+      nzAutofocus="true"
+      nzSize="large"
+      nzAutofocusSize="large"
+      nzBorderless="true"
+      (keydown.enter)="onEnter()"
+      #inputEle
+    />
+  `,
+  styles: [
+    `
+      input {
+        display: block;
+        font-size: 30px;
+        font-style: italic;
+        text-align: center;
+        width: 100%;
+      }
+    `,
+  ],
+})
+export class QuizInputComponent implements OnChanges {
+  @Input() word!: string;
+  @Input() wordType: WordType;
+  @Output() answerCorrect = new EventEmitter<boolean>();
+  @ViewChild('inputEle') inputRef!: ElementRef;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['word']) {
+      this.inputRef.nativeElement.value = '';
+    }
+  }
+
+  onEnter(): void {
+    const value = this.inputRef.nativeElement.value;
+    const isCorrect = value.toLowerCase() === this.word.toLowerCase();
+    this.answerCorrect.emit(isCorrect);
+  }
+}

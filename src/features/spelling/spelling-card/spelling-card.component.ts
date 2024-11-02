@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
 import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 import { EmitParams, ModeType, WordsItem } from '../../../types';
@@ -8,6 +9,7 @@ import { HighlightComponent } from '../../../widgets/highlight/highlight.compone
 import { HornComponent } from '../../../widgets/horn/horn.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 import { SimilarWordsComponent } from '../similar-words/similar-words.component';
+import { QuizInputComponent } from './quiz-input/quiz-input.component';
 
 @Component({
   selector: 'app-spelling-card',
@@ -32,6 +34,12 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
               item !== ' ' ? item : '_'
             }}</span>
           }
+        } @else if (mode === 'QUIZ') {
+          <app-quiz-input
+            [word]="wordItem?.word"
+            [wordType]="wordItem?.type"
+            (answerCorrect)="onQuizAnswerChange($event)"
+          ></app-quiz-input>
         } @else {
           @for (item of wordItem.word.split(''); track $index) {
             <span
@@ -58,7 +66,7 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
       </div>
       @if (showExplanations) {
         <div class="explanations">{{ wordItem.explanation || wordItem['explanations'] }}</div>
-        @if (wordItem.eng_explanation && mode !== 'QUIZ') {
+        @if (wordItem.eng_explanation && mode !== 'STRICT' && mode !== 'QUIZ') {
           <div class="explanations" [innerHTML]="wordItem.eng_explanation | trustHtml"></div>
         }
       }
@@ -80,14 +88,16 @@ import { SimilarWordsComponent } from '../similar-words/similar-words.component'
     HoldKeypressDirective,
     ZorroModule,
     SimilarWordsComponent,
+    FormsModule,
     TrustHtmlPipe,
+    QuizInputComponent,
   ],
 })
 export class SpellingCardComponent implements OnChanges {
   @Input({ required: true }) wordItem: WordsItem;
   @Input() mode: ModeType = 'SPELLING';
   @Input() showHorn = true;
-  @Input() lastWord: boolean;
+  @Input() lastWord: boolean; // if current word is the last word in the list
   @Input() showPhonetic = true;
   @Input() showExamples = true;
   @Input() showExplanations = true;
@@ -97,15 +107,32 @@ export class SpellingCardComponent implements OnChanges {
   @Input() backSpaceKeyDownPlay = true;
   @Output() correctSpellingHandler = new EventEmitter<EmitParams>();
   @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
+
   displayLetters: string[] = [];
 
   ngOnChanges(): void {
     this.displayLetters = this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
   }
 
+  onQuizAnswerChange(isTypingCorrect: boolean): void {
+    if (isTypingCorrect) {
+      playSound({ soundsType: 'Correct' });
+      this.correctSpellingHandler.emit({
+        word: this.wordItem,
+        lastWord: this.lastWord,
+      });
+    } else {
+      playSound({ soundsType: 'Incorrect' });
+      this.incorrectSpellingHandler.emit({
+        word: this.wordItem,
+        lastWord: this.lastWord,
+      });
+    }
+  }
+
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent): void {
-    if (this.mode === 'VIEW' || !this.enableSpelling) return;
+    if (this.mode === 'VIEW' || this.mode === 'QUIZ' || !this.enableSpelling) return;
     const { code, key } = event;
     if (isChineseSymbol(key)) return;
     if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft'].includes(code)) return;

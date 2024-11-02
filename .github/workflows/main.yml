@@ -23,7 +23,7 @@ jobs:
       - name: 🪜 install the dependencies
         run: yarn install --frozen-lockfile
       - name: 🛠 build the project
-        run: yarn build
+        run: yarn build:github
       - name: PR build completed
         run: echo "Build completed for PR"
   deploy-to-github-pages:
@@ -39,7 +39,7 @@ jobs:
       - name: 🪜 install the dependencies
         run: yarn install --frozen-lockfile
       - name: 🛠 build the project
-        run: yarn build
+        run: yarn build:github
       - name: 🚀 deploy this project
         uses: ptienchuan/deploy-github-pages-action@master
         env:

@@ -50,6 +50,7 @@ import { SpellingOperatorComponent } from './spelling-operator/spelling-operator
             <app-spelling-operator
               [prevDisabled]="
                 (currentWordIndex$ | async) <= 1 ||
+                (setting$ | async).commonSettings?.mode === 'STRICT' ||
                 (setting$ | async).commonSettings?.mode === 'QUIZ'
               "
               [nextDisabled]="(currentWordIndex$ | async) >= (wordList$ | async).length"
@@ -128,7 +129,10 @@ export class SpellingComponent {
     this.setting$.pipe(take(1)).subscribe((setting) => {
       if (isCorrect) {
         if (isLastWord) {
-          if (setting.commonSettings?.mode === 'QUIZ') {
+          if (
+            setting.commonSettings?.mode === 'STRICT' ||
+            setting.commonSettings?.mode === 'QUIZ'
+          ) {
             this.onQuizEnd();
           } else {
             this.onMoveCursorHandler('next');
@@ -137,7 +141,7 @@ export class SpellingComponent {
           this.onMoveCursorHandler('next'); // when the word is spelled correctly, then move to the next word automatically.
         }
       } else {
-        if (setting.commonSettings?.mode === 'QUIZ') {
+        if (setting.commonSettings?.mode === 'STRICT' || setting.commonSettings?.mode === 'QUIZ') {
           const isExist = this.spellingErrorWordsCollection.find((word) => word.word === w.word);
           !isExist && this.spellingErrorWordsCollection.push(w);
           isLastWord && this.onQuizEnd();
@@ -148,7 +152,7 @@ export class SpellingComponent {
   }
 
   private updateWordSpellingCount(wordId: number, mode: ModeType, correct: boolean): void {
-    if (mode !== 'QUIZ') return;
+    if (mode !== 'STRICT' && mode !== 'QUIZ') return;
     this.db.getWordItemFromIndexDBById(wordId).subscribe((w) => {
       const { right_count, total_count } = w;
       const currentRightCount = correct ? right_count + 1 : right_count;
