@@ -4,7 +4,9 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +21,7 @@ import { WordType } from '../../../../types';
   template: `
     <input
       nz-input
-      placeholder="input word"
+      placeholder="{{ wordType === 'WORD' ? 'please enter the word' : 'please enter the phrase' }}"
       nzAutofocus="true"
       nzSize="large"
       nzAutofocusSize="large"
@@ -28,20 +30,33 @@ import { WordType } from '../../../../types';
       #inputEle
     />
   `,
-  styleUrl: './quiz-input.component.less',
+  styles: [
+    `
+      input {
+        display: block;
+        font-size: 30px;
+        font-style: italic;
+        text-align: center;
+        width: 100%;
+      }
+    `,
+  ],
 })
-export class QuizInputComponent {
+export class QuizInputComponent implements OnChanges {
   @Input() word!: string;
   @Input() wordType: WordType;
   @Output() answerCorrect = new EventEmitter<boolean>();
   @ViewChild('inputEle') inputRef!: ElementRef;
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['word']) {
+      this.inputRef.nativeElement.value = '';
+    }
+  }
+
   onEnter(): void {
     const value = this.inputRef.nativeElement.value;
     const isCorrect = value.toLowerCase() === this.word.toLowerCase();
-    if (isCorrect) {
-      this.inputRef.nativeElement.value = '';
-    }
     this.answerCorrect.emit(isCorrect);
   }
 }
