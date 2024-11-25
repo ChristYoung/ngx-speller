@@ -1,5 +1,6 @@
 export const SoundSourceMapping = {
-  Typing: './assets/sounds/typing.mp3',
+  // Typing: './assets/sounds/typing.mp3',
+  Typing: './assets/sounds/click.wav',
   Correct: './assets/sounds/correct.wav',
   Incorrect: './assets/sounds/incorrect.wav',
 } as const;
