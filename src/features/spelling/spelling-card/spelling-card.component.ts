@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, HostListener, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HoldKeypressDirective } from '../../../directives/hold-keypress.directive';
 import { TrustHtmlPipe } from '../../../pipes/trust-html.pipe';
 import { EmitParams, ModeType, WordsItem } from '../../../types';
 import { BANNED_KEYS, isChineseSymbol, playSound } from '../../../utils';
@@ -29,10 +28,15 @@ import { QuizInputComponent } from './quiz-input/quiz-input.component';
           <p>{{ wordItem.right_rate }}%</p>
         </div>
         @if (mode === 'VIEW') {
-          @for (item of displayLetters; track $index) {
-            <span class="single_letter correct" [class.transparent]="item === ' '">{{
-              item !== ' ' ? item : '_'
-            }}</span>
+          @for (item of wordItem.word.split(''); track $index) {
+            <span
+              class="single_letter default"
+              [ngClass]="{
+                transparent: item === ' ',
+                correct: displayLetters[$index] === item.toLowerCase(),
+              }"
+              >{{ item !== ' ' ? item : '_' }}</span
+            >
           }
         } @else if (mode === 'QUIZ') {
           <app-quiz-input
@@ -85,7 +89,6 @@ import { QuizInputComponent } from './quiz-input/quiz-input.component';
     CommonModule,
     HornComponent,
     HighlightComponent,
-    HoldKeypressDirective,
     ZorroModule,
     SimilarWordsComponent,
     FormsModule,
@@ -93,7 +96,7 @@ import { QuizInputComponent } from './quiz-input/quiz-input.component';
     QuizInputComponent,
   ],
 })
-export class SpellingCardComponent implements OnChanges {
+export class SpellingCardComponent {
   @Input({ required: true }) wordItem: WordsItem;
   @Input() mode: ModeType = 'SPELLING';
   @Input() showHorn = true;
@@ -109,10 +112,6 @@ export class SpellingCardComponent implements OnChanges {
   @Output() incorrectSpellingHandler = new EventEmitter<EmitParams>();
 
   displayLetters: string[] = [];
-
-  ngOnChanges(): void {
-    this.displayLetters = this.mode === 'VIEW' ? this.wordItem.word.split('') : [];
-  }
 
   onQuizAnswerChange(isTypingCorrect: boolean): void {
     if (isTypingCorrect) {
@@ -132,7 +131,7 @@ export class SpellingCardComponent implements OnChanges {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent): void {
-    if (this.mode === 'VIEW' || this.mode === 'QUIZ' || !this.enableSpelling) return;
+    if (this.mode === 'QUIZ' || !this.enableSpelling) return;
     const { code, key } = event;
     if (isChineseSymbol(key)) return;
     if ([...BANNED_KEYS, 'ArrowRight', 'ArrowLeft'].includes(code)) return;
