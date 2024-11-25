@@ -5,17 +5,28 @@ import { SoundSourceMapping, SoundsType } from '../utils';
   providedIn: 'root',
 })
 export class KeyboardSoundService {
-  private audio: HTMLAudioElement;
+  private audioMap: Map<SoundsType, HTMLAudioElement> = new Map();
 
   constructor() {
-    this.audio = new Audio(SoundSourceMapping['Correct']);
-    this.audio.load();
+    this.preloadSound();
   }
 
-  play(soundsType: SoundsType): void {
-    const soundUrl = SoundSourceMapping[soundsType];
-    this.audio.currentTime = 0;
-    this.audio.src = soundUrl;
-    this.audio.play().catch((err) => console.error('Audio play error:', err));
+  private preloadSound(): void {
+    for (const soundType in SoundSourceMapping) {
+      if (SoundSourceMapping[soundType]) {
+        const soundUrl = SoundSourceMapping[soundType];
+        const audio = new Audio(soundUrl);
+        audio.load();
+        this.audioMap.set(soundType as SoundsType, audio);
+      }
+    }
+  }
+
+  play(soundType: SoundsType): void {
+    const audio = this.audioMap.get(soundType);
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch((err) => console.error('Audio play error:', err));
+    }
   }
 }
