@@ -55,7 +55,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Bulk Remove</span>
               </li>
-              <li nz-menu-item>
+              <li nz-menu-item [nzDisabled]="true">
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Clear Spelling Data</span>
               </li>
@@ -296,6 +296,11 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     if (this.setOfCheckId.size === 0) {
       return;
     }
+    const words = this.dataSource.filter((d) => this.setOfCheckId.has(d.id as number));
+    this.db.clearSpellingDataToIndexDB(words).subscribe(() => {
+      this.ngOnInit(true);
+      this.setOfCheckId.clear();
+    });
   }
 
   removeWord(id: number): void {
