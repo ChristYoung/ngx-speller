@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { format } from 'date-fns';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { Subject, debounceTime, finalize, takeUntil } from 'rxjs';
-import { ScrollControlDirective } from '../../directives/scroll-control.directive';
+import { debounceTime, finalize, Subject, takeUntil } from 'rxjs';
 import { DbService } from '../../services/DataBase/db.service';
 import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
@@ -48,15 +47,19 @@ import { ZorroModule } from '../../zorro/zorro.module';
           </button>
           <nz-dropdown-menu #menu888="nzDropdownMenu">
             <ul nz-menu>
-              <li nz-menu-item (click)="pickUp()">
+              <li class="dropdown_menu_item" nz-menu-item (click)="pickUp()">
                 <span nz-icon nzType="sp:pickup" nzTheme="outline"></span>
                 <span>Pick Up</span>
               </li>
-              <li nz-menu-item (click)="bulkRemoveWords()">
+              <li nz-menu-item [nzDisabled]="true" (click)="bulkRemoveWords()">
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Bulk Remove</span>
               </li>
-              <li nz-menu-item (click)="clickViewJsonSchema()">
+              <li nz-menu-item>
+                <span nz-icon nzType="delete" nzTheme="outline"></span>
+                <span>Clear Spelling Data</span>
+              </li>
+              <li class="dropdown_menu_item" nz-menu-item (click)="clickViewJsonSchema()">
                 <span nz-icon nzType="download" nzTheme="outline"></span>
                 <span>Export Words</span>
               </li>
@@ -183,7 +186,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
     AngularFireDatabaseModule,
     FormsModule,
     ZorroModule,
-    ScrollControlDirective,
   ],
 })
 export class GovernanceComponent implements OnInit, OnDestroy {
@@ -288,6 +290,12 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       this.ngOnInit(true);
       this.setOfCheckId.clear();
     });
+  }
+
+  clearSpellingData(): void {
+    if (this.setOfCheckId.size === 0) {
+      return;
+    }
   }
 
   removeWord(id: number): void {

@@ -7,11 +7,9 @@ import { SoundSourceMapping, SoundsType } from '../utils';
 export class KeyboardSoundService {
   private audioMap: Map<SoundsType, HTMLAudioElement> = new Map();
 
-  constructor() {
-    this.preloadSound();
-  }
+  constructor() {}
 
-  private preloadSound(): void {
+  initKeyBoardSound(): void {
     for (const soundType in SoundSourceMapping) {
       if (SoundSourceMapping[soundType]) {
         const soundUrl = SoundSourceMapping[soundType];
