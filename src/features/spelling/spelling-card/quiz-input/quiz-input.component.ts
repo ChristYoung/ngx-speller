@@ -12,21 +12,22 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ZorroModule } from '../../../../zorro/zorro.module';
 import { WordType } from '../../../../types';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-quiz-input',
   standalone: true,
-  imports: [ZorroModule, FormsModule],
+  imports: [ZorroModule, FormsModule, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <input
       nz-input
-      placeholder="{{ wordType === 'WORD' ? 'please enter the word' : 'please enter the phrase' }}"
       nzAutofocus="true"
       nzSize="large"
       nzAutofocusSize="large"
       nzBorderless="true"
       (keydown.enter)="onEnter()"
+      [ngStyle]="{ 'width.px': 25 * word.length }"
       #inputEle
     />
   `,
@@ -37,7 +38,6 @@ import { WordType } from '../../../../types';
         font-size: 30px;
         font-style: italic;
         text-align: center;
-        width: 100%;
       }
     `,
   ],

@@ -35,6 +35,7 @@ import { KeyboardSoundService } from '../../../services/keyboard-sound.service';
               [ngClass]="{
                 transparent: item === ' ',
                 correct: displayLetters[$index] === item.toLowerCase(),
+                small_font_size: wordItem.type === 'PHRASE',
               }"
               >{{ item !== ' ' ? item : '_' }}</span
             >
@@ -46,11 +47,15 @@ import { KeyboardSoundService } from '../../../services/keyboard-sound.service';
             (answerCorrect)="onQuizAnswerChange($event)"
           ></app-quiz-input>
         } @else {
+          <!-- Spelling & Strict mode -->
           @for (item of wordItem.word.split(''); track $index) {
             <span
               class="single_letter"
-              [class.correct]="displayLetters[$index] === item.toLowerCase()"
-              [class.transparent]="item === ' '"
+              [ngClass]="{
+                transparent: item === ' ',
+                correct: displayLetters[$index] === item.toLowerCase(),
+                small_font_size: wordItem.type === 'PHRASE',
+              }"
               >{{
                 displayLetters[$index] && displayLetters[$index] !== ' '
                   ? displayLetters[$index]

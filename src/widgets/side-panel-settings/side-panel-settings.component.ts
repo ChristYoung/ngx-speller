@@ -57,6 +57,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               <nz-radio-group formControlName="apiType">
                 <label nz-radio nzValue="YouDao">YouDao</label>
                 <label nz-radio nzValue="Dic">Dic</label>
+                <label nz-radio nzValue="None">None</label>
               </nz-radio-group>
             </div>
           </form>

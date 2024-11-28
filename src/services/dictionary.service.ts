@@ -11,7 +11,7 @@ import { WordsItem } from '../types';
 export class DictionaryService {
   constructor(private http: HttpClient) {}
 
-  getYouDaoWordItemByHttp(wordStr: string): Observable<WordsItem> {
+  getDicWordItemByHttp(wordStr: string): Observable<WordsItem> {
     const regex = new RegExp('/', 'g');
     return this.http.get<any>(`${FREE_DICTIONARY_API}/${wordStr}`).pipe(
       map((res: any[]) => {

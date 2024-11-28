@@ -32,16 +32,17 @@ export class DbService {
     if (!words) return of(null);
     const newWords = words.trim().split('\n');
     const wordsToAdd: WordsItem[] = newWords.map((word) => {
-      return {
-        word,
-        created_timestamp: 0,
-        mispronounce: false,
-      };
+      return { word };
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
-      return apiType === 'Dic' && !w.word.includes(' ')
-        ? this.dictionaryHttp.getYouDaoWordItemByHttp(w.word)
-        : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      if (apiType === 'Dic' && !w.word.includes(' ')) {
+        return !w.word.includes(' ')
+          ? this.dictionaryHttp.getDicWordItemByHttp(w.word)
+          : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      } else if (apiType === 'YouDao') {
+        return this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      }
+      return of(w);
     });
     return forkJoin(fetchWordsInformation$).pipe(
       map((res) => {
