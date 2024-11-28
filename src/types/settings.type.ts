@@ -2,7 +2,7 @@ import { WordType } from './words.type';
 
 export type ModeType = 'VIEW' | 'SPELLING' | 'STRICT' | 'QUIZ';
 export type PronounceableType = 'PRONOUNCED' | 'UNPRONOUNCED' | 'ALL';
-export type ApiType = 'YouDao' | 'Dic';
+export type ApiType = 'YouDao' | 'Dic' | 'None';
 
 export type CommonSettingsConfig = {
   mode: ModeType;
