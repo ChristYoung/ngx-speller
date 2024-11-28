@@ -10,22 +10,22 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  build-for-pr:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🧞‍♂️ Load the content of the repository
-        uses: actions/checkout@v4
-      - name: 📦 install nodejs
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-      - name: 🪜 install the dependencies
-        run: yarn install --frozen-lockfile
-      - name: 🛠 build the project
-        run: yarn build:github
-      - name: PR build completed
-        run: echo "Build completed for PR"
+  # build-for-pr:
+  #   if: github.event_name == 'pull_request'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: 🧞‍♂️ Load the content of the repository
+  #       uses: actions/checkout@v4
+  #     - name: 📦 install nodejs
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '20.x'
+  #     - name: 🪜 install the dependencies
+  #       run: yarn install --frozen-lockfile
+  #     - name: 🛠 build the project
+  #       run: yarn build:github
+  #     - name: PR build completed
+  #       run: echo "Build completed for PR"
   deploy-to-github-pages:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
