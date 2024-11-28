@@ -137,6 +137,15 @@ export class DbService {
       .subscribe(() => {});
   }
 
+  clearSpellingDataToIndexDB(words: WordsItem[]): Observable<any> {
+    const wordsToSave = words.map((w) => ({
+      ...w,
+      right_count: 0,
+      total_count: 0,
+    }));
+    return this.dbService.bulkPut<WordsItem>('words', wordsToSave);
+  }
+
   bulkClearSpellingCountToIndexDB(): Observable<any> {
     return this.getAllWordsFromIndexDB(false, true).pipe(
       mergeMap((words) => this.dbService.bulkPut<WordsItem>('words', words)),

@@ -1,12 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DbService } from '../../services/DataBase/db.service';
-import { ZorroModule } from '../../zorro/zorro.module';
 import { Store } from '@ngrx/store';
-import { catchError, EMPTY, finalize, Observable, switchMap } from 'rxjs';
-import { Settings } from '../../types';
-import { CommonModule } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { catchError, EMPTY, Observable, switchMap } from 'rxjs';
+import { DbService } from '../../services/DataBase/db.service';
+import { Settings } from '../../types';
+import { ZorroModule } from '../../zorro/zorro.module';
 
 @Component({
   selector: 'app-input',
@@ -58,15 +58,18 @@ export class InputComponent {
           const apiType = setting.commonSettings.apiType;
           return this.db.addWordsToIndexDBByInput(this.inputWords, apiType);
         }),
-        finalize(() => (this.loading = false)),
         catchError((e) => {
           console.error('input word error:', e);
+          this.loading = false;
           const errorMessage =
             e?.target?.error?.message ?? 'Input word error, please try again later.';
           this.nzMessage.error(errorMessage);
           return EMPTY;
         }),
       )
-      .subscribe(() => (this.inputWords = '')); // clear input after submit
+      .subscribe(() => {
+        this.loading = false;
+        this.inputWords = '';
+      }); // clear input after submit
   }
 }

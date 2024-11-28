@@ -17,7 +17,7 @@ export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): 
   filterList = filterList.filter((item) => {
     const right_rate =
       item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
-    return right_rate <= filterConfig.lessThanRate;
+    return right_rate < filterConfig.lessThanRate;
   });
 
   filterList = filterList.filter((item) => {
