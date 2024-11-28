@@ -47,15 +47,30 @@ import { ZorroModule } from '../../zorro/zorro.module';
           </button>
           <nz-dropdown-menu #menu888="nzDropdownMenu">
             <ul nz-menu>
-              <li class="dropdown_menu_item" nz-menu-item (click)="pickUp()">
+              <li
+                class="dropdown_menu_item"
+                nz-menu-item
+                [nzDisabled]="setOfCheckId.size === 0"
+                (click)="pickUp()"
+              >
                 <span nz-icon nzType="sp:pickup" nzTheme="outline"></span>
                 <span>Pick Up</span>
               </li>
-              <li nz-menu-item [nzDisabled]="true" (click)="bulkRemoveWords()">
+              <li
+                class="dropdown_menu_item"
+                nz-menu-item
+                [nzDisabled]="true"
+                (click)="bulkRemoveWords()"
+              >
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Bulk Remove</span>
               </li>
-              <li nz-menu-item [nzDisabled]="true">
+              <li
+                class="dropdown_menu_item"
+                [nzDisabled]="setOfCheckId.size === 0"
+                nz-menu-item
+                (click)="clearSpellingData()"
+              >
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Clear Spelling Data</span>
               </li>
