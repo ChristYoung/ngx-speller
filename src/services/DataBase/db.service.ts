@@ -36,8 +36,10 @@ export class DbService {
     });
     const fetchWordsInformation$ = wordsToAdd.map((w) => {
       if (apiType === 'Dic' && !w.word.includes(' ')) {
-        return this.dictionaryHttp.getDicWordItemByHttp(w.word);
-      } else if (apiType === 'YouDao' || w.word.includes(' ')) {
+        return !w.word.includes(' ')
+          ? this.dictionaryHttp.getDicWordItemByHttp(w.word)
+          : this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
+      } else if (apiType === 'YouDao') {
         return this.youDaoHttp.getYouDaoWordItemByHttp(w.word);
       }
       return of(w);
