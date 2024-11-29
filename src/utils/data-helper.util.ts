@@ -17,6 +17,7 @@ export const BiggestFilter = (
   const filterWords = _list.filter((item, _index) => {
     const pronounceableMatch =
       filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
+    const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
     const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
     const rangeMatch = _index >= pickStart && _index <= pickEnd;
     const rightRate =
@@ -24,9 +25,9 @@ export const BiggestFilter = (
     const rateMatch = rightRate <= filterConfig.lessThanRate;
     const countMatch = item.total_count <= filterConfig.lessThanCount;
     if (logicType === 'AND') {
-      return pronounceableMatch && rangeMatch && rateMatch && countMatch;
+      return wordTypeMatch && pronounceableMatch && rangeMatch && rateMatch && countMatch;
     } else {
-      return pronounceableMatch || rangeMatch || rateMatch || countMatch;
+      return wordTypeMatch || pronounceableMatch || rangeMatch || rateMatch || countMatch;
     }
   });
   return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterWords) : filterWords;
