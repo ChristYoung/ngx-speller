@@ -9,35 +9,27 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   return newArray;
 };
 
-export const BiggestFilter = (_list: WordsItem[], filterConfig: FiltersConfig): WordsItem[] => {
-  const pronounceable = filterConfig.pronounceableType === 'PRONOUNCED';
-  const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 999];
-  let filterList = [..._list];
-
-  filterList = filterList.filter((item) => {
-    const right_rate =
+export const BiggestFilter = (
+  _list: WordsItem[],
+  filterConfig: FiltersConfig,
+  logicType: 'AND' | 'OR' = 'AND',
+): WordsItem[] => {
+  const filterWords = _list.filter((item, _index) => {
+    const pronounceableMatch =
+      filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
+    const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
+    const rangeMatch = _index >= pickStart && _index <= pickEnd;
+    const rightRate =
       item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
-    return right_rate < filterConfig.lessThanRate;
+    const rateMatch = rightRate <= filterConfig.lessThanRate;
+    const countMatch = item.total_count <= filterConfig.lessThanCount;
+    if (logicType === 'AND') {
+      return pronounceableMatch && rangeMatch && rateMatch && countMatch;
+    } else {
+      return pronounceableMatch || rangeMatch || rateMatch || countMatch;
+    }
   });
-
-  filterList = filterList.filter((item) => {
-    return item.total_count <= filterConfig.lessThanCount;
-  });
-
-  if (pickStart >= 0 && pickEnd <= filterList.length) {
-    filterList = filterList.slice(pickStart, pickEnd);
-  }
-
-  filterList =
-    filterConfig.wordType === 'ALL'
-      ? [...filterList]
-      : filterList.filter((item) => item.type === filterConfig.wordType);
-  filterList =
-    filterConfig.pronounceableType === 'ALL'
-      ? [...filterList]
-      : filterList.filter((item) => item.mispronounce === !pronounceable);
-
-  return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterList) : filterList;
+  return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterWords) : filterWords;
 };
 
 export const randomPicker = (list: WordsItem[], count: number): WordsItem[] => {
