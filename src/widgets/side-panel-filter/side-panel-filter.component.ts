@@ -23,10 +23,6 @@ import { FiltersConfig, PronounceableType, Settings } from './../../types/settin
       <div class="content">
         <div class="filters_setting">
           <div nz-row>
-            <div nz-col nzSpan="10" class="form_control_container pd_l">
-              <span class="label_span">Random order:</span>
-              <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
-            </div>
             <div nz-col nzSpan="14" class="form_control_container">
               <span class="label_span">Random pick:</span>
               <nz-switch
@@ -42,10 +38,18 @@ import { FiltersConfig, PronounceableType, Settings } from './../../types/settin
                 ></nz-input-number>
               }
             </div>
+            <div nz-col nzSpan="10" class="form_control_container pd_l">
+              <span class="label_span">Random order:</span>
+              <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
+            </div>
           </div>
           <div class="form_control_container">
-            <p>Hasn't been memorized for longer days:</p>
-            <nz-input-number [(ngModel)]="randomPickCount" [nzMin]="0"></nz-input-number>
+            <span>Not memorized for days: </span>
+            <nz-input-number
+              [(ngModel)]="notSpelledDays"
+              [disabled]="randomPick"
+              [nzMin]="0"
+            ></nz-input-number>
           </div>
           <div class="form_control_container">
             <p>WordType:</p>
@@ -129,6 +133,7 @@ export class SidePanelFilterComponent implements OnInit {
   randomPickCount: number = 1;
   minRange: number = 0;
   maxRange: number = 9999;
+  notSpelledDays: number = 0;
   lessThanRate: number = 1; // pick out these words whose right count is less than the `lessThanRate`.
   lessThanCount: number = 1; // pick out these words whose right count is less than the `lessThanCount`.
   maxLessThanCount: number = DEFAULT_FILTER_LESS_THAN;
@@ -161,6 +166,7 @@ export class SidePanelFilterComponent implements OnInit {
           this.randomPick = filters.randomPick;
           this.randomPickCount = filters.randomPickCount;
           this.wordType = filters.wordType;
+          this.notSpelledDays = filters.notSpelledDays;
         } else {
           this.minRange = 1;
           this.maxRange = allWordsCount;
@@ -179,6 +185,7 @@ export class SidePanelFilterComponent implements OnInit {
       minRange,
       maxRange,
       wordType,
+      notSpelledDays,
     } = this;
     this.store.dispatch(
       setFiltersConfig({
@@ -191,6 +198,7 @@ export class SidePanelFilterComponent implements OnInit {
           pronounceableType,
           lessThanCount,
           wordType,
+          notSpelledDays,
         } as FiltersConfig,
       }),
     );
@@ -205,6 +213,7 @@ export class SidePanelFilterComponent implements OnInit {
       randomPickCount,
       lessThanCount,
       wordType,
+      notSpelledDays,
     } as FiltersConfig;
   }
 
@@ -229,6 +238,7 @@ export class SidePanelFilterComponent implements OnInit {
       this.lessThanCount = lessThanCount;
       this.pronounceableType = pronounceableType;
       this.wordType = filters.wordType;
+      this.notSpelledDays = 0;
       this._cd.markForCheck();
     });
   }

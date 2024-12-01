@@ -18,12 +18,12 @@ export type CommonSettingsConfig = {
 export type FiltersConfig = {
   startDate?: number;
   endDate?: number;
-  recentDays?: number;
   pronounceableType?: PronounceableType;
   randomOrder?: boolean;
   randomPick?: boolean;
   randomPickCount?: number;
   wordType?: WordType;
+  notSpelledDays?: number; // pick out these words which have not been spelled for `notSpelledDays` days.
   pickRange?: number[]; // pick out these words whose right count is in the `pickRange`.
   lessThanRate?: number; // pick out these words whose right count is less than the `lessThanRate`.
   lessThanCount?: number; // pick out these words whose right count is less than the `lessThanCount`.

@@ -9,6 +9,10 @@ export const shuffleArray = <T>(array: T[]): T[] => {
   return newArray;
 };
 
+export const DiffDays = (timeStamp: number): number => {
+  return Math.floor((Date.now() - timeStamp) / (1000 * 60 * 60 * 24));
+};
+
 export const BiggestFilter = (
   _list: WordsItem[],
   filterConfig: FiltersConfig,
@@ -17,6 +21,9 @@ export const BiggestFilter = (
   const filterWords = _list.filter((item, _index) => {
     const pronounceableMatch =
       filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
+    const notSpelledDaysMatch =
+      filterConfig.notSpelledDays === 0 ||
+      DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
     const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
     const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
     const rangeMatch = _index >= pickStart && _index <= pickEnd;
@@ -25,9 +32,23 @@ export const BiggestFilter = (
     const rateMatch = rightRate <= filterConfig.lessThanRate;
     const countMatch = item.total_count <= filterConfig.lessThanCount;
     if (logicType === 'AND') {
-      return wordTypeMatch && pronounceableMatch && rangeMatch && rateMatch && countMatch;
+      return (
+        wordTypeMatch &&
+        notSpelledDaysMatch &&
+        pronounceableMatch &&
+        rangeMatch &&
+        rateMatch &&
+        countMatch
+      );
     } else {
-      return wordTypeMatch || pronounceableMatch || rangeMatch || rateMatch || countMatch;
+      return (
+        wordTypeMatch ||
+        notSpelledDaysMatch ||
+        pronounceableMatch ||
+        rangeMatch ||
+        rateMatch ||
+        countMatch
+      );
     }
   });
   return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterWords) : filterWords;
