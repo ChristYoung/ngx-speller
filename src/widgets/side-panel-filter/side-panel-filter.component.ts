@@ -10,9 +10,9 @@ import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
+import { WordType } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { FiltersConfig, PronounceableType, Settings } from './../../types/settings.type';
-import { WordType } from '../../types';
 
 @Component({
   selector: 'app-side-panel-filter',
@@ -22,24 +22,30 @@ import { WordType } from '../../types';
     <div class="side_panel_settings_container">
       <div class="content">
         <div class="filters_setting">
-          <div class="form_control_container pd_l">
-            <span class="label_span">Random order:</span>
-            <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
+          <div nz-row>
+            <div nz-col nzSpan="10" class="form_control_container pd_l">
+              <span class="label_span">Random order:</span>
+              <nz-switch nzSize="small" [(ngModel)]="randomOrder"></nz-switch>
+            </div>
+            <div nz-col nzSpan="14" class="form_control_container">
+              <span class="label_span">Random pick:</span>
+              <nz-switch
+                [style]="{ marginRight: '10px' }"
+                nzSize="small"
+                [(ngModel)]="randomPick"
+              ></nz-switch>
+              @if (randomPick) {
+                <nz-input-number
+                  [(ngModel)]="randomPickCount"
+                  [nzMin]="1"
+                  [nzMax]="allWordsCount$ | async"
+                ></nz-input-number>
+              }
+            </div>
           </div>
           <div class="form_control_container">
-            <span class="label_span">Random pick:</span>
-            <nz-switch
-              [style]="{ marginRight: '10px' }"
-              nzSize="small"
-              [(ngModel)]="randomPick"
-            ></nz-switch>
-            @if (randomPick) {
-              <nz-input-number
-                [(ngModel)]="randomPickCount"
-                [nzMin]="1"
-                [nzMax]="allWordsCount$ | async"
-              ></nz-input-number>
-            }
+            <p>Hasn't been memorized for longer days:</p>
+            <nz-input-number [(ngModel)]="randomPickCount" [nzMin]="0"></nz-input-number>
           </div>
           <div class="form_control_container">
             <p>WordType:</p>

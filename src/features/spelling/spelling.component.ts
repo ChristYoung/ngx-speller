@@ -157,9 +157,11 @@ export class SpellingComponent {
       const { right_count, total_count } = w;
       const currentRightCount = correct ? right_count + 1 : right_count;
       const currentTotalCount = total_count + 1;
+      const spelled_timestamp = new Date().getTime();
       this.db.updateWordSpellingCountToIndexDB(w, {
         right_count: currentRightCount,
         total_count: currentTotalCount,
+        spelled_timestamp,
       });
     });
   }

@@ -128,12 +128,16 @@ export class DbService {
     return this.dbService.getByID<WordsItem>('words', id);
   }
 
-  updateWordSpellingCountToIndexDB(w: WordsItem, { right_count, total_count }): void {
+  updateWordSpellingCountToIndexDB(
+    w: WordsItem,
+    { right_count, total_count, spelled_timestamp },
+  ): void {
     this.dbService
       .update<WordsItem>('words', {
         ...w,
         right_count,
         total_count,
+        spelled_timestamp,
       })
       .subscribe(() => {});
   }

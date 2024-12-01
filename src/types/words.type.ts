@@ -3,6 +3,7 @@ export interface WordsItem {
   mispronounce?: boolean;
   type?: WordType;
   created_timestamp?: number;
+  spelled_timestamp?: number;
   explanation?: string;
   eng_explanation?: string;
   similar_words?: string[];
