@@ -19,7 +19,8 @@ export class SettingsEffects {
       switchMap(([action, wordList]) => {
         const { filters } = action;
         if (filters?.randomPick && filters?.randomPickCount > 0) {
-          return of(setWordsList({ words: randomPicker(wordList, filters.randomPickCount) }));
+          const wordOnlyList = wordList.filter((word) => word.type === 'WORD');
+          return of(setWordsList({ words: randomPicker(wordOnlyList, filters.randomPickCount) }));
         }
         const returnWordsList = filters ? BiggestFilter(wordList, filters) : wordList;
         return of(setWordsList({ words: returnWordsList }));
