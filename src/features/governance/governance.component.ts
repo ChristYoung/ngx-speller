@@ -74,7 +74,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 <span nz-icon nzType="delete" nzTheme="outline"></span>
                 <span>Clear Spelling Data</span>
               </li>
-              <li class="dropdown_menu_item" nz-menu-item (click)="clickViewJsonSchema()">
+              <li class="dropdown_menu_item" nz-menu-item (click)="exportWordList()">
                 <span nz-icon nzType="download" nzTheme="outline"></span>
                 <span>Export Words</span>
               </li>
@@ -196,7 +196,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
   imports: [
     HornComponent,
     CommonModule,
-    SidePanelDetailsComponent,
     EmptyComponent,
     AngularFireDatabaseModule,
     FormsModule,
@@ -236,13 +235,17 @@ export class GovernanceComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         // reverse order
         this.dataSource = [...res].reverse();
-        this.allDataFromDB = [...res];
+        this.allDataFromDB = [...res].reverse();
       });
     this.searchKeySubject$
       .pipe(debounceTime(300), takeUntil(this.destroy$))
       .subscribe(
         (searchKey) =>
-          (this.dataSource = frontEndSearchWordsByKeyword(searchKey, this.allDataFromDB)),
+          (this.dataSource = frontEndSearchWordsByKeyword(
+            searchKey,
+            this.allDataFromDB,
+            this.wordType,
+          )),
       );
     this.wordTypeSubject$
       .pipe(debounceTime(300), takeUntil(this.destroy$))
@@ -339,7 +342,7 @@ export class GovernanceComponent implements OnInit, OnDestroy {
     this.db.updateWordItemFromIndexDB(element, true).subscribe(() => {});
   }
 
-  clickViewJsonSchema(): void {
+  exportWordList(): void {
     console.log(this.dataSource.map((d) => d.word).join('\n'));
     const _now = new Date();
     const currentDate = format(_now, 'yyyy_MM_dd');
