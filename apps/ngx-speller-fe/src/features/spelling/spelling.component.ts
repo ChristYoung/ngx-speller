@@ -9,7 +9,8 @@ import {
   setWordsList,
   updateCurrentIndex,
 } from '../../store/words/words.actions';
-import { EmitParams, ModeType, Settings, WordsItem } from '../../types';
+import { EmitParams, ModeType, Settings } from '../../types';
+import { WordsItem } from '@shared/types';
 import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { ConfirmComponent } from './confirm/confirm.component';

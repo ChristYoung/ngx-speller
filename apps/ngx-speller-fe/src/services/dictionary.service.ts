@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { FREE_DICTIONARY_API } from '../core/constant';
-import { WordsItem } from '../types';
+import { WordsItem } from '@shared/types';
 
 @Injectable({
   providedIn: 'root',

@@ -9,8 +9,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { WordsItem } from '@shared/types';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
-import { EmitParams, ModeType, WordsItem } from '../../../types';
+import { EmitParams, ModeType } from '../../../types';
+
 import { SidePanelDetailsComponent } from '../../../widgets/side-panel-details/side-panel-details.component';
 import { ZorroModule } from '../../../zorro/zorro.module';
 

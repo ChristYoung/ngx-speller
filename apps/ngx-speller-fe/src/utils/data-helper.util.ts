@@ -1,4 +1,5 @@
-import { FiltersConfig, WordsItem, WordType } from '../types';
+import { FiltersConfig } from '../types';
+import { WordType, WordsItem } from '@shared/types';
 
 export const shuffleArray = <T>(array: T[]): T[] => {
   const newArray = [...array];

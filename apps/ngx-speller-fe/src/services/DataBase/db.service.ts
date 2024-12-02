@@ -11,8 +11,9 @@ import {
   FiltersConfig,
   Settings,
   WholeIndexDBConfig,
-  WordsItem,
 } from '../../types';
+import { WordsItem } from '@shared/types';
+
 import { YouDaoHttpService } from '../you-dao-http.service';
 import { DictionaryService } from '../dictionary.service';
 

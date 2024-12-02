@@ -9,7 +9,7 @@ import { debounceTime, finalize, Subject, takeUntil } from 'rxjs';
 import { DbService } from '../../services/DataBase/db.service';
 import { FileService } from '../../services/file.service';
 import { setWordsList } from '../../store/words/words.actions';
-import { WordsItem, WordType } from '../../types';
+import { WordsItem, WordType } from '@shared/types';
 import { frontEndSearchWordsByKeyword } from '../../utils';
 import { EmptyComponent } from '../../widgets/empty/empty.component';
 import { HornComponent } from '../../widgets/horn/horn.component';

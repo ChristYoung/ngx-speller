@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { WordsItem } from '../../types';
+import { WordsItem } from '@shared/types';
 
 export const setWordsList = createAction(
   '[Words Component] Set Words List',
