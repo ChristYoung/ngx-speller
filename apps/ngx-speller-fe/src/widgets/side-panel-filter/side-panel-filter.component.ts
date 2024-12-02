@@ -12,7 +12,7 @@ import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
 import { WordType } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { FiltersConfig, PronounceableType, Settings } from './../../types/settings.type';
+import { FiltersConfig, PronounceableType, Settings } from '../../types/settings.type';
 
 @Component({
   selector: 'app-side-panel-filter',

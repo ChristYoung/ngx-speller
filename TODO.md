@@ -1,1 +1,11 @@
-## LongPress to show the answer.
+# TODO list
+- ~~添加和删除例句功能~~
+- ~~将基础配置和过滤单词的配置分开~~
+- ~~添加近义词功能~~
+- ~~添加英文释义功能~~
+- 研究使用cypress做自动化测试
+- ~~调研IndexDB搜索功能~~
+- ~~将项目发布到github pages上, 并做ci/cd~~
+- ~~从indexDB导出数据到csv (可以使用Chrome IndexDB Exporter插件)~~ 
+- ~~根据导出的json文件重新导入到本地数据库中~~
+- ~~研究web的speech api: https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/speak~~
