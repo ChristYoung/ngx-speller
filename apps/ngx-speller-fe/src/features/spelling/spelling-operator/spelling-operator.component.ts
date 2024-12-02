@@ -1,4 +1,4 @@
-import { PreventButtonDefaultDirective } from './../../../directives/prevent-button-default.directive';
+import { PreventButtonDefaultDirective } from '../../../directives/prevent-button-default.directive';
 import { CommonModule } from '@angular/common';
 import {
   Component,
