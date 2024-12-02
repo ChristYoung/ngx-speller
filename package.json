@@ -9,7 +9,8 @@
         "start:fe": "yarn workspace ngx-speller-fe start",
         "build:fe": "yarn workspace ngx-speller-fe build",
         "buid:fe:github": "yarn workspace ngx-speller-fe build:github",
-        "start:nest": "yarn workspace speller-server start",
+        "start:be": "yarn workspace speller-server start",
+        "build:be": "yarn workspace speller-server build",
         "build": "yarn workspace ngx-speller-fe build && yarn workspace speller-server build"
     },
     "workspaces": [
