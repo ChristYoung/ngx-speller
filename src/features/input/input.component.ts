@@ -25,11 +25,11 @@ import { ZorroModule } from '../../zorro/zorro.module';
           nz-button
           type="button"
           nzType="primary"
-          [class.spinner]="loading"
           disabled="{{ !inputWords || loading }}"
+          [nzLoading]="loading"
           (click)="onSubmit()"
         >
-          Submit
+          {{ loading ? 'up loading...' : 'Submit' }}
         </button>
         <button nz-button type="button" (click)="inputWords = ''">Clear</button>
       </div>
