@@ -5,15 +5,6 @@ import { join } from 'path';
 import { Observable, catchError, map, shareReplay, throwError } from 'rxjs';
 import { WORDS_COMPLEX_EXPLANATION } from './constant';
 
-export interface WordItem {
-  phonetic: string;
-  explanation: string;
-  example: string;
-  example_zh: string;
-  eng_explanation?: string;
-  similar_words?: string[];
-}
-
 export interface KeyValueOption {
   id: string;
   name: string;
