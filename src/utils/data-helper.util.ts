@@ -18,39 +18,44 @@ export const BiggestFilter = (
   filterConfig: FiltersConfig,
   logicType: 'AND' | 'OR' = 'AND',
 ): WordsItem[] => {
-  const filterWords = _list.filter((item, _index) => {
-    const pronounceableMatch =
-      filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
-    const notSpelledDaysMatch =
-      filterConfig.notSpelledDays === 0 ||
-      DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
-    const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
-    const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
-    const rangeMatch = _index >= pickStart && _index <= pickEnd;
-    const rightRate =
-      item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
-    const rateMatch = rightRate <= filterConfig.lessThanRate;
-    const countMatch = item.total_count <= filterConfig.lessThanCount;
-    if (logicType === 'AND') {
-      return (
-        wordTypeMatch &&
-        notSpelledDaysMatch &&
-        pronounceableMatch &&
-        rangeMatch &&
-        rateMatch &&
-        countMatch
-      );
-    } else {
-      return (
-        wordTypeMatch ||
-        notSpelledDaysMatch ||
-        pronounceableMatch ||
-        rangeMatch ||
-        rateMatch ||
-        countMatch
-      );
-    }
-  });
+  const listLength = _list?.length ?? 0;
+  const filterWords = _list
+    .filter((item, _index) => {
+      const pronounceableMatch =
+        filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
+      const notSpelledDaysMatch =
+        !filterConfig.notSpelledDays ||
+        DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
+      const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
+      const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
+      const reversePickStart = listLength - pickEnd - 1;
+      const reversePickEnd = listLength - pickStart - 1;
+      const rangeMatch = _index >= reversePickStart && _index <= reversePickEnd;
+      const rightRate =
+        item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
+      const rateMatch = rightRate <= filterConfig.lessThanRate;
+      const countMatch = item.total_count <= filterConfig.lessThanCount;
+      if (logicType === 'AND') {
+        return (
+          wordTypeMatch &&
+          notSpelledDaysMatch &&
+          pronounceableMatch &&
+          rangeMatch &&
+          rateMatch &&
+          countMatch
+        );
+      } else {
+        return (
+          wordTypeMatch ||
+          notSpelledDaysMatch ||
+          pronounceableMatch ||
+          rangeMatch ||
+          rateMatch ||
+          countMatch
+        );
+      }
+    })
+    .reverse();
   return filterConfig.randomOrder ? shuffleArray<WordsItem>(filterWords) : filterWords;
 };
 
