@@ -71,3 +71,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/nestjs/nest/graphs/contributors">
+  <img src="https://opencollective.com/nest/contributors.svg?width=890" />
+</a>
