@@ -10,7 +10,7 @@ import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
 import { setFiltersConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
-import { WordType } from '../../types';
+import { WordType } from '@shared/types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { FiltersConfig, PronounceableType, Settings } from '../../types/settings.type';
 

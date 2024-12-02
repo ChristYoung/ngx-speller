@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ZorroModule } from '../../../../zorro/zorro.module';
-import { WordType } from '../../../../types';
+import { WordType } from '@shared/types';
 import { CommonModule } from '@angular/common';
 
 @Component({

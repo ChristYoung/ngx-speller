@@ -89,7 +89,7 @@ export class VerticalMenuComponent implements OnInit {
       tooltip: 'Eggs',
       link: `/home/${RoutePathEnum.Egg}`,
       active: false,
-      icon: 'apple',
+      icon: 'sp:easter',
     },
   ];
 

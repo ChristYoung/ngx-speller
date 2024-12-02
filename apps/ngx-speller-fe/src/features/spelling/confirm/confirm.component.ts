@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
-import { WordsItem } from '../../../types';
+import { WordsItem } from '@shared/types';
 import { ZorroModule } from '../../../zorro/zorro.module';
 
 @Component({

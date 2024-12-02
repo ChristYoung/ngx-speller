@@ -6,12 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { YOU_DAO_API } from '../../core/constant';
 import { SimilarWordsComponent } from '../../features/spelling/similar-words/similar-words.component';
 import { DbService } from '../../services/DataBase/db.service';
-import { ExampleItem, WordsItem } from '../../types';
+import { ExampleItem, WordsItem } from '@shared/types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { ContentEditableComponent } from '../content-editable/content-editable.component';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
-import { SpeechComponent } from '../speech/speech.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -123,7 +122,6 @@ import { SpeechComponent } from '../speech/speech.component';
     ZorroModule,
     SimilarWordsComponent,
     ContentEditableComponent,
-    SpeechComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {

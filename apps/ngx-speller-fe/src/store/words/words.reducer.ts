@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { WordsItem } from '../../types';
+import { WordsItem } from '@shared/types';
+
 import {
   changeCurrentWordByStep,
   setWordsList,

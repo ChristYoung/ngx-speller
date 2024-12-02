@@ -1,4 +1,4 @@
-import { WordType } from './words.type';
+import { WordType } from '@shared/types';
 
 export type ModeType = 'VIEW' | 'SPELLING' | 'STRICT' | 'QUIZ';
 export type PronounceableType = 'PRONOUNCED' | 'UNPRONOUNCED' | 'ALL';
