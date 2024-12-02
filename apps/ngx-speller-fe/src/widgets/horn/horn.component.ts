@@ -25,7 +25,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       nzShape="circle"
       appPreventButtonDefault
     >
-      <span nz-icon nzType="sound" nzTheme="outline"></span>
+      <span nz-icon nzType="sp:sound" nzTheme="outline"></span>
     </button>
 
     @if (word) {

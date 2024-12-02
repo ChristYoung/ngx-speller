@@ -71,11 +71,11 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 nz-menu-item
                 (click)="clearSpellingData()"
               >
-                <span nz-icon nzType="delete" nzTheme="outline"></span>
+                <span nz-icon nzType="sp:clear" nzTheme="outline"></span>
                 <span>Clear Spelling Data</span>
               </li>
               <li class="dropdown_menu_item" nz-menu-item (click)="exportWordList()">
-                <span nz-icon nzType="download" nzTheme="outline"></span>
+                <span nz-icon nzType="sp:download" nzTheme="outline"></span>
                 <span>Export Words</span>
               </li>
             </ul>
@@ -180,7 +180,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       class="layout_fab4"
       (click)="scrollToPosition('TOP')"
     >
-      <span nz-icon nzType="vertical-align-top" nzTheme="outline"></span>
+      <span nz-icon nzType="sp:scrollTop" nzTheme="outline"></span>
     </button>
     <button
       nz-button
@@ -189,7 +189,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
       class="layout_fab3"
       (click)="scrollToPosition('BOTTOM')"
     >
-      <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
+      <span nz-icon nzType="sp:scrollBottom" nzTheme="outline"></span>
     </button>
   `,
   styleUrl: './governance.component.less',

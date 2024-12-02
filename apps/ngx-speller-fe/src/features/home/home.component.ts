@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { NzDrawerService } from 'ng-zorro-antd/drawer';
 import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-panel-filter.component';
@@ -43,7 +43,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
           appPreventButtonDefault
           (click)="openFilterDrawer()"
         >
-          <span nz-icon nzType="filter" nzTheme="outline"></span>
+          <span nz-icon [nzType]="'sp:filter'" nzTheme="outline"></span>
         </button>
       </div>
     </main>
@@ -52,9 +52,6 @@ import { ZorroModule } from '../../zorro/zorro.module';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    SidePanelSettingsComponent,
     ZorroModule,
     VerticalMenuComponent,
     PreventButtonDefaultDirective,
