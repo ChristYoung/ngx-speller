@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "ng-speller",
+      "target": "ngx-speller-fe",
       "source": ".",
       "frameworksBackend": {}
     }

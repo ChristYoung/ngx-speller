@@ -1,7 +1,7 @@
 {
   "homepage": ".",
   "name": "ngx-speller-fe",
-  "version": "1.3.5",
+  "version": "1.3.72",
   "description": "A spell checker for Angular applications",
   "author": "Jay Young (858851768@qq.com)",
   "license": "MIT",
