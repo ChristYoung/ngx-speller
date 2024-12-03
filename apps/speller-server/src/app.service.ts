@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { join } from 'path';
 import { Observable, catchError, map, shareReplay, throwError } from 'rxjs';
 import { WORDS_COMPLEX_EXPLANATION } from './constant';
+import OpenAI from 'openai';
 
 export interface KeyValueOption {
   id: string;
@@ -13,8 +14,11 @@ export interface KeyValueOption {
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
+  private readonly openai = null;
 
-  constructor(private readonly http: HttpService) {}
+  constructor(private readonly http: HttpService) {
+    this.openai = new OpenAI();
+  }
 
   getExplanations(word: string): Observable<unknown> {
     const fetchWordDetails$ = this.http
@@ -75,6 +79,20 @@ export class AppService {
         }
       });
     });
+  }
+
+  async getCompletion(): Promise<string> {
+    const completion = await this.openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: 'You are a helpful assistant.' },
+        {
+          role: 'user',
+          content: 'Write a haiku about recursion in programming.',
+        },
+      ],
+    });
+    return completion.choices[0].message;
   }
 
   getUUID(len: number) {
