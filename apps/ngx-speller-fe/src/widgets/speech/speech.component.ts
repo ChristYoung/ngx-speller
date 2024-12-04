@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { PreventButtonDefaultDirective } from '../../directives/prevent-button-default.directive';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { AzureSpeechService } from '../../services/Azure/azure-speech.service';
 
 @Component({
   selector: 'app-speech',
@@ -21,12 +22,9 @@ import { ZorroModule } from '../../zorro/zorro.module';
 })
 export class SpeechComponent {
   @Input({ required: true }) speechText: string = '';
+  speechService = inject(AzureSpeechService);
 
-  triggerSpeech(text: string): void {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    utterance.pitch = 1;
-    utterance.rate = 1;
-    window.speechSynthesis.speak(utterance);
+  triggerSpeech(sentence: string): void {
+    this.speechService.speak(sentence);
   }
 }

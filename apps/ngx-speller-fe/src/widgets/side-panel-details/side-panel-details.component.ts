@@ -76,7 +76,6 @@ import { HornComponent } from '../horn/horn.component';
                   [style.color]="item.quiz ? 'red' : ''"
                   (click)="updateExampleQuiz($index, !item.quiz)"
                 ></span>
-                <!-- <app-speech [speechText]="item.en"></app-speech> -->
               </div>
             }
           </div>

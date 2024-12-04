@@ -3,8 +3,8 @@ import { firstValueFrom } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { Settings } from '../types';
 import { DbService } from './DataBase/db.service';
-import { SvgService } from './svg.service';
 import { KeyboardSoundService } from './keyboard-sound.service';
+import { SvgService } from './svg.service';
 
 @Injectable({
   providedIn: 'root',

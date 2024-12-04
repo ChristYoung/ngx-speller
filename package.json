@@ -38,6 +38,7 @@
         "@ngrx/store-devtools": "^18.1.0",
         "date-fns": "^3.6.0",
         "dotenv": "^16.4.5",
+        "microsoft-cognitiveservices-speech-sdk": "^1.41.0",
         "ng-zorro-antd": "^18.1.1",
         "ngx-indexed-db": "^16.0.0",
         "ngx-json-viewer": "^3.2.1",
