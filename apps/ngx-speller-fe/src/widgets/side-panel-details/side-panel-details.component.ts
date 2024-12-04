@@ -51,13 +51,13 @@ import { HornComponent } from '../horn/horn.component';
           <div class="examples_container">
             @for (item of examples; track $index) {
               <div class="examples_item">
-                <p class="en">
+                <div class="en">
                   <app-highlight
                     [highlightWord]="wordItem.word"
                     [example]="item.en"
                   ></app-highlight>
-                </p>
-                <p class="zh">{{ item.zh }}</p>
+                </div>
+                <div class="zh">{{ item.zh }}</div>
                 <span
                   class="delete_example"
                   nz-icon
