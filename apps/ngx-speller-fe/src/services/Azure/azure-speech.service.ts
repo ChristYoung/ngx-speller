@@ -13,7 +13,9 @@ export class AzureSpeechService {
   speak(sentence: string): void {
     const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, this.region);
     speechConfig.speechSynthesisVoiceName = 'en-US-AriaNeural';
-    const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+    const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+
+    const synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig, audioConfig);
 
     synthesizer.speakTextAsync(
       sentence,

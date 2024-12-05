@@ -51,6 +51,17 @@
         "@angular-eslint/template/interactive-supports-focus": "off",
         "@angular-eslint/template/label-has-associated-control": "off"
       }
+    },
+    {
+      "files": ["webpack.config.js"],
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      },
+      "env": {
+        "node": true
+      }
     }
+
   ]
 }
