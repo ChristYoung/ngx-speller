@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, switchMap, take } from 'rxjs';
+import { Settings } from '../../types';
 // import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
 
 declare const SpeechSDK: any;
@@ -10,65 +12,53 @@ declare const SpeechSDK: any;
 export class AzureSpeechService {
   private readonly subscriptionKey = import.meta.env['NG_APP_AZURE'];
   private readonly region = import.meta.env['NG_APP_REGION'];
+  private store = inject(Store);
+  setting$: Observable<Settings>;
 
   synthesizer: any;
 
-  constructor() {}
-
-  speak(sentence: string): void {
-    const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, this.region);
-    speechConfig.speechSynthesisVoiceName = 'en-GB-LibbyNeural';
-    this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
-
-    this.synthesizer.speakTextAsync(
-      sentence,
-      (result) => {
-        if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
-          console.log('Synthesis finished.');
-        } else {
-          console.error('Speech synthesis failed:', result.errorDetails);
-        }
-        this.synthesizer.close();
-        this.synthesizer = undefined;
-      },
-      (error) => {
-        console.error('Error during synthesis:', error);
-        this.synthesizer.close();
-        this.synthesizer = undefined;
-      },
-    );
+  constructor() {
+    this.setting$ = this.store.select('settings');
   }
 
   speakText(text: string): Observable<any> {
-    return new Observable((observer) => {
-      const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
-        this.subscriptionKey,
-        this.region,
-      );
-      this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
-
-      this.synthesizer.speakTextAsync(
-        text,
-        (result) => {
-          if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
-            console.log('Synthesis finished.');
-            observer.next(result);
-            observer.complete();
-          } else {
-            console.error('Speech synthesis failed:', result.errorDetails);
-            observer.error(result.errorDetails);
+    return this.setting$.pipe(
+      take(1),
+      switchMap((settings) => {
+        const voiceName = settings.commonSettings.voiceType;
+        return new Observable((observer) => {
+          const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
+            this.subscriptionKey,
+            this.region,
+          );
+          this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+          if (voiceName) {
+            speechConfig.speechSynthesisVoiceName = voiceName;
           }
-          this.synthesizer.close();
-          this.synthesizer = undefined;
-        },
-        (error) => {
-          console.error('Error during synthesis:', error);
-          observer.error(error);
-          this.synthesizer.close();
-          this.synthesizer = undefined;
-        },
-      );
-    });
+          this.synthesizer.speakTextAsync(
+            text,
+            (result) => {
+              if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
+                console.log('Synthesis finished.');
+                observer.next(result);
+                observer.complete();
+              } else {
+                console.error('Speech synthesis failed:', result.errorDetails);
+                observer.error(result.errorDetails);
+              }
+              this.synthesizer.close();
+              this.synthesizer = undefined;
+            },
+            (error) => {
+              console.error('Error during synthesis:', error);
+              observer.error(error);
+              this.synthesizer.close();
+              this.synthesizer = undefined;
+            },
+          );
+        });
+      }),
+    );
   }
 
   destroySpeaker(): void {
