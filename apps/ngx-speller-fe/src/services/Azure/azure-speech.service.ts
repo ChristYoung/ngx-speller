@@ -17,6 +17,7 @@ export class AzureSpeechService {
 
   speak(sentence: string): void {
     const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, this.region);
+    speechConfig.speechSynthesisVoiceName = 'en-GB-LibbyNeural';
     this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
 
     this.synthesizer.speakTextAsync(

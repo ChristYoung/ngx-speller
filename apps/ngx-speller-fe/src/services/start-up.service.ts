@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { Settings } from '../types';
+import { Settings, VoiceType } from '../types';
 import { DbService } from './DataBase/db.service';
 import { KeyboardSoundService } from './keyboard-sound.service';
 import { SvgService } from './svg.service';
+import { LocalConfigService } from './LocalConfig/local-config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +15,13 @@ export class StartUpService {
     private svgService: SvgService,
     private dbService: DbService,
     private keySound: KeyboardSoundService,
+    private localConfig: LocalConfigService,
   ) {}
 
   load(): () => Promise<void> {
     return async () => {
       await this.viaIndexDBInit();
+      await this.viaLocalConfigInit();
       await this.viaSvgInit();
       this.keySound.initKeyBoardSound();
     };
@@ -38,5 +41,10 @@ export class StartUpService {
       this.svgService.init();
       resolve();
     });
+  }
+
+  viaLocalConfigInit(): Promise<VoiceType[]> {
+    const localConfig$ = this.localConfig.init();
+    return firstValueFrom(localConfig$);
   }
 }
