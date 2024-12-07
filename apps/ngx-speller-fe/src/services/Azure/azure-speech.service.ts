@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, switchMap, take } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { Settings } from '../../types';
 // import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
 
@@ -23,18 +23,18 @@ export class AzureSpeechService {
 
   speakText(text: string): Observable<any> {
     return this.setting$.pipe(
-      take(1),
       switchMap((settings) => {
-        const voiceName = settings.commonSettings.voiceType;
+        const voiceName = settings.commonSettings.voiceName;
         return new Observable((observer) => {
           const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
             this.subscriptionKey,
             this.region,
           );
+          // speechConfig.speechSynthesisVoiceName =
+          //   'Microsoft Server Speech Text to Speech Voice (en-US, BrianNeural)';
+          console.log('voiceName', voiceName);
+          speechConfig.speechSynthesisVoiceName = voiceName;
           this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
-          if (voiceName) {
-            speechConfig.speechSynthesisVoiceName = voiceName;
-          }
           this.synthesizer.speakTextAsync(
             text,
             (result) => {

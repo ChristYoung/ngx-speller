@@ -5,12 +5,11 @@ import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Subject, take, takeUntil } from 'rxjs';
 import { DbService } from '../../services/DataBase/db.service';
+import { LocalConfigService } from '../../services/LocalConfig/local-config.service';
 import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
 import { updateCurrentIndex } from '../../store/words/words.actions';
 import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { LocalConfigService } from '../../services/LocalConfig/local-config.service';
-import { DEFAULT_VOICE_TYPE } from '../../core/constant';
 
 @Component({
   selector: 'app-side-panel-settings',
@@ -53,13 +52,19 @@ import { DEFAULT_VOICE_TYPE } from '../../core/constant';
               <nz-switch nzSize="small" formControlName="autoPlay">show explanation</nz-switch>
             </div>
             <div class="form_control_container pd_l">
-              <span class="label_span">voice type</span>
+              <span class="label_span">voice name</span>
               <nz-select
                 nzPlaceHolder="Please select voice type"
-                formControlName="voiceType"
+                formControlName="voiceName"
                 nzAllowClear
-                [nzOptions]="voiceTypeList"
-              ></nz-select>
+                [ngStyle]="{ width: '50%' }"
+              >
+                <nz-option
+                  *ngFor="let voice of voiceTypeList"
+                  [nzValue]="voice.Name"
+                  [nzLabel]="voice.DisplayName"
+                ></nz-option>
+              </nz-select>
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">api type</span>
@@ -95,6 +100,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.voiceTypeList = this.localConfig.voiceList;
+    console.log('this.voiceTypeList', this.voiceTypeList);
   }
 
   commonSettingsForm = this.fb.group<CommonSettingsConfig>({
@@ -105,7 +111,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     showHorn: true,
     autoPlay: false,
     apiType: 'Dic',
-    voiceType: DEFAULT_VOICE_TYPE,
+    voiceName: '',
   });
 
   ngOnInit(): void {

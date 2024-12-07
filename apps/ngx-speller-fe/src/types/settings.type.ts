@@ -13,7 +13,7 @@ export type CommonSettingsConfig = {
   muteKeyBoard?: boolean;
   autoPlay?: boolean;
   apiType?: ApiType;
-  voiceType?: string;
+  voiceName?: string;
 };
 
 export type FiltersConfig = {

@@ -29,7 +29,7 @@ export const getDefaultSettings = (allWordsLen: number): Settings => {
     showPhonetic: true,
     showExplanation: true,
     showHorn: true,
-    voiceType: DEFAULT_VOICE_TYPE,
+    voiceName: DEFAULT_VOICE_TYPE,
   };
   return { filters, commonSettings };
 };
