@@ -28,8 +28,7 @@ import { YOU_DAO_API } from '../../../core/constant';
       > -->
       @if (!freezed) {
         <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
-          <span nz-icon nzType="plus"></span>
-          add new
+          + add new
         </nz-tag>
       }
       <input

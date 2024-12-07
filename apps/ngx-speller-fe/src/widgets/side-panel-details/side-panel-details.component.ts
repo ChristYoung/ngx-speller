@@ -51,13 +51,13 @@ import { HornComponent } from '../horn/horn.component';
           <div class="examples_container">
             @for (item of examples; track $index) {
               <div class="examples_item">
-                <p class="en">
+                <div class="en">
                   <app-highlight
                     [highlightWord]="wordItem.word"
                     [example]="item.en"
                   ></app-highlight>
-                </p>
-                <p class="zh">{{ item.zh }}</p>
+                </div>
+                <div class="zh">{{ item.zh }}</div>
                 <span
                   class="delete_example"
                   nz-icon
@@ -70,13 +70,12 @@ import { HornComponent } from '../horn/horn.component';
                   nz-tooltip
                   class="mark_as_quiz"
                   nz-icon
-                  nzType="instagram"
+                  nzType="sp:instagram"
                   nzTheme="outline"
                   [nzTooltipTitle]="'Mark this sentence as a quiz'"
                   [style.color]="item.quiz ? 'red' : ''"
                   (click)="updateExampleQuiz($index, !item.quiz)"
                 ></span>
-                <!-- <app-speech [speechText]="item.en"></app-speech> -->
               </div>
             }
           </div>

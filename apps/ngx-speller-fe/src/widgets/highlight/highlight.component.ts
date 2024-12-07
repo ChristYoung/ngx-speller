@@ -1,22 +1,26 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CapitalizeFirstLetterPipe } from '../../pipes/capitalize-first-letter.pipe';
+import { SpeechComponent } from '../speech/speech.component';
 
 @Component({
   selector: 'app-highlight',
   standalone: true,
-  imports: [CapitalizeFirstLetterPipe],
+  imports: [CapitalizeFirstLetterPipe, SpeechComponent],
   template: `
-    @if (includeHighLight >= 0) {
-      {{ before }}
-      <span
-        class="highlight"
-        [style]="{ fontWeight: 'bold', color: '#f44336', fontStyle: 'italic' }"
-        >{{ highlightWord | capitalizeFirstLetter: includeHighLight === 0 }}</span
-      >
-      {{ after }}
-    } @else {
-      {{ example }}
-    }
+    <p>
+      @if (includeHighLight >= 0) {
+        {{ before }}
+        <span
+          class="highlight"
+          [style]="{ fontWeight: 'bold', color: '#f44336', fontStyle: 'italic' }"
+          >{{ highlightWord | capitalizeFirstLetter: includeHighLight === 0 }}</span
+        >
+        {{ after }}
+      } @else {
+        {{ example }}
+      }
+    </p>
+    <app-speech [speechText]="example"></app-speech>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
