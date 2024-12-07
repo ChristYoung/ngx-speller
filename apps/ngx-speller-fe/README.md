@@ -11,6 +11,12 @@
 # 使用ngx-env配置Angular读取.env中的环境变量
  - https://www.npmjs.com/package/@ngx-env/builder
 
+# 如何将Azure text to speech集成到Angular网页项目中
+ - [创建Azure账户](https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=ai-services)
+ - [创建语音资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
+ - [文档](https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal)
+ - [Github samples for browser(已克隆到本地christYoungGitHub中)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/text-to-speech/README.md)
+
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
 
