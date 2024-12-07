@@ -8,6 +8,8 @@ export const FREE_DICTIONARY_API = 'https://api.dictionaryapi.dev/api/v2/entries
 export const YOU_DAO_API = 'https://dict.youdao.com/jsonapi?jsonversion=2&client=mobile&q='; // 有道词典的API
 export const DEFAULT_FILTER_LESS_THAN = 9999; // 默认过滤拼写次数小于9999的单词
 export const DEFAULT_RANDOM_PICK_COUNT = 30; // 默认随机抽取30个单词
+export const DEFAULT_VOICE_TYPE =
+  'Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)';
 
 export const getDefaultSettings = (allWordsLen: number): Settings => {
   const filters: FiltersConfig = {
@@ -27,6 +29,7 @@ export const getDefaultSettings = (allWordsLen: number): Settings => {
     showPhonetic: true,
     showExplanation: true,
     showHorn: true,
+    voiceType: DEFAULT_VOICE_TYPE,
   };
   return { filters, commonSettings };
 };
