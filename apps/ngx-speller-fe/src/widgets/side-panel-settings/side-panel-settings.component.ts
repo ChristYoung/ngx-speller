@@ -4,17 +4,17 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
 import { Subject, take, takeUntil } from 'rxjs';
-import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
+import { LocalConfigService } from '../../services/LocalConfig/local-config.service';
 import { setCommonSettingsConfig } from '../../store/settings/settings.actions';
+import { updateCurrentIndex } from '../../store/words/words.actions';
 import { CommonSettingsConfig, Settings } from '../../types';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { updateCurrentIndex } from '../../store/words/words.actions';
 
 @Component({
   selector: 'app-side-panel-settings',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ToFixedPipe, ZorroModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ZorroModule],
   template: `
     <div class="side_panel_settings_container">
       <div class="content">
@@ -52,8 +52,22 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
               <nz-switch nzSize="small" formControlName="autoPlay">show explanation</nz-switch>
             </div>
             <div class="form_control_container pd_l">
-              <span class="label_span">api</span>
-              <!-- <nz-switch nzSize="small" formControlName="disabledYoudao"></nz-switch> -->
+              <span class="label_span">voice name</span>
+              <nz-select
+                nzPlaceHolder="Please select voice type"
+                formControlName="voiceName"
+                nzAllowClear
+                [ngStyle]="{ width: '70%' }"
+              >
+                <nz-option
+                  *ngFor="let voice of voiceTypeList"
+                  [nzValue]="voice.Name"
+                  nzLabel="{{ voice.DisplayName }} ({{ voice.Gender }})"
+                ></nz-option>
+              </nz-select>
+            </div>
+            <div class="form_control_container pd_l">
+              <span class="label_span">api type</span>
               <nz-radio-group formControlName="apiType">
                 <label nz-radio nzValue="YouDao">YouDao</label>
                 <label nz-radio nzValue="Dic">Dic</label>
@@ -80,9 +94,14 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
   settings$ = this.store.select('settings');
   allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
   destroy$: Subject<void> = new Subject<void>();
+  localConfig = inject(LocalConfigService);
+  voiceTypeList = [];
   private nzDrawerRef = inject(NzDrawerRef<void>);
 
-  constructor() {}
+  constructor() {
+    this.voiceTypeList = this.localConfig.voiceList;
+    console.log('this.voiceTypeList', this.voiceTypeList);
+  }
 
   commonSettingsForm = this.fb.group<CommonSettingsConfig>({
     mode: 'VIEW',
@@ -92,6 +111,7 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
     showHorn: true,
     autoPlay: false,
     apiType: 'Dic',
+    voiceName: '',
   });
 
   ngOnInit(): void {
@@ -118,7 +138,9 @@ export class SidePanelSettingsComponent implements OnInit, OnDestroy {
         commonSettings: commonSettingValue as CommonSettingsConfig,
       }),
     );
-    this.store.dispatch(updateCurrentIndex({ index: 0 }));
+    if (this.commonSettingsForm.get('mode').dirty) {
+      this.store.dispatch(updateCurrentIndex({ index: 0 }));
+    }
     this.nzDrawerRef.close();
   }
 
