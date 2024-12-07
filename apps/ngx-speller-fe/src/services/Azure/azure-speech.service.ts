@@ -32,9 +32,6 @@ export class AzureSpeechService {
             this.subscriptionKey,
             this.region,
           );
-          // speechConfig.speechSynthesisVoiceName =
-          //   'Microsoft Server Speech Text to Speech Voice (en-US, BrianNeural)';
-          console.log('voiceName', voiceName);
           speechConfig.speechSynthesisVoiceName = voiceName;
           this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
           this.synthesizer.speakTextAsync(
