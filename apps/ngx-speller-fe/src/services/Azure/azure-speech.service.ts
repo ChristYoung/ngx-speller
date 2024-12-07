@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, take } from 'rxjs';
 import { Settings } from '../../types';
 // import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
 
@@ -22,7 +22,9 @@ export class AzureSpeechService {
   }
 
   speakText(text: string): Observable<any> {
+    this.destroySpeaker();
     return this.setting$.pipe(
+      take(1),
       switchMap((settings) => {
         const voiceName = settings.commonSettings.voiceName;
         return new Observable((observer) => {

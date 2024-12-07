@@ -57,12 +57,12 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 nzPlaceHolder="Please select voice type"
                 formControlName="voiceName"
                 nzAllowClear
-                [ngStyle]="{ width: '50%' }"
+                [ngStyle]="{ width: '70%' }"
               >
                 <nz-option
                   *ngFor="let voice of voiceTypeList"
                   [nzValue]="voice.Name"
-                  [nzLabel]="voice.DisplayName"
+                  nzLabel="{{ voice.DisplayName }} ({{ voice.Gender }})"
                 ></nz-option>
               </nz-select>
             </div>
