@@ -70,7 +70,7 @@ import { HornComponent } from '../horn/horn.component';
                   nz-tooltip
                   class="mark_as_quiz"
                   nz-icon
-                  nzType="instagram"
+                  nzType="sp:instagram"
                   nzTheme="outline"
                   [nzTooltipTitle]="'Mark this sentence as a quiz'"
                   [style.color]="item.quiz ? 'red' : ''"

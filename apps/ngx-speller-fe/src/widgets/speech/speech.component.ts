@@ -8,14 +8,8 @@ import { AzureSpeechService } from '../../services/Azure/azure-speech.service';
   standalone: true,
   imports: [ZorroModule, PreventButtonDefaultDirective],
   template: `
-    <button
-      nz-button
-      (click)="triggerSpeech(speechText)"
-      nzType="default"
-      nzShape="circle"
-      appPreventButtonDefault
-    >
-      <span nz-icon nzType="sound" nzTheme="outline"></span>
+    <button nz-button (click)="triggerSpeech(speechText)" nzType="default" nzShape="circle">
+      <span nz-icon nzType="sp:sound" nzTheme="outline"></span>
     </button>
   `,
   styleUrl: './speech.component.less',

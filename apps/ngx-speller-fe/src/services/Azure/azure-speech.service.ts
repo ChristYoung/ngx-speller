@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
+// import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
+
+declare const SpeechSDK: any;
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +13,7 @@ export class AzureSpeechService {
   constructor() {}
 
   speak(sentence: string): void {
+    SpeechSDK.SpeechRecognizer.enableNativeAudio = false;
     const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(this.subscriptionKey, this.region);
     speechConfig.speechSynthesisVoiceName = 'en-US-AriaNeural';
     const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
