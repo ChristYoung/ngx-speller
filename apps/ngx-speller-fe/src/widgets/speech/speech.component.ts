@@ -17,7 +17,13 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
       nzType="default"
       nzShape="circle"
     >
-      <span nz-icon nzType="sp:sound" nzTheme="outline"></span>
+      <span
+        nz-tooltip
+        [nzTooltipTitle]="'Speak it loud'"
+        nz-icon
+        nzType="sp:sound"
+        nzTheme="outline"
+      ></span>
     </button>
   `,
   styleUrl: './speech.component.less',
