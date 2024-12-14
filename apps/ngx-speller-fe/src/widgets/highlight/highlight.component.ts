@@ -20,7 +20,6 @@ import { SpeechComponent } from '../speech/speech.component';
         {{ example }}
       }
     </p>
-    <app-speech [speechText]="example"></app-speech>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

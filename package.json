@@ -11,7 +11,8 @@
         "buid:fe:github": "yarn workspace ngx-speller-fe build:github",
         "start:be": "yarn workspace speller-server start",
         "build:be": "yarn workspace speller-server build",
-        "build": "yarn workspace ngx-speller-fe build && yarn workspace speller-server build"
+        "build": "yarn format && yarn workspace ngx-speller-fe build && yarn workspace speller-server build",
+        "format": "yarn workspace ngx-speller-fe format && yarn workspace speller-server format"
     },
     "workspaces": [
         "apps/*",
@@ -26,7 +27,6 @@
         "@angular/common": "^18.2.8",
         "@angular/compiler": "^18.2.8",
         "@angular/core": "^18.2.8",
-        "@angular/fire": "^17.0.1",
         "@angular/forms": "^18.2.8",
         "@angular/platform-browser": "^18.2.8",
         "@angular/platform-browser-dynamic": "^18.2.8",
@@ -83,5 +83,9 @@
         "typescript": "5.4.5"
     },
     "main": "index.js",
-    "repository": "git@github.com:ChristYoung/ngx-speller.git"
+    "repository": "git@github.com:ChristYoung/ngx-speller.git",
+    "resolutions": {
+        "wrap-ansi": "7.0.0",
+        "string-width": "4.1.0"
+    }
 }

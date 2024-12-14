@@ -29,23 +29,27 @@ import { ZorroModule } from '../../zorro/zorro.module';
                 <label nz-radio nzValue="QUIZ">Quiz</label>
               </nz-radio-group>
             </div>
-            <div class="form_control_container pd_l">
-              <span class="label_span">show phonetic</span>
-              <nz-switch nzSize="small" formControlName="showPhonetic">show phonetic</nz-switch>
+            <div nz-row nzGutter="20" class="form_control_container pd_l">
+              <div nz-col="12">
+                <span class="label_span">show phonetic</span>
+                <nz-switch nzSize="small" formControlName="showPhonetic">show phonetic</nz-switch>
+              </div>
+              <div nz-col="12">
+                <span class="label_span">show example</span>
+                <nz-switch nzSize="small" formControlName="showExamples">show example</nz-switch>
+              </div>
             </div>
-            <div class="form_control_container pd_l">
-              <span class="label_span">show example</span>
-              <nz-switch nzSize="small" formControlName="showExamples">show example</nz-switch>
-            </div>
-            <div class="form_control_container pd_l">
-              <span class="label_span">show horn</span>
-              <nz-switch nzSize="small" formControlName="showHorn">show horn</nz-switch>
-            </div>
-            <div class="form_control_container pd_l">
-              <span class="label_span">show explanation</span>
-              <nz-switch nzSize="small" formControlName="showExplanation"
-                >show explanation</nz-switch
-              >
+            <div nz-row nzGutter="20" class="form_control_container pd_l">
+              <div nz-col="12">
+                <span class="label_span">show horn</span>
+                <nz-switch nzSize="small" formControlName="showHorn">show horn</nz-switch>
+              </div>
+              <div nz-col="12">
+                <span class="label_span">show explanation</span>
+                <nz-switch nzSize="small" formControlName="showExplanation">
+                  show explanation
+                </nz-switch>
+              </div>
             </div>
             <div class="form_control_container pd_l">
               <span class="label_span">auto play media for every single word</span>

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { format } from 'date-fns';
@@ -193,14 +192,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
     </button>
   `,
   styleUrl: './governance.component.less',
-  imports: [
-    HornComponent,
-    CommonModule,
-    EmptyComponent,
-    AngularFireDatabaseModule,
-    FormsModule,
-    ZorroModule,
-  ],
+  imports: [HornComponent, CommonModule, EmptyComponent, FormsModule, ZorroModule],
 })
 export class GovernanceComponent implements OnInit, OnDestroy {
   dataSource: WordsItem[] = [];

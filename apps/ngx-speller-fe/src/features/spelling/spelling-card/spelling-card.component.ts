@@ -32,7 +32,7 @@ import { KeyboardSoundService } from '../../../services/keyboard-sound.service';
         @if (mode === 'VIEW') {
           @for (item of wordItem.word.split(''); track $index) {
             <span
-              class="single_letter default"
+              class="single_letter default small_font_size"
               [ngClass]="{
                 transparent: item === ' ',
                 correct: displayLetters[$index] === item.toLowerCase(),

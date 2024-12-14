@@ -11,6 +11,7 @@ import { ZorroModule } from '../../zorro/zorro.module';
 import { ContentEditableComponent } from '../content-editable/content-editable.component';
 import { HighlightComponent } from '../highlight/highlight.component';
 import { HornComponent } from '../horn/horn.component';
+import { SpeechComponent } from '../speech/speech.component';
 
 @Component({
   selector: 'app-side-panel-details',
@@ -58,24 +59,44 @@ import { HornComponent } from '../horn/horn.component';
                   ></app-highlight>
                 </div>
                 <div class="zh">{{ item.zh }}</div>
-                <span
-                  class="delete_example"
-                  nz-icon
-                  nz-tooltip
-                  [nzType]="'delete'"
-                  [nzTooltipTitle]="'Remove this example'"
-                  (click)="removeExample($index)"
-                ></span>
-                <span
-                  nz-tooltip
-                  class="mark_as_quiz"
-                  nz-icon
-                  nzType="sp:instagram"
-                  nzTheme="outline"
-                  [nzTooltipTitle]="'Mark this sentence as a quiz'"
-                  [style.color]="item.quiz ? 'red' : ''"
-                  (click)="updateExampleQuiz($index, !item.quiz)"
-                ></span>
+                <div class="example_operators">
+                  <nz-space>
+                    <app-speech *nzSpaceItem [speechText]="item.en"></app-speech>
+                    <button
+                      *nzSpaceItem
+                      nz-button
+                      (click)="updateExampleQuiz($index, !item.quiz)"
+                      [nzSize]="'small'"
+                      nzType="default"
+                      nzShape="circle"
+                    >
+                      <span
+                        nz-tooltip
+                        class="mark_as_quiz"
+                        nz-icon
+                        nzType="sp:instagram"
+                        nzTheme="outline"
+                        [nzTooltipTitle]="'Mark this sentence as a quiz'"
+                        [style.color]="item.quiz ? 'red' : ''"
+                      ></span>
+                    </button>
+                    <button
+                      *nzSpaceItem
+                      nz-button
+                      (click)="removeExample($index)"
+                      [nzSize]="'small'"
+                      nzType="default"
+                      nzShape="circle"
+                    >
+                      <span
+                        nz-icon
+                        nz-tooltip
+                        [nzType]="'delete'"
+                        [nzTooltipTitle]="'Remove this example'"
+                      ></span>
+                    </button>
+                  </nz-space>
+                </div>
               </div>
             }
           </div>
@@ -121,6 +142,7 @@ import { HornComponent } from '../horn/horn.component';
     ZorroModule,
     SimilarWordsComponent,
     ContentEditableComponent,
+    SpeechComponent,
   ],
 })
 export class SidePanelDetailsComponent implements OnInit {
