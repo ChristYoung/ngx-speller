@@ -28,6 +28,10 @@ export const BiggestFilter = (
         !filterConfig.notSpelledDays ||
         DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
       const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
+      const mispronounceMatch =
+        filterConfig.pronounceableType === 'ALL' ||
+        (filterConfig.pronounceableType === 'PRONOUNCED' && !item.mispronounce) ||
+        (filterConfig.pronounceableType === 'UNPRONOUNCED' && item.mispronounce);
       const [pickStart, pickEnd] = filterConfig.pickRange ?? [0, 3999];
       const reversePickStart = listLength - pickEnd - 1;
       const reversePickEnd = listLength - pickStart - 1;
@@ -41,6 +45,7 @@ export const BiggestFilter = (
           wordTypeMatch &&
           notSpelledDaysMatch &&
           pronounceableMatch &&
+          mispronounceMatch &&
           rangeMatch &&
           rateMatch &&
           countMatch
