@@ -22,11 +22,6 @@ export const BiggestFilter = (
   const listLength = _list?.length ?? 0;
   const filterWords = _list
     .filter((item, _index) => {
-      const pronounceableMatch =
-        filterConfig.pronounceableType === 'ALL' || filterConfig.pronounceableType === 'PRONOUNCED';
-      const notSpelledDaysMatch =
-        !filterConfig.notSpelledDays ||
-        DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
       const wordTypeMatch = filterConfig.wordType === 'ALL' || filterConfig.wordType === item.type;
       const mispronounceMatch =
         filterConfig.pronounceableType === 'ALL' ||
@@ -40,25 +35,13 @@ export const BiggestFilter = (
         item.total_count === 0 ? 0 : parseFloat((item.right_count / item.total_count).toFixed(2));
       const rateMatch = rightRate <= filterConfig.lessThanRate;
       const countMatch = item.total_count <= filterConfig.lessThanCount;
+      // const notSpelledDaysMatch =
+      //   !filterConfig.notSpelledDays ||
+      //   DiffDays(item.spelled_timestamp) >= filterConfig.notSpelledDays;
       if (logicType === 'AND') {
-        return (
-          wordTypeMatch &&
-          notSpelledDaysMatch &&
-          pronounceableMatch &&
-          mispronounceMatch &&
-          rangeMatch &&
-          rateMatch &&
-          countMatch
-        );
+        return wordTypeMatch && mispronounceMatch && rangeMatch && rateMatch && countMatch;
       } else {
-        return (
-          wordTypeMatch ||
-          notSpelledDaysMatch ||
-          pronounceableMatch ||
-          rangeMatch ||
-          rateMatch ||
-          countMatch
-        );
+        return wordTypeMatch || rangeMatch || rateMatch || countMatch;
       }
     })
     .reverse();
