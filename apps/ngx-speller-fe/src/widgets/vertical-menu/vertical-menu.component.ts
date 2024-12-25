@@ -30,17 +30,19 @@ export type MenuItem = {
         </div>
       }
       <nz-divider></nz-divider>
-      <div class="menu_item" nz-dropdown [nzDropdownMenu]="menu">
-        <span nz-icon nzType="sp:user" nzTheme="outline"></span>
-      </div>
-      <nz-dropdown-menu #menu="nzDropdownMenu">
-        <ul nz-menu>
-          <li nz-menu-item>--user name</li>
-          <li nz-menu-item>--email</li>
-          <li nz-menu-divider></li>
-          <li nz-menu-item (click)="clickToSignOut()">Sign out</li>
-        </ul>
-      </nz-dropdown-menu>
+      <ng-container *ngIf="auth0Service.user$ | async as user">
+        <div nz-dropdown [nzDropdownMenu]="menu">
+          <nz-avatar nzIcon="sp:user" nzSrc="{{ user?.picture ? user.picture : '' }}"></nz-avatar>
+        </div>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>{{ user.name }}</li>
+            <li nz-menu-item>{{ user.email }}</li>
+            <li nz-menu-divider></li>
+            <li nz-menu-item (click)="clickToSignOut()">Sign out</li>
+          </ul>
+        </nz-dropdown-menu>
+      </ng-container>
     </div>
   `,
   styles: [
@@ -78,7 +80,7 @@ export type MenuItem = {
 })
 export class VerticalMenuComponent implements OnInit {
   private router = inject(Router);
-  private auth0Service = inject(AuthService);
+  public auth0Service = inject(AuthService);
 
   menuList: MenuItem[] = [
     {
