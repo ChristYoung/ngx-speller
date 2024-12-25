@@ -28,6 +28,18 @@ export type MenuItem = {
           <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
         </div>
       }
+      <nz-divider></nz-divider>
+      <div class="menu_item" nz-dropdown [nzDropdownMenu]="menu">
+        <span nz-icon nzType="sp:user" nzTheme="outline"></span>
+      </div>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item>--user name</li>
+          <li nz-menu-item>--email</li>
+          <li nz-menu-divider></li>
+          <li nz-menu-item nzDisabled>Sign out</li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
   `,
   styles: [
