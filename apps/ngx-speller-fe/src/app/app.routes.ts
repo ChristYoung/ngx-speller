@@ -5,6 +5,8 @@ import { GovernanceComponent } from '../features/governance/governance.component
 import { HomeComponent } from '../features/home/home.component';
 import { InputComponent } from '../features/input/input.component';
 import { SpellingComponent } from '../features/spelling/spelling.component';
+import { AuthComponent } from '../features/auth/auth.component';
+import { LoginComponent } from '../features/auth/login/login.component';
 
 export const RoutePathEnum = {
   Input: 'input',
@@ -14,11 +16,17 @@ export const RoutePathEnum = {
   Spelling: 'spelling',
   Home: 'home',
   Layout: 'layout',
+  Auth: 'auth',
   Egg: 'egg',
 };
 
 export const routes: Routes = [
   { path: '', redirectTo: RoutePathEnum.Home, pathMatch: 'full' },
+  {
+    path: RoutePathEnum.Auth,
+    component: AuthComponent,
+    children: [{ path: 'login', component: LoginComponent }],
+  },
   {
     path: RoutePathEnum.Home,
     component: HomeComponent,
