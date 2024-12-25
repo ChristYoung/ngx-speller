@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivateChild } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Observable, of } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { removePreloaderAnimation } from '../utils';
 
 @Injectable({
@@ -30,6 +30,14 @@ export class Auth0Guard implements CanActivateChild {
           removePreloaderAnimation();
           return of(true);
         }
+      }),
+      catchError(() => {
+        return this.auth0Service.loginWithRedirect().pipe(
+          map(() => {
+            removePreloaderAnimation();
+            return false;
+          }),
+        );
       }),
     );
   }
