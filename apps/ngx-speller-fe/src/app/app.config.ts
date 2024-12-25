@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore(reducers, { metaReducers }),
     provideEffects(SettingsEffects),
-    provideAuth0(),
+    provideAuth0(), // Put Auth0 configuration in startUpService
     provideStoreDevtools({
       connectInZone: true,
     }),

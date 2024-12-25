@@ -43,6 +43,6 @@ export const routes: Routes = [
         component: EasterEggsComponent,
       },
     ],
-    canActivate: [Auth0Guard],
+    canActivateChild: [Auth0Guard],
   },
 ];
