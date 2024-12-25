@@ -17,6 +17,13 @@
  - [文档](https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=macos%2Cterminal)
  - [Github samples for browser(已克隆到本地christYoungGitHub中)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/text-to-speech/README.md)
 
+# 如何集成Auth0到Angular项目中, 做登录登出操作
+ - [Auth0](https://auth0.com/)
+ - [Auth0 Quick Start](https://auth0.com/docs/quickstart/spa/angular)
+ - [Auth0 Interactive](https://auth0.com/docs/quickstart/spa/angular/interactive)
+ - [Auth0 Advance config](https://github.com/auth0/auth0-angular)
+ - [集成Github登录](https://manage.auth0.com/dashboard/us/dev-bq5g6ya3xmczdb7r/connections/social)
+
 # github action 如何配置secret.ACCESS_TOKEN
 - https://blog.csdn.net/ht370671963/article/details/111995883
 
