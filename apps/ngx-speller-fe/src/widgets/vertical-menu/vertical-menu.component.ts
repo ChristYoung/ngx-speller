@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/cor
 import { NavigationEnd, Router } from '@angular/router';
 import { RoutePathEnum } from '../../app/app.routes';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { AuthService } from '@auth0/auth0-angular';
 
 export type MenuItem = {
   tooltip: string;
@@ -28,6 +29,20 @@ export type MenuItem = {
           <span nz-icon [nzType]="item.icon" nzTheme="outline"></span>
         </div>
       }
+      <nz-divider></nz-divider>
+      <ng-container *ngIf="auth0Service.user$ | async as user">
+        <div nz-dropdown [nzDropdownMenu]="menu">
+          <nz-avatar nzIcon="sp:user" nzSrc="{{ user?.picture ? user.picture : '' }}"></nz-avatar>
+        </div>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>{{ user.name }}</li>
+            <li nz-menu-item>{{ user.email }}</li>
+            <li nz-menu-divider></li>
+            <li nz-menu-item (click)="clickToSignOut()">Sign out</li>
+          </ul>
+        </nz-dropdown-menu>
+      </ng-container>
     </div>
   `,
   styles: [
@@ -65,6 +80,7 @@ export type MenuItem = {
 })
 export class VerticalMenuComponent implements OnInit {
   private router = inject(Router);
+  public auth0Service = inject(AuthService);
 
   menuList: MenuItem[] = [
     {
@@ -95,6 +111,10 @@ export class VerticalMenuComponent implements OnInit {
 
   clickToRoute(link: string): void {
     this.router.navigate([link]);
+  }
+
+  clickToSignOut(): void {
+    this.auth0Service.logout();
   }
 
   ngOnInit(): void {

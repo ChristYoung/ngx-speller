@@ -38,6 +38,7 @@
         "@ngrx/store-devtools": "^18.1.0",
         "assert": "^2.1.0",
         "buffer": "^6.0.3",
+        "convex": "^1.17.4",
         "date-fns": "^3.6.0",
         "dotenv": "^16.4.5",
         "microsoft-cognitiveservices-speech-sdk": "^1.41.0",

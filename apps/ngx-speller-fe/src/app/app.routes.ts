@@ -5,6 +5,7 @@ import { GovernanceComponent } from '../features/governance/governance.component
 import { HomeComponent } from '../features/home/home.component';
 import { InputComponent } from '../features/input/input.component';
 import { SpellingComponent } from '../features/spelling/spelling.component';
+import { Auth0Guard } from '../guards/auth0.guard';
 
 export const RoutePathEnum = {
   Input: 'input',
@@ -14,6 +15,7 @@ export const RoutePathEnum = {
   Spelling: 'spelling',
   Home: 'home',
   Layout: 'layout',
+  Auth: 'auth',
   Egg: 'egg',
 };
 
@@ -41,5 +43,6 @@ export const routes: Routes = [
         component: EasterEggsComponent,
       },
     ],
+    canActivate: [Auth0Guard],
   },
 ];
