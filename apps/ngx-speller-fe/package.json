@@ -17,8 +17,9 @@
     "format": "prettier --write ."
   },
   "private": true,
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "@auth0/auth0-angular": "^2.2.3"
+  },
   "main": "index.js",
   "repository": "git@github.com:ChristYoung/ngx-speller.git"
 }
