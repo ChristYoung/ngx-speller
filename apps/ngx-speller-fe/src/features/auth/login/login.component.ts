@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [],
   template: `
-    <p>
-      login works!
-    </p>
+    <div>
+      <button type="button" (click)="onLoginClick()">Login</button>
+    </div>
   `,
-  styleUrl: './login.component.less'
+  styleUrl: './login.component.less',
 })
 export class LoginComponent {
+  constructor(private auth: AuthService) {}
 
+  onLoginClick() {
+    this.auth.loginWithRedirect();
+  }
 }

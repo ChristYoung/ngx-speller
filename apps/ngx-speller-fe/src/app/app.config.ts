@@ -18,6 +18,7 @@ import { metaReducers, reducers } from '../store';
 import { SettingsEffects } from '../store/settings/settings.effect';
 import { routes } from './app.routes';
 import { Icons } from './icon.config';
+import { provideAuth0 } from '@auth0/auth0-angular';
 
 registerLocaleData(zh);
 
@@ -35,6 +36,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore(reducers, { metaReducers }),
     provideEffects(SettingsEffects),
+    provideAuth0({
+      domain: import.meta.env['NG_APP_AUTH_DOMAIN'],
+      clientId: import.meta.env['NG_APP_AUTH_CLIENT_ID'],
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
     provideStoreDevtools({
       connectInZone: true,
     }),

@@ -25,7 +25,10 @@ export const routes: Routes = [
   {
     path: RoutePathEnum.Auth,
     component: AuthComponent,
-    children: [{ path: 'login', component: LoginComponent }],
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginComponent },
+    ],
   },
   {
     path: RoutePathEnum.Home,
