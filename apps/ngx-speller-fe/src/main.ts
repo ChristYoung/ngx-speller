@@ -9,7 +9,7 @@ preloaderFinished();
 bootstrapApplication(AppComponent, appConfig)
   .then((res) => {
     // Move the end animation to auth0Guard, because in auth0Guard you need to call the interface to determine whether to log in.
-    // removePreloader();
+    // removePreloaderAnimation();
     return res;
   })
   .catch((err) => console.error(err));

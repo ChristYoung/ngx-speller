@@ -24,7 +24,7 @@ export function preloaderFinished(): void {
   };
 }
 
-export function removePreloader(): void {
+export function removePreloaderAnimation(): void {
   if ((window as any).appBootstrap) {
     (window as any).appBootstrap();
   }
