@@ -12,9 +12,10 @@ export class Auth0Guard implements CanActivateChild {
   constructor(private auth0Service: AuthService) {}
 
   canActivateChild(): Observable<boolean> {
+    // TODO: It remains to be studied whether the logic for determining the user can be placed in startUpService.
+    // After the Auth0 initialization is completed, it will be determined whether the user is logged in.
     return this.auth0Service.isAuthenticated$.pipe(
       mergeMap((loggedIn) => {
-        console.log('loggedIn', loggedIn);
         if (!loggedIn) {
           // To avoid the page refresh twice,
           // we use the getAccessTokenSilently() method to get the access token silently instead of using `loginWithRedirect`.
