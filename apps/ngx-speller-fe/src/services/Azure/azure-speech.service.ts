@@ -10,8 +10,8 @@ declare const SpeechSDK: any;
   providedIn: 'root',
 })
 export class AzureSpeechService {
-  private readonly subscriptionKey = import.meta.env['NG_APP_AZURE'];
-  private readonly region = import.meta.env['NG_APP_REGION'];
+  private readonly AZURE_KEY = import.meta.env['NG_APP_AZURE'];
+  private readonly AZURE_REGION = import.meta.env['NG_APP_REGION'];
   private store = inject(Store);
   setting$: Observable<Settings>;
 
@@ -29,8 +29,8 @@ export class AzureSpeechService {
         const voiceName = settings.commonSettings.voiceName;
         return new Observable((observer) => {
           const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
-            this.subscriptionKey,
-            this.region,
+            this.AZURE_KEY,
+            this.AZURE_REGION,
           );
           speechConfig.speechSynthesisVoiceName = voiceName;
           this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
