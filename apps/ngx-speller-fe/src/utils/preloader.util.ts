@@ -23,3 +23,9 @@ export function preloaderFinished(): void {
     }, 100);
   };
 }
+
+export function removePreloaderAnimation(): void {
+  if ((window as any).appBootstrap) {
+    (window as any).appBootstrap();
+  }
+}

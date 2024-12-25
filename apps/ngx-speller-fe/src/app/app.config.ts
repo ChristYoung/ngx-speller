@@ -36,13 +36,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore(reducers, { metaReducers }),
     provideEffects(SettingsEffects),
-    provideAuth0({
-      domain: import.meta.env['NG_APP_AUTH_DOMAIN'],
-      clientId: import.meta.env['NG_APP_AUTH_CLIENT_ID'],
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-      },
-    }),
+    provideAuth0(), // Put Auth0 configuration in startUpService
     provideStoreDevtools({
       connectInZone: true,
     }),

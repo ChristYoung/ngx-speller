@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivateChild } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
+import { removePreloaderAnimation } from '../utils';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Auth0Guard implements CanActivate {
+export class Auth0Guard implements CanActivateChild {
   constructor(private auth0Service: AuthService) {}
 
-  canActivate(): Observable<boolean> {
+  canActivateChild(): Observable<boolean> {
+    // TODO: It remains to be studied whether the logic for determining the user can be placed in startUpService.
+    // After the Auth0 initialization is completed, it will be determined whether the user is logged in.
     return this.auth0Service.isAuthenticated$.pipe(
-      tap((loggedIn) => {
+      mergeMap((loggedIn) => {
         if (!loggedIn) {
-          this.auth0Service.loginWithRedirect();
+          // To avoid the page refresh twice,
+          // we use the getAccessTokenSilently() method to get the access token silently instead of using `loginWithRedirect`.
+          // If the access token is available, the user is logged in and the page can be loaded normally.
+          return this.auth0Service.getAccessTokenSilently().pipe(
+            map(() => {
+              removePreloaderAnimation();
+              return true;
+            }),
+          );
+        } else {
+          removePreloaderAnimation();
+          return of(true);
         }
       }),
     );
