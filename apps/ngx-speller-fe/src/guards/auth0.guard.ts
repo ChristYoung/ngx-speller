@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { StartUpService } from '../services/start-up.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Auth0Guard implements CanActivate {
-  constructor(private auth0Service: AuthService) {}
+  constructor(private startUp: StartUpService) {}
 
   canActivate(): Observable<boolean> {
-    return this.auth0Service.isAuthenticated$.pipe(
-      tap((loggedIn) => {
-        if (!loggedIn) {
-          this.auth0Service.loginWithRedirect();
-        }
-      }),
-    );
+    const isUserLoggedIn = this.startUp.getIsUserLoggedIn();
+    return of(isUserLoggedIn);
   }
 }

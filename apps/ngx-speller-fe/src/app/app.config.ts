@@ -12,13 +12,14 @@ import { provideNzI18n, zh_CN } from 'ng-zorro-antd/i18n';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 
+import { provideAuth0 } from '@auth0/auth0-angular';
 import { dbConfig } from '../services/DataBase/dbConfig';
 import { StartUpService } from '../services/start-up.service';
 import { metaReducers, reducers } from '../store';
 import { SettingsEffects } from '../store/settings/settings.effect';
 import { routes } from './app.routes';
 import { Icons } from './icon.config';
-import { provideAuth0 } from '@auth0/auth0-angular';
+import { AUTH0_CONFIG } from '../core/constant';
 
 registerLocaleData(zh);
 
@@ -36,13 +37,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore(reducers, { metaReducers }),
     provideEffects(SettingsEffects),
-    provideAuth0({
-      domain: import.meta.env['NG_APP_AUTH_DOMAIN'],
-      clientId: import.meta.env['NG_APP_AUTH_CLIENT_ID'],
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-      },
-    }),
+    provideAuth0({ ...AUTH0_CONFIG }),
     provideStoreDevtools({
       connectInZone: true,
     }),

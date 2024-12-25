@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, switchMap, take } from 'rxjs';
 import { Settings } from '../../types';
+import { AZURE_CONFIG } from '../../core/constant';
 // import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk';
 
 declare const SpeechSDK: any;
@@ -10,8 +11,6 @@ declare const SpeechSDK: any;
   providedIn: 'root',
 })
 export class AzureSpeechService {
-  private readonly subscriptionKey = import.meta.env['NG_APP_AZURE'];
-  private readonly region = import.meta.env['NG_APP_REGION'];
   private store = inject(Store);
   setting$: Observable<Settings>;
 
@@ -29,8 +28,8 @@ export class AzureSpeechService {
         const voiceName = settings.commonSettings.voiceName;
         return new Observable((observer) => {
           const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
-            this.subscriptionKey,
-            this.region,
+            AZURE_CONFIG.subscriptionKey,
+            AZURE_CONFIG.region,
           );
           speechConfig.speechSynthesisVoiceName = voiceName;
           this.synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
