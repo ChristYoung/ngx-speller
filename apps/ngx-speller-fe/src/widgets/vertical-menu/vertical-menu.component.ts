@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/cor
 import { NavigationEnd, Router } from '@angular/router';
 import { RoutePathEnum } from '../../app/app.routes';
 import { ZorroModule } from '../../zorro/zorro.module';
+import { AuthService } from '@auth0/auth0-angular';
 
 export type MenuItem = {
   tooltip: string;
@@ -37,7 +38,7 @@ export type MenuItem = {
           <li nz-menu-item>--user name</li>
           <li nz-menu-item>--email</li>
           <li nz-menu-divider></li>
-          <li nz-menu-item nzDisabled>Sign out</li>
+          <li nz-menu-item (click)="clickToSignOut()">Sign out</li>
         </ul>
       </nz-dropdown-menu>
     </div>
@@ -77,6 +78,7 @@ export type MenuItem = {
 })
 export class VerticalMenuComponent implements OnInit {
   private router = inject(Router);
+  private auth0Service = inject(AuthService);
 
   menuList: MenuItem[] = [
     {
@@ -107,6 +109,10 @@ export class VerticalMenuComponent implements OnInit {
 
   clickToRoute(link: string): void {
     this.router.navigate([link]);
+  }
+
+  clickToSignOut(): void {
+    this.auth0Service.logout();
   }
 
   ngOnInit(): void {
