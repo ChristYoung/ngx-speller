@@ -52,3 +52,5 @@ amplifyconfiguration*
 
 # env
 .env
+
+.env.local
