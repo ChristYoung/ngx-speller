@@ -124,7 +124,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "https://unpkg.com/convex@1.3.1/dist/browser.bundle.js"
+            ]
           }
         },
         "deploy": {
