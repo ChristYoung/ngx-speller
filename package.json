@@ -1,7 +1,7 @@
 {
     "homepage": ".",
     "name": "ngx-speller",
-    "version": "1.3.5",
+    "version": "1.4.6",
     "description": "Learning English by spell words, it's a monorepo project",
     "author": "Jay Young (858851768@qq.com)",
     "license": "MIT",
