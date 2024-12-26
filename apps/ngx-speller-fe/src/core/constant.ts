@@ -19,8 +19,6 @@ export const AUTH0_CONFIG = {
   },
 } as const;
 
-export const APP_VERSION = import.meta.env['NG_APP_VERSION'];
-
 export const getDefaultSettings = (allWordsLen: number): Settings => {
   const filters: FiltersConfig = {
     pronounceableType: 'ALL',

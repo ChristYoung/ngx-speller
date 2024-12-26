@@ -7,7 +7,6 @@ import { SidePanelFilterComponent } from '../../widgets/side-panel-filter/side-p
 import { SidePanelSettingsComponent } from '../../widgets/side-panel-settings/side-panel-settings.component';
 import { VerticalMenuComponent } from '../../widgets/vertical-menu/vertical-menu.component';
 import { ZorroModule } from '../../zorro/zorro.module';
-import { APP_VERSION } from '../../core/constant';
 import { VersionComponent } from '../../widgets/version/version.component';
 
 @Component({
@@ -62,7 +61,6 @@ import { VersionComponent } from '../../widgets/version/version.component';
   ],
 })
 export class HomeComponent {
-  public readonly version = APP_VERSION;
   constructor(private drawerService: NzDrawerService) {}
 
   openSettingDrawer(): void {
