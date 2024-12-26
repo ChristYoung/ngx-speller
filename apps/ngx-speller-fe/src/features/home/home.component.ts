@@ -8,6 +8,7 @@ import { SidePanelSettingsComponent } from '../../widgets/side-panel-settings/si
 import { VerticalMenuComponent } from '../../widgets/vertical-menu/vertical-menu.component';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { APP_VERSION } from '../../core/constant';
+import { VersionComponent } from '../../widgets/version/version.component';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +48,7 @@ import { APP_VERSION } from '../../core/constant';
           <span nz-icon [nzType]="'sp:filter'" nzTheme="outline"></span>
         </button>
       </div>
-      <footer>v{{ version }} &#64;copyright 2023</footer>
+      <app-version></app-version>
     </main>
   `,
   styleUrl: './home.component.less',
@@ -57,6 +58,7 @@ import { APP_VERSION } from '../../core/constant';
     ZorroModule,
     VerticalMenuComponent,
     PreventButtonDefaultDirective,
+    VersionComponent,
   ],
 })
 export class HomeComponent {
