@@ -1,0 +1,1275 @@
+[
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AvaNeural)",
+        "DisplayName": "Ava",
+        "LocalName": "Ava",
+        "ShortName": "en-US-AvaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Chat",
+                "Documentary"
+            ],
+            "VoicePersonalities": [
+                "Pleasant",
+                "Caring",
+                "Friendly"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AndrewNeural)",
+        "DisplayName": "Andrew",
+        "LocalName": "Andrew",
+        "ShortName": "en-US-AndrewNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Chat",
+                "Advertisement"
+            ],
+            "VoicePersonalities": [
+                "Confident",
+                "Authentic",
+                "Warm"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, EmmaNeural)",
+        "DisplayName": "Emma",
+        "LocalName": "Emma",
+        "ShortName": "en-US-EmmaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "E-learning",
+                "Chat"
+            ],
+            "VoicePersonalities": [
+                "Cheerful",
+                "Light-Hearted",
+                "Casual"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, BrianNeural)",
+        "DisplayName": "Brian",
+        "LocalName": "Brian",
+        "ShortName": "en-US-BrianNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Podcast",
+                "Chat"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Calm",
+                "Approachable"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)",
+        "DisplayName": "Jenny",
+        "LocalName": "Jenny",
+        "ShortName": "en-US-JennyNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "assistant",
+            "chat",
+            "customerservice",
+            "newscast",
+            "angry",
+            "cheerful",
+            "sad",
+            "excited",
+            "friendly",
+            "terrified",
+            "shouting",
+            "unfriendly",
+            "whispering",
+            "hopeful"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "News",
+                "Assistant"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Pleasant",
+                "Approachable"
+            ]
+        },
+        "WordsPerMinute": "152"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)",
+        "DisplayName": "Guy",
+        "LocalName": "Guy",
+        "ShortName": "en-US-GuyNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "newscast",
+            "angry",
+            "cheerful",
+            "sad",
+            "excited",
+            "friendly",
+            "terrified",
+            "shouting",
+            "unfriendly",
+            "whispering",
+            "hopeful"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "News",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Light-Hearted",
+                "Whimsical",
+                "Friendly"
+            ]
+        },
+        "WordsPerMinute": "215"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+        "DisplayName": "Aria",
+        "LocalName": "Aria",
+        "ShortName": "en-US-AriaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "chat",
+            "customerservice",
+            "narration-professional",
+            "newscast-casual",
+            "newscast-formal",
+            "cheerful",
+            "empathetic",
+            "angry",
+            "sad",
+            "excited",
+            "friendly",
+            "terrified",
+            "shouting",
+            "unfriendly",
+            "whispering",
+            "hopeful"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "News",
+                "E-learning"
+            ],
+            "VoicePersonalities": [
+                "Crisp",
+                "Bright",
+                "Clear"
+            ]
+        },
+        "WordsPerMinute": "150"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, DavisNeural)",
+        "DisplayName": "Davis",
+        "LocalName": "Davis",
+        "ShortName": "en-US-DavisNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "chat",
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Audiobook",
+                "meditation"
+            ],
+            "VoicePersonalities": [
+                "Soothing",
+                "Calm",
+                "Smooth"
+            ]
+        },
+        "WordsPerMinute": "154"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JaneNeural)",
+        "DisplayName": "Jane",
+        "LocalName": "Jane",
+        "ShortName": "en-US-JaneNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Audiobook",
+                "Meditation"
+            ],
+            "VoicePersonalities": [
+                "Serious",
+                "Approachable",
+                "Upbeat"
+            ]
+        },
+        "WordsPerMinute": "154"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JasonNeural)",
+        "DisplayName": "Jason",
+        "LocalName": "Jason",
+        "ShortName": "en-US-JasonNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Audiobook",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Gentle",
+                "Shy",
+                "Polite"
+            ]
+        },
+        "WordsPerMinute": "156"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, KaiNeural)",
+        "DisplayName": "Kai",
+        "LocalName": "Kai",
+        "ShortName": "en-US-KaiNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "conversation"
+        ],
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Chat"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Pleasant",
+                "Bright",
+                "Clear",
+                "Friendly",
+                "Warm"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, LunaNeural)",
+        "DisplayName": "Luna",
+        "LocalName": "Luna",
+        "ShortName": "en-US-LunaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "conversation"
+        ],
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Chat"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Pleasant",
+                "Bright",
+                "Clear",
+                "Friendly",
+                "Warm"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, SaraNeural)",
+        "DisplayName": "Sara",
+        "LocalName": "Sara",
+        "ShortName": "en-US-SaraNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "VoicePersonalities": [
+                "Sincere",
+                "Calm",
+                "Confident"
+            ]
+        },
+        "WordsPerMinute": "157"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, TonyNeural)",
+        "DisplayName": "Tony",
+        "LocalName": "Tony",
+        "ShortName": "en-US-TonyNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Gaming",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Thoughtful",
+                "Authentic",
+                "Sincere"
+            ]
+        },
+        "WordsPerMinute": "156"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, NancyNeural)",
+        "DisplayName": "Nancy",
+        "LocalName": "Nancy",
+        "ShortName": "en-US-NancyNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "StyleList": [
+            "angry",
+            "cheerful",
+            "excited",
+            "friendly",
+            "hopeful",
+            "sad",
+            "shouting",
+            "terrified",
+            "unfriendly",
+            "whispering"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Narration",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Confident",
+                "Serious",
+                "Mature"
+            ]
+        },
+        "WordsPerMinute": "149"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, CoraMultilingualNeural)",
+        "DisplayName": "Cora Multilingual",
+        "LocalName": "Cora Multilingual",
+        "ShortName": "en-US-CoraMultilingualNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SecondaryLocaleList": [
+            "af-ZA",
+            "am-ET",
+            "ar-EG",
+            "ar-SA",
+            "az-AZ",
+            "bg-BG",
+            "bn-BD",
+            "bn-IN",
+            "bs-BA",
+            "ca-ES",
+            "cs-CZ",
+            "cy-GB",
+            "da-DK",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "el-GR",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-IE",
+            "en-IN",
+            "en-US",
+            "es-ES",
+            "es-MX",
+            "et-EE",
+            "eu-ES",
+            "fa-IR",
+            "fi-FI",
+            "fil-PH",
+            "fr-BE",
+            "fr-CA",
+            "fr-CH",
+            "fr-FR",
+            "ga-IE",
+            "gl-ES",
+            "he-IL",
+            "hi-IN",
+            "hr-HR",
+            "hu-HU",
+            "hy-AM",
+            "id-ID",
+            "is-IS",
+            "it-IT",
+            "ja-JP",
+            "jv-ID",
+            "ka-GE",
+            "kk-KZ",
+            "km-KH",
+            "kn-IN",
+            "ko-KR",
+            "lo-LA",
+            "lt-LT",
+            "lv-LV",
+            "mk-MK",
+            "ml-IN",
+            "mn-MN",
+            "ms-MY",
+            "mt-MT",
+            "my-MM",
+            "nb-NO",
+            "ne-NP",
+            "nl-BE",
+            "nl-NL",
+            "pl-PL",
+            "ps-AF",
+            "pt-BR",
+            "pt-PT",
+            "ro-RO",
+            "ru-RU",
+            "si-LK",
+            "sk-SK",
+            "sl-SI",
+            "so-SO",
+            "sq-AL",
+            "sr-RS",
+            "su-ID",
+            "sv-SE",
+            "sw-KE",
+            "ta-IN",
+            "te-IN",
+            "th-TH",
+            "tr-TR",
+            "uk-UA",
+            "ur-PK",
+            "uz-UZ",
+            "vi-VN",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW",
+            "zu-ZA"
+        ],
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "E-learning",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Empathetic",
+                "Formal",
+                "Sincere"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ChristopherMultilingualNeural)",
+        "DisplayName": "Christopher Multilingual",
+        "LocalName": "Christopher Multilingual",
+        "ShortName": "en-US-ChristopherMultilingualNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SecondaryLocaleList": [
+            "af-ZA",
+            "am-ET",
+            "ar-EG",
+            "ar-SA",
+            "az-AZ",
+            "bg-BG",
+            "bn-BD",
+            "bn-IN",
+            "bs-BA",
+            "ca-ES",
+            "cs-CZ",
+            "cy-GB",
+            "da-DK",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "el-GR",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-IE",
+            "en-IN",
+            "en-US",
+            "es-ES",
+            "es-MX",
+            "et-EE",
+            "eu-ES",
+            "fa-IR",
+            "fi-FI",
+            "fil-PH",
+            "fr-BE",
+            "fr-CA",
+            "fr-CH",
+            "fr-FR",
+            "ga-IE",
+            "gl-ES",
+            "he-IL",
+            "hi-IN",
+            "hr-HR",
+            "hu-HU",
+            "hy-AM",
+            "id-ID",
+            "is-IS",
+            "it-IT",
+            "ja-JP",
+            "jv-ID",
+            "ka-GE",
+            "kk-KZ",
+            "km-KH",
+            "kn-IN",
+            "ko-KR",
+            "lo-LA",
+            "lt-LT",
+            "lv-LV",
+            "mk-MK",
+            "ml-IN",
+            "mn-MN",
+            "ms-MY",
+            "mt-MT",
+            "my-MM",
+            "nb-NO",
+            "ne-NP",
+            "nl-BE",
+            "nl-NL",
+            "pl-PL",
+            "ps-AF",
+            "pt-BR",
+            "pt-PT",
+            "ro-RO",
+            "ru-RU",
+            "si-LK",
+            "sk-SK",
+            "sl-SI",
+            "so-SO",
+            "sq-AL",
+            "sr-RS",
+            "su-ID",
+            "sv-SE",
+            "sw-KE",
+            "ta-IN",
+            "te-IN",
+            "th-TH",
+            "tr-TR",
+            "uk-UA",
+            "ur-PK",
+            "uz-UZ",
+            "vi-VN",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW",
+            "zu-ZA"
+        ],
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Meditation",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Deep",
+                "Warm"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, BrandonMultilingualNeural)",
+        "DisplayName": "Brandon Multilingual",
+        "LocalName": "Brandon Multilingual",
+        "ShortName": "en-US-BrandonMultilingualNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SecondaryLocaleList": [
+            "af-ZA",
+            "am-ET",
+            "ar-EG",
+            "ar-SA",
+            "az-AZ",
+            "bg-BG",
+            "bn-BD",
+            "bn-IN",
+            "bs-BA",
+            "ca-ES",
+            "cs-CZ",
+            "cy-GB",
+            "da-DK",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "el-GR",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-IE",
+            "en-IN",
+            "en-US",
+            "es-ES",
+            "es-MX",
+            "et-EE",
+            "eu-ES",
+            "fa-IR",
+            "fi-FI",
+            "fil-PH",
+            "fr-BE",
+            "fr-CA",
+            "fr-CH",
+            "fr-FR",
+            "ga-IE",
+            "gl-ES",
+            "he-IL",
+            "hi-IN",
+            "hr-HR",
+            "hu-HU",
+            "hy-AM",
+            "id-ID",
+            "is-IS",
+            "it-IT",
+            "ja-JP",
+            "jv-ID",
+            "ka-GE",
+            "kk-KZ",
+            "km-KH",
+            "kn-IN",
+            "ko-KR",
+            "lo-LA",
+            "lt-LT",
+            "lv-LV",
+            "mk-MK",
+            "ml-IN",
+            "mn-MN",
+            "ms-MY",
+            "mt-MT",
+            "my-MM",
+            "nb-NO",
+            "ne-NP",
+            "nl-BE",
+            "nl-NL",
+            "pl-PL",
+            "ps-AF",
+            "pt-BR",
+            "pt-PT",
+            "ro-RO",
+            "ru-RU",
+            "si-LK",
+            "sk-SK",
+            "sl-SI",
+            "so-SO",
+            "sq-AL",
+            "sr-RS",
+            "su-ID",
+            "sv-SE",
+            "sw-KE",
+            "ta-IN",
+            "te-IN",
+            "th-TH",
+            "tr-TR",
+            "uk-UA",
+            "ur-PK",
+            "uz-UZ",
+            "vi-VN",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW",
+            "zu-ZA"
+        ],
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "E-learning",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Warm",
+                "Engaging",
+                "Authentic"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AmberNeural)",
+        "DisplayName": "Amber",
+        "LocalName": "Amber",
+        "ShortName": "en-US-AmberNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Audiobook",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Whimsical",
+                "Upbeat",
+                "Light-Hearted"
+            ]
+        },
+        "WordsPerMinute": "152"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AnaNeural)",
+        "DisplayName": "Ana",
+        "LocalName": "Ana",
+        "ShortName": "en-US-AnaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Audiobook",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Curious",
+                "Cheerful",
+                "Engaging"
+            ]
+        },
+        "WordsPerMinute": "135"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AshleyNeural)",
+        "DisplayName": "Ashley",
+        "LocalName": "Ashley",
+        "ShortName": "en-US-AshleyNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Gaming",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Approachable",
+                "Honest"
+            ]
+        },
+        "WordsPerMinute": "149"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, BrandonNeural)",
+        "DisplayName": "Brandon",
+        "LocalName": "Brandon",
+        "ShortName": "en-US-BrandonNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Gaming",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Warm",
+                "Engaging",
+                "Authentic"
+            ]
+        },
+        "WordsPerMinute": "156"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)",
+        "DisplayName": "Christopher",
+        "LocalName": "Christopher",
+        "ShortName": "en-US-ChristopherNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Meditation",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Deep",
+                "Warm"
+            ]
+        },
+        "WordsPerMinute": "149"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, CoraNeural)",
+        "DisplayName": "Cora",
+        "LocalName": "Cora",
+        "ShortName": "en-US-CoraNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Meditation",
+                "Audiobook"
+            ],
+            "VoicePersonalities": [
+                "Empathetic",
+                "Formal",
+                "Sincere"
+            ]
+        },
+        "WordsPerMinute": "146"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, ElizabethNeural)",
+        "DisplayName": "Elizabeth",
+        "LocalName": "Elizabeth",
+        "ShortName": "en-US-ElizabethNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Authoritative",
+                "Formal",
+                "Serious"
+            ]
+        },
+        "WordsPerMinute": "152"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, EricNeural)",
+        "DisplayName": "Eric",
+        "LocalName": "Eric",
+        "ShortName": "en-US-EricNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Confident",
+                "Sincere",
+                "Warm"
+            ]
+        },
+        "WordsPerMinute": "147"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JacobNeural)",
+        "DisplayName": "Jacob",
+        "LocalName": "Jacob",
+        "ShortName": "en-US-JacobNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Formal",
+                "Confident"
+            ]
+        },
+        "WordsPerMinute": "154"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, JennyMultilingualNeural)",
+        "DisplayName": "Jenny Multilingual",
+        "LocalName": "Jenny Multilingual",
+        "ShortName": "en-US-JennyMultilingualNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SecondaryLocaleList": [
+            "ar-EG",
+            "ar-SA",
+            "ca-ES",
+            "cs-CZ",
+            "da-DK",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-HK",
+            "en-IE",
+            "en-IN",
+            "en-US",
+            "es-ES",
+            "es-MX",
+            "fi-FI",
+            "fr-BE",
+            "fr-CA",
+            "fr-CH",
+            "fr-FR",
+            "hi-IN",
+            "hu-HU",
+            "id-ID",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "nb-NO",
+            "nl-BE",
+            "nl-NL",
+            "pl-PL",
+            "pt-BR",
+            "pt-PT",
+            "ru-RU",
+            "sv-SE",
+            "th-TH",
+            "tr-TR",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "News",
+                "Assistant"
+            ],
+            "VoicePersonalities": [
+                "Sincere",
+                "Pleasant",
+                "Approachable"
+            ]
+        },
+        "WordsPerMinute": "190"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, MichelleNeural)",
+        "DisplayName": "Michelle",
+        "LocalName": "Michelle",
+        "ShortName": "en-US-MichelleNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Podcast",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Confident",
+                "Authentic",
+                "Warm"
+            ]
+        },
+        "WordsPerMinute": "154"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, MonicaNeural)",
+        "DisplayName": "Monica",
+        "LocalName": "Monica",
+        "ShortName": "en-US-MonicaNeural",
+        "Gender": "Female",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Podcast",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Mature",
+                "Authentic",
+                "Warm"
+            ]
+        },
+        "WordsPerMinute": "145"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, RogerNeural)",
+        "DisplayName": "Roger",
+        "LocalName": "Roger",
+        "ShortName": "en-US-RogerNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Serious",
+                "Formal",
+                "Confident"
+            ]
+        }
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, RyanMultilingualNeural)",
+        "DisplayName": "Ryan Multilingual",
+        "LocalName": "Ryan Multilingual",
+        "ShortName": "en-US-RyanMultilingualNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SecondaryLocaleList": [
+            "ar-EG",
+            "ar-SA",
+            "ca-ES",
+            "cs-CZ",
+            "da-DK",
+            "de-AT",
+            "de-CH",
+            "de-DE",
+            "en-AU",
+            "en-CA",
+            "en-GB",
+            "en-HK",
+            "en-IE",
+            "en-IN",
+            "en-US",
+            "es-ES",
+            "es-MX",
+            "fi-FI",
+            "fr-BE",
+            "fr-CA",
+            "fr-CH",
+            "fr-FR",
+            "hi-IN",
+            "hu-HU",
+            "id-ID",
+            "it-IT",
+            "ja-JP",
+            "ko-KR",
+            "nb-NO",
+            "nl-BE",
+            "nl-NL",
+            "pl-PL",
+            "pt-BR",
+            "pt-PT",
+            "ru-RU",
+            "sv-SE",
+            "th-TH",
+            "tr-TR",
+            "zh-CN",
+            "zh-HK",
+            "zh-TW"
+        ],
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Gaming"
+            ],
+            "VoicePersonalities": [
+                "Professional",
+                "Authentic",
+                "Sincere"
+            ]
+        },
+        "WordsPerMinute": "190"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (en-US, SteffanNeural)",
+        "DisplayName": "Steffan",
+        "LocalName": "Steffan",
+        "ShortName": "en-US-SteffanNeural",
+        "Gender": "Male",
+        "Locale": "en-US",
+        "LocaleName": "English (United States)",
+        "SampleRateHertz": "48000",
+        "VoiceType": "Neural",
+        "Status": "GA",
+        "VoiceTag": {
+            "TailoredScenarios": [
+                "Assistant",
+                "Narration"
+            ],
+            "VoicePersonalities": [
+                "Mature",
+                "Authentic",
+                "Warm"
+            ]
+        },
+        "WordsPerMinute": "154"
+    }
+]
