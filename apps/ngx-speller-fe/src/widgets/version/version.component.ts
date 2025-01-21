@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-version',
   standalone: true,
   imports: [],
-  template: ` <footer>v1.4.7 &#64;copyright {{ currentYear }}</footer> `,
+  template: ` <footer>v1.5.2 &#64;copyright {{ currentYear }}</footer> `,
   styles: [
     `
       footer {
