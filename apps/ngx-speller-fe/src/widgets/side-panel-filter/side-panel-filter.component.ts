@@ -1,10 +1,9 @@
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit, Signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NzDrawerRef } from 'ng-zorro-antd/drawer';
-import { combineLatestWith, map, take } from 'rxjs/operators';
 import { DEFAULT_FILTER_LESS_THAN, getDefaultSettings } from '../../core/constant';
 import { ToFixedPipe } from '../../pipes/to-fixed.pipe';
 import { DbService } from '../../services/DataBase/db.service';
@@ -13,6 +12,7 @@ import { updateCurrentIndex } from '../../store/words/words.actions';
 import { WordType } from '@shared/types';
 import { ZorroModule } from '../../zorro/zorro.module';
 import { FiltersConfig, PronounceableType, Settings } from '../../types/settings.type';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-side-panel-filter',
@@ -34,7 +34,7 @@ import { FiltersConfig, PronounceableType, Settings } from '../../types/settings
                 <nz-input-number
                   [(ngModel)]="randomPickCount"
                   [nzMin]="1"
-                  [nzMax]="allWordsCount$ | async"
+                  [nzMax]="allWordsCount$_sig()"
                 ></nz-input-number>
               }
             </div>
@@ -100,14 +100,14 @@ import { FiltersConfig, PronounceableType, Settings } from '../../types/settings
           >
             <p>
               Pick the words from {{ minRange }} to
-              {{ maxRange <= (allWordsCount$ | async) ? maxRange : (allWordsCount$ | async) }}:
+              {{ maxRange <= allWordsCount$_sig() ? maxRange : allWordsCount$_sig() }}:
             </p>
             <ngx-slider
               [(value)]="minRange"
               [(highValue)]="maxRange"
               [options]="{
                 floor: 0,
-                ceil: (allWordsCount$ | async) ?? 9999,
+                ceil: allWordsCount$_sig() ?? 9999,
                 step: 1,
                 animate: false,
                 disabled: randomPick,
@@ -143,35 +143,29 @@ export class SidePanelFilterComponent implements OnInit {
   db = inject(DbService);
   store = inject(Store);
   _cd = inject(ChangeDetectorRef);
-  settings$ = this.store.select('settings');
-  allWordsCount$ = this.db.getAllWordsCountFromIndexDB();
+  settings$_sig = toSignal(this.store.select('settings')) as Signal<Settings>;
+  allWordsCount$_sig = toSignal(this.db.getAllWordsCountFromIndexDB());
   private nzDrawerRef = inject(NzDrawerRef<void>);
 
   ngOnInit(): void {
-    this.settings$
-      .pipe(
-        combineLatestWith(this.allWordsCount$),
-        map(([settings, allWordsCount]) => ({ settings, allWordsCount })),
-        take(1),
-      )
-      .subscribe(({ settings, allWordsCount }) => {
-        const { filters } = settings as Settings;
-        if (filters) {
-          this.randomOrder = filters.randomOrder;
-          this.minRange = filters.pickRange[0];
-          this.maxRange = filters.pickRange[1];
-          this.lessThanRate = filters.lessThanRate;
-          this.lessThanCount = filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
-          this.pronounceableType = filters.pronounceableType;
-          this.randomPick = filters.randomPick;
-          this.randomPickCount = filters.randomPickCount;
-          this.wordType = filters.wordType;
-          this.notSpelledDays = filters.notSpelledDays;
-        } else {
-          this.minRange = 1;
-          this.maxRange = allWordsCount;
-        }
-      });
+    const settings = this.settings$_sig();
+    const allWordsCount = this.allWordsCount$_sig();
+    const { filters } = settings as Settings;
+    if (filters) {
+      this.randomOrder = filters.randomOrder;
+      this.minRange = filters.pickRange[0];
+      this.maxRange = filters.pickRange[1];
+      this.lessThanRate = filters.lessThanRate;
+      this.lessThanCount = filters.lessThanCount || DEFAULT_FILTER_LESS_THAN;
+      this.pronounceableType = filters.pronounceableType;
+      this.randomPick = filters.randomPick;
+      this.randomPickCount = filters.randomPickCount;
+      this.wordType = filters.wordType;
+      this.notSpelledDays = filters.notSpelledDays;
+    } else {
+      this.minRange = 1;
+      this.maxRange = allWordsCount;
+    }
   }
 
   onApplyClicked(): FiltersConfig {
@@ -218,29 +212,28 @@ export class SidePanelFilterComponent implements OnInit {
   }
 
   onResetClicked(): void {
-    this.allWordsCount$.subscribe((allWordsCount) => {
-      const { filters } = getDefaultSettings(allWordsCount);
-      const {
-        randomOrder,
-        randomPick,
-        randomPickCount,
-        pickRange,
-        lessThanRate,
-        pronounceableType,
-        lessThanCount,
-      } = filters;
-      this.randomOrder = randomOrder;
-      this.randomPick = randomPick;
-      this.randomPickCount = randomPickCount;
-      this.minRange = pickRange[0];
-      this.maxRange = pickRange[1];
-      this.lessThanRate = lessThanRate;
-      this.lessThanCount = lessThanCount;
-      this.pronounceableType = pronounceableType;
-      this.wordType = filters.wordType;
-      this.notSpelledDays = 0;
-      this._cd.markForCheck();
-    });
+    const allWordsCount = this.allWordsCount$_sig();
+    const { filters } = getDefaultSettings(allWordsCount);
+    const {
+      randomOrder,
+      randomPick,
+      randomPickCount,
+      pickRange,
+      lessThanRate,
+      pronounceableType,
+      lessThanCount,
+    } = filters;
+    this.randomOrder = randomOrder;
+    this.randomPick = randomPick;
+    this.randomPickCount = randomPickCount;
+    this.minRange = pickRange[0];
+    this.maxRange = pickRange[1];
+    this.lessThanRate = lessThanRate;
+    this.lessThanCount = lessThanCount;
+    this.pronounceableType = pronounceableType;
+    this.wordType = filters.wordType;
+    this.notSpelledDays = 0;
+    this._cd.markForCheck();
   }
 
   onSaveDataBaseClicked(): void {

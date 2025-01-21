@@ -4,6 +4,8 @@
 - ~~添加近义词功能~~
 - ~~添加英文释义功能~~
 - 研究使用cypress做自动化测试
+- 研究使用cypress在angular中做自动化测试
+- 研究为什么mono-repo中的angular项目无法升级
 - ~~调研IndexDB搜索功能~~
 - ~~将项目发布到github pages上, 并做ci/cd~~
 - ~~从indexDB导出数据到csv (可以使用Chrome IndexDB Exporter插件)~~ 
