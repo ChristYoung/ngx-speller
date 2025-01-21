@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-version',
   standalone: true,
   imports: [],
-  template: ` <footer>v1.4.7 &#64;copyright 2023</footer> `,
+  template: ` <footer>v1.4.7 &#64;copyright {{ currentYear }}</footer> `,
   styles: [
     `
       footer {
@@ -15,4 +15,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VersionComponent {}
+export class VersionComponent {
+  currentYear: number = new Date().getFullYear();
+}
